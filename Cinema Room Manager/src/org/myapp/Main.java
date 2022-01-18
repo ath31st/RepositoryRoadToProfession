@@ -12,7 +12,7 @@ class Main {
         char[][] room = setCinemaRoom(rows, seats);
 
         boolean controlFlag = true;
-        while (controlFlag){
+        while (controlFlag) {
             showMenu();
             int menuInt = scanner.nextInt();
             switch (menuInt) {
@@ -24,9 +24,13 @@ class Main {
                     int row = scanner.nextInt();
                     System.out.println("Enter a seat number in that row:");
                     int seat = scanner.nextInt();
-                    costTicket(row, seat, rows, seats);
+                    costTicket(row, rows, seats);
                     soldTickets(room, row, seat);
                     break;
+                case 3:
+                    statistic(room, rows, seats);
+                    break;
+
                 case 0:
                 default:
                     controlFlag = false;
@@ -39,6 +43,7 @@ class Main {
         System.out.println();
         System.out.println("1. Show the seats\n" +
                 "2. Buy a ticket\n" +
+                "3. Statistics\n" +
                 "0. Exit");
     }
 
@@ -68,7 +73,7 @@ class Main {
         }
     }
 
-    public static void costTicket(int row, int seat, int rows, int seats) {
+    public static void costTicket(int row, int rows, int seats) {
         int price = 0;
         if (rows * seats <= 60) price = 10;
         else if (rows * seats > 60) {
@@ -81,5 +86,28 @@ class Main {
         if (room[row - 1][seat - 1] == 'S') {
             room[row - 1][seat - 1] = 'B';
         }
+    }
+
+    public static void statistic(char[][] room, int rows, int seats) {
+        int totalIncome = 0;
+        int currentIncome = 0;
+        int soldSeats = 0;
+        double percentage = 0;
+        if (rows * seats <= 60) {
+            totalIncome = (rows * seats) * 10;
+            for (char[] chars : room) {
+                for (char c : chars) {
+                    if (c == 'B') soldSeats++;
+                }
+            }
+
+        } else if (rows * seats > 60) {
+        }
+        percentage = (soldSeats / (double) (rows * seats)) * 100;
+        currentIncome = soldSeats * 10;
+        System.out.printf("Percentage: %.2f", percentage);
+        System.out.println("%");
+        System.out.printf("Current income: $%d" + "\n", currentIncome);
+        System.out.printf("Total income: $%d" + "\n", totalIncome);
     }
 }
