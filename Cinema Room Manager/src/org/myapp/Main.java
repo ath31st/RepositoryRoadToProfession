@@ -3,7 +3,11 @@ package org.myapp;
 import java.util.Scanner;
 
 class Main {
+    static int currentIncome = 0;
+    static int soldSeats = 0;
+
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of rows:");
         int rows = scanner.nextInt();
@@ -19,16 +23,14 @@ class Main {
                 case 1:
                     printCinemaRoom(room);
                     break;
+
                 case 2:
-                    System.out.println("Enter a row number:");
-                    int row = scanner.nextInt();
-                    System.out.println("Enter a seat number in that row:");
-                    int seat = scanner.nextInt();
-                    costTicket(row, rows, seats);
-                    soldTickets(room, row, seat);
+
+                    soldTickets(room, rows, seats);
                     break;
+
                 case 3:
-                    statistic(room, rows, seats);
+                    statistic(rows, seats);
                     break;
 
                 case 0:
@@ -73,41 +75,52 @@ class Main {
         }
     }
 
-    public static void costTicket(int row, int rows, int seats) {
-        int price = 0;
-        if (rows * seats <= 60) price = 10;
-        else if (rows * seats > 60) {
-            price = (rows + 1) / 2 > row ? 10 : 8;
+    public static void soldTickets(char[][] room, int rows, int seats) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter a row number:");
+        int row = scan.nextInt();
+        System.out.println("Enter a seat number in that row:");
+        int seat = scan.nextInt();
+        try {
+            if (room[row - 1][seat - 1] == 'S') {
+                room[row - 1][seat - 1] = 'B';
+                int price = 0;
+                if (rows * seats <= 60) price = 10;
+                else if (rows * seats > 60) {
+                    price = (rows + 1) / 2 > row ? 10 : 8;
+                }
+                currentIncome += price;
+                soldSeats++;
+                System.out.println("\n" + "Ticket price: $" + price);
+            } else {
+                System.out.println("\n" + "That ticket has already been purchased!");
+                soldTickets(room, rows, seats);
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Wrong input!");
+            soldTickets(room, rows, seats);
         }
-        System.out.println("Ticket price: $" + price + "\n");
     }
 
-    public static void soldTickets(char[][] room, int row, int seat) {
-        if (room[row - 1][seat - 1] == 'S') {
-            room[row - 1][seat - 1] = 'B';
-        }
-    }
 
-    public static void statistic(char[][] room, int rows, int seats) {
+    public static void statistic(int rows, int seats) {
         int totalIncome = 0;
-        int currentIncome = 0;
-        int soldSeats = 0;
         double percentage = 0;
         if (rows * seats <= 60) {
             totalIncome = (rows * seats) * 10;
-            for (char[] chars : room) {
-                for (char c : chars) {
-                    if (c == 'B') soldSeats++;
-                }
-            }
-
         } else if (rows * seats > 60) {
+            if (rows % 2 != 0) {
+                totalIncome = ((rows / 2 + 1) * seats) * 8 + ((rows / 2) * seats) * 10;
+            } else if (rows % 2 == 0) {
+                totalIncome = (rows / 2 * seats) * 8 + (rows / 2 * seats) * 10;
+            }
         }
         percentage = (soldSeats / (double) (rows * seats)) * 100;
-        currentIncome = soldSeats * 10;
+        System.out.printf("Number of purchased tickets: %d" + "\n", soldSeats);
         System.out.printf("Percentage: %.2f", percentage);
         System.out.println("%");
         System.out.printf("Current income: $%d" + "\n", currentIncome);
         System.out.printf("Total income: $%d" + "\n", totalIncome);
     }
 }
+
