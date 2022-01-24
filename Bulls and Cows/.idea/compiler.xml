@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="17">
+      <module name="Bulls_and_Cows.Bulls_and_Cows-task.main" target="11" />
+      <module name="Bulls_and_Cows.util.main" target="11" />
+      <module name="Bulls_and_Cows1.Bulls_and_Cows-task.main" target="11" />
+      <module name="Bulls_and_Cows1.util.main" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
