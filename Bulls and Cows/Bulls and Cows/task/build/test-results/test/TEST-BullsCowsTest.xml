@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="BullsCowsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-24T10:26:05" hostname="FRACTAL" time="0.092">
+  <properties/>
+  <testcase name="start" classname="BullsCowsTest" time="0.092"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+> 3601
+Why 9305? Make your own secret number :)
+?[1;31m
+Start test 2?[0m
+> 9305
+Why 9305? Make your own secret number :)
+?[1;31m
+Start test 3?[0m
+> 1246
+Why 9305? Make your own secret number :)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
