@@ -1,116 +1,197 @@
 import bullscows.Main;
+import org.hyperskill.hstest.dynamic.input.DynamicTestingMethod;
+import org.hyperskill.hstest.exception.outcomes.WrongAnswer;
 import org.hyperskill.hstest.stage.StageTest;
 import org.hyperskill.hstest.testcase.CheckResult;
-import org.hyperskill.hstest.testcase.TestCase;
 import org.hyperskill.hstest.testing.TestedProgram;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class BullsCowsTest extends StageTest<String> {
 
-    @Override
-    public List<TestCase<String>> generate() {
-        return Arrays.asList(
-                new TestCase<String>().setDynamicTesting(this::test1),
-                new TestCase<String>().setDynamicTesting(this::test2),
-                new TestCase<String>().setDynamicTesting(this::test3));
-    }
-
-    String secretNumber;
-
-    // base test
+    // base test with 1 digit number
+    @DynamicTestingMethod
     CheckResult test1() {
         TestedProgram main = new TestedProgram();
         main.start();
-        String input = "3601";
-        String output = main.execute(input);
-        return solver(input, output);
-    }
 
-    // test with 4 bulls
-    CheckResult test2() {
-        TestedProgram main = new TestedProgram();
-        main.start();
-        String output = main.execute(secretNumber);
+        String output;
+        int gotAnswer = 0;
+        output = main.execute("1");
 
-        return solver(secretNumber, output);
-    }
-
-    // test of None result
-    CheckResult test3() {
-        TestedProgram main = new TestedProgram();
-        main.start();
-        List<Integer> source = stringToArrayOfNumbers("1234567890");
-        List<Integer> secretNumberList = stringToArrayOfNumbers(secretNumber);
-        source.removeAll(secretNumberList);
-        String input = source.stream().map(String::valueOf).collect(Collectors.joining()).substring(0, 4);
-        String output = main.execute(input);
-        return solver(input, output);
-    }
-
-    CheckResult solver(String input, String output) {
-
-        if (!findPairsOfBullsAndCows(output)) {
-            return CheckResult.wrong(
-                    "The testing system didn't find a pairs of " +
-                            "bulls and cows or None in your program's output.");
+        for (int i = 0; i <= 9; i++) {
+            if (main.isFinished()) {
+                break; // if game has stopped, stop cycle and start check the results;
+            }
+            output = main.execute(Integer.toString(i));
+            int[] result = getNumOfBullsAndCows(output);
+            if (result[0] == 1) {
+                gotAnswer++; // if got a bull, count for an amount of answers
+            }
         }
 
-        Matcher matcher = getFourDigitsMatcher(output);
-        if (!findFourDigitsWithRegExp(matcher)) {
-            return CheckResult.wrong(
-                    "The testing system didn't find a \"secret\" " +
-                            "number in your program's output.");
-        }
-
-        secretNumber = getFourDigits(matcher);
-        if (secretNumber.equals("9305")) {
-            System.out.println("Why 9305? Make your own secret number :)");
-        }
-
-        int[] correctAnswer = grader(input, secretNumber);
-        int[] receivedAnswers = getNumOfBullsAndCows(output);
-
-        if (correctAnswer[0] != receivedAnswers[0]) {
-            return CheckResult.wrong("The number of Bulls is incorrect.");
-        }
-
-        if (correctAnswer[1] != receivedAnswers[1]) {
-            return CheckResult.wrong("The number of Cows is incorrect.");
+        // if we got less or more than 1 answer, the program work is incorrect
+        if (gotAnswer != 1) {
+            return CheckResult.wrong("The game has no answer or more than one.");
         }
 
         return CheckResult.correct();
     }
 
-    Matcher getFourDigitsMatcher(String userString) {
-        Pattern fourDigitsPattern = Pattern.compile("\\b\\d{4}\\b");
-        return fourDigitsPattern.matcher(userString);
+    // standard bulls and cows game
+    @DynamicTestingMethod
+    CheckResult test2() {
+        TestedProgram main = new TestedProgram();
+        main.start();
+        String output = main.execute("4");
+
+        Integer[] usedNums = getUsedNumbers(main, 4);
+        boolean check = getPermutations(main, 4, usedNums);
+
+        if (!check && main.isFinished()) {
+            return CheckResult.wrong("The program has finished before the answer was found");
+        }
+
+        if (!check) {
+            return CheckResult.wrong("The program tried all possible " +
+                    "combinations of digits and hasn't found the answer.");
+        }
+
+        if (!main.isFinished()) {
+            return CheckResult.wrong("The program didn't finish after " +
+                    "the answer was found");
+        }
+
+        return CheckResult.correct();
     }
 
-    boolean findFourDigitsWithRegExp(Matcher matcher) {
-        return matcher.find();
+    // max length we can check
+    @DynamicTestingMethod
+    CheckResult test3() {
+        TestedProgram main = new TestedProgram();
+        main.start();
+        String output = main.execute("6");
+
+        Integer[] usedNums = getUsedNumbers(main, 6);
+        boolean check = getPermutations(main, 6, usedNums);
+
+        if (!check && main.isFinished()) {
+            return CheckResult.wrong("The program has finished before the answer was found");
+        }
+
+        if (!check) {
+            return CheckResult.wrong("The program tried all possible " +
+                    "combinations of digits and hasn't found the answer.");
+        }
+
+        if (!main.isFinished()) {
+            return CheckResult.wrong("The program didn't finish after " +
+                    "the answer was found");
+        }
+
+        return CheckResult.correct();
     }
 
-    String getFourDigits(Matcher matcher) {
-        return matcher.group();
+    // length limit check
+    @DynamicTestingMethod
+    CheckResult test4() {
+        TestedProgram main = new TestedProgram();
+        main.start();
+        String output = main.execute("11");
+
+        if (output.toLowerCase().contains("error")) {
+            return CheckResult.correct();
+        } else {
+            return CheckResult.wrong("An error message expected with input \"11\"");
+        }
     }
 
-    boolean findPairsOfBullsAndCows(String userString) {
-        Pattern pairPattern = Pattern.compile("(\\b\\d ([cC]ow|[bB]ull))|[nN]one\\b");
-        Matcher pairMatcher = pairPattern.matcher(userString);
-        return pairMatcher.find();
+
+    Integer[] getUsedNumbers(TestedProgram main, int length) {
+        Integer[] nums = new Integer[length];
+        int[] result;
+
+        int index = 0;
+        String output;
+        String input;
+
+        for (int i = 0; i < 10; i++) {
+            input = new String(new char[length]).replace("\0", Integer.toString(i));
+            output = main.execute(input);
+            result = getNumOfBullsAndCows(output);
+
+            if (result[0] > 1) {
+                throw new WrongAnswer("Seems like " +
+                        "the calculation of bulls isn't right. " +
+                        "For the guess \"" + input + "\" there can be 1 bull at max.");
+            }
+
+            if (result[0] == 1) {
+                nums[index++] = i;
+            }
+
+            if (index == length) {
+                break;
+            }
+        }
+
+        if (index != length) {
+            throw new WrongAnswer(
+                "Output should contain " + length + " bulls " +
+                        "summarized as every option was tried. Found: " + index
+            );
+        }
+
+        return nums;
+    }
+
+
+    // permutations one by one
+    public boolean getPermutations(TestedProgram main, int length, Integer[] elements) {
+        int[] indexes = new int[length];
+        for (int i = 0; i < length; i++) {
+            indexes[i] = 0;
+        }
+
+        String output = main.execute(Arrays.toString(elements).replaceAll("\\[|\\]|, ", ""));
+        int[] result = getNumOfBullsAndCows(output);
+        if (result[0] == length) {
+            return true;
+        }
+
+        int i = 0;
+        while (i < length) {
+            if (indexes[i] < i) {
+                swap(elements, i % 2 == 0 ? 0 : indexes[i], i);
+                output = main.execute(Arrays.toString(elements).replaceAll("\\[|\\]|, ", ""));
+                result = getNumOfBullsAndCows(output);
+                if (result[0] == length) {
+                    return true;
+                }
+                indexes[i]++;
+                i = 0;
+            } else {
+                indexes[i] = 0;
+                i++;
+            }
+        }
+        return false;
+    }
+
+    private static void swap(Integer[] input, int a, int b) {
+        int tmp = input[a];
+        input[a] = input[b];
+        input[b] = tmp;
     }
 
 
     // get number of bulls and cows from user program's output
     int[] getNumOfBullsAndCows(String userString) {
         Matcher nonePattern = Pattern.compile("\\b[nN]one\\b").matcher(userString);
-        Matcher cowsPattern = Pattern.compile("\\b\\d [cC]ow").matcher(userString);
-        Matcher bullsPattern = Pattern.compile("\\b\\d [bB]ull").matcher(userString);
+        Matcher cowsPattern = Pattern.compile("\\b\\d [cC]ows?").matcher(userString);
+        Matcher bullsPattern = Pattern.compile("\\b\\d [bB]ulls?").matcher(userString);
         Pattern oneNumPattern = Pattern.compile("\\d");
 
         if (nonePattern.find()) {
@@ -118,45 +199,30 @@ public class BullsCowsTest extends StageTest<String> {
         }
 
         int[] ans = {0, 0};
+        boolean found = false;
 
         if (bullsPattern.find()) {
             String temp = bullsPattern.group();
             Matcher oneNumBulls = oneNumPattern.matcher(temp);
             oneNumBulls.find();
             ans[0] = Integer.parseInt(oneNumBulls.group());
+            found = true;
         }
+
         if (cowsPattern.find()) {
             String temp = cowsPattern.group();
             Matcher oneNumCows = oneNumPattern.matcher(temp);
             oneNumCows.find();
             ans[1] = Integer.parseInt(oneNumCows.group());
+            found = true;
+        }
+
+        if (!found) {
+            throw new WrongAnswer(
+                "Cannot find number of bulls or number of cows or None after the input."
+            );
         }
 
         return ans;
-    }
-
-    // reference grader
-    int[] grader(String grade, String guess) {
-        int bulls = 0;
-        List<Integer> gradeNumbers = stringToArrayOfNumbers(grade);
-        List<Integer> guessNumbers = stringToArrayOfNumbers(guess);
-
-        for (int i = 0; i < gradeNumbers.size(); i++) {
-            if (gradeNumbers.get(i).equals(guessNumbers.get(i))) {
-                bulls++;
-            }
-        }
-
-        gradeNumbers.retainAll(guessNumbers);
-        int cows = gradeNumbers.size() - bulls;
-
-        return new int[]{bulls, cows};
-    }
-
-
-    private static List<Integer> stringToArrayOfNumbers(String array) {
-        return Arrays.stream(array.split(""))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
     }
 }
