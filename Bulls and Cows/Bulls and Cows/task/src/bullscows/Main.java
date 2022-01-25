@@ -1,29 +1,35 @@
 package bullscows;
 
-import java.util.Scanner;
-import java.util.stream.IntStream;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
-    static int[] secretCode;
+    static List<String> secretCode;
+    static List<String> grader;
     static int bulls = 0;
     static int cows = 0;
     static int turn = 1;
+    static int range = 0;
+    static int length = 0;
 
     public static void main(String[] args) {
-        System.out.println("Please, enter the secret code's length:");
+        System.out.println("Input the length of the secret code:");
         Scanner scanner = new Scanner(System.in);
-        int size = scanner.nextInt();
-        if (size <= 10) {
-            secretCode = generateSecretCode(size);
-            while (bulls != secretCode.length) {
+        length = scanner.nextInt();
+        System.out.println("Input the number of possible symbols in the code:");
+        range = scanner.nextInt();
+
+        if (length <= range && length <= 36) {
+            secretCode = generateSecretCode(length, range);
+            while (bulls != secretCode.size()) {
                 System.out.printf("Turn %d:" + "\n", turn);
-                int[] grader = getGrader();
+                grader = getGrader();
 
                 bulls = checkBulls(grader, secretCode);
                 cows = checkCows(grader, secretCode);
                 printResult(bulls, cows);
                 turn++;
-                if (bulls == secretCode.length) {
+                if (bulls == secretCode.size()) {
                     System.out.println("Congratulations! You guessed the secret code.");
                 }
             }
@@ -33,43 +39,45 @@ public class Main {
     }
 
 
-    static int[] getGrader() {
+    static List<String> getGrader() {
         Scanner scanner = new Scanner(System.in);
         String[] s = scanner.nextLine().split("");
-        int[] grader = new int[secretCode.length];
-        for (int i = 0; i < grader.length; i++) {
-            grader[i] = Integer.parseInt(s[i]);
+        return Arrays.stream(s).collect(Collectors.toList());
+    }
+
+    static List<String> generateSecretCode(int length, int range) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("*".repeat(Math.max(0, length)));
+        List<String> numbers = new ArrayList<>();
+        for (int i = 0; i < range; i++) {
+            int n = i < 10 ? i + 48 : i + 87;
+            numbers.add(String.valueOf((char) n));
         }
-        //scanner.close();
-        return grader;
+        if (range <= 10) {
+            System.out.printf("The secret is prepared: %s (0-%d)." + "\n", sb, range - 1);
+        } else {
+            System.out.printf("The secret is prepared: %s (0-9, a-%c)." + "\n",sb, range + 86);
+        }
+        Collections.shuffle(numbers);
+        return numbers.stream().limit(length).collect(Collectors.toList());
     }
 
-    static int[] generateSecretCode(int size) {
-        //scanner.close();
-        IntStream stream = IntStream.generate(()
-                -> {
-            return (int) (Math.random() * 10);
-        }).limit(100).distinct().limit(size);
-        System.out.println("Okay, let's start a game!");
-        return stream.toArray();
-    }
-
-    static int checkBulls(int[] grader, int[] secretCode) {
+    static int checkBulls(List<String> grader, List<String> secretCode) {
         int bulls = 0;
-        for (int i = 0; i < grader.length; i++) {
-            if (grader[i] == secretCode[i]) {
+        for (int i = 0; i < grader.size(); i++) {
+            if (Objects.equals(grader.get(i), secretCode.get(i))) {
                 bulls++;
             }
         }
         return bulls;
     }
 
-    static int checkCows(int[] grader, int[] secretCode) {
+    static int checkCows(List<String> grader, List<String> secretCode) {
         int cows = 0;
-        for (int i = 0; i < grader.length; i++) {
-            for (int j = 0; j < secretCode.length; j++) {
+        for (int i = 0; i < grader.size(); i++) {
+            for (int j = 0; j < secretCode.size(); j++) {
                 if (i != j) {
-                    if (secretCode[j] == grader[i]) {
+                    if (Objects.equals(secretCode.get(j), grader.get(i))) {
                         cows++;
                     }
                 }
