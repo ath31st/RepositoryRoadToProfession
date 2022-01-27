@@ -13,28 +13,33 @@ public class Main {
     static int length = 0;
 
     public static void main(String[] args) {
-        System.out.println("Input the length of the secret code:");
-        Scanner scanner = new Scanner(System.in);
-        length = scanner.nextInt();
-        System.out.println("Input the number of possible symbols in the code:");
-        range = scanner.nextInt();
+        try {
+            System.out.println("Input the length of the secret code:");
+            Scanner scanner = new Scanner(System.in);
+            length = scanner.nextInt();
+            System.out.println("Input the number of possible symbols in the code:");
+            range = scanner.nextInt();
 
-        if (length <= range && length <= 36) {
-            secretCode = generateSecretCode(length, range);
-            while (bulls != secretCode.size()) {
-                System.out.printf("Turn %d:" + "\n", turn);
-                grader = getGrader();
+            if (length <= range && length <= 36 && range <= 36 && length > 0) {
+                secretCode = generateSecretCode(length, range);
+                while (bulls != secretCode.size()) {
+                    System.out.printf("Turn %d:" + "\n", turn);
+                    grader = getGrader();
 
-                bulls = checkBulls(grader, secretCode);
-                cows = checkCows(grader, secretCode);
-                printResult(bulls, cows);
-                turn++;
-                if (bulls == secretCode.size()) {
-                    System.out.println("Congratulations! You guessed the secret code.");
+                    bulls = checkBulls(grader, secretCode);
+                    cows = checkCows(grader, secretCode);
+                    printResult(bulls, cows);
+                    turn++;
+                    if (bulls == secretCode.size()) {
+                        System.out.println("Congratulations! You guessed the secret code.");
+                    }
                 }
+            } else {
+                System.out.printf("Error: it's not possible to generate" +
+                        " a code with a length of %d with %d unique symbols.", length, range);
             }
-        } else {
-            System.out.println("Error");
+        } catch (InputMismatchException inputMismatchException) {
+            System.out.printf("Error: isn't %d + %d a valid number.", length, range);
         }
     }
 
@@ -56,7 +61,7 @@ public class Main {
         if (range <= 10) {
             System.out.printf("The secret is prepared: %s (0-%d)." + "\n", sb, range - 1);
         } else {
-            System.out.printf("The secret is prepared: %s (0-9, a-%c)." + "\n",sb, range + 86);
+            System.out.printf("The secret is prepared: %s (0-9, a-%c)." + "\n", sb, range + 86);
         }
         Collections.shuffle(numbers);
         return numbers.stream().limit(length).collect(Collectors.toList());
