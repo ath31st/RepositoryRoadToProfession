@@ -1,6 +1,7 @@
 package calculator;
 
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main {
@@ -11,18 +12,21 @@ public class Main {
         while (status) {
             Scanner scanner = new Scanner(System.in);
             exp = scanner.nextLine();
-            if (exp.equals("/help")) System.out.println("The program calculates the sum of numbers");
+            if (exp.equals("/help")) System.out.println("Some helping text");
             if (!exp.equals("/exit")) {
                 if (exp.isEmpty()) continue;
+                if (exp.startsWith("/")) {
+                    System.out.println("Unknown command");
+                    continue;
+                }
                 try {
-                    exp = exp.replaceAll("[^0-9+-]+", "")
-                            .replaceAll("[+]{2,}", "+")
+                    //exp = exp.replaceAll("[^0-9+-]+", "")
+                    exp = exp.replaceAll("[+]{2,}", "+")
                             .replaceAll("[-]{3}", "-")
                             .replaceAll("[-]{2}", "+");
-
                     System.out.println(eval(exp));
-                } catch (Exception e) {
-                    System.out.print("");
+                } catch (IllegalArgumentException | NoSuchElementException e) {
+                    System.out.println("Invalid expression");
                 }
             } else status = false;
         }
@@ -87,7 +91,7 @@ public class Main {
                     processOperator(st, op.removeLast());
                 op.removeLast();
             } else if (isOperator(c)) {
-                if (op.isEmpty() && st.isEmpty() && c == '-') {
+                if (op.isEmpty() && st.isEmpty() && (c == '-' | c == '+')) {
                     st.add(0);
                 }
                 while (!op.isEmpty() && priority(op.getLast()) >= priority(c))
