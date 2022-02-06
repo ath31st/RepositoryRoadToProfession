@@ -28,7 +28,7 @@ stages:
   is_completed: true
 - id: 227
   step: 5323
-  is_completed: false
+  is_completed: true
 topics:
   0:
   - title: Introduction to Java
