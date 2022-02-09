@@ -1,5 +1,7 @@
 package battleship;
 
+import com.sun.source.tree.TryTree;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -38,6 +40,7 @@ public class Main {
         printField(field);
         //controlPanel();
         shipsOnField(field);
+        takeAShot(field);
     }
 
 
@@ -74,14 +77,17 @@ public class Main {
         arrCoordinates[0] = temp1[0].charAt(0) - 64;
         if (temp1.length < 3) {
             arrCoordinates[1] = Integer.parseInt(temp1[1]);
-        } else arrCoordinates[1] = 10;
+        } else if (temp1.length > 2 && Integer.parseInt(temp1[1]) == 1
+                && Integer.parseInt(temp1[2]) == 0) arrCoordinates[1] = 10;
 
-        String[] temp2 = coordinates[1].split("");
-        arrCoordinates[2] = temp2[0].charAt(0) - 64;
-        if (temp2.length < 3) {
-            arrCoordinates[3] = Integer.parseInt(temp2[1]);
-        } else arrCoordinates[3] = 10;
-
+        if (coordinates.length > 1) {
+            String[] temp2 = coordinates[1].split("");
+            arrCoordinates[2] = temp2[0].charAt(0) - 64;
+            if (temp2.length < 3) {
+                arrCoordinates[3] = Integer.parseInt(temp2[1]);
+            } else if (temp2.length > 2 && Integer.parseInt(temp2[1]) == 1
+                    && Integer.parseInt(temp2[2]) == 0) arrCoordinates[3] = 10;
+        }
         return arrCoordinates;
     }
 
@@ -139,7 +145,6 @@ public class Main {
                 System.out.println("");
             }
 
-
             if (!checkField) {
                 //HORIZONTAL
                 if (coordinates[0] == coordinates[2] && Math.abs(coordinates[1] - coordinates[3]) + 1 == ship.getCells()) {
@@ -162,6 +167,41 @@ public class Main {
                 list.poll();
             }
         }
+        System.out.println("\nThe game starts!\n");
+        printField(field);
+    }
+
+    public static void takeAShot(char[][] field) {
+        System.out.println("\nTake a shot!\n");
+        while (checkLiveShips(field)) {
+            int[] coordinates = setCoordinates();
+            try {
+                if (field[coordinates[0] - 1][coordinates[1] - 1] == 'O') {
+                    field[coordinates[0] - 1][coordinates[1] - 1] = 'X';
+                    printField(field);
+                    System.out.println("You hit a ship!");
+                } else {
+                    field[coordinates[0] - 1][coordinates[1] - 1] = 'M';
+                    printField(field);
+                    System.out.println("You missed!");
+                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Error! You entered the wrong coordinates! Try again:");
+            }
+        }
+    }
+
+    public static boolean checkLiveShips(char[][] field) {
+        boolean check = false;
+        for (char[] arr : field) {
+            for (char c : arr) {
+                if (c == 'O') {
+                    check = true;
+                    break;
+                }
+            }
+        }
+        return check;
     }
 
     public static void controlPanel() {
