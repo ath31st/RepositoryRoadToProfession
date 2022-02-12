@@ -10,6 +10,8 @@ import java.util.Scanner;
 public class Main {
     private static int rows = 10;
     private static int colons = 10;
+    static char[][] field;
+    static char[][] fogOnField;
 
     public enum Ships {
         AIRCRAFT_CARRIER("Aircraft Carrier", 5),
@@ -36,11 +38,11 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        char[][] field = setField(rows, colons);
+        field = setField(rows, colons);
+        fogOnField = setField(rows, colons);
         printField(field);
-        //controlPanel();
         shipsOnField(field);
-        takeAShot(field);
+        takeAShot(field, fogOnField);
     }
 
 
@@ -168,22 +170,25 @@ public class Main {
             }
         }
         System.out.println("\nThe game starts!\n");
-        printField(field);
+        printField(fogOnField);
     }
 
-    public static void takeAShot(char[][] field) {
+    public static void takeAShot(char[][] field, char[][] fogOnField) {
         System.out.println("\nTake a shot!\n");
         while (checkLiveShips(field)) {
             int[] coordinates = setCoordinates();
             try {
                 if (field[coordinates[0] - 1][coordinates[1] - 1] == 'O') {
                     field[coordinates[0] - 1][coordinates[1] - 1] = 'X';
+                    fogOnField[coordinates[0] - 1][coordinates[1] - 1] = 'X';
+                    printField(fogOnField);
+                    System.out.println("\nYou hit a ship!\n");
                     printField(field);
-                    System.out.println("You hit a ship!");
                 } else {
                     field[coordinates[0] - 1][coordinates[1] - 1] = 'M';
+                    printField(fogOnField);
+                    System.out.println("\nYou missed!\n");
                     printField(field);
-                    System.out.println("You missed!");
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Error! You entered the wrong coordinates! Try again:");
@@ -202,12 +207,5 @@ public class Main {
             }
         }
         return check;
-    }
-
-    public static void controlPanel() {
-        boolean controlFlag = true;
-        while (controlFlag) {
-
-        }
     }
 }
