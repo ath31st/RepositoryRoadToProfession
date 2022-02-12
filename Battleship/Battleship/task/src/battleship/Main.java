@@ -184,8 +184,12 @@ public class Main {
                     printField(fogOnField);
                     System.out.println("\nYou hit a ship!\n");
                     printField(field);
+                } else if (field[coordinates[0] - 1][coordinates[1] - 1] == 'X') {
+                    System.out.println("\nYou sank a ship! Specify a new target:\n");
+                    printField(fogOnField); // may be here is will be replace with up line
                 } else {
                     field[coordinates[0] - 1][coordinates[1] - 1] = 'M';
+                    fogOnField[coordinates[0] - 1][coordinates[1] - 1] = 'M';
                     printField(fogOnField);
                     System.out.println("\nYou missed!\n");
                     printField(field);
@@ -194,6 +198,7 @@ public class Main {
                 System.out.println("Error! You entered the wrong coordinates! Try again:");
             }
         }
+        System.out.println("You sank the last ship. You won. Congratulations!");
     }
 
     public static boolean checkLiveShips(char[][] field) {
