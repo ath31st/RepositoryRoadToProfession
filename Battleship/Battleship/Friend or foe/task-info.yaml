@@ -381,6 +381,16 @@ files:
         }
     }
   learner_created: false
+- name: src/battleship/Ships.java
+  visible: true
+  learner_created: true
+- name: src/battleship/Player.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/10598#comment
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: Sun, 13 Feb 2022 20:08:05 UTC
+record: 5

@@ -1,48 +1,39 @@
 package battleship;
 
-import com.sun.source.tree.TryTree;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.*;
 
 
 public class Main {
-    private static int rows = 10;
-    private static int colons = 10;
-    static char[][] field;
-    static char[][] fogOnField;
-
-    public enum Ships {
-        AIRCRAFT_CARRIER("Aircraft Carrier", 5),
-        BATTLESHIP("Battleship", 4),
-        SUBMARINE("Submarine", 3),
-        CRUISER("Cruiser", 3),
-        DESTROYER("Destroyer", 2);
-
-        private String nameShip;
-        private int cells;
-
-        Ships(String nameShip, int cells) {
-            this.nameShip = nameShip;
-            this.cells = cells;
-        }
-
-        public String getNameShip() {
-            return nameShip;
-        }
-
-        public int getCells() {
-            return cells;
-        }
-    }
+    private static final int rows = 10;
+    private static final int colons = 10;
 
     public static void main(String[] args) {
-        field = setField(rows, colons);
-        fogOnField = setField(rows, colons);
-        printField(field);
-        shipsOnField(field);
-        takeAShot(field, fogOnField);
+        Player player1 = new Player("Player 1", setField(rows, colons), setField(rows, colons));
+        Player player2 = new Player("Player 2", setField(rows, colons), setField(rows, colons));
+
+        System.out.printf("\n%s, place your ships on the game field\n\n", player1.getName());
+        printField(player1.getField());
+        shipsOnField(player1.getField(), player1);
+
+        promptEnterKey();
+
+        System.out.printf("\n%s, place your ships on the game field\n\n", player2.getName());
+        printField(player2.getField());
+        shipsOnField(player2.getField(), player2);
+
+        promptEnterKey();
+
+        while (checkLiveShips(player1.getField()) | checkLiveShips(player2.getField())) {
+            takeAShot(player1.getField(), player2.getFogOnField(), player1, player2.getField());
+            promptEnterKey();
+            takeAShot(player2.getField(), player1.getFogOnField(), player2, player1.getField());
+            promptEnterKey();
+        }
+        System.out.println("You sank the last ship. You won. Congratulations!");
+
+
     }
 
 
@@ -132,7 +123,7 @@ public class Main {
         return check;
     }
 
-    public static void shipsOnField(char[][] field) {
+    public static void shipsOnField(char[][] field, Player player) {
         LinkedList<Ships> list = new LinkedList<>(List.of(Ships.values()));
         while (!list.isEmpty()) {
             Ships ship = list.peek();
@@ -144,9 +135,8 @@ public class Main {
             try {
                 checkField = checkField(field, coordinates, ship.getCells());
             } catch (Exception e) {
-                System.out.println("");
+                System.out.println();
             }
-
             if (!checkField) {
                 //HORIZONTAL
                 if (coordinates[0] == coordinates[2] && Math.abs(coordinates[1] - coordinates[3]) + 1 == ship.getCells()) {
@@ -169,36 +159,36 @@ public class Main {
                 list.poll();
             }
         }
-        System.out.println("\nThe game starts!\n");
-        printField(fogOnField);
     }
 
-    public static void takeAShot(char[][] field, char[][] fogOnField) {
-        System.out.println("\nTake a shot!\n");
-        while (checkLiveShips(field)) {
-            int[] coordinates = setCoordinates();
-            try {
-                if (field[coordinates[0] - 1][coordinates[1] - 1] == 'O') {
-                    field[coordinates[0] - 1][coordinates[1] - 1] = 'X';
-                    fogOnField[coordinates[0] - 1][coordinates[1] - 1] = 'X';
-                    printField(fogOnField);
-                    System.out.println("\nYou hit a ship!\n");
-                    printField(field);
-                } else if (field[coordinates[0] - 1][coordinates[1] - 1] == 'X') {
-                    System.out.println("\nYou sank a ship! Specify a new target:\n");
-                    printField(fogOnField); // may be here is will be replace with up line
+    public static void takeAShot(char[][] field, char[][] fogOnField, Player player, char[][] foeField) {
+        printField(fogOnField);
+        System.out.println("---------------------");
+        printField(field);
+        System.out.printf("\n%s, it's your turn:\n", player.getName());
+        int[] coordinates = setCoordinates();
+        try {
+            if (foeField[coordinates[0] - 1][coordinates[1] - 1] == 'O') {
+                foeField[coordinates[0] - 1][coordinates[1] - 1] = 'X';
+                fogOnField[coordinates[0] - 1][coordinates[1] - 1] = 'X';
+                if (!checkLiveShips(foeField)) {
+                    System.out.println("You sank the last ship. You won. Congratulations!");
+                } else if (isSank(foeField, coordinates)) {
+                    System.out.println("You sank a ship!");
                 } else {
-                    field[coordinates[0] - 1][coordinates[1] - 1] = 'M';
-                    fogOnField[coordinates[0] - 1][coordinates[1] - 1] = 'M';
-                    printField(fogOnField);
-                    System.out.println("\nYou missed!\n");
-                    printField(field);
+                    System.out.println("\nYou hit a ship!\n");
                 }
-            } catch (ArrayIndexOutOfBoundsException e) {
-                System.out.println("Error! You entered the wrong coordinates! Try again:");
+            } else if (foeField[coordinates[0] - 1][coordinates[1] - 1] == 'X') {
+                System.out.println("\nYou sank a ship! Specify a new target:\n");
+            } else {
+                foeField[coordinates[0] - 1][coordinates[1] - 1] = 'M';
+                fogOnField[coordinates[0] - 1][coordinates[1] - 1] = 'M';
+                System.out.println("\nYou missed!\n");
             }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error! You entered the wrong coordinates!");
         }
-        System.out.println("You sank the last ship. You won. Congratulations!");
+        //System.out.println("You sank the last ship. You won. Congratulations!");
     }
 
     public static boolean checkLiveShips(char[][] field) {
@@ -212,5 +202,30 @@ public class Main {
             }
         }
         return check;
+    }
+
+    public static void promptEnterKey() {
+        System.out.println("Press Enter and pass the move to another player");
+        try {
+            System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean isSank(char[][] foeField, int[] coord) {
+        boolean sank = false;
+        //if (foeField[coord[0] - 1][coord[1] - 2] == 'O' | foeField[coord[0] - 1][coord[1]] == 'O'
+        try {
+            if (foeField[coord[0] - 1][coord[1] - 1] == 'O' | foeField[coord[0] - 1][coord[1]] == 'O'
+                    | foeField[coord[0] - 2][coord[1] - 1] == 'O' | foeField[coord[0] - 1][coord[1]] == 'O') {
+                sank = false;
+            } else {
+                sank = true;
+            }
+        } catch (Exception e) {
+            System.out.print("");
+        }
+        return sank;
     }
 }
