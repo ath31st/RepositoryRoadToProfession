@@ -549,6 +549,12 @@ files:
         }
     }
   learner_created: false
+- name: src/maze/Maze.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/47/stages/252/implement#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Mon, 14 Feb 2022 07:52:43 UTC
 record: -1

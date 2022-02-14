@@ -1,19 +1,17 @@
+
 package maze;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.print("\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\n");
-        System.out.print("\u2588\u2588\u0020\u0020\u2588\u2588\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\n");
-        System.out.print("\u2588\u2588\u0020\u0020\u2588\u2588\u0020\u0020\u0020\u0020\u2588\u2588\u0020\u0020\u2588\u2588\u0020\u0020\u2588\u2588\n");
-        System.out.print("\u2588\u2588\u0020\u0020\u2588\u2588\u0020\u0020\u2588\u2588\u2588\u2588\u0020\u0020\u2588\u2588\u2588\u2588\u2588\u2588\n");
-        System.out.print("\u2588\u2588\u0020\u0020\u2588\u2588\u0020\u0020\u0020\u0020\u2588\u2588\u0020\u0020\u0020\u0020\u0020\u0020\u2588\u2588\n");
-        System.out.print("\u2588\u2588\u0020\u0020\u2588\u2588\u0020\u0020\u2588\u2588\u2588\u2588\u0020\u0020\u2588\u2588\u2588\u2588\u2588\u2588\n");
-        System.out.print("\u2588\u2588\u0020\u0020\u2588\u2588\u0020\u0020\u0020\u0020\u2588\u2588\u0020\u0020\u0020\u0020\u0020\u0020\u2588\u2588\n");
-        System.out.print("\u2588\u2588\u0020\u0020\u2588\u2588\u0020\u0020\u2588\u2588\u2588\u2588\u0020\u0020\u2588\u2588\u2588\u2588\u2588\u2588\n");
-        System.out.print("\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u2588\u2588\n");
-        System.out.print("\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\n");
-        char[][] maze = new char[10][10];
+        final var scanner = new Scanner(System.in);
+        System.out.println("Please, enter the size of a maze");
+        final var height = scanner.nextInt();
+        final var width = scanner.nextInt();
 
+        final var maze = new Maze(height, width);
+
+        System.out.println(maze);
     }
-
 }
