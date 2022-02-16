@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 enum Elem {
     WALL, EMPTY, PATH, DUMMY;
 
@@ -364,89 +363,44 @@ class Maze {
 }
 
 class Clue {
-    int height;
-    int width;
-    Clue(int h, int w) {
-        height = h;
-        width = w;
+    int size;
+    boolean withPath;
+    int count;
+    Clue(int s, int c, boolean wp) {
+        size = s;
+        count = c;
+        withPath = wp;
     }
 }
 
 public class MazeRunnerTest extends StageTest<Clue> {
 
-    List<Maze> previousMazes = new ArrayList<>();
-
     @Override
     public List<TestCase<Clue>> generate() {
         return List.of(
             new TestCase<Clue>()
-                .setInput("7 9")
-                .setAttach(new Clue(7, 9)),
+                .setInput("1\n17\n0")
+                .setAttach(new Clue(17, 1, false)),
 
             new TestCase<Clue>()
-                .setInput("15 35")
-                .setAttach(new Clue(15, 35)),
+                .setInput("1\n29\n3\ntest_maze.txt\n0")
+                .setAttach(new Clue(29, 1, false)),
 
             new TestCase<Clue>()
-                .setInput("15 35")
-                .setAttach(new Clue(15, 35)),
+                .setInput("2\ntest_maze.txt\n4\n0")
+                .setAttach(new Clue(29, 1, false)),
 
             new TestCase<Clue>()
-                .setInput("15 35")
-                .setAttach(new Clue(15, 35)),
+                .setInput("1\n35\n3\ntest_maze.txt\n0")
+                .setAttach(new Clue(35, 1, false)),
 
             new TestCase<Clue>()
-                .setInput("15 35")
-                .setAttach(new Clue(15, 35)),
+                .setInput("2\ntest_maze.txt\n4\n0")
+                .setAttach(new Clue(35, 1, false)),
 
             new TestCase<Clue>()
-                .setInput("15 35")
-                .setAttach(new Clue(15, 35)),
-
-            new TestCase<Clue>()
-                .setInput("15 35")
-                .setAttach(new Clue(15, 35)),
-
-            new TestCase<Clue>()
-                .setInput("15 35")
-                .setAttach(new Clue(15, 35)),
-
-            new TestCase<Clue>()
-                .setInput("15 35")
-                .setAttach(new Clue(15, 35)),
-
-            new TestCase<Clue>()
-                .setInput("34 23")
-                .setAttach(new Clue(34, 23)),
-
-            new TestCase<Clue>()
-                .setInput("34 23")
-                .setAttach(new Clue(34, 23)),
-
-            new TestCase<Clue>()
-                .setInput("34 23")
-                .setAttach(new Clue(34, 23)),
-
-            new TestCase<Clue>()
-                .setInput("34 23")
-                .setAttach(new Clue(34, 23)),
-
-            new TestCase<Clue>()
-                .setInput("34 23")
-                .setAttach(new Clue(34, 23)),
-
-            new TestCase<Clue>()
-                .setInput("34 23")
-                .setAttach(new Clue(34, 23)),
-
-            new TestCase<Clue>()
-                .setInput("34 23")
-                .setAttach(new Clue(34, 23)),
-
-            new TestCase<Clue>()
-                .setInput("34 23")
-                .setAttach(new Clue(34, 23))
-
+                .setInput("2\ntest_maze.txt\n4\n5\n0")
+                .setAttach(new Clue(35, 2, true))
         );
     }
 
@@ -469,33 +423,43 @@ public class MazeRunnerTest extends StageTest<Clue> {
             );
         }
 
-        if (mazes.size() > 1) {
-            return CheckResult.wrong(
-                "Found " + mazes.size() + " mazes in the output. " +
-                    "Should be only one maze."
-            );
-        }
-
-        Maze maze = mazes.get(0);
-
-        for (Maze prev : previousMazes) {
-            if (prev.equals(maze)) {
+        if (mazes.size() != clue.count) {
+            if (clue.count == 1) {
                 return CheckResult.wrong(
-                    "This is the same maze that was in the previous tests. " +
-                    "You should create an algorithm that generates different mazes."
+                    "Found " + mazes.size() + " mazes in the output. " +
+                        "Should be only one maze."
+                );
+            } else {
+                return CheckResult.wrong(
+                    "Found " + mazes.size() + " mazes in the output. " +
+                        "Should be two mazes."
                 );
             }
         }
-        previousMazes.add(maze);
 
-        int entrances = maze.countEntrances();
+        Maze fst = mazes.get(0);
+        Maze snd = mazes.size() == 2 ? mazes.get(1) : null;
+
+        if (snd != null && !fst.equals(snd)) {
+            return CheckResult.wrong(
+                "The two mazes shown should be equal, but they are different."
+            );
+        }
+
+        if (fst.count(Elem.PATH) != 0) {
+            return CheckResult.wrong(
+                "The first maze should not contain '/' characters."
+            );
+        }
+
+        int entrances = fst.countEntrances();
         if (entrances != 2) {
             return new CheckResult(false,
                 "There are " + entrances + " entrances to the maze, " +
                     "should be only two.");
         }
 
-        int emptyLeft = maze.checkAccessibility();
+        int emptyLeft = fst.checkAccessibility();
         if (emptyLeft > 0) {
             return new CheckResult(false,
                 "There are " + emptyLeft + " empty " +
@@ -504,16 +468,33 @@ public class MazeRunnerTest extends StageTest<Clue> {
             );
         }
 
-        if (maze.getHeight() != clue.height) {
+        if (fst.getHeight() != clue.size) {
             return new CheckResult(false,
                 "Number of rows in the maze is incorrect. " +
-                    "It's " + maze.getHeight() + ", but should be " + clue.height);
+                    "It's " + fst.getHeight() + ", but should be " + clue.size);
         }
 
-        if (maze.getWidth() != clue.width) {
+        if (fst.getWidth() != clue.size) {
             return new CheckResult(false,
                 "Number of columns in the maze is incorrect. " +
-                    "It's " + maze.getWidth() + ", but should be " + clue.width);
+                    "It's " + fst.getWidth() + ", but should be " + clue.size);
+        }
+
+        if (snd != null && clue.withPath) {
+            try {
+                int pathLeft = snd.checkPath();
+                if (pathLeft > 0) {
+                    return new CheckResult(false,
+                        "There are " + pathLeft + " escape path ('//') " +
+                            "cells that are separated from the escape path of the maze " +
+                            "(or there is a break somewhere in the escape path)."
+                    );
+                }
+            } catch (Exception e) {
+                return CheckResult.wrong(
+                    e.getMessage()
+                );
+            }
         }
 
         return CheckResult.correct();

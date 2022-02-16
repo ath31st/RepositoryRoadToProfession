@@ -530,6 +530,349 @@ files:
         }
     }
   learner_created: false
-feedback_link: https://hyperskill.org/projects/47/stages/254/implement#comment
-status: Unchecked
+- name: test_maze.txt
+  visible: true
+  text: |
+    <Maze>
+      <height>15</height>
+      <width>15</width>
+      <map>
+        <map>6343522376197636095</map>
+        <map>6161667514437897719</map>
+        <map>-2460616083650739459</map>
+        <map>-227283</map>
+      </map>
+    </Maze>
+  learner_created: true
+- name: src/maze/Maze.java
+  visible: true
+  text: |-
+    package maze;
+
+    import com.fasterxml.jackson.annotation.JsonIgnore;
+
+    import java.util.Arrays;
+    import java.util.BitSet;
+    import java.util.Random;
+    import java.util.logging.Logger;
+    import java.util.stream.Collectors;
+
+    import static java.util.Comparator.comparing;
+    import static java.util.stream.IntStream.range;
+
+    public class Maze {
+        private static final Logger LOG = Logger.getLogger(Maze.class.getName());
+        private static final String EMPTY_CELL = "  ";
+        private static final String FILL_CELL = "\u2588\u2588";
+        private static final int MAX_WEIGHT = 10;
+
+        private int height;
+        private int width;
+        private BitSet maze;
+
+        public Maze() {
+        }
+
+        public Maze(int height, int width) {
+            this.height = height;
+            this.width = width;
+            maze = new BitSet(height * width);
+            maze.set(0, maze.size());
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public long[] getMap() {
+            return maze.toLongArray();
+        }
+
+        public void setMap(long[] maze) {
+            this.maze = BitSet.valueOf(maze);
+        }
+
+        public Maze generate() {
+            final var random = new Random();
+            final int rows = (height - 1) / 2;
+            final int cols = (width - 1) / 2;
+            final int step = 2 * cols - 1;
+            final var edges = range(0, 2 * cols * rows - rows - cols)
+                    .mapToObj(i -> {
+                        int row = 1 + i / step * 2 + (i % step < cols - 1 ? 0 : 1);
+                        int col = i % step < cols - 1 ? 2 + i % step * 2 : 1 + (i % step - cols + 1) * 2;
+                        int edgeIndex = row * width + col;
+                        var isHorizontal = i % step < cols - 1;
+                        int dx = isHorizontal ? 1 : width;
+                        int nodeA = edgeIndex - dx;
+                        int nodeB = edgeIndex + dx;
+                        int edgeWeight = 1 + random.nextInt(MAX_WEIGHT);
+                        return new Edge(edgeWeight, nodeA, nodeB, edgeIndex);
+                    }).toArray(Edge[]::new);
+
+            maze.clear(width + 1);
+            range(1, rows * cols)
+                    .forEach(i -> Arrays.stream(edges)
+                            .filter(Edge::isBorder)
+                            .min(comparing(Edge::getWeight))
+                            .orElseThrow()
+                            .clearEdge());
+            clearDoors();
+            return this;
+        }
+
+        @Override
+        public String toString() {
+            return range(0, height * width)
+                    .mapToObj(i -> (i % width == 0 ? "\n" : "") + (maze.get(i) ? FILL_CELL : EMPTY_CELL))
+                    .collect(Collectors.joining());
+        }
+
+        void clearDoors() {
+            maze.clear(width);
+            int door = width * (height - (height % 2 == 0 ? 2 : 1)) - 1;
+            maze.clear(door);
+            if (width % 2 == 0) {
+                maze.clear(--door);
+            }
+        }
+
+        class Edge {
+            final int edgeIndex;
+            final int weight;
+            final int nodeA;
+            final int nodeB;
+
+            Edge(int weight, int nodeA, int nodeB, int edgeIndex) {
+                this.weight = weight;
+                this.nodeA = nodeA;
+                this.nodeB = nodeB;
+                this.edgeIndex = edgeIndex;
+            }
+
+            boolean isBorder() {
+                return maze.get(nodeA) ^ maze.get(nodeB);
+            }
+
+            int getWeight() {
+                return weight;
+            }
+
+            void clearEdge() {
+                maze.clear(nodeA);
+                maze.clear(nodeB);
+                maze.clear(edgeIndex);
+            }
+        }
+    }
+  learner_created: true
+- name: src/maze/ui/Menu.java
+  visible: true
+  text: |-
+    package maze.ui;
+
+    import java.util.EnumMap;
+    import java.util.LinkedHashMap;
+    import java.util.Map;
+    import java.util.Scanner;
+
+    import static java.text.MessageFormat.format;
+
+    public class Menu implements Runnable {
+
+        protected final LinkedHashMap<String, MenuEntry> menu = new LinkedHashMap<>();
+        private final Map<Property, String> properties = new EnumMap<>(Property.class);
+
+        protected boolean isOnlyOnce;
+
+        public Menu() {
+
+        }
+
+        public Menu(String title) {
+            set(Property.TITLE, title);
+        }
+
+        public Menu set(Property key, String value) {
+            properties.put(key, value);
+            return this;
+        }
+
+        public Menu add(String key, String description, Runnable action) {
+            menu.put(key, new MenuEntry(description, action));
+            return this;
+        }
+
+        public Menu add(String description, Runnable action) {
+            return this.add(String.valueOf(menu.size() + 1), description, action);
+        }
+
+        public Menu onlyOnce() {
+            isOnlyOnce = true;
+            return this;
+        }
+
+        public Menu addExit() {
+            menu.put(get(Property.EXIT_KEY), new MenuEntry(get(Property.EXIT), this::onlyOnce));
+            return this;
+        }
+
+        public void clear() {
+            menu.clear();
+        }
+
+        @Override
+        public void run() {
+            do {
+                System.out.println();
+                System.out.println(get(Property.TITLE));
+                menu.forEach((key, entry) -> System.out.println(format(get(Property.FORMAT), key, entry)));
+                final var key = new Scanner(System.in).nextLine().toLowerCase();
+                System.out.println();
+                menu.getOrDefault(key, new MenuEntry("Error",
+                        () -> System.out.println(format(get(Property.ERROR), menu.size())))
+                ).run();
+            } while (!isOnlyOnce);
+        }
+
+        protected String get(Property property) {
+            return properties.getOrDefault(property, property.getValue());
+        }
+
+        public enum Property {
+            TITLE("Choose your action:"),
+            FORMAT("{0}. {1}"),
+            ERROR("Please enter the number from 0 up to {0}"),
+            EXIT("Exit"),
+            EXIT_KEY("0");
+
+            private final String value;
+
+            Property(String value) {
+                this.value = value;
+            }
+
+            public String getValue() {
+                return value;
+            }
+        }
+
+        protected static final class MenuEntry implements Runnable {
+            private final String description;
+            private final Runnable action;
+
+            MenuEntry(final String description, final Runnable action) {
+                this.description = description;
+                this.action = action;
+            }
+
+            @Override
+            public String toString() {
+                return description;
+            }
+
+            @Override
+            public void run() {
+                action.run();
+            }
+        }
+
+    }
+  learner_created: true
+- name: src/maze/Application.java
+  visible: true
+  text: |-
+    package maze.ui;
+
+    import com.fasterxml.jackson.databind.ObjectMapper;
+    import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+    import maze.Maze;
+
+    import java.io.File;
+    import java.io.IOException;
+    import java.util.Scanner;
+    import java.util.logging.Level;
+    import java.util.logging.Logger;
+
+    public class Application {
+        private static final Logger LOG = Logger.getLogger(Application.class.getName());
+        private static final ObjectMapper MAPPER = new XmlMapper();
+
+        private final Scanner scanner = new Scanner(System.in);
+        private final Menu menu = new Menu("=== Menu ===")
+                .set(Menu.Property.ERROR, "Incorrect option. Please try again");
+        private Maze maze;
+
+        public void startMenu() {
+            addStartMenu();
+            menu.addExit();
+            menu.run();
+        }
+
+        private void addStartMenu() {
+            menu.add("Generate a new maze", this::generateMaze);
+            menu.add("Load a maze", this::loadMaze);
+        }
+
+        private void enableFullMenu() {
+            menu.clear();
+            addStartMenu();
+            menu.add("Save the maze", this::save);
+            menu.add("Display the maze", () -> System.out.println(maze));
+            menu.addExit();
+        }
+
+        private void generateMaze() {
+            System.out.println("Please, enter the size of a maze");
+            final var size = Integer.parseInt(scanner.nextLine());
+            maze = new Maze(size, size).generate();
+            System.out.println(maze);
+            enableFullMenu();
+        }
+
+        private void loadMaze() {
+            try {
+                maze = MAPPER.readValue(askFile(), Maze.class);
+                LOG.info("The maze has loaded successful.");
+                enableFullMenu();
+            } catch (IOException error) {
+                LOG.log(Level.WARNING, "The maze has not been loaded.", error);
+            }
+        }
+
+        private void save() {
+            try {
+                MAPPER.writerWithDefaultPrettyPrinter().writeValue(askFile(), maze);
+                LOG.info("The maze has saved successful.");
+            } catch (IOException error) {
+                LOG.log(Level.SEVERE, "Could not save the maze.", error);
+            }
+        }
+
+        private File askFile() {
+            System.out.println("Enter the file name:");
+            final var fileName = scanner.nextLine();
+            LOG.log(Level.INFO, "The file name is {0}", fileName);
+            return new File(fileName);
+        }
+    }
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/5396#comment
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: Wed, 16 Feb 2022 14:28:59 UTC
 record: -1
