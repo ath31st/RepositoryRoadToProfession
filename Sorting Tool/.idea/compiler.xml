@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="17">
+      <module name="Sorting_Tool.Sorting_Tool-task.main" target="11" />
+      <module name="Sorting_Tool.util.main" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
