@@ -116,13 +116,7 @@ public class Main {
 }
 
 class Util {
-
-    /**
-     * creates a postfix notation from input
-     * @param values collection of command without whitespaces and variables
-     * @return list with postfix notation
-     * @throws IllegalStateException when undefined symbol or too many brackets
-     */
+    
     static List<String> postfixNotation(Collection<String> values) throws IllegalStateException {
         ArrayDeque<String> stack = new ArrayDeque<>();
         ArrayDeque<String> braces = new ArrayDeque<>();
