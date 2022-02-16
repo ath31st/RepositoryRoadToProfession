@@ -1,0 +1,14 @@
+[1;31m
+Start test 1[0m
+> 1 -2   33 4
+> 42
+> 1                 1
+Total numbers: 7.
+[1;31m
+Start test 2[0m
+> 1 2 2 3 4 5 5
+Total numbers: 7.
+[1;31m
+Start test 3[0m
+> 1 1 2 2 3 4 4 4
+Total numbers: 8.
