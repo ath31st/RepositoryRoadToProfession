@@ -1,19 +1,35 @@
 package sorting;
 
-import java.util.*;
-
 public class Main {
     public static void main(final String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        List<Integer> list = new ArrayList<>();
+        SortingNumbers sortingNumbers = new SortingNumbers();
+        SortingLines sortingStrings = new SortingLines();
+        SortingWords sortingWords = new SortingWords();
+        //sortingNumbers.sorting();
 
-        while (scanner.hasNextLong()) {
-            list.add(scanner.nextInt());
+        switch (parsingArguments(args)) {
+            case "long":
+                sortingNumbers.sorting();
+                break;
+            case "line":
+                sortingStrings.sorting();
+                break;
+            case "word":
+                sortingWords.sorting();
+                break;
+            default:
         }
-        int total = list.size();
-        int i = list.stream().max(Integer::compare).get();
-        long count = list.stream().filter(integer -> integer == i).count();
-        System.out.printf("Total numbers: %d.\n", total);
-        System.out.printf("The greatest number: %d (%d time(s)).", i, count);
+    }
+
+    public static String parsingArguments(String[] args) {
+        String s = "!!!";
+        if (args.length >= 2) {
+            for (int i = 0; i < args.length; i += 2) {
+                if (args[i].equals("-dataType")) {
+                    s = args[i + 1];
+                }
+            }
+        }
+        return s;
     }
 }

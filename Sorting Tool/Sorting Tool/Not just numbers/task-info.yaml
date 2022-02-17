@@ -398,6 +398,21 @@ files:
         return CheckResult(true)
     }
   learner_created: false
-feedback_link: https://hyperskill.org/projects/45/stages/240/implement#comment
-status: Unchecked
+- name: src/sorting/SortingNumbers.java
+  visible: true
+  learner_created: true
+- name: src/sorting/SortingWords.java
+  visible: true
+  learner_created: true
+- name: src/sorting/Sorting.java
+  visible: true
+  learner_created: true
+- name: src/sorting/SortingLines.java
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/5382#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Thu, 17 Feb 2022 19:40:23 UTC
 record: -1

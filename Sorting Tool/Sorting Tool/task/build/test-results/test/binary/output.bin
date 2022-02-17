@@ -3,12 +3,49 @@
 > 1 -2   33 4
 > 42
 > 1                 1
+
 Total numbers: 7.
+*The greatest number: 42 (1 times(s), 14%)
 [1;31m
 Start test 2[0m
 > 1 2 2 3 4 5 5
+
 Total numbers: 7.
+)The greatest number: 5 (2 times(s), 28%)
 [1;31m
 Start test 3[0m
 > 1 1 2 2 3 4 4 4
+
 Total numbers: 8.
+)The greatest number: 4 (3 times(s), 37%)
+[1;31m
+Start test 4[0m
+> 1 -2   333 4
+> 42
+> 1                 1
+
+Total words: 7.
+[1;31m
+Start test 5[0m
+> abcc de a
+
+Total words: 3.
+[1;31m
+Start test 6[0m
+> 1 -2   333 4
+> 42
+> 1                 1
+
+Total lines: 3.
+Longest line:
+1                 1
+[1;31m
+Start test 7[0m
+> 1111
+> 22222
+> 3
+> 44
+
+Total lines: 4.
+Longest line:
+22222
