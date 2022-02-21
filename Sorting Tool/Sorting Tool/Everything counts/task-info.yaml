@@ -19,6 +19,164 @@ files:
         }
     }
   learner_created: false
+- name: src/sorting/SortingIntegers.java
+  visible: true
+  text: |
+    package sorting;
+
+    import java.io.BufferedReader;
+    import java.io.InputStreamReader;
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.List;
+    import java.util.regex.Pattern;
+    import java.util.stream.Collectors;
+
+    public class SortingIntegers implements Sorting {
+
+        private List<Integer> integers = new ArrayList<>();
+
+        @Override
+        public void sorting() {
+            try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+                integers = bufferedReader.lines()
+                        .flatMap(Pattern.compile("[^0-9-]+")::splitAsStream)
+                        .filter(s -> !s.isEmpty())
+                        .map(Integer::parseInt)
+                        .sorted()
+                        .collect(Collectors.toList());
+            } catch (Exception e) {
+                System.out.println("SortingIntegers exception");
+            }
+            System.out.println("Total numbers: " + integers.size());
+            System.out.print("Sorted data: ");
+            integers.forEach(e -> System.out.print(e + " "));
+        }
+    }
+  learner_created: true
+- name: src/sorting/SortingLines.java
+  visible: true
+  text: |
+    package sorting;
+
+    import java.util.*;
+
+    public class SortingLines implements Sorting {
+
+        private String longestLine;
+        private int countEntrys = 0;
+        private int percentage = 0;
+        private final List<String> strings = new ArrayList<>();
+
+        @Override
+        public void sorting() {
+            try (Scanner scanner = new Scanner(System.in)) {
+                while (scanner.hasNextLine()) {
+                    strings.add(scanner.nextLine());
+                    //strings.forEach(System.out::println);
+                }
+            } catch (Exception e) {
+                System.out.println("!!!");
+            }
+
+            longestLine = Collections.max(strings, Comparator.comparing(String::length));
+            countEntrys = (int) strings.stream().filter(e -> e.equals(longestLine)).count();
+            percentage = (100 * countEntrys) / strings.size();
+
+            System.out.printf("\nTotal lines: %d.", strings.size());
+            System.out.print("\nLongest line:\n");
+            System.out.println(longestLine);
+            System.out.printf("(%d time(s), %d%%).", countEntrys, percentage);
+        }
+    }
+  learner_created: true
+- name: src/sorting/SortingWords.java
+  visible: true
+  text: |
+    package sorting;
+
+    import java.io.BufferedReader;
+    import java.io.InputStreamReader;
+    import java.nio.charset.StandardCharsets;
+    import java.util.Collections;
+    import java.util.Comparator;
+    import java.util.List;
+    import java.util.regex.Pattern;
+    import java.util.stream.Collectors;
+
+    public class SortingWords implements Sorting {
+
+        private int totalWords = 0;
+        private int countEntrys = 0;
+        private int percantage = 0;
+        private String longestWord;
+
+        @Override
+        public void sorting() {
+            List<String> words = new BufferedReader(
+                    new InputStreamReader(System.in, StandardCharsets.UTF_8)).lines()
+                    .flatMap(Pattern.compile("[^\\p{L}\\p{Digit}]+")::splitAsStream)
+                    .filter(s -> !s.isEmpty())
+                    .collect(Collectors.toList());
+
+            totalWords = words.size();
+            longestWord = Collections.max(words, Comparator.comparing(String::length));
+            countEntrys = (int) words.stream().filter(e -> e.equals(longestWord)).count();
+            percantage = (100 * countEntrys) / totalWords;
+
+            System.out.printf("\nTotal words: %d.", totalWords);
+            System.out.printf("\nThe longest word: %s (%d time(s), %d%%)", longestWord, countEntrys, percantage);
+        }
+    }
+  learner_created: true
+- name: src/sorting/SortingNumbers.java
+  visible: true
+  text: |
+    package sorting;
+
+    import java.util.ArrayList;
+    import java.util.List;
+    import java.util.Scanner;
+
+
+    public class SortingNumbers implements Sorting {
+
+        private int totalNumbers = 0;
+        private int greatestNumber = 0;
+        private int percentage = 0;
+        private int countEntrys = 0;
+        private final List<Integer> list = new ArrayList<>();
+
+
+        @Override
+        public void sorting() {
+            try (Scanner scanner = new Scanner(System.in)) {
+                while (scanner.hasNext()) {
+                    list.add(scanner.nextInt());
+                }
+            } catch (Exception e) {
+                System.out.println("!");
+            }
+
+            totalNumbers = list.size();
+            greatestNumber = list.stream().max(Integer::compareTo).get();
+            countEntrys = (int) list.stream().filter(integer -> integer == greatestNumber).count();
+            percentage = (countEntrys * 100) / totalNumbers;
+
+            System.out.printf("\nTotal numbers: %d.\nThe greatest number: %d (%d times(s), %d%%)\n"
+                    , totalNumbers, greatestNumber, countEntrys, percentage);
+        }
+    }
+  learner_created: true
+- name: src/sorting/Sorting.java
+  visible: true
+  text: |
+    package sorting;
+
+    public interface Sorting {
+        void sorting();
+    }
+  learner_created: true
 - name: test/common/SortingToolStage4Test.kt
   visible: false
   text: |+
