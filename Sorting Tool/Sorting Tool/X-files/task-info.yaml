@@ -19,6 +19,269 @@ files:
         }
     }
   learner_created: false
+- name: src/sorting/SortingLines.java
+  visible: true
+  text: |
+    package sorting;
+
+    import java.util.*;
+    import java.util.function.Function;
+    import java.util.regex.Pattern;
+    import java.util.stream.Collectors;
+
+    public class SortingLines implements Sorting {
+
+        @Override
+        public void sorting() {
+
+            List<String> strings = InputData.inputFromConsole();
+
+            System.out.printf("\nTotal lines: %d.", strings.size());
+            System.out.println("Sorted data: ");
+            strings.stream().sorted().forEach(System.out::println);
+        }
+
+        @Override
+        public void sortingByCount() {
+            List<String> list = InputData.inputFromConsole();
+            Map<String, Long> map = list.stream()
+                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+            LinkedHashMap<String, Long> sortedByCount = map.entrySet()
+                    .stream()
+                    .sorted((Map.Entry.<String, Long>comparingByValue()).thenComparing(Map.Entry::getKey))
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+            printByCount(sortedByCount);
+        }
+
+        public static void printByCount(Map<String, Long> map) {
+            int size = map.values().stream().mapToInt(Math::toIntExact).sum();
+            System.out.printf("Total lines: %d.\n", size);
+            for (Map.Entry<String, Long> entry : map.entrySet()) {
+                int percent = (int) (long) entry.getValue() * 100 / size;
+                System.out.printf("%s: %d time(s), %d%%\n",
+                        entry.getKey(), entry.getValue(), percent);
+            }
+        }
+    }
+  learner_created: true
+- name: src/sorting/CommandLineParser.java
+  visible: true
+  text: |-
+    package sorting;
+
+    import java.util.HashMap;
+    import java.util.Map;
+
+    class CommandLineParser {
+        public static String parser(String[] args) {
+            Map<String, String> map = new HashMap<>();
+            if (args.length >= 2)
+                for (int i = 1; i < args.length; i++) {
+                    if (!args[i].startsWith("-") & args[i - 1].startsWith("-")) {
+                        map.put(args[i - 1], args[i]);
+                    }
+                }
+            if (map.containsKey("-dataType") & !map.containsKey("-sortingType")) {
+                return map.get("-dataType") + "natural";
+            } else if (map.containsKey("-dataType") & map.containsKey("-sortingType")) {
+                return map.get("-dataType") + map.get("-sortingType");
+            } else return "Wrong arguments";
+        }
+    }
+  learner_created: true
+- name: src/sorting/InputData.java
+  visible: true
+  text: |-
+    package sorting;
+
+    import java.io.*;
+    import java.util.ArrayList;
+    import java.util.List;
+    import java.util.stream.Collectors;
+
+
+    public class InputData {
+
+        private static List<String> list = new ArrayList<>();
+
+        public static List<String> inputFromConsole() {
+            try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+                list = bufferedReader.lines().collect(Collectors.toList());
+            } catch (Exception e) {
+                System.out.println("Exception InputData");
+            }
+            return list;
+        }
+
+        public static List<String> inputFromFile(String filePath) {
+            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
+                list = bufferedReader.lines().collect(Collectors.toList());
+            } catch (Exception e) {
+                System.out.println("Exception InputData");
+            }
+            return list;
+        }
+    }
+  learner_created: true
+- name: src/sorting/SortingWords.java
+  visible: true
+  text: |
+    package sorting;
+
+    import java.util.LinkedHashMap;
+    import java.util.List;
+    import java.util.Map;
+    import java.util.function.Function;
+    import java.util.regex.Pattern;
+    import java.util.stream.Collectors;
+
+    public class SortingWords implements Sorting {
+
+        private String longestWord;
+
+        @Override
+        public void sorting() {
+
+            List<String> words = InputData.inputFromConsole()
+                    .stream()
+                    .flatMap(Pattern.compile("[^\\p{L}\\p{Digit}]+")::splitAsStream)
+                    .filter(s -> !s.isEmpty())
+                    .sorted()
+                    .collect(Collectors.toList());
+
+            System.out.printf("\nTotal words: %d.", words.size());
+            System.out.print("Sorted data: ");
+            words.forEach(s -> System.out.print(s + " "));
+
+        }
+
+        @Override
+        public void sortingByCount() {
+            List<String> list = InputData.inputFromConsole();
+            Map<String, Long> map = list.stream()
+                    .flatMap(Pattern.compile("[^\\p{L}\\p{Digit}-]+")::splitAsStream)
+                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+            LinkedHashMap<String , Long> sortedByCount = map.entrySet()
+                    .stream()
+                    .sorted((Map.Entry.<String, Long>comparingByValue()).thenComparing(Map.Entry::getKey))
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+            printByCount(sortedByCount);
+        }
+        public static void printByCount(Map<String, Long> map) {
+            int size = map.values().stream().mapToInt(Math::toIntExact).sum();
+            System.out.printf("Total words: %d.\n", size);
+            for (Map.Entry<String, Long> entry : map.entrySet()) {
+                int percent = (int) (long) entry.getValue() * 100 / size;
+                System.out.printf("%s: %d time(s), %d%%\n",
+                        entry.getKey(), entry.getValue(), percent);
+            }
+        }
+    }
+  learner_created: true
+- name: src/sorting/SortingNumbers.java
+  visible: true
+  text: |
+    package sorting;
+
+    import java.util.*;
+    import java.util.function.Function;
+    import java.util.regex.Pattern;
+    import java.util.stream.Collectors;
+
+
+    public class SortingNumbers implements Sorting {
+
+        @Override
+        public void sorting() {
+            List<String> list = InputData.inputFromConsole();
+            List<Integer> listInt = list.stream()
+                    .flatMap(Pattern.compile("[^0-9-]+")::splitAsStream)
+                    .map(Integer::parseInt)
+                    .sorted()
+                    .collect(Collectors.toList());
+            System.out.printf("Total numbers: %d.\n", listInt.size());
+            System.out.print("Sorted data: ");
+            listInt.forEach(s -> System.out.print(s + " "));
+        }
+
+        @Override
+        public void sortingByCount() {
+            List<String> list = InputData.inputFromConsole();
+            Map<Integer, Long> map = list.stream()
+                    .flatMap(Pattern.compile("[^0-9-]+")::splitAsStream)
+                    .map(Integer::parseInt)
+                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+            LinkedHashMap<Integer, Long> sortedByCount = map.entrySet()
+                    .stream()
+                    .sorted(Map.Entry.comparingByValue())
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+            printByCount(sortedByCount);
+        }
+
+        public static void printByCount(Map<Integer, Long> map) {
+            int size = map.values().stream().mapToInt(Math::toIntExact).sum();
+            System.out.printf("Total numbers: %d.\n", size);
+            for (Map.Entry<Integer, Long> entry : map.entrySet()) {
+                int percent = (int) (long) entry.getValue() * 100 / size;
+                System.out.printf("%d: %d time(s), %d%%\n",
+                        entry.getKey(), entry.getValue(), percent);
+            }
+        }
+    }
+  learner_created: true
+- name: src/sorting/Application.java
+  visible: true
+  text: |
+    package sorting;
+
+    public class Application {
+
+        public static void run(String[] args) {
+
+            Sorting sorting = SortingGetterType.getType(args);
+
+            if (CommandLineParser.parser(args).endsWith("byCount")) {
+                sorting.sortingByCount();
+            } else sorting.sorting(); //by natural
+        }
+    }
+  learner_created: true
+- name: src/sorting/SortingGetterType.java
+  visible: true
+  text: |
+    package sorting;
+
+    public class SortingGetterType {
+
+        public static Sorting getType(String[] args) {
+            String type = CommandLineParser.parser(args);
+
+            if (type.startsWith("line")) {
+                return new SortingLines();
+            } else if (type.startsWith("word")) {
+                return new SortingWords();
+            } else if (type.startsWith("long")) {
+                return new SortingNumbers();
+            }
+            return new SortingType();
+        }
+
+    }
+  learner_created: true
+- name: src/sorting/Sorting.java
+  visible: true
+  text: |
+    package sorting;
+
+    public interface Sorting {
+        void sorting();
+
+        void sortingByCount();
+    }
+  learner_created: true
 - name: test/common/SortingToolStage6Test.kt
   visible: false
   text: |+
@@ -503,6 +766,13 @@ files:
 
 
   learner_created: false
+- name: out.txt
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5386#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: Wed, 23 Feb 2022 10:48:53 UTC
 record: -1

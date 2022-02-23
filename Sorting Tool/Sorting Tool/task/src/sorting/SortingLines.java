@@ -2,7 +2,6 @@ package sorting;
 
 import java.util.*;
 import java.util.function.Function;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class SortingLines implements Sorting {
@@ -10,7 +9,7 @@ public class SortingLines implements Sorting {
     @Override
     public void sorting() {
 
-        List<String> strings = InputData.inputFromConsole();
+        List<String> strings = InputData.inputFromSource();
 
         System.out.printf("\nTotal lines: %d.", strings.size());
         System.out.println("Sorted data: ");
@@ -19,7 +18,7 @@ public class SortingLines implements Sorting {
 
     @Override
     public void sortingByCount() {
-        List<String> list = InputData.inputFromConsole();
+        List<String> list = InputData.inputFromSource();
         Map<String, Long> map = list.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 

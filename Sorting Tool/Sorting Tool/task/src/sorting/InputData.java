@@ -10,7 +10,7 @@ public class InputData {
 
     private static List<String> list = new ArrayList<>();
 
-    public static List<String> inputFromConsole() {
+    public static List<String> inputFromSource() {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
             list = bufferedReader.lines().collect(Collectors.toList());
         } catch (Exception e) {
@@ -19,7 +19,7 @@ public class InputData {
         return list;
     }
 
-    public static List<String> inputFromFile(String filePath) {
+    public static List<String> inputFromSource(String filePath) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
             list = bufferedReader.lines().collect(Collectors.toList());
         } catch (Exception e) {

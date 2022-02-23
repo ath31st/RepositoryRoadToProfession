@@ -14,7 +14,7 @@ public class SortingWords implements Sorting {
     @Override
     public void sorting() {
 
-        List<String> words = InputData.inputFromConsole()
+        List<String> words = InputData.inputFromSource()
                 .stream()
                 .flatMap(Pattern.compile("[^\\p{L}\\p{Digit}]+")::splitAsStream)
                 .filter(s -> !s.isEmpty())
@@ -29,7 +29,7 @@ public class SortingWords implements Sorting {
 
     @Override
     public void sortingByCount() {
-        List<String> list = InputData.inputFromConsole();
+        List<String> list = InputData.inputFromSource();
         Map<String, Long> map = list.stream()
                 .flatMap(Pattern.compile("[^\\p{L}\\p{Digit}-]+")::splitAsStream)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));

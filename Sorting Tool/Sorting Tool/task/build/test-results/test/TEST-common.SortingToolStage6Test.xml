@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="common.SortingToolStage5Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-23T07:50:41" hostname="FRACTAL" time="0.325">
+<testsuite name="common.SortingToolStage6Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-02-23T10:48:52" hostname="FRACTAL" time="0.31">
   <properties/>
-  <testcase name="start" classname="common.SortingToolStage5Test" time="0.325"/>
+  <testcase name="start" classname="common.SortingToolStage6Test" time="0.31"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 > 1 -2   333 4
@@ -81,10 +81,6 @@ Total numbers: 5.
 1111: 2 time(s), 40%
 ?[1;31m
 Start test 9?[0m
-> 1 -2   333 4
-> 42
-> 1                 1
-Total numbers: 7
 ?[1;31m
 Start test 10?[0m
 > 1 -2   333 4
@@ -119,6 +115,14 @@ Total lines: 4.Sorted data:
 22222
 3
 44
+?[1;31m
+Start test 13?[0m
+?[1;31m
+Start test 14?[0m
+?[1;31m
+Start test 15?[0m
+?[1;31m
+Start test 16?[0m
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

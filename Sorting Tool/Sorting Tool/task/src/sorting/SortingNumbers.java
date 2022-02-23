@@ -10,7 +10,7 @@ public class SortingNumbers implements Sorting {
 
     @Override
     public void sorting() {
-        List<String> list = InputData.inputFromConsole();
+        List<String> list = InputData.inputFromSource();
         List<Integer> listInt = list.stream()
                 .flatMap(Pattern.compile("[^0-9-]+")::splitAsStream)
                 .map(Integer::parseInt)
@@ -23,7 +23,7 @@ public class SortingNumbers implements Sorting {
 
     @Override
     public void sortingByCount() {
-        List<String> list = InputData.inputFromConsole();
+        List<String> list = InputData.inputFromSource();
         Map<Integer, Long> map = list.stream()
                 .flatMap(Pattern.compile("[^0-9-]+")::splitAsStream)
                 .map(Integer::parseInt)
