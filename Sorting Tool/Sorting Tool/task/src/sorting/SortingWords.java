@@ -1,35 +1,52 @@
 package sorting;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class SortingWords implements Sorting {
 
-    private int totalWords = 0;
-    private int countEntrys = 0;
-    private int percantage = 0;
     private String longestWord;
 
     @Override
     public void sorting() {
-        List<String> words = new BufferedReader(
-                new InputStreamReader(System.in, StandardCharsets.UTF_8)).lines()
+
+        List<String> words = InputData.inputFromConsole()
+                .stream()
                 .flatMap(Pattern.compile("[^\\p{L}\\p{Digit}]+")::splitAsStream)
                 .filter(s -> !s.isEmpty())
+                .sorted()
                 .collect(Collectors.toList());
 
-        totalWords = words.size();
-        longestWord = Collections.max(words, Comparator.comparing(String::length));
-        countEntrys = (int) words.stream().filter(e -> e.equals(longestWord)).count();
-        percantage = (100 * countEntrys) / totalWords;
+        System.out.printf("\nTotal words: %d.", words.size());
+        System.out.print("Sorted data: ");
+        words.forEach(s -> System.out.print(s + " "));
 
-        System.out.printf("\nTotal words: %d.", totalWords);
-        System.out.printf("\nThe longest word: %s (%d time(s), %d%%)", longestWord, countEntrys, percantage);
+    }
+
+    @Override
+    public void sortingByCount() {
+        List<String> list = InputData.inputFromConsole();
+        Map<String, Long> map = list.stream()
+                .flatMap(Pattern.compile("[^\\p{L}\\p{Digit}-]+")::splitAsStream)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        LinkedHashMap<String , Long> sortedByCount = map.entrySet()
+                .stream()
+                .sorted((Map.Entry.<String, Long>comparingByValue()).thenComparing(Map.Entry::getKey))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+        printByCount(sortedByCount);
+    }
+    public static void printByCount(Map<String, Long> map) {
+        int size = map.values().stream().mapToInt(Math::toIntExact).sum();
+        System.out.printf("Total words: %d.\n", size);
+        for (Map.Entry<String, Long> entry : map.entrySet()) {
+            int percent = (int) (long) entry.getValue() * 100 / size;
+            System.out.printf("%s: %d time(s), %d%%\n",
+                    entry.getKey(), entry.getValue(), percent);
+        }
     }
 }

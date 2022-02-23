@@ -1,32 +1,42 @@
 package sorting;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class SortingLines implements Sorting {
 
-    private String longestLine;
-    private int countEntrys = 0;
-    private int percentage = 0;
-    private final List<String> strings = new ArrayList<>();
-
     @Override
     public void sorting() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            while (scanner.hasNextLine()) {
-                strings.add(scanner.nextLine());
-                //strings.forEach(System.out::println);
-            }
-        } catch (Exception e) {
-            System.out.println("!!!");
-        }
 
-        longestLine = Collections.max(strings, Comparator.comparing(String::length));
-        countEntrys = (int) strings.stream().filter(e -> e.equals(longestLine)).count();
-        percentage = (100 * countEntrys) / strings.size();
+        List<String> strings = InputData.inputFromConsole();
 
         System.out.printf("\nTotal lines: %d.", strings.size());
-        System.out.print("\nLongest line:\n");
-        System.out.println(longestLine);
-        System.out.printf("(%d time(s), %d%%).", countEntrys, percentage);
+        System.out.println("Sorted data: ");
+        strings.stream().sorted().forEach(System.out::println);
+    }
+
+    @Override
+    public void sortingByCount() {
+        List<String> list = InputData.inputFromConsole();
+        Map<String, Long> map = list.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        LinkedHashMap<String, Long> sortedByCount = map.entrySet()
+                .stream()
+                .sorted((Map.Entry.<String, Long>comparingByValue()).thenComparing(Map.Entry::getKey))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+        printByCount(sortedByCount);
+    }
+
+    public static void printByCount(Map<String, Long> map) {
+        int size = map.values().stream().mapToInt(Math::toIntExact).sum();
+        System.out.printf("Total lines: %d.\n", size);
+        for (Map.Entry<String, Long> entry : map.entrySet()) {
+            int percent = (int) (long) entry.getValue() * 100 / size;
+            System.out.printf("%s: %d time(s), %d%%\n",
+                    entry.getKey(), entry.getValue(), percent);
+        }
     }
 }
