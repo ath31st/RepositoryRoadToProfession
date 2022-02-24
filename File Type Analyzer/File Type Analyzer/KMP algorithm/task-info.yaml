@@ -1,0 +1,184 @@
+type: edu
+custom_name: stage2
+files:
+- name: src/analyzer/Main.java
+  visible: true
+  text: |
+    package analyzer;
+
+    public class Main {
+        public static void main(String[] args) {
+            System.out.println("Hello World!");
+        }
+    }
+  learner_created: false
+- name: test/Clue.java
+  visible: false
+  text: |
+    public class Clue {
+        public String response;
+
+        public Clue(String response) {
+            this.response = response;
+        }
+    }
+  learner_created: false
+- name: test/ContainsSearch.java
+  visible: false
+  text: |
+    public class ContainsSearch {
+        public static long searchForPattern(String[] args) {
+            String pattern = args[1];
+            String patternName = args[2];
+            String fileContent = args[0];
+            String unknownFileType = "Unknown file type";
+            long timeStart = System.nanoTime();
+            if (fileContent.contains(pattern) /*!kmpSearch(fileContent.toString(), pattern).isEmpty()*/) {
+                return System.nanoTime() - timeStart;
+            }
+            return 0;
+        }
+    }
+  learner_created: false
+- name: test/MainTest.java
+  visible: false
+  text: |2
+
+    import analyzer.Main;
+    import org.hyperskill.hstest.stage.StageTest;
+    import org.hyperskill.hstest.testcase.CheckResult;
+    import org.hyperskill.hstest.testcase.TestCase;
+    import org.junit.BeforeClass;
+
+    import java.util.List;
+
+    public class MainTest extends StageTest<Clue> {
+        static String largeContent;
+
+        String pdf = "PDF document";
+        String doc = "DOC document";
+        String unknown = "Unknown file type";
+        String file = "doc.pdf";
+
+        @Override
+        public List<TestCase<Clue>> generate() {
+            return List.of(
+                new TestCase<Clue>()
+                    .addArguments(new String[] {
+                            "--naive",
+                            file,
+                            "%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF-",
+                            pdf
+                        })
+                    .addFile(file, largeContent)
+                    .setAttach(new Clue(pdf)),
+
+                new TestCase<Clue>()
+                    .addArguments(new String[] {
+                            "--KMP",
+                            file,
+                            "%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF-",
+                            doc
+                        })
+                    .addFile(file, largeContent)
+                    .setAttach(new Clue(doc)),
+
+                new TestCase<Clue>()
+                    .addArguments(new String[] {
+                            "--naive",
+                            file,
+                            "%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF+",
+                            unknown
+                        })
+                    .addFile(file, largeContent)
+                    .setAttach(new Clue(unknown)),
+
+                new TestCase<Clue>()
+                    .addArguments(new String[] {
+                            "--KMP",
+                            file,
+                            "%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF%PDF+",
+                            unknown
+                        })
+                    .addFile(file, largeContent)
+                    .setAttach(new Clue(unknown))
+            );
+        }
+
+        @Override
+        public CheckResult check(String reply, Clue clue) {
+            reply = reply.strip();
+
+            if (reply.contains(doc) && reply.contains(pdf)) {
+                return CheckResult.wrong("There are both \"" + doc + "\" and \"" + pdf + "\"" +
+                    " in output, should be only one of them");
+            } else if (reply.contains(doc) && reply.contains(unknown)) {
+                return CheckResult.wrong("There are both \"" + doc + "\" and \"" + unknown + "\"" +
+                    " in output, should be only one of them");
+            } else if (reply.contains(pdf) && reply.contains(unknown)) {
+                return CheckResult.wrong("There are both \"" + pdf + "\" and \"" + unknown + "\"" +
+                    " in output, should be only one of them");
+            }
+
+            if (!reply.contains(clue.response)) {
+                return CheckResult.wrong("Your output does not contain \"" + clue.response + "\", but should." +
+                    "\n\nYour output:\n" + reply);
+            }
+
+            if (!reply.contains("seconds")) {
+                return CheckResult.wrong("Your output does not contain \"seconds\", but should." +
+                    "\n\nYour output:\n" + reply);
+            }
+
+            return CheckResult.correct();
+        }
+
+        @BeforeClass
+        public static void setLargeContent() {
+
+            StringBuilder content = new StringBuilder();
+
+            for (int i = 0; i< 6000; i++) {
+                content.append("%PDF");
+            }
+
+            content.append("%PDF-");
+            largeContent = content.toString();
+        }
+    }
+  learner_created: false
+- name: test/NaiveSearch.java
+  visible: false
+  text: |2
+
+
+    public class NaiveSearch {
+        public static long searchForPattern(String[] args) {
+            String pattern = args[1];
+            String fileContent = args[0];
+            long timeStart = System.nanoTime();
+            if (naiveSearch(fileContent, pattern)) {
+                return System.nanoTime() - timeStart;
+            }
+            return 0;
+        }
+
+
+        public static boolean naiveSearch (String text, String pattern) {
+            int textLength = text.length();
+            int patternLength = pattern.length();
+            for (int i = 0; i<textLength - patternLength + 1; i++) {
+                for (int j = 0; j< patternLength; j++) {
+                    if (!(text.charAt(i+j) == pattern.charAt(j))) {
+                        break;
+                    }
+                    else if (j == patternLength -1) return true;
+                }
+            }
+            return false;
+        }
+    }
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/5486#comment
+status: Unchecked
+record: -1
