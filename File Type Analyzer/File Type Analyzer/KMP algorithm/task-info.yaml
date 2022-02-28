@@ -12,34 +12,6 @@ files:
         }
     }
   learner_created: false
-- name: test/Clue.java
-  visible: false
-  text: |
-    public class Clue {
-        public String response;
-
-        public Clue(String response) {
-            this.response = response;
-        }
-    }
-  learner_created: false
-- name: test/ContainsSearch.java
-  visible: false
-  text: |
-    public class ContainsSearch {
-        public static long searchForPattern(String[] args) {
-            String pattern = args[1];
-            String patternName = args[2];
-            String fileContent = args[0];
-            String unknownFileType = "Unknown file type";
-            long timeStart = System.nanoTime();
-            if (fileContent.contains(pattern) /*!kmpSearch(fileContent.toString(), pattern).isEmpty()*/) {
-                return System.nanoTime() - timeStart;
-            }
-            return 0;
-        }
-    }
-  learner_created: false
 - name: test/MainTest.java
   visible: false
   text: |2
@@ -179,6 +151,58 @@ files:
         }
     }
   learner_created: false
+- name: test/Clue.java
+  visible: false
+  text: |
+    public class Clue {
+        public String response;
+
+        public Clue(String response) {
+            this.response = response;
+        }
+    }
+  learner_created: false
+- name: test/ContainsSearch.java
+  visible: false
+  text: |
+    public class ContainsSearch {
+        public static long searchForPattern(String[] args) {
+            String pattern = args[1];
+            String patternName = args[2];
+            String fileContent = args[0];
+            String unknownFileType = "Unknown file type";
+            long timeStart = System.nanoTime();
+            if (fileContent.contains(pattern) /*!kmpSearch(fileContent.toString(), pattern).isEmpty()*/) {
+                return System.nanoTime() - timeStart;
+            }
+            return 0;
+        }
+    }
+  learner_created: false
+- name: src/analyzer/Application.java
+  visible: true
+  learner_created: true
+- name: src/analyzer/ArgumentsParser.java
+  visible: true
+  learner_created: true
+- name: src/analyzer/Searching.java
+  visible: true
+  learner_created: true
+- name: src/analyzer/SearchingPDF.java
+  visible: true
+  learner_created: true
+- name: src/analyzer/SearchingDOC.java
+  visible: true
+  learner_created: true
+- name: src/analyzer/AlgorithmKMP.java
+  visible: true
+  learner_created: true
+- name: src/analyzer/NaiveMethod.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5486#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Mon, 28 Feb 2022 16:13:28 UTC
 record: -1
