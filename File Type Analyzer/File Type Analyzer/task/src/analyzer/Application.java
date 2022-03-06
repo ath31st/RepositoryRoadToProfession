@@ -23,22 +23,20 @@ public class Application {
 
         for (File file : files) {
             executor.submit(() -> {
-                if (ArgumentsParser.getSearchingSignature().length() > 0) {
-                    try (Scanner scanner = new Scanner(file)) {
-                        String text;
-                        while (scanner.hasNextLine()) {
-                            text = scanner.nextLine();
-                            if (AlgorithmKMP.KMPSearch(ArgumentsParser.getSearchingSignature(), text)) {
-                                System.out.println(file.getName() + ": " + ArgumentsParser.getDocumentType());
+                try (Scanner scanner = new Scanner(file)) {
+                    String text;
+                    while (scanner.hasNextLine()) {
+                        text = scanner.nextLine();
+                        for (String[] pattens : ArgumentsParser.getListPatterns()) {
+                            if (AlgorithmKMP.KMPSearch(pattens[1], text)) {
+                                System.out.println(file.getName() + ": " + pattens[2]);
                             } else {
                                 System.out.println(file.getName() + ": Unknown file type");
                             }
                         }
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
                     }
-                } else {
-                    System.out.println("Unknown folder type");
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
                 }
             });
         }
