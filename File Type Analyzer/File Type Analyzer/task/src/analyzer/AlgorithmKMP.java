@@ -6,7 +6,7 @@ public class AlgorithmKMP {
         int M = pat.length();
         int N = txt.length();
 
-        int arr[] = new int[M];
+        int[] arr = new int[M];
         int j = 0; // for traversing through pattern
 
         computearrArray(pat, M, arr);
@@ -34,7 +34,7 @@ public class AlgorithmKMP {
         return false;
     }
 
-    static void computearrArray(String pat, int M, int arr[])
+    static void computearrArray(String pat, int M, int[] arr)
     {
         int len = 0;
         int i = 1;

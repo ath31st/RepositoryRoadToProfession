@@ -1,16 +1,23 @@
 [1;31m
 Start test 1[0m
-PDF document
-It took 0 seconds
+doc.pdf: PDF document
+text.txt: PDF document
 [1;31m
 Start test 2[0m
-DOC document
-It took 0 seconds
+file.pdf: PEM certificate
+file.pem: PEM certificate
 [1;31m
 Start test 3[0m
-Unknown file type
-It took 0 seconds
+$the_only_file.pem: PEM certificate
 [1;31m
 Start test 4[0m
-Unknown file type
-It took 0 seconds
+doc5.pdf: TXT document
+doc2.pdf: TXT document
+doc8.pdf: Unknown file type
+doc1.pdf: TXT document
+doc0.pdf: TXT document
+doc4.pdf: TXT document
+doc6.pdf: TXT document
+doc9.txt: Unknown file type
+doc3.pdf: TXT document
+doc7.pdf: TXT document
