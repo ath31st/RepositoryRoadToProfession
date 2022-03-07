@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JsonDatabaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-07T12:05:58" hostname="FRACTAL" time="0.077">
+  <properties/>
+  <testcase name="start" classname="JsonDatabaseTest" time="0.077"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+Here
+> exit
+?[1;31m
+Start test 2?[0m
+> get 1
+ERROR
+> set 1 Hello world!
+OK
+> set 1 HelloWorld!
+OK
+> get 1
+HelloWorld!
+> delete 1
+OK
+> delete 1
+OK
+> get 1
+ERROR
+> set 55 Some text here
+OK
+> get 55
+Some text here
+> get 56
+ERROR
+> delete 55
+OK
+> delete 56
+OK
+> delete 100
+OK
+> delete 101
+ERROR
+> exit
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
