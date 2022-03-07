@@ -16,25 +16,24 @@ import java.util.List;
 
 public class MainTest extends StageTest<Clue> {
     private static final String CURRENT_DIR = System.getProperty("user.dir") + File.separator;
-    
+
     private static String testFolder = "test_files";
     private static String files = testFolder + File.separator;
-    
+
     private static String patternsDb = "patterns.db";
     private static final String patterns =
         "1;\"%PDF-\";\"PDF document\"\n" +
-        "2;\"pmview\";\"PCP pmview config\"\n" +
-        "4;\"PK\";\"Zip archive\"\n" +
-        "5;\"vnd.oasis.opendocument.presentation\";\"OpenDocument presentation\"\n" +
-        "6;\"W.o.r.d\";\"MS Office Word 2003\"\n" +
-        "6;\"P.o.w.e.r.P.o.i\";\"MS Office PowerPoint 2003\"\n" +
-        "7;\"word/_rels\";\"MS Office Word 2007+\"\n" +
-        "7;\"ppt/_rels\";\"MS Office PowerPoint 2007+\"\n" +
-        "7;\"xl/_rels\";\"MS Office Excel 2007+\"\n" +
-        "8;\"-----BEGIN\\ CERTIFICATE-----\";\"PEM certificate\"\n" +
-        "9;\"ftypjp2\";\"ISO Media JPEG 2000\"\n" +
-        "9;\"ftypiso2\";\"ISO Media MP4 Base Media v2\"\n";
-
+            "2;\"pmview\";\"PCP pmview config\"\n" +
+            "4;\"PK\";\"Zip archive\"\n" +
+            "5;\"vnd.oasis.opendocument.presentation\";\"OpenDocument presentation\"\n" +
+            "6;\"W.o.r.d\";\"MS Office Word 2003\"\n" +
+            "6;\"P.o.w.e.r.P.o.i\";\"MS Office PowerPoint 2003\"\n" +
+            "7;\"word/_rels\";\"MS Office Word 2007+\"\n" +
+            "7;\"ppt/_rels\";\"MS Office PowerPoint 2007+\"\n" +
+            "7;\"xl/_rels\";\"MS Office Excel 2007+\"\n" +
+            "8;\"-----BEGIN\\ CERTIFICATE-----\";\"PEM certificate\"\n" +
+            "9;\"ftypjp2\";\"ISO Media JPEG 2000\"\n" +
+            "9;\"ftypiso2\";\"ISO Media MP4 Base Media v2\"\n";
 
     @Override
     public List<TestCase<Clue>> generate() {
