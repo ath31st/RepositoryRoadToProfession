@@ -16,20 +16,20 @@ public class JParserArguments {
     private List<String> parameters = new ArrayList<>();
 
     @Parameter(names = "-t", description = "is the type of the request")
-    private static String typeRequest = "";
+    private static String typeRequest;
 
-    @Parameter(names = "-i", description = "is the index of the cell")
-    private static String indexCell = "";
+    @Parameter(names = "-k", description = "is the key")
+    private static String key;
 
-    @Parameter(names = "-m", description = "is the value to save in the database")
-    private static String valueForDataBase = "";
+    @Parameter(names = "-v", description = "is the value to save in the database")
+    private static String valueForDataBase;
 
     public static String getTypeRequest() {
         return typeRequest;
     }
 
-    public static String getIndexCell() {
-        return indexCell;
+    public static String getKey() {
+        return key;
     }
 
     public static String getValueForDataBase() {
@@ -42,11 +42,6 @@ public class JParserArguments {
                 .addObject(parser)
                 .build()
                 .parse(args);
-    }
-
-    public static String parseToString(String[] args) {
-        parse(args);
-        return typeRequest + " " + indexCell + " " + valueForDataBase;
     }
 }
 

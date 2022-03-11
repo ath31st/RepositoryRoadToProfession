@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.385s</div>
+<div class="counter">0.641s</div>
 <p>duration</p>
 </div>
 </td>
@@ -66,9 +66,6 @@
 <li>
 <a href="#tab1">Standard output</a>
 </li>
-<li>
-<a href="#tab2">Standard error</a>
-</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Tests</h2>
@@ -82,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">start</td>
-<td class="success">0.385s</td>
+<td class="success">0.641s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -94,98 +91,53 @@
 Start test 1?[0m
 Server started!
 Client started!
-OK
-Sent: exit  
-Problem with client
+Sent: {&quot;type&quot;:&quot;exit&quot;}
+Received: {}
 ?[1;31m
 Start test 2?[0m
 Server started!
 Client started!
-Sent: get 1 
-Received: ERROR
+Sent: {&quot;type&quot;:&quot;get&quot;,&quot;key&quot;:&quot;1&quot;}
+Received: {&quot;response&quot;:&quot;ERROR&quot;,&quot;reason&quot;:&quot;No such key&quot;}
 Client started!
-Sent: set 1 Hello world!
-Received: OK
+Sent: {&quot;type&quot;:&quot;set&quot;,&quot;key&quot;:&quot;1&quot;,&quot;value&quot;:&quot;Hello world!&quot;}
+Received: {&quot;response&quot;:&quot;OK&quot;}
 Client started!
-Sent: set 1 HelloWorld!
-Received: OK
+Sent: {&quot;type&quot;:&quot;set&quot;,&quot;key&quot;:&quot;1&quot;,&quot;value&quot;:&quot;HelloWorld!&quot;}
+Received: {&quot;response&quot;:&quot;OK&quot;}
 Client started!
-Sent: get 1 
-Received: HelloWorld!
+Sent: {&quot;type&quot;:&quot;get&quot;,&quot;key&quot;:&quot;1&quot;}
+Received: {&quot;response&quot;:&quot;OK&quot;,&quot;value&quot;:&quot;HelloWorld!&quot;}
 Client started!
-Sent: delete 1 
-Received: OK
+Sent: {&quot;type&quot;:&quot;delete&quot;,&quot;key&quot;:&quot;1&quot;}
+Received: {&quot;response&quot;:&quot;OK&quot;}
 Client started!
-Sent: delete 1 
-Received: OK
+Sent: {&quot;type&quot;:&quot;delete&quot;,&quot;key&quot;:&quot;1&quot;}
+Received: {&quot;response&quot;:&quot;ERROR&quot;,&quot;reason&quot;:&quot;No such key&quot;}
 Client started!
-Sent: get 1 
-Received: ERROR
+Sent: {&quot;type&quot;:&quot;get&quot;,&quot;key&quot;:&quot;1&quot;}
+Received: {&quot;response&quot;:&quot;ERROR&quot;,&quot;reason&quot;:&quot;No such key&quot;}
 Client started!
-Sent: set 55 Some text here
-Received: OK
+Sent: {&quot;type&quot;:&quot;set&quot;,&quot;key&quot;:&quot;text&quot;,&quot;value&quot;:&quot;Some text here&quot;}
+Received: {&quot;response&quot;:&quot;OK&quot;}
 Client started!
-Sent: get 55 
-Received: Some text here
+Sent: {&quot;type&quot;:&quot;get&quot;,&quot;key&quot;:&quot;text&quot;}
+Received: {&quot;response&quot;:&quot;OK&quot;,&quot;value&quot;:&quot;Some text here&quot;}
 Client started!
-Sent: get 56 
-Received: ERROR
+Sent: {&quot;type&quot;:&quot;get&quot;,&quot;key&quot;:&quot;56&quot;}
+Received: {&quot;response&quot;:&quot;ERROR&quot;,&quot;reason&quot;:&quot;No such key&quot;}
 Client started!
-Sent: delete 55 
-Received: OK
+Sent: {&quot;type&quot;:&quot;delete&quot;,&quot;key&quot;:&quot;56&quot;}
+Received: {&quot;response&quot;:&quot;ERROR&quot;,&quot;reason&quot;:&quot;No such key&quot;}
 Client started!
-Sent: delete 56 
-Received: OK
+Sent: {&quot;type&quot;:&quot;delete&quot;,&quot;key&quot;:&quot;100&quot;}
+Received: {&quot;response&quot;:&quot;ERROR&quot;,&quot;reason&quot;:&quot;No such key&quot;}
 Client started!
-Sent: delete 100 
-Received: OK
+Sent: {&quot;type&quot;:&quot;delete&quot;,&quot;key&quot;:&quot;That key doesn\u0027t exist&quot;}
+Received: {&quot;response&quot;:&quot;ERROR&quot;,&quot;reason&quot;:&quot;No such key&quot;}
 Client started!
-Sent: delete 1001 
-Received: ERROR
-Client started!
-OK
-Sent: exit  
-Problem with client
-</pre>
-</span>
-</div>
-<div id="tab2" class="tab">
-<h2>Standard error</h2>
-<span class="code">
-<pre>java.io.EOFException
-	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:346)
-	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:595)
-	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:570)
-	at client.Client.createClientSocket(Client.java:26)
-	at client.Main.main(Main.java:7)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-java.io.EOFException
-	at java.base/java.io.DataInputStream.readUnsignedShort(DataInputStream.java:346)
-	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:595)
-	at java.base/java.io.DataInputStream.readUTF(DataInputStream.java:570)
-	at client.Client.createClientSocket(Client.java:26)
-	at client.Main.main(Main.java:7)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
+Sent: {&quot;type&quot;:&quot;exit&quot;}
+Received: {}
 </pre>
 </span>
 </div>
@@ -197,7 +149,7 @@ java.io.EOFException
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.3.3</a> at 8 мар. 2022 г., 21:25:02</p>
+<a href="http://www.gradle.org">Gradle 7.3.3</a> at 11 мар. 2022 г., 12:51:16</p>
 </div>
 </div>
 </body>
