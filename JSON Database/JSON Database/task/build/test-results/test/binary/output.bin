@@ -6,6 +6,8 @@
 Received: {}
 [1;31m
 Start test 2[0m
+[1;31m
+Start test 3[0m
 Server started!
 Client started!
  Sent: {"type":"get","key":"1"}
@@ -45,6 +47,18 @@
 7Received: {"response":"ERROR","reason":"No such key"}
 Client started!
 =Sent: {"type":"delete","key":"That key doesn\u0027t exist"}
+7Received: {"response":"ERROR","reason":"No such key"}
+Client started!
+2Sent: {"type":"set","key":"name","value":"Kate"}
+Received: {"response":"OK"}
+Client started!
+#Sent: {"type":"get","key":"name"}
+,Received: {"response":"OK","value":"Kate"}
+Client started!
+&Sent: {"type":"delete","key":"name"}
+Received: {"response":"OK"}
+Client started!
+#Sent: {"type":"get","key":"name"}
 7Received: {"response":"ERROR","reason":"No such key"}
 Client started!
 Sent: {"type":"exit"}

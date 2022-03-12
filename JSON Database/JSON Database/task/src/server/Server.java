@@ -5,17 +5,18 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import util.*;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Server {
     private static final int PORT = 34552;
-    private static HashMap<String, String> db = new HashMap<>();
+    private static final HashMap<String, String> db = new HashMap<>();
     static boolean isServerActive = true;
+    private static final File file = new File("./src/server/data/db.json");
 
     public static void setIsServerActive(boolean isServerActive) {
         Server.isServerActive = isServerActive;
@@ -25,12 +26,15 @@ public class Server {
         Controller controller = new Controller();
         try (ServerSocket server = new ServerSocket(PORT)) {
             System.out.println("Server started!");
-
+            ExecutorService executor = Executors.newFixedThreadPool(2);
+            executor.submit(() -> {
+            });
+            
             while (isServerActive) {
                 try (
                         Socket socket = server.accept();
                         DataInputStream inputStream = new DataInputStream(socket.getInputStream());
-                        DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream())
+                        DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
                 ) {
                     GsonClientObject gsonClientObject = new Gson().fromJson(inputStream.readUTF(), GsonClientObject.class);
                     GsonServerObject gsonServerObject = new GsonServerObject();

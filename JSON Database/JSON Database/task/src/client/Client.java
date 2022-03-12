@@ -4,9 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import util.JParserArguments;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 
 import static util.JParserArguments.*;
@@ -19,20 +17,26 @@ public class Client {
         try (
                 Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
                 DataInputStream input = new DataInputStream(socket.getInputStream());
-                DataOutputStream output = new DataOutputStream(socket.getOutputStream())
+                DataOutputStream output = new DataOutputStream(socket.getOutputStream());
         ) {
             System.out.println("Client started!");
-
+            String jsonGsonObject;
             JParserArguments.parse(args);
 
-            GsonClientObject gsonClientObject = new GsonClientObject(getTypeRequest(), getKey(), getValueForDataBase());
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            Gson gson = gsonBuilder
-                    //.setPrettyPrinting()
-                    //.serializeNulls()
-                    .excludeFieldsWithoutExposeAnnotation()
-                    .create();
-            String jsonGsonObject = gson.toJson(gsonClientObject);
+            if (getFileRequest() == null) {
+                GsonClientObject gsonClientObject = new GsonClientObject(getTypeRequest(), getKey(), getValueForDataBase());
+                GsonBuilder gsonBuilder = new GsonBuilder();
+                Gson gson = gsonBuilder
+                        //.setPrettyPrinting()
+                        //.serializeNulls()
+                        .excludeFieldsWithoutExposeAnnotation()
+                        .create();
+                jsonGsonObject = gson.toJson(gsonClientObject);
+            } else {
+                FileReader fileReader = new FileReader("src/client/data/" + getFileRequest());
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
+                jsonGsonObject = bufferedReader.readLine();
+            }
 
             output.writeUTF(jsonGsonObject); // sending message to the server
             System.out.println("Sent: " + jsonGsonObject);

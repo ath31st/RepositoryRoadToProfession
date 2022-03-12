@@ -24,43 +24,6 @@ files:
         }
     }
   learner_created: false
-- name: test/JsonRequestBuilder.java
-  visible: false
-  text: |-
-    import com.google.gson.Gson;
-    import com.google.gson.JsonObject;
-
-    class JsonBuilder {
-
-        private final Gson gson = new Gson();
-        private final JsonObject jsonObject = new JsonObject();
-
-        private JsonBuilder() {
-        }
-
-        public static JsonBuilder newBuilder() {
-            return new JsonBuilder();
-        }
-
-        public JsonBuilder addValue(String key, String value) {
-            jsonObject.addProperty(key, value);
-            return this;
-        }
-
-        public JsonBuilder addJsonObject(String key, JsonObject object) {
-            jsonObject.add(key, object);
-            return this;
-        }
-
-        public String getAsString() {
-            return jsonObject.toString();
-        }
-
-        public JsonObject getAsJsonObject() {
-            return jsonObject;
-        }
-    }
-  learner_created: false
 - name: test/JsonDatabaseTest.java
   visible: false
   text: |
@@ -599,6 +562,438 @@ files:
         }
     }
   learner_created: false
+- name: src/util/Controller.java
+  visible: true
+  text: |
+    package util;
+
+    public class Controller {
+        private Command command;
+
+        public void setCommand(Command command) {
+            this.command = command;
+        }
+
+        public void executeCommand() {
+            command.execute();
+        }
+
+    }
+  learner_created: true
+- name: src/client/Client.java
+  visible: true
+  text: |
+    package client;
+
+    import com.google.gson.Gson;
+    import com.google.gson.GsonBuilder;
+    import util.JParserArguments;
+
+    import java.io.DataInputStream;
+    import java.io.DataOutputStream;
+    import java.io.IOException;
+    import java.net.Socket;
+
+    import static util.JParserArguments.*;
+
+    public class Client {
+        private static final String SERVER_ADDRESS = "127.0.0.1";
+        private static final int SERVER_PORT = 34552;
+
+        public static void createClientSocket(String[] args) {
+            try (
+                    Socket socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
+                    DataInputStream input = new DataInputStream(socket.getInputStream());
+                    DataOutputStream output = new DataOutputStream(socket.getOutputStream())
+            ) {
+                System.out.println("Client started!");
+
+                JParserArguments.parse(args);
+
+                GsonClientObject gsonClientObject = new GsonClientObject(getTypeRequest(), getKey(), getValueForDataBase());
+                GsonBuilder gsonBuilder = new GsonBuilder();
+                Gson gson = gsonBuilder
+                        //.setPrettyPrinting()
+                        //.serializeNulls()
+                        .excludeFieldsWithoutExposeAnnotation()
+                        .create();
+                String jsonGsonObject = gson.toJson(gsonClientObject);
+
+                output.writeUTF(jsonGsonObject); // sending message to the server
+                System.out.println("Sent: " + jsonGsonObject);
+                String receivedMsg = input.readUTF(); // response message
+                System.out.println("Received: " + receivedMsg);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Problem with client");
+            }
+        }
+    }
+  learner_created: true
+- name: src/util/DeleteCommand.java
+  visible: true
+  text: |
+    package util;
+
+    import client.GsonClientObject;
+    import server.GsonServerObject;
+
+    import java.util.HashMap;
+    import java.util.Map;
+
+    public class DeleteCommand implements Command{
+        private Map<String , String> db;
+        private GsonClientObject gsonClientObject;
+        private GsonServerObject gsonServerObject;
+
+        public DeleteCommand(HashMap<String,String> db, GsonClientObject gsonClientObject, GsonServerObject gsonServerObject) {
+            this.db = db;
+            this.gsonClientObject = gsonClientObject;
+            this.gsonServerObject = gsonServerObject;
+        }
+
+        @Override
+        public void execute() {
+            if (db.containsKey(gsonClientObject.getKey())) {
+                db.remove(gsonClientObject.getKey());
+                gsonServerObject.setResponse("OK");
+            } else {
+                gsonServerObject.setResponse("ERROR");
+                gsonServerObject.setReason("No such key");
+            }
+        }
+    }
+  learner_created: true
+- name: src/util/JParserArguments.java
+  visible: true
+  text: |+
+    package util;
+
+    import com.beust.jcommander.JCommander;
+    import com.beust.jcommander.Parameter;
+
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public class JParserArguments {
+
+        @Parameter
+        private List<String> parameters = new ArrayList<>();
+
+        @Parameter(names = "-t", description = "is the type of the request")
+        private static String typeRequest;
+
+        @Parameter(names = "-k", description = "is the key")
+        private static String key;
+
+        @Parameter(names = "-v", description = "is the value to save in the database")
+        private static String valueForDataBase;
+
+        public static String getTypeRequest() {
+            return typeRequest;
+        }
+
+        public static String getKey() {
+            return key;
+        }
+
+        public static String getValueForDataBase() {
+            return valueForDataBase;
+        }
+
+        public static void parse(String[] args) {
+            JParserArguments parser = new JParserArguments();
+            JCommander.newBuilder()
+                    .addObject(parser)
+                    .build()
+                    .parse(args);
+        }
+    }
+
+  learner_created: true
+- name: src/server/Server.java
+  visible: true
+  text: |
+    package server;
+
+    import client.GsonClientObject;
+    import com.google.gson.Gson;
+    import com.google.gson.GsonBuilder;
+    import util.*;
+
+    import java.io.DataInputStream;
+    import java.io.DataOutputStream;
+    import java.io.IOException;
+    import java.net.ServerSocket;
+    import java.net.Socket;
+    import java.util.HashMap;
+
+    public class Server {
+        private static final int PORT = 34552;
+        private static HashMap<String, String> db = new HashMap<>();
+        static boolean isServerActive = true;
+
+        public static void setIsServerActive(boolean isServerActive) {
+            Server.isServerActive = isServerActive;
+        }
+
+        public static void createServerSocket() {
+            Controller controller = new Controller();
+            try (ServerSocket server = new ServerSocket(PORT)) {
+                System.out.println("Server started!");
+
+                while (isServerActive) {
+                    try (
+                            Socket socket = server.accept();
+                            DataInputStream inputStream = new DataInputStream(socket.getInputStream());
+                            DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream())
+                    ) {
+                        GsonClientObject gsonClientObject = new Gson().fromJson(inputStream.readUTF(), GsonClientObject.class);
+                        GsonServerObject gsonServerObject = new GsonServerObject();
+                        controller.setCommand(switchCommand(gsonClientObject, gsonServerObject));
+                        controller.executeCommand();
+                        GsonBuilder gsonBuilder = new GsonBuilder();
+                        Gson gson = gsonBuilder
+                                //.setPrettyPrinting()
+                                .excludeFieldsWithoutExposeAnnotation()
+                                .create();
+                        outputStream.writeUTF(gson.toJson(gsonServerObject));
+                    }
+                }
+            } catch (
+                    IOException e) {
+                //e.printStackTrace();
+                System.out.println("Problem with server");
+            }
+        }
+
+        public static Command switchCommand(GsonClientObject gsonClientObject, GsonServerObject gsonServerObject) {
+            Command command;
+            if (gsonClientObject.getType().equals("get")) {
+                return command = new GetCommand(db, gsonClientObject, gsonServerObject);
+            } else if (gsonClientObject.getType().equals("set")) {
+                return command = new SetCommand(db, gsonClientObject, gsonServerObject);
+            } else if (gsonClientObject.getType().equals("delete")) {
+                return command = new DeleteCommand(db, gsonClientObject, gsonServerObject);
+            } else {
+                return command = new ExitCommand();
+            }
+        }
+    }
+  learner_created: true
+- name: src/util/GetCommand.java
+  visible: true
+  text: |
+    package util;
+
+    import client.GsonClientObject;
+    import server.GsonServerObject;
+
+    import java.util.HashMap;
+    import java.util.Map;
+
+    public class GetCommand implements Command {
+        private Map<String , String> db;
+        private GsonClientObject gsonClientObject;
+        private GsonServerObject gsonServerObject;
+
+        public GetCommand(HashMap<String, String> db, GsonClientObject gsonClientObject, GsonServerObject gsonServerObject) {
+            this.db = db;
+            this.gsonClientObject = gsonClientObject;
+            this.gsonServerObject = gsonServerObject;
+        }
+
+        @Override
+        public void execute() {
+            if (db.containsKey(gsonClientObject.getKey())) {
+                gsonServerObject.setResponse("OK");
+                gsonServerObject.setValue(db.get(gsonClientObject.getKey()));
+            } else {
+                gsonServerObject.setResponse("ERROR");
+                gsonServerObject.setReason("No such key");
+            }
+        }
+    }
+  learner_created: true
+- name: src/util/ExitCommand.java
+  visible: true
+  text: |
+    package util;
+
+    import server.Server;
+
+    public class ExitCommand implements Command{
+
+        @Override
+        public void execute() {
+            Server.setIsServerActive(false);
+        }
+    }
+  learner_created: true
+- name: src/server/GsonServerObject.java
+  visible: true
+  text: |
+    package server;
+
+    import com.google.gson.annotations.Expose;
+
+    public class GsonServerObject {
+        @Expose
+        private String response;
+        @Expose
+        private String reason;
+        @Expose
+        private String value;
+
+        public void setResponse(String response) {
+            this.response = response;
+        }
+
+        public void setReason(String reason) {
+            this.reason = reason;
+        }
+
+        public void setValue(String value) {
+            this.value = value;
+        }
+
+        public GsonServerObject() {
+
+        }
+
+        public GsonServerObject(String response, String reason, String value) {
+            this.response = response;
+            this.reason = reason;
+            this.value = value;
+        }
+    }
+  learner_created: true
+- name: src/util/Command.java
+  visible: true
+  text: |
+    package util;
+
+    public interface Command {
+       void execute();
+    }
+  learner_created: true
+- name: src/util/SetCommand.java
+  visible: true
+  text: |
+    package util;
+
+    import client.GsonClientObject;
+    import server.GsonServerObject;
+
+    import java.util.HashMap;
+    import java.util.Map;
+
+    public class SetCommand implements Command {
+        private Map<String, String> db;
+        private GsonClientObject gsonClientObject;
+        private GsonServerObject gsonServerObject;
+
+        public SetCommand(HashMap<String, String> db, GsonClientObject gsonClientObject, GsonServerObject gsonServerObject) {
+            this.db = db;
+            this.gsonClientObject = gsonClientObject;
+            this.gsonServerObject = gsonServerObject;
+        }
+
+        @Override
+        public void execute() {
+            db.put(gsonClientObject.getKey(), gsonClientObject.getValue());
+            gsonServerObject.setResponse("OK");
+        }
+    }
+  learner_created: true
+- name: src/client/GsonClientObject.java
+  visible: true
+  text: |
+    package client;
+
+    import com.google.gson.annotations.Expose;
+
+    public class GsonClientObject {
+        @Expose
+        private String type;
+        @Expose
+        private String key;
+        @Expose
+        private String value;
+
+
+        public String getType() {
+            return type;
+        }
+
+        public String getKey() {
+            return key;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+
+        public GsonClientObject(String type, String key, String value) {
+            this.type = type;
+            this.key = key;
+            this.value = value;
+        }
+    }
+  learner_created: true
+- name: test/JsonRequestBuilder.java
+  visible: false
+  text: |-
+    import com.google.gson.Gson;
+    import com.google.gson.JsonObject;
+
+    class JsonBuilder {
+
+        private final Gson gson = new Gson();
+        private final JsonObject jsonObject = new JsonObject();
+
+        private JsonBuilder() {
+        }
+
+        public static JsonBuilder newBuilder() {
+            return new JsonBuilder();
+        }
+
+        public JsonBuilder addValue(String key, String value) {
+            jsonObject.addProperty(key, value);
+            return this;
+        }
+
+        public JsonBuilder addJsonObject(String key, JsonObject object) {
+            jsonObject.add(key, object);
+            return this;
+        }
+
+        public String getAsString() {
+            return jsonObject.toString();
+        }
+
+        public JsonObject getAsJsonObject() {
+            return jsonObject;
+        }
+    }
+  learner_created: false
+- name: src/client/data/testGet.json
+  visible: true
+  learner_created: true
+- name: src/client/data/testDelete.json
+  visible: true
+  learner_created: true
+- name: src/client/data/testSet.json
+  visible: true
+  learner_created: true
+- name: src/server/data/db.json
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5494#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Sat, 12 Mar 2022 08:28:20 UTC
 record: -1
