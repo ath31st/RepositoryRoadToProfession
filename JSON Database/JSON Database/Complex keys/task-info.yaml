@@ -291,6 +291,236 @@ files:
         }
     }
   learner_created: false
+- name: src/server/Server.java
+  visible: true
+  text: "package server;\n\nimport client.GsonClientObject;\nimport com.google.gson.Gson;\n\
+    import com.google.gson.GsonBuilder;\nimport util.*;\n\nimport java.io.*;\nimport\
+    \ java.net.ServerSocket;\nimport java.net.Socket;\nimport java.util.HashMap;\n\
+    import java.util.concurrent.ExecutorService;\nimport java.util.concurrent.Executors;\n\
+    \npublic class Server {\n    private static final int PORT = 34552;\n    private\
+    \ static final HashMap<String, String> db = new HashMap<>();\n    static boolean\
+    \ isServerActive = true;\n    private static final File file = new File(\"./src/server/data/db.json\"\
+    );\n\n    public static void setIsServerActive(boolean isServerActive) {\n   \
+    \     Server.isServerActive = isServerActive;\n    }\n\n    public static void\
+    \ createServerSocket() {\n        Controller controller = new Controller();\n\
+    \        try (ServerSocket server = new ServerSocket(PORT)) {\n            System.out.println(\"\
+    Server started!\");\n            ExecutorService executor = Executors.newFixedThreadPool(2);\n\
+    \            executor.submit(() -> {\n            });\n            \n        \
+    \    while (isServerActive) {\n                try (\n                       \
+    \ Socket socket = server.accept();\n                        DataInputStream inputStream\
+    \ = new DataInputStream(socket.getInputStream());\n                        DataOutputStream\
+    \ outputStream = new DataOutputStream(socket.getOutputStream());\n           \
+    \     ) {\n                    GsonClientObject gsonClientObject = new Gson().fromJson(inputStream.readUTF(),\
+    \ GsonClientObject.class);\n                    GsonServerObject gsonServerObject\
+    \ = new GsonServerObject();\n                    controller.setCommand(switchCommand(gsonClientObject,\
+    \ gsonServerObject));\n                    controller.executeCommand();\n    \
+    \                GsonBuilder gsonBuilder = new GsonBuilder();\n              \
+    \      Gson gson = gsonBuilder\n                            //.setPrettyPrinting()\n\
+    \                            .excludeFieldsWithoutExposeAnnotation()\n       \
+    \                     .create();\n                    outputStream.writeUTF(gson.toJson(gsonServerObject));\n\
+    \                }\n            }\n        } catch (\n                IOException\
+    \ e) {\n            //e.printStackTrace();\n            System.out.println(\"\
+    Problem with server\");\n        }\n    }\n\n    public static Command switchCommand(GsonClientObject\
+    \ gsonClientObject, GsonServerObject gsonServerObject) {\n        Command command;\n\
+    \        if (gsonClientObject.getType().equals(\"get\")) {\n            return\
+    \ command = new GetCommand(db, gsonClientObject, gsonServerObject);\n        }\
+    \ else if (gsonClientObject.getType().equals(\"set\")) {\n            return command\
+    \ = new SetCommand(db, gsonClientObject, gsonServerObject);\n        } else if\
+    \ (gsonClientObject.getType().equals(\"delete\")) {\n            return command\
+    \ = new DeleteCommand(db, gsonClientObject, gsonServerObject);\n        } else\
+    \ {\n            return command = new ExitCommand();\n        }\n    }\n}\n"
+  learner_created: true
+- name: src/util/GsonUtils.java
+  visible: true
+  learner_created: true
+- name: src/server/commands/Command.java
+  visible: true
+  text: |
+    package util;
+
+    public interface Command {
+       void execute();
+    }
+  learner_created: true
+- name: src/server/commands/Controller.java
+  visible: true
+  text: |
+    package util;
+
+    public class Controller {
+        private Command command;
+
+        public void setCommand(Command command) {
+            this.command = command;
+        }
+
+        public void executeCommand() {
+            command.execute();
+        }
+
+    }
+  learner_created: true
+- name: src/server/commands/CommandLineArgs.java
+  visible: true
+  learner_created: true
+- name: src/server/exceptions/BadRequestException.java
+  visible: true
+  learner_created: true
+- name: src/server/exceptions/NoSuchKeyException.java
+  visible: true
+  learner_created: true
+- name: src/server/commands/DeleteCommand.java
+  visible: true
+  text: |
+    package util;
+
+    import client.GsonClientObject;
+    import server.GsonServerObject;
+
+    import java.util.HashMap;
+    import java.util.Map;
+
+    public class DeleteCommand implements Command{
+        private Map<String , String> db;
+        private GsonClientObject gsonClientObject;
+        private GsonServerObject gsonServerObject;
+
+        public DeleteCommand(HashMap<String,String> db, GsonClientObject gsonClientObject, GsonServerObject gsonServerObject) {
+            this.db = db;
+            this.gsonClientObject = gsonClientObject;
+            this.gsonServerObject = gsonServerObject;
+        }
+
+        @Override
+        public void execute() {
+            if (db.containsKey(gsonClientObject.getKey())) {
+                db.remove(gsonClientObject.getKey());
+                gsonServerObject.setResponse("OK");
+            } else {
+                gsonServerObject.setResponse("ERROR");
+                gsonServerObject.setReason("No such key");
+            }
+        }
+    }
+  learner_created: true
+- name: src/server/commands/GetCommand.java
+  visible: true
+  text: |
+    package util;
+
+    import client.GsonClientObject;
+    import server.GsonServerObject;
+
+    import java.util.HashMap;
+    import java.util.Map;
+
+    public class GetCommand implements Command {
+        private Map<String , String> db;
+        private GsonClientObject gsonClientObject;
+        private GsonServerObject gsonServerObject;
+
+        public GetCommand(HashMap<String, String> db, GsonClientObject gsonClientObject, GsonServerObject gsonServerObject) {
+            this.db = db;
+            this.gsonClientObject = gsonClientObject;
+            this.gsonServerObject = gsonServerObject;
+        }
+
+        @Override
+        public void execute() {
+            if (db.containsKey(gsonClientObject.getKey())) {
+                gsonServerObject.setResponse("OK");
+                gsonServerObject.setValue(db.get(gsonClientObject.getKey()));
+            } else {
+                gsonServerObject.setResponse("ERROR");
+                gsonServerObject.setReason("No such key");
+            }
+        }
+    }
+  learner_created: true
+- name: src/server/commands/SetCommand.java
+  visible: true
+  text: |
+    package util;
+
+    import client.GsonClientObject;
+    import server.GsonServerObject;
+
+    import java.util.HashMap;
+    import java.util.Map;
+
+    public class SetCommand implements Command {
+        private Map<String, String> db;
+        private GsonClientObject gsonClientObject;
+        private GsonServerObject gsonServerObject;
+
+        public SetCommand(HashMap<String, String> db, GsonClientObject gsonClientObject, GsonServerObject gsonServerObject) {
+            this.db = db;
+            this.gsonClientObject = gsonClientObject;
+            this.gsonServerObject = gsonServerObject;
+        }
+
+        @Override
+        public void execute() {
+            db.put(gsonClientObject.getKey(), gsonClientObject.getValue());
+            gsonServerObject.setResponse("OK");
+        }
+    }
+  learner_created: true
+- name: src/server/request_response/Request.java
+  visible: true
+  learner_created: true
+- name: src/server/request_response/Response.java
+  visible: true
+  learner_created: true
+- name: src/server/data/db.json
+  visible: true
+  learner_created: true
+- name: src/client/Task.java
+  visible: true
+  learner_created: true
+- name: src/server/Operation.java
+  visible: true
+  learner_created: true
+- name: src/server/OperationFactory.java
+  visible: true
+  learner_created: true
+- name: src/server/model/Response.java
+  visible: true
+  learner_created: true
+- name: src/server/model/Task.java
+  visible: true
+  learner_created: true
+- name: src/server/io/FileOperations.java
+  visible: true
+  learner_created: true
+- name: src/server/io/FileOperator.java
+  visible: true
+  learner_created: true
+- name: src/server/database/Connection.java
+  visible: true
+  learner_created: true
+- name: src/server/model/RecordInBase.java
+  visible: true
+  learner_created: true
+- name: src/server/database/DatabaseConnection.java
+  visible: true
+  learner_created: true
+- name: src/server/data/data.json
+  visible: true
+  learner_created: true
+- name: src/client/data/getFile.json
+  visible: true
+  learner_created: true
+- name: src/client/data/updateFile.json
+  visible: true
+  learner_created: true
+- name: src/client/data/setFile.json
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5495#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: Mon, 14 Mar 2022 17:37:02 UTC
 record: -1

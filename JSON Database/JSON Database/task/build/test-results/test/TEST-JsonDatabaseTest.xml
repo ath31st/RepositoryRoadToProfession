@@ -1,72 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="JsonDatabaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-12T08:28:20" hostname="FRACTAL" time="0.675">
+<testsuite name="JsonDatabaseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-14T17:37:02" hostname="FRACTAL" time="0.775">
   <properties/>
-  <testcase name="start" classname="JsonDatabaseTest" time="0.675"/>
+  <testcase name="start" classname="JsonDatabaseTest" time="0.775"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 Server started!
 Client started!
 Sent: {"type":"exit"}
-Received: {}
+pool-1-thread-1 : received: {"type":"exit"}
+pool-1-thread-1 : sent: {"response":"OK"}
+Received: {"response":"OK"}
 ?[1;31m
 Start test 2?[0m
 ?[1;31m
 Start test 3?[0m
 Server started!
 Client started!
-Sent: {"type":"get","key":"1"}
-Received: {"response":"ERROR","reason":"No such key"}
-Client started!
 Sent: {"type":"set","key":"1","value":"Hello world!"}
+pool-2-thread-1 : received: {"type":"set","key":"1","value":"Hello world!"}
+pool-2-thread-1 : sent: {"response":"OK"}
 Received: {"response":"OK"}
 Client started!
-Sent: {"type":"set","key":"1","value":"HelloWorld!"}
+Sent: {"type":"set","key":"person","value":{"name":"Elon Musk","car":{"model":"Tesla Roadster","year":"2018"},"rocket":{"name":"Falcon 9","launches":"87"}}}
+pool-2-thread-1 : received: {"type":"set","key":"person","value":{"name":"Elon Musk","car":{"model":"Tesla Roadster","year":"2018"},"rocket":{"name":"Falcon 9","launches":"87"}}}
+pool-2-thread-1 : sent: {"response":"OK"}
 Received: {"response":"OK"}
 Client started!
-Sent: {"type":"get","key":"1"}
-Received: {"response":"OK","value":"HelloWorld!"}
+Sent: {"type":"get","key":["person","name"]}
+pool-2-thread-1 : received: {"type":"get","key":["person","name"]}
+pool-2-thread-1 : sent: {"response":"OK","value":"Elon Musk"}
+Received: {"response":"OK","value":"Elon Musk"}
 Client started!
-Sent: {"type":"delete","key":"1"}
+Sent: {"type":"set","key":["person","rocket","launches"],"value":"88"}
+pool-2-thread-1 : received: {"type":"set","key":["person","rocket","launches"],"value":"88"}
+pool-2-thread-1 : sent: {"response":"OK"}
 Received: {"response":"OK"}
 Client started!
-Sent: {"type":"delete","key":"1"}
-Received: {"response":"ERROR","reason":"No such key"}
+Sent: {"type":"get","key":["person"]}
+pool-2-thread-1 : received: {"type":"get","key":["person"]}
+pool-2-thread-1 : sent: {"response":"OK","value":{"name":"Elon Musk","car":{"model":"Tesla Roadster","year":"2018"},"rocket":{"name":"Falcon 9","launches":"88"}}}
+Received: {"response":"OK","value":{"name":"Elon Musk","car":{"model":"Tesla Roadster","year":"2018"},"rocket":{"name":"Falcon 9","launches":"88"}}}
 Client started!
-Sent: {"type":"get","key":"1"}
-Received: {"response":"ERROR","reason":"No such key"}
-Client started!
-Sent: {"type":"set","key":"text","value":"Some text here"}
+Sent: {"type":"delete","key":["person","car","year"]}
+pool-2-thread-1 : received: {"type":"delete","key":["person","car","year"]}
+pool-2-thread-1 : sent: {"response":"OK"}
 Received: {"response":"OK"}
 Client started!
-Sent: {"type":"get","key":"text"}
-Received: {"response":"OK","value":"Some text here"}
-Client started!
-Sent: {"type":"get","key":"56"}
-Received: {"response":"ERROR","reason":"No such key"}
-Client started!
-Sent: {"type":"delete","key":"56"}
-Received: {"response":"ERROR","reason":"No such key"}
-Client started!
-Sent: {"type":"delete","key":"100"}
-Received: {"response":"ERROR","reason":"No such key"}
-Client started!
-Sent: {"type":"delete","key":"That key doesn\u0027t exist"}
-Received: {"response":"ERROR","reason":"No such key"}
-Client started!
-Sent: {"type":"set","key":"name","value":"Kate"}
-Received: {"response":"OK"}
-Client started!
-Sent: {"type":"get","key":"name"}
-Received: {"response":"OK","value":"Kate"}
-Client started!
-Sent: {"type":"delete","key":"name"}
-Received: {"response":"OK"}
-Client started!
-Sent: {"type":"get","key":"name"}
-Received: {"response":"ERROR","reason":"No such key"}
+Sent: {"type":"get","key":["person"]}
+pool-2-thread-1 : received: {"type":"get","key":["person"]}
+pool-2-thread-1 : sent: {"response":"OK","value":{"name":"Elon Musk","car":{"model":"Tesla Roadster"},"rocket":{"name":"Falcon 9","launches":"88"}}}
+Received: {"response":"OK","value":{"name":"Elon Musk","car":{"model":"Tesla Roadster"},"rocket":{"name":"Falcon 9","launches":"88"}}}
 Client started!
 Sent: {"type":"exit"}
-Received: {}
+pool-2-thread-1 : received: {"type":"exit"}
+pool-2-thread-1 : sent: {"response":"OK"}
+Received: {"response":"OK"}
 ]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.endAccept(NioSocketImpl.java:689)
+	at java.base/sun.nio.ch.NioSocketImpl.accept(NioSocketImpl.java:762)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:675)
+	at java.base/java.net.ServerSocket.platformImplAccept(ServerSocket.java:641)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:617)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:574)
+	at java.base/java.net.ServerSocket.accept(ServerSocket.java:532)
+	at server.Server.run(Server.java:37)
+	at server.Main.main(Main.java:15)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
+	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.endAccept(NioSocketImpl.java:689)
+	at java.base/sun.nio.ch.NioSocketImpl.accept(NioSocketImpl.java:762)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:675)
+	at java.base/java.net.ServerSocket.platformImplAccept(ServerSocket.java:641)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:617)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:574)
+	at java.base/java.net.ServerSocket.accept(ServerSocket.java:532)
+	at server.Server.run(Server.java:37)
+	at server.Main.main(Main.java:15)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
+	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+]]></system-err>
 </testsuite>
