@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PhoneBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-14T21:41:49" hostname="FRACTAL" time="10.994">
+<testsuite name="PhoneBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-15T11:21:53" hostname="FRACTAL" time="77.276">
   <properties/>
-  <testcase name="start" classname="PhoneBookTest" time="10.994"/>
+  <testcase name="start" classname="PhoneBookTest" time="77.276"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
-Start searching...
-Found 500 / 500 entries. Time taken: 0 min. 5 sec. 1 ms.
-?[1;31m
-Start test 2?[0m
-Start searching...
-Found 500 / 500 entries. Time taken: 0 min. 5 sec. 4 ms.
+Start searching(linear search)...
+Found 500 / 500 entries. Time taken: 0 min. 7 sec. 70 ms.
+
+Start searching (bubble sort + jump search)...
+Found 500 / 500 entries. Time taken: 1 min. 24 sec. 841 ms.
+Sorting time: 1 min. 17 sec. 771 ms.
+Searching time: 0 min. 7 sec. 70 ms.
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

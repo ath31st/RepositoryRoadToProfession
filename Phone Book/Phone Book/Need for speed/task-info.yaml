@@ -72,6 +72,6 @@ files:
     \ + \"ms\");\n        }\n        \n        return CheckResult.correct();\n   \
     \ }\n}\n"
   learner_created: false
-feedback_link: https://hyperskill.org/projects/63/stages/342/implement#comment
+feedback_link: https://hyperskill.org/learn/step/5484#comment
 status: Unchecked
 record: -1

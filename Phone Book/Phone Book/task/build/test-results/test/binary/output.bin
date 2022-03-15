@@ -1,8 +1,9 @@
 [1;31m
 Start test 1[0m
-Start searching...
-:Found 500 / 500 entries. Time taken: 0 min. 5 sec. 1 ms.
-[1;31m
-Start test 2[0m
-Start searching...
-:Found 500 / 500 entries. Time taken: 0 min. 5 sec. 4 ms.
+#Start searching(linear search)...
+;Found 500 / 500 entries. Time taken: 0 min. 7 sec. 70 ms.
+
+0Start searching (bubble sort + jump search)...
+=Found 500 / 500 entries. Time taken: 1 min. 24 sec. 841 ms.
+&Sorting time: 1 min. 17 sec. 771 ms.
+&Searching time: 0 min. 7 sec. 70 ms.
