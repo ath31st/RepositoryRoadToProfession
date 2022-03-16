@@ -1,0 +1,33 @@
+[1;31m
+Start test 1[0m
+"depot - Owings Mills - Old Court
+)Owings Mills - Old Court - Milford Mill
+.Old Court - Milford Mill - Reiserstown Plaza
+2Milford Mill - Reiserstown Plaza - Rogers Avenue
+6Reiserstown Plaza - Rogers Avenue - West Cold Spring
+.Rogers Avenue - West Cold Spring - Mondawmin
++West Cold Spring - Mondawmin - Penn North
+!Mondawmin - Penn North - Uptown
+$Penn North - Uptown - State Center
+*Uptown - State Center - Lexington Market
+2State Center - Lexington Market - Charles Center
+=Lexington Market - Charles Center - Shot Tower/Market Place
+CCharles Center - Shot Tower/Market Place - Johns Hopkins Hospital
+:Shot Tower/Market Place - Johns Hopkins Hospital - depot
+[1;31m
+Start test 2[0m
+[1;31m
+Start test 3[0m
+#Error! Such a file doesn't exist!
+[1;31m
+Start test 4[0m
+#depot - Alabinskaya - Rossiyskaya
+)Alabinskaya - Rossiyskaya - Moskovskaya
+*Rossiyskaya - Moskovskaya - Gagarinskaya
+*Moskovskaya - Gagarinskaya - Sportivnaya
+)Gagarinskaya - Sportivnaya - Sovetskaya
+#Sportivnaya - Sovetskaya - Pobeda
+"Sovetskaya - Pobeda - Bezymyanka
+"Pobeda - Bezymyanka - Kirovskaya
+&Bezymyanka - Kirovskaya - Yungorodok
+!Kirovskaya - Yungorodok - depot
