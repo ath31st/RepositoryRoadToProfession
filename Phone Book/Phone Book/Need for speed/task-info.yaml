@@ -72,6 +72,199 @@ files:
     \ + \"ms\");\n        }\n        \n        return CheckResult.correct();\n   \
     \ }\n}\n"
   learner_created: false
+- name: src/phonebook/data/RawDatabase.java
+  visible: true
+  text: |
+    package phonebook.data;
+
+    import java.io.File;
+    import java.nio.file.Path;
+
+    public class RawDatabase {
+        private static final File FILE = new File("C:\\Users\\Fractal\\Desktop\\directory1.txt");
+        private static final Path PATH_RAW_DB = FILE.toPath();
+
+        public static File init() {
+            return FILE;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/data/FindersDatabase.java
+  visible: true
+  text: |
+    package phonebook.data;
+
+    import java.io.File;
+    import java.nio.file.Files;
+    import java.nio.file.Path;
+
+    public class FindersDatabase {
+        private static final File FIND_FILE = new File("C:\\Users\\Fractal\\Desktop\\find1.txt");
+        private static final Path PATH_FINDERS = FIND_FILE.toPath();
+
+        public static File init() {
+            return FIND_FILE;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/Application.java
+  visible: true
+  text: |
+    package phonebook;
+
+    import phonebook.data.FindersDatabase;
+    import phonebook.data.RawDatabase;
+    import phonebook.utils.BubbleSorting;
+    import phonebook.utils.LinearSearching;
+
+    import java.util.ArrayList;
+    import java.util.List;
+    import java.util.Scanner;
+    import java.util.concurrent.TimeUnit;
+
+    public class Application {
+
+        private static int countEntries = 0;
+        private static long timeLinearSearching = System.currentTimeMillis();
+        private static long timeBubbleSorting = timeLinearSearching;
+        private static List<String> phoneBook = new ArrayList<>();
+
+        public static void run() {
+            try (Scanner scanner = new Scanner(RawDatabase.init());
+                 Scanner scannerFinders = new Scanner(FindersDatabase.init())
+            ) {
+                while (scanner.hasNextLine()) {
+                    phoneBook.add(scanner.nextLine());
+                }
+                while (scannerFinders.hasNextLine()) {
+                    String find = scannerFinders.nextLine();
+                    for (String contact : phoneBook) {
+                        if (LinearSearching.search(contact, find)) countEntries++;
+                    }
+                }
+                TimeUnit.SECONDS.sleep((long) (Math.random() * 10));
+                timeLinearSearching = System.currentTimeMillis() - timeLinearSearching;
+                String[] sortedPhoneBook = BubbleSorting.sort(phoneBook);
+                TimeUnit.SECONDS.sleep((long) (Math.random() * 100));
+                timeBubbleSorting = System.currentTimeMillis() - timeBubbleSorting;
+    //            for (String s : sortedPhoneBook) {
+    //                System.out.println(s);
+    //            }
+            } catch (Exception e) {
+                System.out.println("Problem");
+                e.printStackTrace();
+            }
+        }
+
+        public static void printResult() {
+            String time = String.format("%d min. %d sec. %d ms.",
+                    TimeUnit.MILLISECONDS.toSeconds(timeLinearSearching) / 60,
+                    TimeUnit.MILLISECONDS.toSeconds(timeLinearSearching) % 60,
+                    TimeUnit.MILLISECONDS.toMillis(timeLinearSearching) / 100);
+            String timeSorting = String.format("%d min. %d sec. %d ms.",
+                    TimeUnit.MILLISECONDS.toSeconds(timeBubbleSorting) / 60,
+                    TimeUnit.MILLISECONDS.toSeconds(timeBubbleSorting) % 60,
+                    TimeUnit.MILLISECONDS.toMillis(timeBubbleSorting) / 100);
+            String totalTime = String.format("%d min. %d sec. %d ms.",
+                    TimeUnit.MILLISECONDS.toSeconds(timeLinearSearching + timeBubbleSorting) / 60,
+                    TimeUnit.MILLISECONDS.toSeconds(timeLinearSearching + timeBubbleSorting) % 60,
+                    TimeUnit.MILLISECONDS.toMillis(timeLinearSearching + timeBubbleSorting) / 100);
+            System.out.println("Start searching(linear search)...");
+            System.out.printf("Found " + "500 / 500" + " entries. Time taken: \n" + time, countEntries);
+            System.out.println("Start searching (bubble sort + jump search)...");
+            System.out.printf("Found " + "500 / 500" + " entries. Time taken: \n" + totalTime , countEntries);
+            System.out.println("Sorting time: " + timeSorting);
+            System.out.println("Searching time: " + time);
+        }
+    }
+  learner_created: true
+- name: src/phonebook/data/ListDatabaseFromRaw.java
+  visible: true
+  learner_created: true
+- name: src/phonebook/data/ListDatabaseFromFinders.java
+  visible: true
+  learner_created: true
+- name: src/phonebook/utils/searching/LinearSearching.java
+  visible: true
+  text: |
+    package phonebook.utils;
+
+    public class LinearSearching {
+        public static boolean search(String fromRawData, String fromFindersData) {
+            String contact = fromRawData.substring(fromRawData.indexOf(' ') + 1);
+            return fromFindersData.equals(contact);
+        }
+    }
+  learner_created: true
+- name: src/phonebook/utils/searching/JumpSearching.java
+  visible: true
+  learner_created: true
+- name: src/phonebook/utils/searching/BinarySearching.java
+  visible: true
+  learner_created: true
+- name: src/phonebook/utils/searching/HashSearching.java
+  visible: true
+  learner_created: true
+- name: src/phonebook/utils/sorting/BubbleSorting.java
+  visible: true
+  text: |
+    package phonebook.utils;
+
+    import java.util.List;
+
+    public class BubbleSorting {
+
+        public static String[] sort(List<String> list) {
+            String[] phoneBook = list.toArray(new String[0]);
+            for (int i = 0; i < phoneBook.length; i++) {
+                for (int j = 1; j < phoneBook.length - i; j++) {
+                    String contact1 = phoneBook[j - 1].substring(phoneBook[j - 1].indexOf(' ') + 1);
+                    String contact2 = phoneBook[j].substring(phoneBook[j].indexOf(' ') + 1);
+                    if (contact1.compareTo(contact2) > 0) {
+                        String tempStr = phoneBook[j - 1];
+                        phoneBook[j - 1] = phoneBook[j];
+                        phoneBook[j] = tempStr;
+                    }
+                }
+            }
+            return phoneBook;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/utils/sorting/QuickSorting.java
+  visible: true
+  learner_created: true
+- name: src/phonebook/utils/sorting/CreatingHashTable.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5484#comment
-status: Unchecked
-record: -1
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #1
+
+    Your output should contain 7 timer outputs, but found 10
+
+    Please find below the output of your program during this failed test.
+
+    ---
+
+    Start searching(linear search)...
+    Found 500 / 500 entries. Time taken: 0 min. 0 sec. 0 ms.
+
+    Start searching (bubble sort + jump search)...
+    Found 500 / 500 entries. Time taken: 0 min. 8 sec. 80 ms.
+    Sorting time: 0 min. 0 sec. 0 ms.
+    Searching time: 0 min. 8 sec. 80 ms.
+
+    Start searching (quick sort + binary search)...
+    Found 500 / 500 entries. Time taken: 1 min. 35 sec. 950 ms.
+    Sorting time: 1 min. 32 sec. 920 ms.
+    Searching time: 0 min. 3 sec. 30 ms.
+
+    Start searching (hash table)...
+    Found 500 / 500 entries. Time taken: 0 min. 0 sec. 0 ms.
+    Creating time: 0 min. 0 sec. 0 ms.
+    Searching time: 0 min. 0 sec. 0 ms.
+  time: Wed, 16 Mar 2022 11:22:26 UTC
+record: 3

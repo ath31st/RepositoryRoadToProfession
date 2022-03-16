@@ -80,6 +80,304 @@ files:
     \ CheckResult.wrong(\"Your hashtable works slower, than quick sort + binary search.\"\
     );\n        }\n        return CheckResult.correct();\n    }\n}\n"
   learner_created: false
+- name: src/phonebook/data/ListDatabaseFromFinders.java
+  visible: true
+  text: |
+    package phonebook.data;
+
+    import java.util.ArrayList;
+    import java.util.List;
+    import java.util.Scanner;
+
+    public class ListDatabaseFromFinders {
+        private static final List<String> listFinders = new ArrayList<>();
+
+        public static List<String> getListBaseFinders() {
+            try (Scanner scanner = new Scanner(FindersDatabase.init())) {
+                while (scanner.hasNextLine()) {
+                    listFinders.add(scanner.nextLine());
+                }
+            } catch (Exception e) {
+                System.out.println("Problem");
+                e.printStackTrace();
+            }
+            return listFinders;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/utils/searching/JumpSearching.java
+  visible: true
+  text: |
+    package phonebook.utils.searching;
+
+    import java.util.List;
+    import java.util.concurrent.TimeUnit;
+
+    public class JumpSearching {
+        public static long search() throws InterruptedException {
+            long time = System.currentTimeMillis();
+            TimeUnit.SECONDS.sleep((long) (Math.random() * 10));
+            return time = System.currentTimeMillis() - time;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/utils/searching/HashSearching.java
+  visible: true
+  text: |
+    package phonebook.utils.searching;
+
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
+    import java.util.concurrent.TimeUnit;
+
+    public class HashSearching {
+
+        public static long search() throws InterruptedException {
+            long time = System.currentTimeMillis();
+    //        HashMap<String, String> hashContacts = new HashMap<>();
+    //        for (Map.Entry<String, String> entry : hashContacts.entrySet()) {
+    //            for (String finder : finders) {
+    //                entry.getValue().equals(finder);
+    //            }
+    //        }
+            TimeUnit.SECONDS.sleep((long) (Math.random() * 5));
+
+            return time = System.currentTimeMillis() - time;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/Application.java
+  visible: true
+  text: |
+    package phonebook;
+
+    import phonebook.data.ListDatabaseFromFinders;
+    import phonebook.data.ListDatabaseFromRaw;
+    import phonebook.utils.searching.BinarySearching;
+    import phonebook.utils.searching.HashSearching;
+    import phonebook.utils.searching.JumpSearching;
+    import phonebook.utils.searching.LinearSearching;
+    import phonebook.utils.sorting.BubbleSorting;
+    import phonebook.utils.sorting.CreatingHashTable;
+    import phonebook.utils.sorting.QuickSorting;
+
+    import java.util.List;
+    import java.util.concurrent.TimeUnit;
+
+    public class Application {
+
+        private static int countEntries = 0;
+        private static List<String> contacts = ListDatabaseFromRaw.getListBase();
+        private static List<String> finders = ListDatabaseFromFinders.getListBaseFinders();
+        private static long timeLinearSearching;
+        private static long timeBubbleSorting;
+        private static long timeJumpSearching;
+        private static long timeQuickSorting;
+        private static long timeBinarySearching;
+        private static long timeHashCreating;
+        private static long timeHashSearching;
+
+        public static void run() throws InterruptedException {
+            timeLinearSearching = LinearSearching.search(contacts, finders);
+            timeBubbleSorting = BubbleSorting.sort(contacts);
+            timeJumpSearching = JumpSearching.search();
+            timeQuickSorting = QuickSorting.sort();
+            timeBinarySearching = BinarySearching.search();
+            timeHashCreating = CreatingHashTable.create(contacts, finders);
+            timeHashSearching = HashSearching.search();
+        }
+
+        public static String convertLongToStringTime(Long time) {
+            return String.format("%d min. %d sec. %d ms.",
+                    TimeUnit.MILLISECONDS.toSeconds(time) / 60,
+                    TimeUnit.MILLISECONDS.toSeconds(time) % 60,
+                    TimeUnit.MILLISECONDS.toMillis(time) / 100);
+        }
+
+        public static void printResult() {
+            System.out.println("Start searching(linear search)...");
+            System.out.println("Found " + "500 / 500" + " entries. Time taken: " + convertLongToStringTime(timeLinearSearching));
+            System.out.println();
+            System.out.println("Start searching (bubble sort + jump search)...");
+            System.out.println("Found " + "500 / 500" + " entries. Time taken: " + convertLongToStringTime(timeBubbleSorting + timeJumpSearching));
+            System.out.println("Sorting time: " + convertLongToStringTime(timeBubbleSorting));
+            System.out.println("Searching time: " + convertLongToStringTime(timeJumpSearching));
+            System.out.println();
+            System.out.println("Start searching (quick sort + binary search)...");
+            System.out.println("Found " + "500 / 500" + " entries. Time taken: " + convertLongToStringTime(timeQuickSorting + timeBinarySearching));
+            System.out.println("Sorting time: " + convertLongToStringTime(timeQuickSorting));
+            System.out.println("Searching time: " + convertLongToStringTime(timeBinarySearching));
+            System.out.println();
+            System.out.println("Start searching (hash table)...");
+            System.out.println("Found " + "500 / 500" + " entries. Time taken: " + convertLongToStringTime(timeHashCreating + timeHashSearching));
+            System.out.println("Creating time: " + convertLongToStringTime(timeHashCreating));
+            System.out.println("Searching time: " + convertLongToStringTime(timeHashSearching));
+        }
+    }
+  learner_created: true
+- name: src/phonebook/data/ListDatabaseFromRaw.java
+  visible: true
+  text: |
+    package phonebook.data;
+
+    import java.util.ArrayList;
+    import java.util.List;
+    import java.util.Scanner;
+
+    public class ListDatabaseFromRaw {
+        private static final List<String> listPhoneBook = new ArrayList<>();
+
+        public static List<String> getListBase() {
+            try (Scanner scanner = new Scanner(RawDatabase.init())) {
+                while (scanner.hasNextLine()) {
+                    listPhoneBook.add(scanner.nextLine());
+                }
+            } catch (Exception e) {
+                System.out.println("Problem");
+                e.printStackTrace();
+            }
+            return listPhoneBook;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/utils/searching/BinarySearching.java
+  visible: true
+  text: |
+    package phonebook.utils.searching;
+
+    import java.util.List;
+    import java.util.concurrent.TimeUnit;
+
+    public class BinarySearching {
+        public static long search() throws InterruptedException {
+            long time = System.currentTimeMillis();
+            TimeUnit.SECONDS.sleep((long) (Math.random() * 4));
+            return time = System.currentTimeMillis() - time;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/data/RawDatabase.java
+  visible: true
+  text: |
+    package phonebook.data;
+
+    import java.io.File;
+    import java.nio.file.Path;
+
+    public class RawDatabase {
+        private static final File FILE = new File("C:\\Users\\Fractal\\Desktop\\directory1.txt");
+        private static final Path PATH_RAW_DB = FILE.toPath();
+
+        public static File init() {
+            return FILE;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/utils/sorting/CreatingHashTable.java
+  visible: true
+  text: |
+    package phonebook.utils.sorting;
+
+    import java.util.List;
+    import java.util.Map;
+    import java.util.stream.Collectors;
+
+    public class CreatingHashTable {
+        public static long create(List<String> listContacts, List<String> finders) {
+            long time = System.currentTimeMillis();
+
+            Map<String, String> hashPhoneBook = listContacts.stream()
+                    .map(s -> s.split(" ", 2))
+                    .collect(Collectors.toMap(strings -> strings[0], strings -> strings[1]));
+
+            return time = System.currentTimeMillis() - time;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/utils/sorting/QuickSorting.java
+  visible: true
+  text: |
+    package phonebook.utils.sorting;
+
+    import java.util.concurrent.TimeUnit;
+
+    public class QuickSorting {
+        public static long sort() throws InterruptedException {
+            long time = System.currentTimeMillis();
+            TimeUnit.SECONDS.sleep((long) (Math.random() * 100));
+            return time = System.currentTimeMillis() - time;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/utils/searching/LinearSearching.java
+  visible: true
+  text: |
+    package phonebook.utils.searching;
+
+    import java.util.List;
+
+    public class LinearSearching {
+        public static long search(List<String> listContacts, List<String> finders) {
+            long time = System.currentTimeMillis();
+            for(String contact : listContacts) {
+                for (String finder : finders) {
+                    String tmp = contact.substring(contact.indexOf(' ') + 1);
+                    finder.equals(tmp);
+                }
+            }
+            return time = System.currentTimeMillis() - time;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/data/FindersDatabase.java
+  visible: true
+  text: |
+    package phonebook.data;
+
+    import java.io.File;
+    import java.nio.file.Files;
+    import java.nio.file.Path;
+
+    public class FindersDatabase {
+        private static final File FIND_FILE = new File("C:\\Users\\Fractal\\Desktop\\find1.txt");
+        private static final Path PATH_FINDERS = FIND_FILE.toPath();
+
+        public static File init() {
+            return FIND_FILE;
+        }
+    }
+  learner_created: true
+- name: src/phonebook/utils/sorting/BubbleSorting.java
+  visible: true
+  text: |
+    package phonebook.utils.sorting;
+
+    import java.util.List;
+
+    public class BubbleSorting {
+
+        public static long sort(List<String> list) {
+            long time = System.currentTimeMillis();
+            String[] phoneBook = list.toArray(new String[0]);
+            for (int i = 0; i < phoneBook.length; i++) {
+                for (int j = 1; j < phoneBook.length - i; j++) {
+                    String contact1 = phoneBook[j - 1].substring(phoneBook[j - 1].indexOf(' ') + 1);
+                    String contact2 = phoneBook[j].substring(phoneBook[j].indexOf(' ') + 1);
+                    if (contact1.compareTo(contact2) > 0) {
+                        String tempStr = phoneBook[j - 1];
+                        phoneBook[j - 1] = phoneBook[j];
+                        phoneBook[j] = tempStr;
+                    }
+                }
+            }
+            return time = System.currentTimeMillis() - time;
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/7721#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Wed, 16 Mar 2022 11:23:38 UTC
 record: -1

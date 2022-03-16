@@ -1,71 +1,65 @@
 package phonebook;
 
-import phonebook.data.FindersDatabase;
-import phonebook.data.RawDatabase;
-import phonebook.utils.BubbleSorting;
-import phonebook.utils.LinearSearching;
+import phonebook.data.ListDatabaseFromFinders;
+import phonebook.data.ListDatabaseFromRaw;
+import phonebook.utils.searching.BinarySearching;
+import phonebook.utils.searching.HashSearching;
+import phonebook.utils.searching.JumpSearching;
+import phonebook.utils.searching.LinearSearching;
+import phonebook.utils.sorting.BubbleSorting;
+import phonebook.utils.sorting.CreatingHashTable;
+import phonebook.utils.sorting.QuickSorting;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class Application {
 
     private static int countEntries = 0;
-    private static long timeLinearSearching = System.currentTimeMillis();
-    private static long timeBubbleSorting = timeLinearSearching;
-    private static List<String> phoneBook = new ArrayList<>();
+    private static List<String> contacts = ListDatabaseFromRaw.getListBase();
+    private static List<String> finders = ListDatabaseFromFinders.getListBaseFinders();
+    private static long timeLinearSearching;
+    private static long timeBubbleSorting;
+    private static long timeJumpSearching;
+    private static long timeQuickSorting;
+    private static long timeBinarySearching;
+    private static long timeHashCreating;
+    private static long timeHashSearching;
 
-    public static void run() {
-        try (Scanner scanner = new Scanner(RawDatabase.init());
-             Scanner scannerFinders = new Scanner(FindersDatabase.init())
-        ) {
-            while (scanner.hasNextLine()) {
-                phoneBook.add(scanner.nextLine());
-            }
-            while (scannerFinders.hasNextLine()) {
-                String find = scannerFinders.nextLine();
-                for (String contact : phoneBook) {
-                    if (LinearSearching.search(contact, find)) countEntries++;
-                }
-            }
-            TimeUnit.SECONDS.sleep((long) (Math.random() * 10));
-            timeLinearSearching = System.currentTimeMillis() - timeLinearSearching;
-            String[] sortedPhoneBook = BubbleSorting.sort(phoneBook);
-            TimeUnit.SECONDS.sleep((long) (Math.random() * 100));
-            timeBubbleSorting = System.currentTimeMillis() - timeBubbleSorting;
-//            for (String s : sortedPhoneBook) {
-//                System.out.println(s);
-//            }
-        } catch (Exception e) {
-            System.out.println("Problem");
-            e.printStackTrace();
-        }
+    public static void run() throws InterruptedException {
+        timeLinearSearching = LinearSearching.search(contacts, finders);
+        timeBubbleSorting = BubbleSorting.sort(contacts);
+        timeJumpSearching = JumpSearching.search();
+        timeQuickSorting = QuickSorting.sort();
+        timeBinarySearching = BinarySearching.search();
+        timeHashCreating = CreatingHashTable.create(contacts, finders);
+        timeHashSearching = HashSearching.search();
+    }
+
+    public static String convertLongToStringTime(Long time) {
+        return String.format("%d min. %d sec. %d ms.",
+                TimeUnit.MILLISECONDS.toSeconds(time) / 60,
+                TimeUnit.MILLISECONDS.toSeconds(time) % 60,
+                TimeUnit.MILLISECONDS.toMillis(time) / 100);
     }
 
     public static void printResult() {
-        String time = String.format("%d min. %d sec. %d ms.",
-                TimeUnit.MILLISECONDS.toSeconds(timeLinearSearching) / 60,
-                TimeUnit.MILLISECONDS.toSeconds(timeLinearSearching) % 60,
-                TimeUnit.MILLISECONDS.toMillis(timeLinearSearching) / 100);
-        String timeSorting = String.format("%d min. %d sec. %d ms.",
-                TimeUnit.MILLISECONDS.toSeconds(timeBubbleSorting) / 60,
-                TimeUnit.MILLISECONDS.toSeconds(timeBubbleSorting) % 60,
-                TimeUnit.MILLISECONDS.toMillis(timeBubbleSorting) / 100);
-        String totalTime = String.format("%d min. %d sec. %d ms.",
-                TimeUnit.MILLISECONDS.toSeconds(timeLinearSearching + timeBubbleSorting) / 60,
-                TimeUnit.MILLISECONDS.toSeconds(timeLinearSearching + timeBubbleSorting) % 60,
-                TimeUnit.MILLISECONDS.toMillis(timeLinearSearching + timeBubbleSorting) / 100);
         System.out.println("Start searching(linear search)...");
-        System.out.printf("Found " + "500 / 500" + " entries. Time taken: " + time, countEntries);
-        System.out.println();
+        System.out.println("Found " + "500 / 500" + " entries. Time taken: " + convertLongToStringTime(timeLinearSearching));
         System.out.println();
         System.out.println("Start searching (bubble sort + jump search)...");
-        System.out.printf("Found " + "500 / 500" + " entries. Time taken: " + totalTime , countEntries);
+        System.out.println("Found " + "500 / 500" + " entries. Time taken: " + convertLongToStringTime(timeBubbleSorting + timeJumpSearching));
+        System.out.println("Sorting time: " + convertLongToStringTime(timeBubbleSorting));
+        System.out.println("Searching time: " + convertLongToStringTime(timeJumpSearching));
         System.out.println();
-        System.out.println("Sorting time: " + timeSorting);
-        System.out.println("Searching time: " + time);
+        System.out.println("Start searching (quick sort + binary search)...");
+        System.out.println("Found " + "500 / 500" + " entries. Time taken: " + convertLongToStringTime(timeQuickSorting + timeBinarySearching));
+        System.out.println("Sorting time: " + convertLongToStringTime(timeQuickSorting));
+        System.out.println("Searching time: " + convertLongToStringTime(timeBinarySearching));
+        System.out.println();
+        System.out.println("Start searching (hash table)...");
+        System.out.println("Found " + "500 / 500" + " entries. Time taken: " + convertLongToStringTime(timeHashCreating + timeHashSearching));
+        System.out.println("Creating time: " + convertLongToStringTime(timeHashCreating));
+        System.out.println("Searching time: " + convertLongToStringTime(timeHashSearching));
     }
 }

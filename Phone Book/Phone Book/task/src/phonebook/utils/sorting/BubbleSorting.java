@@ -1,10 +1,11 @@
-package phonebook.utils;
+package phonebook.utils.sorting;
 
 import java.util.List;
 
 public class BubbleSorting {
 
-    public static String[] sort(List<String> list) {
+    public static long sort(List<String> list) {
+        long time = System.currentTimeMillis();
         String[] phoneBook = list.toArray(new String[0]);
         for (int i = 0; i < phoneBook.length; i++) {
             for (int j = 1; j < phoneBook.length - i; j++) {
@@ -17,6 +18,6 @@ public class BubbleSorting {
                 }
             }
         }
-        return phoneBook;
+        return time = System.currentTimeMillis() - time;
     }
 }
