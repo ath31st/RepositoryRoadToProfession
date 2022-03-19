@@ -4,16 +4,14 @@ import org.hyperskill.hstest.stage.StageTest;
 import org.hyperskill.hstest.testcase.CheckResult;
 import org.hyperskill.hstest.testing.TestedProgram;
 
-
 public class Tests extends StageTest<String> {
-    // testing a case from example
+    // test from the previous stage with one line
     @DynamicTest(order = 1)
     CheckResult test1() {
-
         TestedProgram main = new TestedProgram();
+        main.start("./test/baltimore.json");
 
-        String output = main.start("./test/baltimore.txt").trim();
-
+        String output = main.execute("/output \"SubwayLink\"").trim();
         checkDepots(output);
         checkOutputLength(output, 14);
 
@@ -24,24 +22,74 @@ public class Tests extends StageTest<String> {
         return CheckResult.correct();
     }
 
-    // empty file test
+    // test of example
     @DynamicTest(order = 2)
     CheckResult test2() {
-
         TestedProgram main = new TestedProgram();
+        main.start("./test/lausanne.json");
 
-        String output = main.start("./test/empty.txt");
-        if (output.trim().length() != 0) {
-            return CheckResult.wrong("Your program should not print anything if the file is empty.");
-        }
+        String output = main.execute("/output \"m1\"").trim();
+        checkDepots(output);
+
+        checkOutputLength(output, 15);
+
+        assertStations(output, new String[]{"Renes—Gare", "Epenex", "Crochy", "Cerisaie",
+            "Bassenges", "EPFL", "UNL—Sorge", "Mouline", "UNL—Chemberonne", "Bourdonnette", "Melley",
+            "Provence", "Montelly", "Vigie", "Lausanne—Flon"});
+
+        output = main.execute("/output \"m2\"");
+        checkDepots(output);
+        checkOutputLength(output, 14);
+
+        assertStations(output, new String[]{"Croisettes", "Vennes", "Fourmi", "Sallaz", "CHUV", "Ours",
+            "Riponne M.Bejart", "Bessieres", "Lausanne—Flon", "Lausanne Gare CFF", "Grancy", "Delices", "Jourdils",
+            "Ouchy—Olympique"});
+
+        return CheckResult.correct();
+    }
+
+    // example test pt.2 (with addition)
+    @DynamicTest(order = 3)
+    CheckResult test2_1() {
+        TestedProgram main = new TestedProgram();
+        main.start("./test/lausanne.json");
+
+        // added a station to the end of the line
+        main.execute("/append \"m1\" \"Test station 1\"");
+        String output = main.execute("/output \"m1\"");
+
+        checkDepots(output);
+        checkOutputLength(output, 16);
+        assertStations(output, new String[]{"Renes—Gare", "Epenex", "Crochy", "Cerisaie",
+            "Bassenges", "EPFL", "UNL—Sorge", "Mouline", "UNL—Chemberonne", "Bourdonnette", "Melley",
+            "Provence", "Montelly", "Vigie", "Lausanne—Flon", "Test station 1"});
+
+        // added another one
+        main.execute("/append \"m1\" \"Test station 2\"");
+        output = main.execute("/output \"m1\"");
+
+        checkDepots(output);
+        checkOutputLength(output, 17);
+        assertStations(output, new String[]{"Renes—Gare", "Epenex", "Crochy", "Cerisaie",
+            "Bassenges", "EPFL", "UNL—Sorge", "Mouline", "UNL—Chemberonne", "Bourdonnette", "Melley",
+            "Provence", "Montelly", "Vigie", "Lausanne—Flon", "Test station 1", "Test station 2"});
+
+        // added one station to the beginning of the line
+        main.execute("/add-head \"m1\" \"Head\"");
+        output = main.execute("/output \"m1\"");
+
+        checkDepots(output);
+        checkOutputLength(output, 18);
+        assertStations(output, new String[]{"Head", "Renes—Gare", "Epenex", "Crochy", "Cerisaie",
+            "Bassenges", "EPFL", "UNL—Sorge", "Mouline", "UNL—Chemberonne", "Bourdonnette", "Melley",
+            "Provence", "Montelly", "Vigie", "Lausanne—Flon", "Test station 1", "Test station 2"});
 
         return CheckResult.correct();
     }
 
     // not existing file check
-    @DynamicTest(order = 3)
-    CheckResult test3() {
-
+    @DynamicTest(order = 4)
+    CheckResult test4() {
         TestedProgram main = new TestedProgram();
         String output = main.start("tHiS_fIlE_DoEs_nOt_ExIsT.txt").toLowerCase();
 
@@ -56,18 +104,32 @@ public class Tests extends StageTest<String> {
         return CheckResult.correct();
     }
 
-    // positive test with another metro
-    @DynamicTest(order = 4)
-    CheckResult test4() {
-
+    // additional test case
+    @DynamicTest(order = 5)
+    CheckResult test5() {
         TestedProgram main = new TestedProgram();
-        String output = main.start("./test/samara.txt").trim();
+        main.start("./test/samara.json");
+
+        main.execute("/append \"line 1\" \"Krylya Sovetov\"");
+        String output = main.execute("/output \"line 1\"");
 
         checkDepots(output);
-        checkOutputLength(output, 10);
 
-        assertStations(output, new String[]{"Alabinskaya", "Rossiyskaya", "Moskovskaya", "Gagarinskaya",
-            "Sportivnaya", "Sovetskaya", "Pobeda", "Bezymyanka", "Kirovskaya", "Yungorodok"});
+        checkOutputLength(output, 11);
+
+        assertStations(output, new String[]{"Alabinskaya", "Rossiyskaya", "Moskovskaya",
+            "Gagarinskaya", "Sportivnaya", "Sovetskaya", "Pobeda", "Bezymyanka", "Kirovskaya", "Yungorodok",
+            "Krylya Sovetov"});
+
+        main.execute("/add-head \"line 1\" Samarskaya");
+        output = main.execute("/output \"line 1\"");
+
+        checkDepots(output);
+        checkOutputLength(output, 12);
+
+        assertStations(output, new String[]{"Samarskaya", "Alabinskaya", "Rossiyskaya", "Moskovskaya",
+            "Gagarinskaya", "Sportivnaya", "Sovetskaya", "Pobeda", "Bezymyanka", "Kirovskaya", "Yungorodok",
+            "Krylya Sovetov"});
 
         return CheckResult.correct();
     }
@@ -81,7 +143,6 @@ public class Tests extends StageTest<String> {
             throw new WrongAnswer("Your output should end with 'depot'.");
         }
     }
-
 
     // checks number of stations in output
     void checkOutputLength(String output, int correctLength) {

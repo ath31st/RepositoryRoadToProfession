@@ -1,33 +1,20 @@
 [1;31m
 Start test 1[0m
-"depot - Owings Mills - Old Court
-)Owings Mills - Old Court - Milford Mill
-.Old Court - Milford Mill - Reiserstown Plaza
-2Milford Mill - Reiserstown Plaza - Rogers Avenue
-6Reiserstown Plaza - Rogers Avenue - West Cold Spring
-.Rogers Avenue - West Cold Spring - Mondawmin
-+West Cold Spring - Mondawmin - Penn North
-!Mondawmin - Penn North - Uptown
-$Penn North - Uptown - State Center
-*Uptown - State Center - Lexington Market
-2State Center - Lexington Market - Charles Center
-=Lexington Market - Charles Center - Shot Tower/Market Place
-CCharles Center - Shot Tower/Market Place - Johns Hopkins Hospital
-:Shot Tower/Market Place - Johns Hopkins Hospital - depot
-[1;31m
-Start test 2[0m
-[1;31m
-Start test 3[0m
-#Error! Such a file doesn't exist!
-[1;31m
-Start test 4[0m
-#depot - Alabinskaya - Rossiyskaya
-)Alabinskaya - Rossiyskaya - Moskovskaya
-*Rossiyskaya - Moskovskaya - Gagarinskaya
-*Moskovskaya - Gagarinskaya - Sportivnaya
-)Gagarinskaya - Sportivnaya - Sovetskaya
-#Sportivnaya - Sovetskaya - Pobeda
-"Sovetskaya - Pobeda - Bezymyanka
-"Pobeda - Bezymyanka - Kirovskaya
-&Bezymyanka - Kirovskaya - Yungorodok
-!Kirovskaya - Yungorodok - depot
+depot - { -   "SubwayLink": {
+2{ -   "SubwayLink": { -     "1": "Owings Mills",
+F  "SubwayLink": { -     "1": "Owings Mills", -     "2": "Old Court",
+M    "1": "Owings Mills", -     "2": "Old Court", -     "3": "Milford Mill",
+R    "2": "Old Court", -     "3": "Milford Mill", -     "4": "Reiserstown Plaza",
+V    "3": "Milford Mill", -     "4": "Reiserstown Plaza", -     "5": "Rogers Avenue",
+Z    "4": "Reiserstown Plaza", -     "5": "Rogers Avenue", -     "6": "West Cold Spring",
+R    "5": "Rogers Avenue", -     "6": "West Cold Spring", -     "7": "Mondawmin",
+O    "6": "West Cold Spring", -     "7": "Mondawmin", -     "8": "Penn North",
+E    "7": "Mondawmin", -     "8": "Penn North", -     "9": "Uptown",
+I    "8": "Penn North", -     "9": "Uptown", -     "10": "State Center",
+P    "9": "Uptown", -     "10": "State Center", -     "11": "Lexington Market",
+Y    "10": "State Center", -     "11": "Lexington Market", -     "12": "Charles Center",
+d    "11": "Lexington Market", -     "12": "Charles Center", -     "13": "Shot Tower/Market Place",
+i    "12": "Charles Center", -     "13": "Shot Tower/Market Place", -     "14": "Johns Hopkins Hospital"
+Q    "13": "Shot Tower/Market Place", -     "14": "Johns Hopkins Hospital" -   }
+.    "14": "Johns Hopkins Hospital" -   } - }
+  } - } - depot

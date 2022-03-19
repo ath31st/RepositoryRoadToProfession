@@ -1,12 +1,11 @@
 package metro;
 
-import metro.util.FileWithStationsNames;
-import metro.util.ParserCommandLine;
-import metro.util.PrintResult;
+import metro.util.*;
+import metro.util.commands.Command;
+import metro.util.commands.CommandOutput;
 
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Application {
@@ -14,24 +13,22 @@ public class Application {
     private static LinkedList<String> stations = new LinkedList<>();
 
     public static void run(String[] args) {
-        ParserCommandLine.parse(args);
-        try (Scanner scanner = new Scanner(FileWithStationsNames.getFile())) {
-            while (scanner.hasNextLine()) {
-                stations.add(scanner.nextLine());
+        //ParserCommandLine.parse(args);
+
+        try (FileReader fileReader = new FileReader(FileWithStationsNames.getFile());
+             Scanner scanner = new Scanner(System.in)
+        ) {
+            GsonParser gsonParser = new GsonParser();
+            Metro metro = gsonParser.parser(fileReader);
+
+            while (!scanner.nextLine().equals("/exit")) {
+                Command command = new CommandOutput();
+                command.execute();
             }
-        } catch (FileNotFoundException e) {
+
+        } catch (IOException e) {
             System.out.println("Error! Such a file doesn't exist!");
         }
         PrintResult.print(stations);
-
-//        List<String> tmp = List.of("Bishops road",
-//                "Edgver road",
-//                "Baker street",
-//                "Portland road",
-//                "Gower street",
-//                "Kings cross",
-//                "Farringdon street");
-//        LinkedList<String> tmpLL = new LinkedList<>(tmp);
-//        PrintResult.print(tmpLL);
     }
 }

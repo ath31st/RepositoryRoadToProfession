@@ -29,6 +29,12 @@ subprojects {
 
     dependencies {
         testImplementation 'com.github.hyperskill:hs-test:release-SNAPSHOT'
+
+		implementation group: 'com.beust', name: 'jcommander', version: '1.82'
+
+		implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
+
+
     }
 
     configurations.all {

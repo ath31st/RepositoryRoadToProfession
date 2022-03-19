@@ -3,6 +3,7 @@ package metro.util;
 import java.util.LinkedList;
 
 public class PrintResult {
+
     public static void print(LinkedList<String> stations) {
         stations.addFirst("depot");
         stations.addLast("depot");

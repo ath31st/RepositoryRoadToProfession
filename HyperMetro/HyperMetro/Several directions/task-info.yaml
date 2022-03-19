@@ -11,67 +11,6 @@ files:
         }
     }
   learner_created: false
-- name: test/baltimore.json
-  visible: false
-  text: |-
-    {
-      "SubwayLink": {
-        "1": "Owings Mills",
-        "2": "Old Court",
-        "3": "Milford Mill",
-        "4": "Reiserstown Plaza",
-        "5": "Rogers Avenue",
-        "6": "West Cold Spring",
-        "7": "Mondawmin",
-        "8": "Penn North",
-        "9": "Uptown",
-        "10": "State Center",
-        "11": "Lexington Market",
-        "12": "Charles Center",
-        "13": "Shot Tower/Market Place",
-        "14": "Johns Hopkins Hospital"
-      }
-    }
-  learner_created: false
-- name: test/lausanne.json
-  visible: false
-  text: |-
-    {
-      "m1": {
-        "1": "Renes—Gare",
-        "2": "Epenex",
-        "3": "Crochy",
-        "4": "Cerisaie",
-        "5": "Bassenges",
-        "6": "EPFL",
-        "7": "UNL—Sorge",
-        "8": "Mouline",
-        "9": "UNL—Chemberonne",
-        "10": "Bourdonnette",
-        "11": "Melley",
-        "12": "Provence",
-        "13": "Montelly",
-        "14": "Vigie",
-        "15": "Lausanne—Flon"
-      },
-      "m2": {
-        "1": "Croisettes",
-        "2": "Vennes",
-        "3": "Fourmi",
-        "4": "Sallaz",
-        "5": "CHUV",
-        "6": "Ours",
-        "7": "Riponne M.Bejart",
-        "8": "Bessieres",
-        "9": "Lausanne—Flon",
-        "10": "Lausanne Gare CFF",
-        "11": "Grancy",
-        "12": "Delices",
-        "13": "Jourdils",
-        "14": "Ouchy—Olympique"
-      }
-    }
-  learner_created: false
 - name: test/Tests.java
   visible: false
   text: |-
@@ -270,6 +209,137 @@ files:
         }
     }
   learner_created: false
+- name: src/metro/util/ParserCommandLine.java
+  visible: true
+  text: |
+    package metro.util;
+
+    public class ParserCommandLine {
+        private static String path;
+
+        public static String getPath() {
+            return path;
+        }
+
+        public static void parse(String[] args) {
+            path = args[0].isEmpty() ? "ERROR" : args[0];
+        }
+    }
+  learner_created: true
+- name: src/metro/util/FileWithStationsNames.java
+  visible: true
+  text: |
+    package metro.util;
+
+    import java.io.File;
+
+    public class FileWithStationsNames {
+        private static File file = new File(ParserCommandLine.getPath());
+
+        public static File getFile() {
+            return file;
+        }
+    }
+  learner_created: true
+- name: src/metro/util/PrintResult.java
+  visible: true
+  text: |
+    package metro.util;
+
+    import java.util.LinkedList;
+
+    public class PrintResult {
+        public static void print(LinkedList<String> stations) {
+            stations.addFirst("depot");
+            stations.addLast("depot");
+            while (stations.size() > 2) {
+                System.out.print(stations.removeFirst());
+                stations.stream().limit(2).forEach(e -> System.out.print(" - " + e));
+                System.out.println();
+            }
+        }
+    }
+  learner_created: true
+- name: src/metro/Application.java
+  visible: true
+  text: |
+    package metro;
+
+    import metro.util.FileWithStationsNames;
+    import metro.util.ParserCommandLine;
+    import metro.util.PrintResult;
+
+    import java.io.FileNotFoundException;
+    import java.util.LinkedList;
+    import java.util.List;
+    import java.util.Scanner;
+
+    public class Application {
+
+        private static LinkedList<String> stations = new LinkedList<>();
+
+        public static void run(String[] args) {
+            ParserCommandLine.parse(args);
+            try (Scanner scanner = new Scanner(FileWithStationsNames.getFile())) {
+                while (scanner.hasNextLine()) {
+                    stations.add(scanner.nextLine());
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println("Error! Such a file doesn't exist!");
+            }
+            PrintResult.print(stations);
+
+    //        List<String> tmp = List.of("Bishops road",
+    //                "Edgver road",
+    //                "Baker street",
+    //                "Portland road",
+    //                "Gower street",
+    //                "Kings cross",
+    //                "Farringdon street");
+    //        LinkedList<String> tmpLL = new LinkedList<>(tmp);
+    //        PrintResult.print(tmpLL);
+        }
+    }
+  learner_created: true
+- name: test/lausanne.json
+  visible: false
+  text: |-
+    {
+      "m1": {
+        "1": "Renes—Gare",
+        "2": "Epenex",
+        "3": "Crochy",
+        "4": "Cerisaie",
+        "5": "Bassenges",
+        "6": "EPFL",
+        "7": "UNL—Sorge",
+        "8": "Mouline",
+        "9": "UNL—Chemberonne",
+        "10": "Bourdonnette",
+        "11": "Melley",
+        "12": "Provence",
+        "13": "Montelly",
+        "14": "Vigie",
+        "15": "Lausanne—Flon"
+      },
+      "m2": {
+        "1": "Croisettes",
+        "2": "Vennes",
+        "3": "Fourmi",
+        "4": "Sallaz",
+        "5": "CHUV",
+        "6": "Ours",
+        "7": "Riponne M.Bejart",
+        "8": "Bessieres",
+        "9": "Lausanne—Flon",
+        "10": "Lausanne Gare CFF",
+        "11": "Grancy",
+        "12": "Delices",
+        "13": "Jourdils",
+        "14": "Ouchy—Olympique"
+      }
+    }
+  learner_created: false
 - name: test/samara.json
   visible: false
   text: |-
@@ -288,6 +358,87 @@ files:
       }
     }
   learner_created: false
-feedback_link: https://hyperskill.org/projects/120/stages/649/implement#comment
-status: Unchecked
+- name: test/baltimore.json
+  visible: false
+  text: |-
+    {
+      "SubwayLink": {
+        "1": "Owings Mills",
+        "2": "Old Court",
+        "3": "Milford Mill",
+        "4": "Reiserstown Plaza",
+        "5": "Rogers Avenue",
+        "6": "West Cold Spring",
+        "7": "Mondawmin",
+        "8": "Penn North",
+        "9": "Uptown",
+        "10": "State Center",
+        "11": "Lexington Market",
+        "12": "Charles Center",
+        "13": "Shot Tower/Market Place",
+        "14": "Johns Hopkins Hospital"
+      }
+    }
+  learner_created: false
+- name: src/metro/Station.java
+  visible: true
+  learner_created: true
+- name: src/metro/Metro.java
+  visible: true
+  learner_created: true
+- name: src/metro/util/GsonParser.java
+  visible: true
+  learner_created: true
+- name: src/metro/util/commands/CommandAppend.java
+  visible: true
+  learner_created: true
+- name: src/metro/util/commands/CommandRemove.java
+  visible: true
+  learner_created: true
+- name: src/metro/util/commands/CommandAddHead.java
+  visible: true
+  learner_created: true
+- name: src/metro/util/commands/Command.java
+  visible: true
+  learner_created: true
+- name: src/metro/util/commands/CommandOutput.java
+  visible: true
+  learner_created: true
+- name: src/metro/util/ParserInputCommand.java
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/10342#comment
+status: Failed
+feedback:
+  message: |-
+    Error in test #1
+
+    The program Main has unexpectedly terminated.
+    It finished execution too early, should continue running.
+
+    Please find below the output of your program during this failed test.
+
+    ---
+
+    Arguments: ./test/baltimore.json
+
+    depot - { -   &quot;SubwayLink&quot;: {
+    { -   &quot;SubwayLink&quot;: { -     &quot;1&quot;: &quot;Owings Mills&quot;,
+      &quot;SubwayLink&quot;: { -     &quot;1&quot;: &quot;Owings Mills&quot;, -     &quot;2&quot;: &quot;Old Court&quot;,
+        &quot;1&quot;: &quot;Owings Mills&quot;, -     &quot;2&quot;: &quot;Old Court&quot;, -     &quot;3&quot;: &quot;Milford Mill&quot;,
+        &quot;2&quot;: &quot;Old Court&quot;, -     &quot;3&quot;: &quot;Milford Mill&quot;, -     &quot;4&quot;: &quot;Reiserstown Plaza&quot;,
+        &quot;3&quot;: &quot;Milford Mill&quot;, -     &quot;4&quot;: &quot;Reiserstown Plaza&quot;, -     &quot;5&quot;: &quot;Rogers Avenue&quot;,
+        &quot;4&quot;: &quot;Reiserstown Plaza&quot;, -     &quot;5&quot;: &quot;Rogers Avenue&quot;, -     &quot;6&quot;: &quot;West Cold Spring&quot;,
+        &quot;5&quot;: &quot;Rogers Avenue&quot;, -     &quot;6&quot;: &quot;West Cold Spring&quot;, -     &quot;7&quot;: &quot;Mondawmin&quot;,
+        &quot;6&quot;: &quot;West Cold Spring&quot;, -     &quot;7&quot;: &quot;Mondawmin&quot;, -     &quot;8&quot;: &quot;Penn North&quot;,
+        &quot;7&quot;: &quot;Mondawmin&quot;, -     &quot;8&quot;: &quot;Penn North&quot;, -     &quot;9&quot;: &quot;Uptown&quot;,
+        &quot;8&quot;: &quot;Penn North&quot;, -     &quot;9&quot;: &quot;Uptown&quot;, -     &quot;10&quot;: &quot;State Center&quot;,
+        &quot;9&quot;: &quot;Uptown&quot;, -     &quot;10&quot;: &quot;State Center&quot;, -     &quot;11&quot;: &quot;Lexington Market&quot;,
+        &quot;10&quot;: &quot;State Center&quot;, -     &quot;11&quot;: &quot;Lexington Market&quot;, -     &quot;12&quot;: &quot;Charles Center&quot;,
+        &quot;11&quot;: &quot;Lexington Market&quot;, -     &quot;12&quot;: &quot;Charles Center&quot;, -     &quot;13&quot;: &quot;Shot Tower/Market Place&quot;,
+        &quot;12&quot;: &quot;Charles Center&quot;, -     &quot;13&quot;: &quot;Shot Tower/Market Place&quot;, -     &quot;14&quot;: &quot;Johns Hopkins Hospital&quot;
+        &quot;13&quot;: &quot;Shot Tower/Market Place&quot;, -     &quot;14&quot;: &quot;Johns Hopkins Hospital&quot; -   }
+        &quot;14&quot;: &quot;Johns Hopkins Hospital&quot; -   } - }
+      } - } - depot
+  time: Thu, 17 Mar 2022 09:55:54 UTC
 record: -1

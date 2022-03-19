@@ -1,40 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-16T15:33:06" hostname="FRACTAL" time="0.119">
+<testsuite name="Tests" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-03-17T09:55:54" hostname="FRACTAL" time="0.136">
   <properties/>
-  <testcase name="start" classname="Tests" time="0.119"/>
+  <testcase name="start" classname="Tests" time="0.136">
+    <failure message="java.lang.AssertionError: Error in test #1&#10;&#10;The program Main has unexpectedly terminated.&#10;It finished execution too early, should continue running.&#10;&#10;Please find below the output of your program during this failed test.&#10;&#10;---&#10;&#10;Arguments: ./test/baltimore.json&#10;&#10;depot - { -   &quot;SubwayLink&quot;: {&#10;{ -   &quot;SubwayLink&quot;: { -     &quot;1&quot;: &quot;Owings Mills&quot;,&#10;  &quot;SubwayLink&quot;: { -     &quot;1&quot;: &quot;Owings Mills&quot;, -     &quot;2&quot;: &quot;Old Court&quot;,&#10;    &quot;1&quot;: &quot;Owings Mills&quot;, -     &quot;2&quot;: &quot;Old Court&quot;, -     &quot;3&quot;: &quot;Milford Mill&quot;,&#10;    &quot;2&quot;: &quot;Old Court&quot;, -     &quot;3&quot;: &quot;Milford Mill&quot;, -     &quot;4&quot;: &quot;Reiserstown Plaza&quot;,&#10;    &quot;3&quot;: &quot;Milford Mill&quot;, -     &quot;4&quot;: &quot;Reiserstown Plaza&quot;, -     &quot;5&quot;: &quot;Rogers Avenue&quot;,&#10;    &quot;4&quot;: &quot;Reiserstown Plaza&quot;, -     &quot;5&quot;: &quot;Rogers Avenue&quot;, -     &quot;6&quot;: &quot;West Cold Spring&quot;,&#10;    &quot;5&quot;: &quot;Rogers Avenue&quot;, -     &quot;6&quot;: &quot;West Cold Spring&quot;, -     &quot;7&quot;: &quot;Mondawmin&quot;,&#10;    &quot;6&quot;: &quot;West Cold Spring&quot;, -     &quot;7&quot;: &quot;Mondawmin&quot;, -     &quot;8&quot;: &quot;Penn North&quot;,&#10;    &quot;7&quot;: &quot;Mondawmin&quot;, -     &quot;8&quot;: &quot;Penn North&quot;, -     &quot;9&quot;: &quot;Uptown&quot;,&#10;    &quot;8&quot;: &quot;Penn North&quot;, -     &quot;9&quot;: &quot;Uptown&quot;, -     &quot;10&quot;: &quot;State Center&quot;,&#10;    &quot;9&quot;: &quot;Uptown&quot;, -     &quot;10&quot;: &quot;State Center&quot;, -     &quot;11&quot;: &quot;Lexington Market&quot;,&#10;    &quot;10&quot;: &quot;State Center&quot;, -     &quot;11&quot;: &quot;Lexington Market&quot;, -     &quot;12&quot;: &quot;Charles Center&quot;,&#10;    &quot;11&quot;: &quot;Lexington Market&quot;, -     &quot;12&quot;: &quot;Charles Center&quot;, -     &quot;13&quot;: &quot;Shot Tower/Market Place&quot;,&#10;    &quot;12&quot;: &quot;Charles Center&quot;, -     &quot;13&quot;: &quot;Shot Tower/Market Place&quot;, -     &quot;14&quot;: &quot;Johns Hopkins Hospital&quot;&#10;    &quot;13&quot;: &quot;Shot Tower/Market Place&quot;, -     &quot;14&quot;: &quot;Johns Hopkins Hospital&quot; -   }&#10;    &quot;14&quot;: &quot;Johns Hopkins Hospital&quot; -   } - }&#10;  } - } - depot" type="java.lang.AssertionError">java.lang.AssertionError: Error in test #1
+
+The program Main has unexpectedly terminated.
+It finished execution too early, should continue running.
+
+Please find below the output of your program during this failed test.
+
+---
+
+Arguments: ./test/baltimore.json
+
+depot - { -   &quot;SubwayLink&quot;: {
+{ -   &quot;SubwayLink&quot;: { -     &quot;1&quot;: &quot;Owings Mills&quot;,
+  &quot;SubwayLink&quot;: { -     &quot;1&quot;: &quot;Owings Mills&quot;, -     &quot;2&quot;: &quot;Old Court&quot;,
+    &quot;1&quot;: &quot;Owings Mills&quot;, -     &quot;2&quot;: &quot;Old Court&quot;, -     &quot;3&quot;: &quot;Milford Mill&quot;,
+    &quot;2&quot;: &quot;Old Court&quot;, -     &quot;3&quot;: &quot;Milford Mill&quot;, -     &quot;4&quot;: &quot;Reiserstown Plaza&quot;,
+    &quot;3&quot;: &quot;Milford Mill&quot;, -     &quot;4&quot;: &quot;Reiserstown Plaza&quot;, -     &quot;5&quot;: &quot;Rogers Avenue&quot;,
+    &quot;4&quot;: &quot;Reiserstown Plaza&quot;, -     &quot;5&quot;: &quot;Rogers Avenue&quot;, -     &quot;6&quot;: &quot;West Cold Spring&quot;,
+    &quot;5&quot;: &quot;Rogers Avenue&quot;, -     &quot;6&quot;: &quot;West Cold Spring&quot;, -     &quot;7&quot;: &quot;Mondawmin&quot;,
+    &quot;6&quot;: &quot;West Cold Spring&quot;, -     &quot;7&quot;: &quot;Mondawmin&quot;, -     &quot;8&quot;: &quot;Penn North&quot;,
+    &quot;7&quot;: &quot;Mondawmin&quot;, -     &quot;8&quot;: &quot;Penn North&quot;, -     &quot;9&quot;: &quot;Uptown&quot;,
+    &quot;8&quot;: &quot;Penn North&quot;, -     &quot;9&quot;: &quot;Uptown&quot;, -     &quot;10&quot;: &quot;State Center&quot;,
+    &quot;9&quot;: &quot;Uptown&quot;, -     &quot;10&quot;: &quot;State Center&quot;, -     &quot;11&quot;: &quot;Lexington Market&quot;,
+    &quot;10&quot;: &quot;State Center&quot;, -     &quot;11&quot;: &quot;Lexington Market&quot;, -     &quot;12&quot;: &quot;Charles Center&quot;,
+    &quot;11&quot;: &quot;Lexington Market&quot;, -     &quot;12&quot;: &quot;Charles Center&quot;, -     &quot;13&quot;: &quot;Shot Tower/Market Place&quot;,
+    &quot;12&quot;: &quot;Charles Center&quot;, -     &quot;13&quot;: &quot;Shot Tower/Market Place&quot;, -     &quot;14&quot;: &quot;Johns Hopkins Hospital&quot;
+    &quot;13&quot;: &quot;Shot Tower/Market Place&quot;, -     &quot;14&quot;: &quot;Johns Hopkins Hospital&quot; -   }
+    &quot;14&quot;: &quot;Johns Hopkins Hospital&quot; -   } - }
+  } - } - depot
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</failure>
+  </testcase>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
-depot - Owings Mills - Old Court
-Owings Mills - Old Court - Milford Mill
-Old Court - Milford Mill - Reiserstown Plaza
-Milford Mill - Reiserstown Plaza - Rogers Avenue
-Reiserstown Plaza - Rogers Avenue - West Cold Spring
-Rogers Avenue - West Cold Spring - Mondawmin
-West Cold Spring - Mondawmin - Penn North
-Mondawmin - Penn North - Uptown
-Penn North - Uptown - State Center
-Uptown - State Center - Lexington Market
-State Center - Lexington Market - Charles Center
-Lexington Market - Charles Center - Shot Tower/Market Place
-Charles Center - Shot Tower/Market Place - Johns Hopkins Hospital
-Shot Tower/Market Place - Johns Hopkins Hospital - depot
-?[1;31m
-Start test 2?[0m
-?[1;31m
-Start test 3?[0m
-Error! Such a file doesn't exist!
-?[1;31m
-Start test 4?[0m
-depot - Alabinskaya - Rossiyskaya
-Alabinskaya - Rossiyskaya - Moskovskaya
-Rossiyskaya - Moskovskaya - Gagarinskaya
-Moskovskaya - Gagarinskaya - Sportivnaya
-Gagarinskaya - Sportivnaya - Sovetskaya
-Sportivnaya - Sovetskaya - Pobeda
-Sovetskaya - Pobeda - Bezymyanka
-Pobeda - Bezymyanka - Kirovskaya
-Bezymyanka - Kirovskaya - Yungorodok
-Kirovskaya - Yungorodok - depot
+depot - { -   "SubwayLink": {
+{ -   "SubwayLink": { -     "1": "Owings Mills",
+  "SubwayLink": { -     "1": "Owings Mills", -     "2": "Old Court",
+    "1": "Owings Mills", -     "2": "Old Court", -     "3": "Milford Mill",
+    "2": "Old Court", -     "3": "Milford Mill", -     "4": "Reiserstown Plaza",
+    "3": "Milford Mill", -     "4": "Reiserstown Plaza", -     "5": "Rogers Avenue",
+    "4": "Reiserstown Plaza", -     "5": "Rogers Avenue", -     "6": "West Cold Spring",
+    "5": "Rogers Avenue", -     "6": "West Cold Spring", -     "7": "Mondawmin",
+    "6": "West Cold Spring", -     "7": "Mondawmin", -     "8": "Penn North",
+    "7": "Mondawmin", -     "8": "Penn North", -     "9": "Uptown",
+    "8": "Penn North", -     "9": "Uptown", -     "10": "State Center",
+    "9": "Uptown", -     "10": "State Center", -     "11": "Lexington Market",
+    "10": "State Center", -     "11": "Lexington Market", -     "12": "Charles Center",
+    "11": "Lexington Market", -     "12": "Charles Center", -     "13": "Shot Tower/Market Place",
+    "12": "Charles Center", -     "13": "Shot Tower/Market Place", -     "14": "Johns Hopkins Hospital"
+    "13": "Shot Tower/Market Place", -     "14": "Johns Hopkins Hospital" -   }
+    "14": "Johns Hopkins Hospital" -   } - }
+  } - } - depot
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

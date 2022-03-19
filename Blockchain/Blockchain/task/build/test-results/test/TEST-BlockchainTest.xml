@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="BlockchainTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-19T15:19:41" hostname="FRACTAL" time="0.166">
+  <properties/>
+  <testcase name="start" classname="BlockchainTest" time="0.166"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+Block: 
+Id: 1
+Timestamp: 1647703181370
+Hash of the previous block: 
+0
+Hash of the block: 
+6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b
+
+Block: 
+Id: 2
+Timestamp: 1647703181370
+Hash of the previous block: 
+6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b
+Hash of the block: 
+d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35
+
+Block: 
+Id: 3
+Timestamp: 1647703181370
+Hash of the previous block: 
+d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35
+Hash of the block: 
+4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce
+
+Block: 
+Id: 4
+Timestamp: 1647703181370
+Hash of the previous block: 
+4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce
+Hash of the block: 
+4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a
+
+Block: 
+Id: 5
+Timestamp: 1647703181370
+Hash of the previous block: 
+4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a
+Hash of the block: 
+ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d
+
+?[1;31m
+Start test 2?[0m
+Block: 
+Id: 1
+Timestamp: 1647703181439
+Hash of the previous block: 
+0
+Hash of the block: 
+6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b
+
+Block: 
+Id: 2
+Timestamp: 1647703181439
+Hash of the previous block: 
+6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b
+Hash of the block: 
+d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35
+
+Block: 
+Id: 3
+Timestamp: 1647703181439
+Hash of the previous block: 
+d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35
+Hash of the block: 
+4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce
+
+Block: 
+Id: 4
+Timestamp: 1647703181439
+Hash of the previous block: 
+4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce
+Hash of the block: 
+4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a
+
+Block: 
+Id: 5
+Timestamp: 1647703181440
+Hash of the previous block: 
+4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a
+Hash of the block: 
+ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
