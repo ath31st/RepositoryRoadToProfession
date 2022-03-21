@@ -12,9 +12,11 @@ public class Block {
     private final int magicNumber;
     private long timeGenerateBlock;
     private int numberOfZeroes;
+    private int numberOfMiner;
 
-    public Block(int id, String hashOfPreviousBlock, int numberOfZeroes) {
+    public Block(int id, String hashOfPreviousBlock, int numberOfZeroes, int numberOfMiner) {
         timeGenerateBlock = System.currentTimeMillis();
+        this.numberOfMiner = numberOfMiner;
         this.numberOfZeroes = numberOfZeroes;
         this.id = id;
         this.magicNumber = (int)(Math.random() * 9999 + 1);
@@ -47,12 +49,14 @@ public class Block {
     @Override
     public String toString() {
         return "Block: " + "\n" +
+                "Created by miner # " + numberOfMiner + "\n" +
                 "Id: " + id + "\n" +
                 "Timestamp: " + timestamp + "\n" +
                 "Magic number: " + magicNumber + "\n" +
                 "Hash of the previous block: " + "\n" + hashOfPreviousBlock + "\n" +
                 "Hash of the block: " + "\n" + hashOfBlock + "\n" +
-                "Block was generating for " + TimeUnit.MILLISECONDS.toSeconds(timeGenerateBlock) + " seconds" + "\n";
+                "Block was generating for " + TimeUnit.MILLISECONDS.toSeconds(timeGenerateBlock) + " seconds" + "\n" +
+                "N was increased to " + numberOfZeroes + "\n";
     }
     public static String applySha256(String input, int numberOfZeroes) {
         try {
