@@ -1,19 +1,28 @@
 package blockchain;
 
 import java.security.MessageDigest;
-import java.util.Date;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Application {
+
+    private static int numberOfZeros;
+
     public static void run() {
+
+        try (Scanner scanner = new Scanner(System.in)) {
+            numberOfZeros = scanner.nextInt();
+            System.out.println("Enter how many zeros the hash must start with: " + numberOfZeros);
+        }
+
         LinkedList<Block> blockChain = new LinkedList<>();
 
         int count = 1;
         while (count < 6) {
             if (count == 1) {
-                blockChain.add(new Block(count, new Date().getTime(), applySha256(String.valueOf(count)), "0"));
+                blockChain.add(new Block(count, "0", numberOfZeros));
             } else {
-                blockChain.add(new Block(count, new Date().getTime(), applySha256(String.valueOf(count)), blockChain.getLast().getHashOfBlock()));
+                blockChain.add(new Block(count, blockChain.getLast().getHashOfBlock(), numberOfZeros));
 
             }
             count++;
