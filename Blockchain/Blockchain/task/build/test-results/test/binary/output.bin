@@ -1,124 +1,142 @@
 [1;31m
 Start test 1[0m
-Block: 
-Created by miner # 6
-Id: 1
-Timestamp: 1647878666600
-Magic number: 2979
+	Block: 
+Created by miner # 6
+Id: 1
+Timestamp: 1647957671236
+Magic number: 9654
 Hash of the previous block: 
-0
+0
 Hash of the block: 
-Aeedaf2856c6f433bf7702c252a2ae827d0c114761047f4d46fa4f8953190d55d
-#Block was generating for 0 seconds
+B728f5e3006cb617a83acc29cc22150f010d4acd1528aae465feb8892b6207099
+Block data: 
+$Block was generating for 0 seconds
 N was increased to 0
 
-Block: 
-Created by miner # 6
-Id: 2
-Timestamp: 1647878666600
-Magic number: 1208
+	Block: 
+Created by miner # 6
+Id: 2
+Timestamp: 1647957671236
+Magic number: 8986
 Hash of the previous block: 
-Aeedaf2856c6f433bf7702c252a2ae827d0c114761047f4d46fa4f8953190d55d
+B728f5e3006cb617a83acc29cc22150f010d4acd1528aae465feb8892b6207099
 Hash of the block: 
-A12b637dd6a40e81118a123a7dde7d54c584569c273c31ed71ef33fcaa373112a
-#Block was generating for 0 seconds
+B7e162e2951e5e5cd6a44d4bd2c45cca916ecbcb461dbf2369ec790dbcb7f52af
+Block data: 
+Tom: You're welcome :)
+$Block was generating for 0 seconds
 N was increased to 0
 
-Block: 
-Created by miner # 6
-Id: 3
-Timestamp: 1647878666600
-Magic number: 4636
+	Block: 
+Created by miner # 6
+Id: 3
+Timestamp: 1647957671236
+Magic number: 9987
 Hash of the previous block: 
-A12b637dd6a40e81118a123a7dde7d54c584569c273c31ed71ef33fcaa373112a
+B7e162e2951e5e5cd6a44d4bd2c45cca916ecbcb461dbf2369ec790dbcb7f52af
 Hash of the block: 
-A9daa98ce3a24c2264ed088bb0d65b398e9967e8d16bb6e31467c1fd3a0cd9584
-#Block was generating for 0 seconds
+B19aab7f4503a692ebe10cc414cfa69e92cec950e42d414aab441c06f372cdf00
+Block data: 
+Tom: You're welcome :)
+$Block was generating for 0 seconds
 N was increased to 0
 
-Block: 
-Created by miner # 6
-Id: 4
-Timestamp: 1647878666601
-Magic number: 5353
+	Block: 
+Created by miner # 6
+Id: 4
+Timestamp: 1647957671236
+Magic number: 9829
 Hash of the previous block: 
-A9daa98ce3a24c2264ed088bb0d65b398e9967e8d16bb6e31467c1fd3a0cd9584
+B19aab7f4503a692ebe10cc414cfa69e92cec950e42d414aab441c06f372cdf00
 Hash of the block: 
-Ac34ae04b892e736bd3b54da5d1a469184d2114e115c7ed9f3c9373204ca69b5a
-#Block was generating for 0 seconds
+B56fe4b09b0b1481a7899518816d3d28bb90559f4ac05c05535558a380c06bedb
+Block data: 
+Tom: You're welcome :)
+$Block was generating for 0 seconds
 N was increased to 0
 
-Block: 
-Created by miner # 6
-Id: 5
-Timestamp: 1647878666601
-Magic number: 2719
+	Block: 
+Created by miner # 6
+Id: 5
+Timestamp: 1647957671236
+Magic number: 9172
 Hash of the previous block: 
-Ac34ae04b892e736bd3b54da5d1a469184d2114e115c7ed9f3c9373204ca69b5a
+B56fe4b09b0b1481a7899518816d3d28bb90559f4ac05c05535558a380c06bedb
 Hash of the block: 
-Aefc444fc96ed86d076de5f2575a8591ec4168810fa79cd761ba038a4b1210633
-#Block was generating for 0 seconds
+B6f388c2957a905adf7d81de681761700fceb10f2c835df5b78902de73d781116
+Block data: 
+Tom: You're welcome :)
+$Block was generating for 0 seconds
 N was increased to 0
 
 [1;31m
 Start test 2[0m
-Block: 
-Created by miner # 6
-Id: 1
-Timestamp: 1647878666690
-Magic number: 1316
+	Block: 
+Created by miner # 6
+Id: 1
+Timestamp: 1647957671337
+Magic number: 714
 Hash of the previous block: 
-0
+0
 Hash of the block: 
-Ab572ebd3a02e4754fca2ce9a36598a20853b3bd645fe725e71f4a08f7bd9b5c7
-#Block was generating for 0 seconds
+Bc66bbe9d118f554bfdba35a609848b9ab2d9c22e6bed77be6f8a55e96c295549
+Block data: 
+$Block was generating for 0 seconds
 N was increased to 0
 
-Block: 
-Created by miner # 6
-Id: 2
-Timestamp: 1647878666691
-Magic number: 3662
+	Block: 
+Created by miner # 6
+Id: 2
+Timestamp: 1647957671337
+Magic number: 5034
 Hash of the previous block: 
-Ab572ebd3a02e4754fca2ce9a36598a20853b3bd645fe725e71f4a08f7bd9b5c7
+Bc66bbe9d118f554bfdba35a609848b9ab2d9c22e6bed77be6f8a55e96c295549
 Hash of the block: 
-A989e93d58ab9eaa370ffa8acbc96af71be2a7af61bf34922f6700a896f8455f5
-#Block was generating for 0 seconds
+B8118ace068f81646b3c4a6f76d1b041c725314fcbb4d76b8bd2d94312b771f32
+Block data: 
+Tom: You're welcome :)
+$Block was generating for 0 seconds
 N was increased to 0
 
-Block: 
-Created by miner # 6
-Id: 3
-Timestamp: 1647878666691
-Magic number: 5606
+	Block: 
+Created by miner # 6
+Id: 3
+Timestamp: 1647957671337
+Magic number: 9880
 Hash of the previous block: 
-A989e93d58ab9eaa370ffa8acbc96af71be2a7af61bf34922f6700a896f8455f5
+B8118ace068f81646b3c4a6f76d1b041c725314fcbb4d76b8bd2d94312b771f32
 Hash of the block: 
-A9627db2e2affb3e84f5c9eca7a477480aec7c00821a57d0396cb13bd66489f53
-#Block was generating for 0 seconds
+Bb6b7fe40196712ba37475ce7ac1b61f801ef925fb6008b87fe7c518d9d3eae09
+Block data: 
+Tom: You're welcome :)
+$Block was generating for 0 seconds
 N was increased to 0
 
-Block: 
-Created by miner # 6
-Id: 4
-Timestamp: 1647878666691
-Magic number: 5485
+	Block: 
+Created by miner # 6
+Id: 4
+Timestamp: 1647957671337
+Magic number: 3362
 Hash of the previous block: 
-A9627db2e2affb3e84f5c9eca7a477480aec7c00821a57d0396cb13bd66489f53
+Bb6b7fe40196712ba37475ce7ac1b61f801ef925fb6008b87fe7c518d9d3eae09
 Hash of the block: 
-A7e7d333c0af0cac72e8e513fdd864070d8758c8c271cbf22be247e826173c6c6
-#Block was generating for 0 seconds
+B251851f41520f4dfde680f1053b99966765b5e9c11c8ec8673ca736225d6cdd1
+Block data: 
+Tom: You're welcome :)
+$Block was generating for 0 seconds
 N was increased to 0
 
-Block: 
-Created by miner # 6
-Id: 5
-Timestamp: 1647878666691
-Magic number: 3347
+	Block: 
+Created by miner # 6
+Id: 5
+Timestamp: 1647957671337
+Magic number: 5731
 Hash of the previous block: 
-A7e7d333c0af0cac72e8e513fdd864070d8758c8c271cbf22be247e826173c6c6
+B251851f41520f4dfde680f1053b99966765b5e9c11c8ec8673ca736225d6cdd1
 Hash of the block: 
-A3380f3fe3a5641b1ddd2dd8b3bf8be4a5f37af633b789737b51c93fd0df7d795
-#Block was generating for 0 seconds
+B4fe3714b97368efb042991c06b9744910059ab504ca95db1a9b493d552f2d98c
+Block data: 
+Tom: You're welcome :)
+$Block was generating for 0 seconds
 N was increased to 0
 

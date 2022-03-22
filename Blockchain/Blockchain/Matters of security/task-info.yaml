@@ -240,6 +240,193 @@ files:
         }
     }
   learner_created: false
+- name: src/blockchain/Application.java
+  visible: true
+  text: |
+    package blockchain;
+
+    import java.util.LinkedList;
+    import java.util.List;
+    import java.util.stream.Collectors;
+
+    public class Application {
+
+        private static int numberOfZeros;
+
+        public static void run() {
+
+            Blockchain blockchain = Blockchain.getInstance();
+            LinkedList<Block> blockChain = blockchain.getBlockChain();
+
+            int count = 1;
+            while (count < 6) {
+                if (count == 1) {
+                    blockChain.add(new Block(count, "0", numberOfZeros, 6));
+                } else {
+                    blockChain.add(new Block(count, blockChain.getLast().getHashOfBlock(), numberOfZeros, 6));
+
+                }
+                count++;
+            }
+            List<User> users = List.of(
+                    new User("Nick", "Nick: Hey Tom, nice chat"),
+                    new User("Sarah", "Sarah: You always will be first because it is your blockchain!"),
+                    new User("Tom", "Tom: You're welcome :)"));
+            blockChain = blockChain.stream().map(block -> {
+                if (!(block.getId() == 1)) {
+                    block.setValueIntoBlockData(users.get(2).setMessage());
+                }
+                return block;
+            }).collect(Collectors.toCollection(LinkedList::new));
+
+            for (Block b : blockChain) {
+                b.printResult();
+            }
+        }
+    }
+  learner_created: true
+- name: src/blockchain/Blockchain.java
+  visible: true
+  text: |
+    package blockchain;
+
+    import java.util.LinkedList;
+
+    public class Blockchain {
+        private final LinkedList<Block> blockChain = new LinkedList<>();
+        private static Blockchain INSTANCE;
+
+        private Blockchain() { }
+
+        public static Blockchain getInstance() {
+            if (INSTANCE == null) {
+                INSTANCE = new Blockchain();
+            }
+            return INSTANCE;
+        }
+
+        public LinkedList<Block> getBlockChain() {
+            return blockChain;
+        }
+    }
+  learner_created: true
+- name: src/blockchain/User.java
+  visible: true
+  text: |
+    package blockchain;
+
+    public class User {
+        private String name;
+        private String message;
+
+        public User (String name, String message) {
+            this.name = name;
+            this.message = message;
+        }
+
+        public String setMessage() {
+            return message;
+        }
+    }
+  learner_created: true
+- name: src/blockchain/Block.java
+  visible: true
+  text: |
+    package blockchain;
+
+    import java.security.MessageDigest;
+    import java.util.Date;
+    import java.util.LinkedList;
+    import java.util.concurrent.TimeUnit;
+
+    public class Block {
+        private final int id;
+        private final long timestamp;
+        private final String hashOfBlock;
+        private final String hashOfPreviousBlock;
+        private final int magicNumber;
+        private long timeGenerateBlock;
+        private int numberOfZeroes;
+        private int numberOfMiner;
+        private LinkedList<String> blockData;
+
+        public Block(int id, String hashOfPreviousBlock, int numberOfZeroes, int numberOfMiner) {
+            timeGenerateBlock = System.currentTimeMillis();
+            this.numberOfMiner = numberOfMiner;
+            this.numberOfZeroes = numberOfZeroes;
+            this.id = id;
+            this.magicNumber = (int) (Math.random() * 9999 + 1);
+            this.timestamp = new Date().getTime();
+            this.hashOfBlock = applySha256(String.valueOf(magicNumber), numberOfZeroes);
+            this.hashOfPreviousBlock = hashOfPreviousBlock;
+            this.blockData = new LinkedList<>();
+            timeGenerateBlock = System.currentTimeMillis() - timeGenerateBlock;
+        }
+
+        public String getHashOfBlock() {
+            return hashOfBlock;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        @Override
+        public String toString() {
+            return "Block: " + "\n" +
+                    "Created by miner # " + numberOfMiner + "\n" +
+                    "Id: " + id + "\n" +
+                    "Timestamp: " + timestamp + "\n" +
+                    "Magic number: " + magicNumber + "\n" +
+                    "Hash of the previous block: " + "\n" + hashOfPreviousBlock + "\n" +
+                    "Hash of the block: " + "\n" + hashOfBlock + "\n" +
+                    "Block data: " + "\n" +
+                    "Block was generating for " + TimeUnit.MILLISECONDS.toSeconds(timeGenerateBlock) + " seconds" + "\n" +
+                    "N was increased to " + numberOfZeroes + "\n";
+        }
+
+        public void printResult() {
+            System.out.println("Block: ");
+            System.out.println("Created by miner # " + numberOfMiner);
+            System.out.println("Id: " + id);
+            System.out.println("Timestamp: " + timestamp);
+            System.out.println("Magic number: " + magicNumber);
+            System.out.println("Hash of the previous block: " + "\n" + hashOfPreviousBlock);
+            System.out.println("Hash of the block: " + "\n" + hashOfBlock);
+            System.out.println("Block data: ");
+            if (!(blockData.isEmpty())) printData(blockData);
+            System.out.println("Block was generating for " + TimeUnit.MILLISECONDS.toSeconds(timeGenerateBlock) + " seconds");
+            System.out.println("N was increased to " + numberOfZeroes + "\n");
+
+        }
+
+        public static String applySha256(String input, int numberOfZeroes) {
+            try {
+                MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                /* Applies sha256 to our input */
+                byte[] hash = digest.digest(input.getBytes("UTF-8"));
+                StringBuilder hexString = new StringBuilder();
+                for (byte elem : hash) {
+                    String hex = Integer.toHexString(0xff & elem);
+                    if (hex.length() == 1) hexString.append('0');
+                    hexString.append(hex);
+                }
+                return "0".repeat(numberOfZeroes) + hexString.toString().substring(numberOfZeroes);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        public void setValueIntoBlockData(String value) {
+            this.blockData = blockData;
+            blockData.add(value);
+        }
+
+        private static void printData(LinkedList<String> blockData) {
+            blockData.forEach(System.out::println);
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5417#comment
 status: Unchecked
 record: -1
