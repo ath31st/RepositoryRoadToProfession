@@ -1,5 +1,7 @@
 package blockchain;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.security.MessageDigest;
 import java.util.Date;
 import java.util.LinkedList;
@@ -13,19 +15,21 @@ public class Block {
     private final int magicNumber;
     private long timeGenerateBlock;
     private int numberOfZeroes;
-    private int numberOfMiner;
+    private String nameOfMiner;
     private LinkedList<String> blockData;
+    private LinkedList<String> transaction;
 
-    public Block(int id, String hashOfPreviousBlock, int numberOfZeroes, int numberOfMiner) {
+    public Block(int id, String hashOfPreviousBlock, int numberOfZeroes, String nameOfMiner) {
         timeGenerateBlock = System.currentTimeMillis();
-        this.numberOfMiner = numberOfMiner;
         this.numberOfZeroes = numberOfZeroes;
+        this.nameOfMiner = nameOfMiner;
         this.id = id;
         this.magicNumber = (int) (Math.random() * 9999 + 1);
         this.timestamp = new Date().getTime();
         this.hashOfBlock = applySha256(String.valueOf(magicNumber), numberOfZeroes);
         this.hashOfPreviousBlock = hashOfPreviousBlock;
         this.blockData = new LinkedList<>();
+        this.transaction = new LinkedList<>();
         timeGenerateBlock = System.currentTimeMillis() - timeGenerateBlock;
     }
 
@@ -37,29 +41,21 @@ public class Block {
         return id;
     }
 
-    @Override
-    public String toString() {
-        return "Block: " + "\n" +
-                "Created by miner # " + numberOfMiner + "\n" +
-                "Id: " + id + "\n" +
-                "Timestamp: " + timestamp + "\n" +
-                "Magic number: " + magicNumber + "\n" +
-                "Hash of the previous block: " + "\n" + hashOfPreviousBlock + "\n" +
-                "Hash of the block: " + "\n" + hashOfBlock + "\n" +
-                "Block data: " + "\n" +
-                "Block was generating for " + TimeUnit.MILLISECONDS.toSeconds(timeGenerateBlock) + " seconds" + "\n" +
-                "N was increased to " + numberOfZeroes + "\n";
-    }
-
     public void printResult() {
         System.out.println("Block: ");
-        System.out.println("Created by miner # " + numberOfMiner);
+        System.out.println("Created by: " + nameOfMiner);
+        System.out.println(nameOfMiner + " gets 100 VC");
         System.out.println("Id: " + id);
         System.out.println("Timestamp: " + timestamp);
         System.out.println("Magic number: " + magicNumber);
         System.out.println("Hash of the previous block: " + "\n" + hashOfPreviousBlock);
         System.out.println("Hash of the block: " + "\n" + hashOfBlock);
         System.out.println("Block data: ");
+        if (transaction.isEmpty()) {
+            System.out.println("No transactions");
+        } else {
+            printData(transaction);
+        }
         if (!(blockData.isEmpty())) printData(blockData);
         System.out.println("Block was generating for " + TimeUnit.MILLISECONDS.toSeconds(timeGenerateBlock) + " seconds");
         System.out.println("N was increased to " + numberOfZeroes + "\n");

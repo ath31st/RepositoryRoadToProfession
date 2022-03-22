@@ -13,13 +13,16 @@ public class Application {
         Blockchain blockchain = Blockchain.getInstance();
         LinkedList<Block> blockChain = blockchain.getBlockChain();
 
-        int count = 1;
-        while (count < 6) {
-            if (count == 1) {
-                blockChain.add(new Block(count, "0", numberOfZeros, 6));
-            } else {
-                blockChain.add(new Block(count, blockChain.getLast().getHashOfBlock(), numberOfZeros, 6));
+        Miner miner9 = new Miner("miner9");
 
+        int count = 1;
+        while (count < 16) {
+            if (count == 1) {
+                blockChain.add(new Block(count, "0", numberOfZeros, miner9.getName()));
+                miner9.setScore(miner9.getScore() + 100);
+            } else {
+                blockChain.add(new Block(count, blockChain.getLast().getHashOfBlock(), numberOfZeros, miner9.getName()));
+                miner9.setScore(miner9.getScore() + 100);
             }
             count++;
         }
@@ -28,8 +31,11 @@ public class Application {
                 new User("Sarah", "Sarah: You always will be first because it is your blockchain!"),
                 new User("Tom", "Tom: You're welcome :)"));
         blockChain = blockChain.stream().map(block -> {
-            if (!(block.getId() == 1)) {
+            if (block.getId() != 1) {
                 block.setValueIntoBlockData(users.get(2).setMessage());
+            }
+            if (block.getId() != 1 & block.getId() != 2) {
+                block.setValueIntoBlockData(users.get(0).setMessage());
             }
             return block;
         }).collect(Collectors.toCollection(LinkedList::new));
