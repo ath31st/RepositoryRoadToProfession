@@ -52,10 +52,10 @@ public class QuizService {
                 new Answer(false, "Wrong answer! Please, try again.");
     }
 
-    public void delete(Long id) {
+    public ResponseStatusException delete(Long id) {
         if (quizRepository.findById(id).isPresent()) {
             quizRepository.deleteById(id);
-           // return new ResponseStatusException(HttpStatus.NO_CONTENT);
-        } //else return new ResponseStatusException(HttpStatus.NOT_FOUND);
+            return new ResponseStatusException(HttpStatus.NO_CONTENT);
+        } else return new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 }

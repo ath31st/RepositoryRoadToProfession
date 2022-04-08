@@ -14,7 +14,8 @@ public class WebSecurityConfigurerImpl extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .mvcMatchers("/test").hasAnyRole("USER")
-                .anyRequest().permitAll() // make remaining endpoints public (including POST /register)
+                .mvcMatchers("/api/register").permitAll()
+                .mvcMatchers("/api/**").authenticated()
                 .and()
                 .csrf().disable() // disabling CSRF will allow sending POST request using Postman
                 .httpBasic(); // enables basic auth.
