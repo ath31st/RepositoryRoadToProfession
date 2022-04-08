@@ -3,8 +3,8 @@ package engine.presentation;
 import engine.businesslayer.Quiz;
 import engine.businesslayer.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -37,7 +37,7 @@ public class Controller {
     }
 
     @DeleteMapping("/api/quizzes/{id}")
-    public void deleteQuiz(@PathVariable Long id) {
-         quizService.delete(id);
+    public ResponseEntity deleteQuiz(@PathVariable Long id) {
+        return quizService.delete(id);
     }
 }

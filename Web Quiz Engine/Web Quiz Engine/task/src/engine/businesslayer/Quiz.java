@@ -26,6 +26,9 @@ public class Quiz {
     @NotBlank
     private String text;
 
+    @Column
+    private String creator;
+
     @ElementCollection
     @NotNull
     @Size(min = 2, max = 10)
@@ -74,5 +77,13 @@ public class Quiz {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    @JsonIgnore
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 }
