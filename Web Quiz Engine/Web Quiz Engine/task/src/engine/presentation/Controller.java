@@ -1,9 +1,10 @@
 package engine.presentation;
 
 import engine.businesslayer.Quiz;
-import engine.businesslayer.QuizService;
+import engine.businesslayer.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -33,5 +34,10 @@ public class Controller {
     @PostMapping("/api/quizzes/{id}/solve")
     public Answer getAnswer(@PathVariable Long id, @RequestBody Answer answer) {
         return quizService.returnAnswer(quizService.findQuizById(id), answer);
+    }
+
+    @DeleteMapping("/api/quizzes/{id}")
+    public void deleteQuiz(@PathVariable Long id) {
+         quizService.delete(id);
     }
 }

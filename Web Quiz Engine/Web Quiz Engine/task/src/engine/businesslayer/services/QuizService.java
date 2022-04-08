@@ -1,5 +1,6 @@
-package engine.businesslayer;
+package engine.businesslayer.services;
 
+import engine.businesslayer.Quiz;
 import engine.persistence.QuizRepository;
 import engine.presentation.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +47,15 @@ public class QuizService {
         Collections.sort(listFromAnswer);
         Collections.sort(listFromQuiz);
 
-        return Objects.deepEquals(listFromAnswer,listFromQuiz) ?
+        return Objects.deepEquals(listFromAnswer, listFromQuiz) ?
                 new Answer(true, "Congratulations, you're right!") :
                 new Answer(false, "Wrong answer! Please, try again.");
+    }
+
+    public void delete(Long id) {
+        if (quizRepository.findById(id).isPresent()) {
+            quizRepository.deleteById(id);
+           // return new ResponseStatusException(HttpStatus.NO_CONTENT);
+        } //else return new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 }
