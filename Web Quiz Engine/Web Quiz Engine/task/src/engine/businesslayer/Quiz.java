@@ -1,19 +1,38 @@
-package engine;
+package engine.businesslayer;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
+@Entity
+@Table(name = "quiz")
 public class Quiz {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column
+    @NotBlank
     private String title;
+
+    @Column
+    @NotBlank
     private String text;
-    private List<String> options = new CopyOnWriteArrayList<>();
-    private int answer;
+
+    @ElementCollection
+    @NotNull
+    @Size(min = 2, max = 10)
+    private List<String> options;
+
+    @ElementCollection
+    private List<Integer> answer;
 
     public String getTitle() {
         return title;
@@ -40,28 +59,20 @@ public class Quiz {
     }
 
     @JsonIgnore
-    public int getAnswer() {
+    public List<Integer> getAnswer() {
         return answer;
     }
 
     @JsonProperty
-    public void setAnswer(int answer) {
+    public void setAnswer(List<Integer> answer) {
         this.answer = answer;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public static void setIdAfterCreateList(List<Quiz> quizzes) {
-        int count = 1;
-        for (Quiz quiz : quizzes) {
-            quiz.setId(count);
-            count++;
-        }
     }
 }

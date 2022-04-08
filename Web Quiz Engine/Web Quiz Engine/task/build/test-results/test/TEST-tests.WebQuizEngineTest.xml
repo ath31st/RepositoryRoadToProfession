@@ -1,7 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tests.WebQuizEngineTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-31T11:45:42" hostname="FRACTAL" time="2.986">
+<testsuite name="tests.WebQuizEngineTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-04-08T05:47:43" hostname="FRACTAL" time="5.28">
   <properties/>
-  <testcase name="start" classname="tests.WebQuizEngineTest" time="2.986"/>
+  <testcase name="start" classname="tests.WebQuizEngineTest" time="5.28">
+    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;POST /api/register should respond with status code 200, responded: 404&#10;&#10;Response body:&#10;&#10;{&quot;timestamp&quot;:&quot;2022-04-08T05:47:48.787+00:00&quot;,&quot;status&quot;:404,&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;No message available&quot;,&quot;path&quot;:&quot;/api/register&quot;}&#10;&#10;Please find below the output of your program during this failed test.&#10;&#10;---&#10;&#10;.   ____          _            __ _ _&#10; /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \&#10;( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \&#10; \\/  ___)| |_)| | | | | || (_| |  ) ) ) )&#10;  '  |____| .__|_| |_|_| |_\__, | / / / /&#10; =========|_|==============|___/=/_/_/_/&#10; :: Spring Boot ::                (v2.5.6)&#10;&#10;2022-04-08 08:47:44.177  INFO 16348 --- [    Test worker] engine.WebQuizEngine                     : Starting WebQuizEngine using Java 17.0.1 on Fractal with PID 16348 (started by Fractal in D:\RepositoryRoadToProfession\Web Quiz Engine\Web Quiz Engine\task)&#10;2022-04-08 08:47:44.180  INFO 16348 --- [    Test worker] engine.WebQuizEngine                     : No active profile set, falling back to default profiles: default&#10;2022-04-08 08:47:45.139  INFO 16348 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.&#10;2022-04-08 08:47:45.182  INFO 16348 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 2 JPA repository interfaces.&#10;2022-04-08 08:47:45.799  INFO 16348 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)&#10;2022-04-08 08:47:45.813  INFO 16348 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]&#10;2022-04-08 08:47:45.813  INFO 16348 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]&#10;2022-04-08 08:47:45.925  INFO 16348 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext&#10;2022-04-08 08:47:45.926  INFO 16348 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1701 ms&#10;2022-04-08 08:47:46.054  INFO 16348 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...&#10;2022-04-08 08:47:46.262  INFO 16348 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.&#10;2022-04-08 08:47:46.279  INFO 16348 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../quizdb'&#10;2022-04-08 08:47:46.447  INFO 16348 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]&#10;2022-04-08 08:47:46.508  INFO 16348 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final&#10;2022-04-08 08:47:46.697  INFO 16348 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}&#10;2022-04-08 08:47:46.832  INFO 16348 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect&#10;2022-04-08 08:47:47.521  INFO 16348 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]&#10;2022-04-08 08:47:47.528  INFO 16348 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'&#10;2022-04-08 08:47:47.818  WARN 16348 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning&#10;2022-04-08 08:47:48.368  INFO 16348 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'&#10;2022-04-08 08:47:48.408  INFO 16348 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path ''&#10;2022-04-08 08:47:48.422  INFO 16348 --- [    Test worker] engine.WebQuizEngine                     : Started WebQuizEngine in 4.599 seconds (JVM running for 5.393)&#10;2022-04-08 08:47:48.734  INFO 16348 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'&#10;2022-04-08 08:47:48.734  INFO 16348 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'&#10;2022-04-08 08:47:48.735  INFO 16348 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
+
+POST /api/register should respond with status code 200, responded: 404
+
+Response body:
+
+{&quot;timestamp&quot;:&quot;2022-04-08T05:47:48.787+00:00&quot;,&quot;status&quot;:404,&quot;error&quot;:&quot;Not Found&quot;,&quot;message&quot;:&quot;No message available&quot;,&quot;path&quot;:&quot;/api/register&quot;}
+
+Please find below the output of your program during this failed test.
+
+---
+
+.   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.5.6)
+
+2022-04-08 08:47:44.177  INFO 16348 --- [    Test worker] engine.WebQuizEngine                     : Starting WebQuizEngine using Java 17.0.1 on Fractal with PID 16348 (started by Fractal in D:\RepositoryRoadToProfession\Web Quiz Engine\Web Quiz Engine\task)
+2022-04-08 08:47:44.180  INFO 16348 --- [    Test worker] engine.WebQuizEngine                     : No active profile set, falling back to default profiles: default
+2022-04-08 08:47:45.139  INFO 16348 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-04-08 08:47:45.182  INFO 16348 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 2 JPA repository interfaces.
+2022-04-08 08:47:45.799  INFO 16348 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
+2022-04-08 08:47:45.813  INFO 16348 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-08 08:47:45.813  INFO 16348 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-04-08 08:47:45.925  INFO 16348 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-08 08:47:45.926  INFO 16348 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1701 ms
+2022-04-08 08:47:46.054  INFO 16348 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-04-08 08:47:46.262  INFO 16348 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-04-08 08:47:46.279  INFO 16348 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../quizdb'
+2022-04-08 08:47:46.447  INFO 16348 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-04-08 08:47:46.508  INFO 16348 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2022-04-08 08:47:46.697  INFO 16348 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-04-08 08:47:46.832  INFO 16348 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-04-08 08:47:47.521  INFO 16348 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-04-08 08:47:47.528  INFO 16348 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-04-08 08:47:47.818  WARN 16348 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-04-08 08:47:48.368  INFO 16348 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2022-04-08 08:47:48.408  INFO 16348 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path ''
+2022-04-08 08:47:48.422  INFO 16348 --- [    Test worker] engine.WebQuizEngine                     : Started WebQuizEngine in 4.599 seconds (JVM running for 5.393)
+2022-04-08 08:47:48.734  INFO 16348 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-08 08:47:48.734  INFO 16348 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-08 08:47:48.735  INFO 16348 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</failure>
+  </testcase>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 
@@ -13,51 +106,31 @@ Start test 1?[0m
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v2.5.6)
 
-2022-03-31 14:45:43.485  INFO 12648 --- [    Test worker] engine.WebQuizEngine                     : Starting WebQuizEngine using Java 17.0.1 on Fractal with PID 12648 (started by Fractal in D:\RepositoryRoadToProfession\Web Quiz Engine\Web Quiz Engine\task)
-2022-03-31 14:45:43.489  INFO 12648 --- [    Test worker] engine.WebQuizEngine                     : No active profile set, falling back to default profiles: default
-2022-03-31 14:45:44.628  INFO 12648 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
-2022-03-31 14:45:44.639  INFO 12648 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-03-31 14:45:44.639  INFO 12648 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-2022-03-31 14:45:44.726  INFO 12648 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-03-31 14:45:44.726  INFO 12648 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1190 ms
-2022-03-31 14:45:45.335  INFO 12648 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-2022-03-31 14:45:45.369  INFO 12648 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path ''
-2022-03-31 14:45:45.382  INFO 12648 --- [    Test worker] engine.WebQuizEngine                     : Started WebQuizEngine in 2.231 seconds (JVM running for 2.889)
-2022-03-31 14:45:45.649  INFO 12648 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-03-31 14:45:45.649  INFO 12648 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-03-31 14:45:45.650  INFO 12648 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-?[1;31m
-Start test 2?[0m
-?[1;31m
-Start test 3?[0m
-?[1;31m
-Start test 4?[0m
-?[1;31m
-Start test 5?[0m
-?[1;31m
-Start test 6?[0m
-?[1;31m
-Start test 7?[0m
-?[1;31m
-Start test 8?[0m
-?[1;31m
-Start test 9?[0m
-?[1;31m
-Start test 10?[0m
-?[1;31m
-Start test 11?[0m
-?[1;31m
-Start test 12?[0m
-?[1;31m
-Start test 13?[0m
-?[1;31m
-Start test 14?[0m
-?[1;31m
-Start test 15?[0m
-?[1;31m
-Start test 16?[0m
-?[1;31m
-Start test 17?[0m
+2022-04-08 08:47:44.177  INFO 16348 --- [    Test worker] engine.WebQuizEngine                     : Starting WebQuizEngine using Java 17.0.1 on Fractal with PID 16348 (started by Fractal in D:\RepositoryRoadToProfession\Web Quiz Engine\Web Quiz Engine\task)
+2022-04-08 08:47:44.180  INFO 16348 --- [    Test worker] engine.WebQuizEngine                     : No active profile set, falling back to default profiles: default
+2022-04-08 08:47:45.139  INFO 16348 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-04-08 08:47:45.182  INFO 16348 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 2 JPA repository interfaces.
+2022-04-08 08:47:45.799  INFO 16348 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
+2022-04-08 08:47:45.813  INFO 16348 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-08 08:47:45.813  INFO 16348 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+2022-04-08 08:47:45.925  INFO 16348 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-08 08:47:45.926  INFO 16348 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1701 ms
+2022-04-08 08:47:46.054  INFO 16348 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-04-08 08:47:46.262  INFO 16348 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-04-08 08:47:46.279  INFO 16348 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../quizdb'
+2022-04-08 08:47:46.447  INFO 16348 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-04-08 08:47:46.508  INFO 16348 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2022-04-08 08:47:46.697  INFO 16348 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-04-08 08:47:46.832  INFO 16348 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-04-08 08:47:47.521  INFO 16348 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-04-08 08:47:47.528  INFO 16348 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-04-08 08:47:47.818  WARN 16348 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-04-08 08:47:48.368  INFO 16348 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2022-04-08 08:47:48.408  INFO 16348 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path ''
+2022-04-08 08:47:48.422  INFO 16348 --- [    Test worker] engine.WebQuizEngine                     : Started WebQuizEngine in 4.599 seconds (JVM running for 5.393)
+2022-04-08 08:47:48.734  INFO 16348 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-08 08:47:48.734  INFO 16348 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-08 08:47:48.735  INFO 16348 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
