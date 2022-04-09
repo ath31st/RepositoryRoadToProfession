@@ -1,6 +1,6 @@
 package engine.presentation;
 
-import engine.businesslayer.User;
+import engine.businesslayer.entities.User;
 import engine.businesslayer.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

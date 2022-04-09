@@ -1,6 +1,6 @@
 package engine.businesslayer.services;
 
-import engine.businesslayer.User;
+import engine.businesslayer.entities.User;
 import engine.persistence.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,5 +28,11 @@ public class UserService {
         } else throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         return user;
     }
+
+    public User findByUsername(String username) throws ResponseStatusException {
+        return userRepository.findByUsername(username.toLowerCase());
+               // .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
 
 }

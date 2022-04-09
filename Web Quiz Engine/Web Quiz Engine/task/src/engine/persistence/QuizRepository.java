@@ -1,7 +1,9 @@
 package engine.persistence;
 
-import engine.businesslayer.Quiz;
-import org.springframework.data.repository.CrudRepository;
+import engine.businesslayer.entities.Quiz;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
-public interface QuizRepository extends CrudRepository<Quiz, Long> {
+@Repository
+public interface QuizRepository extends PagingAndSortingRepository<Quiz, Long> {
 }

@@ -1,4 +1,4 @@
-package engine.businesslayer;
+package engine.businesslayer.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;

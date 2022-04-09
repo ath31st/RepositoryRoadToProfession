@@ -1,7 +1,7 @@
 package engine.businesslayer.services;
 
-import engine.businesslayer.User;
-import engine.businesslayer.UserDetailsImpl;
+import engine.businesslayer.entities.User;
+import engine.businesslayer.interfaceimpl.UserDetailsImpl;
 import engine.persistence.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,5 +1,6 @@
-package engine.businesslayer;
+package engine.businesslayer.interfaceimpl;
 
+import engine.businesslayer.entities.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,11 +12,15 @@ public class UserDetailsImpl implements UserDetails {
     private User user;
     private final List<GrantedAuthority> rolesAndAuthorities;
 
+
     public UserDetailsImpl(User user) {
         this.user = user;
         rolesAndAuthorities = List.of(new SimpleGrantedAuthority(user.getRole()));
     }
 
+    public Long getId() {
+        return user.getId();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
