@@ -1,0 +1,228 @@
+type: edu
+custom_name: Show the code!
+files:
+- name: src/platform/CodeSharingPlatform.java
+  visible: true
+  text: |
+    package platform;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.web.bind.annotation.RestController;
+
+    @SpringBootApplication
+    @RestController
+    public class CodeSharingPlatform {
+
+        public static void main(String[] args) {
+            SpringApplication.run(CodeSharingPlatform.class, args);
+        }
+
+    }
+  learner_created: false
+- name: build.gradle
+  visible: true
+  text: |-
+    buildscript {
+        apply plugin: 'hyperskill'
+
+        repositories {
+            mavenCentral()
+        }
+        dependencies {
+            classpath "org.springframework.boot:spring-boot-gradle-plugin:$hs.spring.bootVersion"
+            classpath "io.spring.gradle:dependency-management-plugin:$hs.spring.dependencyManagementVersion"
+        }
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    repositories {
+        mavenCentral()
+    }
+
+    sourceSets.main.resources.srcDirs = ["src/resources"]
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
+  learner_created: false
+- name: src/resources/application.properties
+  visible: true
+  text: |
+    server.port=8889
+    management.endpoints.web.exposure.include=*
+    management.endpoint.shutdown.enabled=true
+  learner_created: false
+- name: test/CodeSharingPlatformTest.java
+  visible: false
+  text: |
+    import org.hyperskill.hstest.dynamic.input.DynamicTesting;
+    import org.hyperskill.hstest.dynamic.input.DynamicTestingMethod;
+    import org.hyperskill.hstest.exception.outcomes.WrongAnswer;
+    import org.hyperskill.hstest.mocks.web.response.HttpResponse;
+    import org.hyperskill.hstest.stage.SpringTest;
+    import org.hyperskill.hstest.testcase.CheckResult;
+    import org.jsoup.Jsoup;
+    import org.jsoup.nodes.Document;
+    import org.jsoup.nodes.Element;
+    import org.jsoup.select.Elements;
+    import platform.CodeSharingPlatform;
+
+    import static org.hyperskill.hstest.testing.expect.Expectation.expect;
+    import static org.hyperskill.hstest.testing.expect.json.JsonChecker.isObject;
+    import static org.hyperskill.hstest.testing.expect.json.JsonChecker.isString;
+
+    public class CodeSharingPlatformTest extends SpringTest {
+        public CodeSharingPlatformTest() {
+            super(CodeSharingPlatform.class);
+        }
+
+        String API_CODE = "/api/code";
+        String WEB_CODE = "/code";
+
+        static void checkStatusCode(HttpResponse resp, int status) {
+            if (resp.getStatusCode() != status) {
+                throw new WrongAnswer(
+                    resp.getRequest().getMethod() + " " +
+                        resp.getRequest().getLocalUri() +
+                        " should respond with status code " + status + ", " +
+                        "responded: " + resp.getStatusCode() + "\n\n" +
+                        "Response body:\n\n" + resp.getContent()
+                );
+            }
+        }
+
+        @DynamicTestingMethod
+        public DynamicTesting[] dt = new DynamicTesting[] {
+            this::getApiCode,
+            this::checkApiCode,
+            this::checkWebCode,
+        };
+
+        String apiSnippet;
+
+        private CheckResult getApiCode() {
+            HttpResponse resp = get(API_CODE).send();
+            checkStatusCode(resp, 200);
+
+            expect(resp.getContent()).asJson().check(
+                isObject()
+                    .value("code", isString(value -> {
+                        apiSnippet = value;
+                        return true;
+                    }))
+            );
+
+            return CheckResult.correct();
+        }
+
+        private CheckResult checkApiCode() {
+            HttpResponse resp = get(API_CODE).send();
+            checkStatusCode(resp, 200);
+
+            expect(resp.getContent()).asJson().check(
+                isObject()
+                    .value("code", isString(value -> apiSnippet.equals(value)))
+            );
+
+            return CheckResult.correct();
+        }
+
+        private CheckResult checkWebCode() {
+            HttpResponse resp = get(WEB_CODE).send();
+            checkStatusCode(resp, 200);
+
+            String html = resp.getContent();
+            Document doc = Jsoup.parse(html);
+
+            if (!doc.title().equals("Code")) {
+                return CheckResult.wrong("GET " + WEB_CODE +
+                    " should contain title \"Code\"");
+            }
+
+            Elements pre = doc.getElementsByTag("pre");
+
+            if (pre.size() != 1) {
+                return CheckResult.wrong("GET " + WEB_CODE +
+                    " should contain a single <pre> element, found: " + pre.size());
+            }
+
+            Element tag = pre.get(0);
+            String webSnippet = tag.text();
+
+            if (!webSnippet.trim().equals(apiSnippet.trim())) {
+                return CheckResult.wrong("Web code snippet " +
+                    "and api code snippet are different");
+            }
+
+            return CheckResult.correct();
+        }
+    }
+  learner_created: false
+- name: src/platform/dataaccesslayer/SnippetsRepository.java
+  visible: true
+  learner_created: true
+- name: src/platform/presentation/ApiController.java
+  visible: true
+  learner_created: true
+- name: src/platform/presentation/WebController.java
+  visible: true
+  learner_created: true
+- name: src/platform/businesslayer/entities/Snippet.java
+  visible: true
+  learner_created: true
+- name: src/platform/businesslayer/services/SnippetService.java
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/projects/130/stages/692/implement#comment
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #3
+
+    GET /code should contain title &quot;Code&quot;
+
+    Please find below the output of your program during this failed test.
+
+    ---
+
+    .   ____          _            __ _ _
+     /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      &#39;  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+     :: Spring Boot ::                (v2.5.6)
+
+    2022-04-11 20:45:26.175  INFO 13624 --- [    Test worker] platform.CodeSharingPlatform             : Starting CodeSharingPlatform using Java 17.0.1 on Fractal with PID 13624 (started by Fractal in D:\RepositoryRoadToProfession\Code Sharing Platform\Code Sharing Platform\task)
+    2022-04-11 20:45:26.178  INFO 13624 --- [    Test worker] platform.CodeSharingPlatform             : No active profile set, falling back to default profiles: default
+    2022-04-11 20:45:27.150  INFO 13624 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2022-04-11 20:45:27.213  INFO 13624 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 1 JPA repository interfaces.
+    2022-04-11 20:45:27.811  INFO 13624 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
+    2022-04-11 20:45:27.824  INFO 13624 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2022-04-11 20:45:27.824  INFO 13624 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+    2022-04-11 20:45:27.937  INFO 13624 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+    2022-04-11 20:45:27.938  INFO 13624 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1709 ms
+    2022-04-11 20:45:28.071  INFO 13624 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+    2022-04-11 20:45:28.287  INFO 13624 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+    2022-04-11 20:45:28.300  INFO 13624 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../snippetsdb&#39;
+    2022-04-11 20:45:28.472  INFO 13624 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+    2022-04-11 20:45:28.536  INFO 13624 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+    2022-04-11 20:45:28.712  INFO 13624 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+    2022-04-11 20:45:28.867  INFO 13624 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+    2022-04-11 20:45:29.554  INFO 13624 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+    2022-04-11 20:45:29.567  INFO 13624 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-04-11 20:45:29.850  WARN 13624 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2022-04-11 20:45:30.385  INFO 13624 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
+    2022-04-11 20:45:30.422  INFO 13624 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path &#39;&#39;
+    2022-04-11 20:45:30.437  INFO 13624 --- [    Test worker] platform.CodeSharingPlatform             : Started CodeSharingPlatform in 4.61 seconds (JVM running for 5.365)
+    2022-04-11 20:45:30.725  INFO 13624 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
+    2022-04-11 20:45:30.726  INFO 13624 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
+    2022-04-11 20:45:30.728  INFO 13624 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+  time: Mon, 11 Apr 2022 17:45:31 UTC
+record: -1

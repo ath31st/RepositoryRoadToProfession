@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Code_Sharing_Platform.iml" filepath="$PROJECT_DIR$/.idea/modules/Code_Sharing_Platform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Code Sharing Platform/task/Code_Sharing_Platform.Code_Sharing_Platform-task.iml" filepath="$PROJECT_DIR$/.idea/modules/Code Sharing Platform/task/Code_Sharing_Platform.Code_Sharing_Platform-task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Code Sharing Platform/task/Code_Sharing_Platform.Code_Sharing_Platform-task.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Code Sharing Platform/task/Code_Sharing_Platform.Code_Sharing_Platform-task.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Code Sharing Platform/task/Code_Sharing_Platform.Code_Sharing_Platform-task.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Code Sharing Platform/task/Code_Sharing_Platform.Code_Sharing_Platform-task.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Code_Sharing_Platform.util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Code_Sharing_Platform.util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Code_Sharing_Platform.util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Code_Sharing_Platform.util.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Code_Sharing_Platform.util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Code_Sharing_Platform.util.test.iml" />
+    </modules>
+  </component>
+</project>
