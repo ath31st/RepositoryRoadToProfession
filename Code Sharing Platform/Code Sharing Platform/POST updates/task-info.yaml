@@ -251,6 +251,167 @@ files:
         }
     }
   learner_created: false
-feedback_link: https://hyperskill.org/projects/130/stages/693/implement#comment
+- name: src/platform/businesslayer/entities/Snippet.java
+  visible: true
+  text: |
+    package platform.businesslayer.entities;
+
+    import com.fasterxml.jackson.annotation.JsonIgnore;
+
+    import javax.persistence.Column;
+    import javax.persistence.Entity;
+    import javax.persistence.GeneratedValue;
+    import javax.persistence.Id;
+
+    @Entity
+    public class Snippet {
+
+        @Column
+        private String code;
+        @Id
+        @GeneratedValue
+        private Long id;
+
+
+        public Snippet(String code) {
+            this.code = code;
+        }
+
+        public Snippet() {
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public void setCode(String code) {
+            this.code = code;
+        }
+        @JsonIgnore
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+    }
+  learner_created: true
+- name: src/platform/dataaccesslayer/SnippetsRepository.java
+  visible: true
+  text: |
+    package platform.dataaccesslayer;
+
+    import org.springframework.data.repository.CrudRepository;
+    import org.springframework.stereotype.Repository;
+    import platform.businesslayer.entities.Snippet;
+
+    @Repository
+    public interface SnippetsRepository extends CrudRepository<Snippet,Long> {
+    }
+  learner_created: true
+- name: src/platform/presentation/WebController.java
+  visible: true
+  text: |
+    package platform.presentation;
+
+    import org.springframework.http.HttpHeaders;
+    import org.springframework.http.ResponseEntity;
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.RestController;
+
+    @RestController
+    public class WebController {
+
+        @GetMapping("/code")
+        public ResponseEntity<String> usingResponseEntityBuilderAndHttpHeaders() {
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.set("title", "Code");
+
+            return ResponseEntity.ok()
+                    .headers(responseHeaders)
+                    .body("<html>\n" +
+                            "<head>\n" +
+                            "    <title>Code</title>\n" +
+                            "</head>\n" +
+                            "<body>\n" +
+                            "<pre>\n" +
+                            "public static void main(String[] args) {\n" +
+                            "    SpringApplication.run(CodeSharingPlatform.class, args);\n" +
+                            "}</pre>\n" +
+                            "</body>\n" +
+                            "</html>");
+        }
+    }
+  learner_created: true
+- name: src/platform/businesslayer/services/SnippetService.java
+  visible: true
+  text: |
+    package platform.businesslayer.services;
+
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpStatus;
+    import org.springframework.stereotype.Service;
+    import org.springframework.web.server.ResponseStatusException;
+    import platform.dataaccesslayer.SnippetsRepository;
+
+    @Service
+    public class SnippetService {
+        private final SnippetsRepository snippetsRepository;
+
+        @Autowired
+        public SnippetService(SnippetsRepository snippetsRepository) {
+            this.snippetsRepository = snippetsRepository;
+        }
+
+        public String getCodeFromSnippetById(Long id) {
+            return snippetsRepository.findById(id)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
+                    .getCode();
+        }
+
+    }
+  learner_created: true
+- name: src/platform/presentation/ApiController.java
+  visible: true
+  text: |
+    package platform.presentation;
+
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.RestController;
+    import platform.businesslayer.entities.Snippet;
+    import platform.businesslayer.services.SnippetService;
+
+    @RestController
+    public class ApiController {
+
+        @Autowired
+        SnippetService snippetService;
+
+        @GetMapping("/api/code")
+        public Snippet getCode() {
+            return new Snippet("public static void main(String[] args) {\n    SpringApplication.run(CodeSharingPlatform.class, args);\n}");
+        }
+    }
+  learner_created: true
+- name: src/platform/webpage/WEB-INF/views/example.html
+  visible: true
+  text: |-
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Code</title>
+    </head>
+    <body>
+        <pre>
+    public static void main(String[] args) {
+        SpringApplication.run(CodeSharingPlatform.class, args);
+    }</pre>
+    </body>
+    </html>
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/11028#comment
 status: Unchecked
 record: -1

@@ -11,11 +11,20 @@ public class WebController {
     @GetMapping("/code")
     public ResponseEntity<String> usingResponseEntityBuilderAndHttpHeaders() {
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Baeldung-Example-Header",
-                "Value-ResponseEntityBuilderWithHttpHeaders");
+        responseHeaders.set("title", "Code");
 
         return ResponseEntity.ok()
                 .headers(responseHeaders)
-                .body("Response with header using ResponseEntity");
+                .body("<html>\n" +
+                        "<head>\n" +
+                        "    <title>Code</title>\n" +
+                        "</head>\n" +
+                        "<body>\n" +
+                        "<pre>\n" +
+                        "public static void main(String[] args) {\n" +
+                        "    SpringApplication.run(CodeSharingPlatform.class, args);\n" +
+                        "}</pre>\n" +
+                        "</body>\n" +
+                        "</html>");
     }
 }
