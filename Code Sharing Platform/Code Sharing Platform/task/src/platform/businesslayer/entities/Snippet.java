@@ -16,12 +16,16 @@ public class Snippet {
     @GeneratedValue
     private Long id;
 
+    @Column
+    private String date;
 
-    public Snippet(String code) {
-        this.code = code;
-    }
 
     public Snippet() {
+    }
+
+    public Snippet(String code, String date) {
+        this.code = code;
+        this.date = date;
     }
 
     public String getCode() {
@@ -31,6 +35,7 @@ public class Snippet {
     public void setCode(String code) {
         this.code = code;
     }
+
     @JsonIgnore
     public Long getId() {
         return id;
@@ -38,5 +43,13 @@ public class Snippet {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String  getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }
