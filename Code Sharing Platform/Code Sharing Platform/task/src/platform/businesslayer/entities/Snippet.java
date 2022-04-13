@@ -2,6 +2,7 @@ package platform.businesslayer.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,7 +46,7 @@ public class Snippet {
         this.id = id;
     }
 
-    public String  getDate() {
+    public String getDate() {
         return date;
     }
 

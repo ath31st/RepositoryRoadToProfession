@@ -310,40 +310,6 @@ files:
     public interface SnippetsRepository extends CrudRepository<Snippet,Long> {
     }
   learner_created: true
-- name: src/platform/presentation/WebController.java
-  visible: true
-  text: |
-    package platform.presentation;
-
-    import org.springframework.http.HttpHeaders;
-    import org.springframework.http.ResponseEntity;
-    import org.springframework.web.bind.annotation.GetMapping;
-    import org.springframework.web.bind.annotation.RestController;
-
-    @RestController
-    public class WebController {
-
-        @GetMapping("/code")
-        public ResponseEntity<String> usingResponseEntityBuilderAndHttpHeaders() {
-            HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.set("title", "Code");
-
-            return ResponseEntity.ok()
-                    .headers(responseHeaders)
-                    .body("<html>\n" +
-                            "<head>\n" +
-                            "    <title>Code</title>\n" +
-                            "</head>\n" +
-                            "<body>\n" +
-                            "<pre>\n" +
-                            "public static void main(String[] args) {\n" +
-                            "    SpringApplication.run(CodeSharingPlatform.class, args);\n" +
-                            "}</pre>\n" +
-                            "</body>\n" +
-                            "</html>");
-        }
-    }
-  learner_created: true
 - name: src/platform/businesslayer/services/SnippetService.java
   visible: true
   text: |
@@ -372,6 +338,23 @@ files:
 
     }
   learner_created: true
+- name: src/platform/webpage/WEB-INF/views/example.html
+  visible: true
+  text: |-
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Code</title>
+    </head>
+    <body>
+        <pre>
+    public static void main(String[] args) {
+        SpringApplication.run(CodeSharingPlatform.class, args);
+    }</pre>
+    </body>
+    </html>
+  learner_created: true
 - name: src/platform/presentation/ApiController.java
   visible: true
   text: |
@@ -395,23 +378,9 @@ files:
         }
     }
   learner_created: true
-- name: src/platform/webpage/WEB-INF/views/example.html
-  visible: true
-  text: |-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Code</title>
-    </head>
-    <body>
-        <pre>
-    public static void main(String[] args) {
-        SpringApplication.run(CodeSharingPlatform.class, args);
-    }</pre>
-    </body>
-    </html>
-  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/11028#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Wed, 13 Apr 2022 11:46:36 UTC
 record: -1

@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import platform.businesslayer.entities.Snippet;
 import platform.businesslayer.services.SnippetService;
 
-import java.util.List;
-
 @RestController
 public class ApiController {
 
@@ -18,12 +16,24 @@ public class ApiController {
     SnippetService snippetService;
 
     @GetMapping("/api/code")
-    public ResponseEntity<List<Snippet>> getCode() {
-        return snippetService.getAllSnippet();
+    public Snippet getSnippet() {
+        return snippetService.getSnippet();
     }
 
+
     @PostMapping("/api/code/new")
-    public Snippet saveNewSnippet(@RequestBody Snippet snippet) {
-        return snippetService.saveNewSnippet(snippet);
+    public ResponseEntity<String> updateSnippet(@RequestBody Snippet snippet) {
+        return snippetService.updateSnippet(snippet);
+    }
+
+
+    @GetMapping("/code")
+    public ResponseEntity<String> usingResponseEntityBuilderAndHttpHeaders() {
+        return snippetService.usingResponseEntityBuilderAndHttpHeaders();
+    }
+
+    @GetMapping("/code/new")
+    public ResponseEntity<String> codeNew() {
+        return snippetService.codeNew();
     }
 }
