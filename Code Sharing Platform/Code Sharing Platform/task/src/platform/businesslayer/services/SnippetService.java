@@ -7,7 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 import platform.businesslayer.entities.Snippet;
 import platform.dataaccesslayer.SnippetsRepository;
 
-import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -33,16 +32,14 @@ public class SnippetService {
         return ResponseEntity.ok().body("{}");
     }
 
-    public ModelAndView getCode(HttpServletResponse response) {
-        response.addHeader("Content-Type", "text/html");
+    public ModelAndView getCode() {
         ModelAndView model = new ModelAndView("Code");
         model.addObject("code", snippetDB.getCode());
         model.addObject("date", snippetDB.getDate());
         return model;
     }
 
-    public ModelAndView getSubmitCode(HttpServletResponse response) {
-        response.addHeader("Content-Type", "text/html");
+    public ModelAndView getSubmitCode() {
         return new ModelAndView("CodeNew");
     }
 

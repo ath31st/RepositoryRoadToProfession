@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 import platform.businesslayer.entities.Snippet;
 import platform.businesslayer.services.SnippetService;
 
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
 public class ApiController {
@@ -31,12 +30,12 @@ public class ApiController {
 
 
     @GetMapping("/code")
-    public ModelAndView getSnippet(HttpServletResponse response) {
-        return snippetService.getCode(response);
+    public ModelAndView getWebSnippet() {
+        return snippetService.getCode();
     }
 
     @GetMapping("/code/new")
-    public ModelAndView submitCode(HttpServletResponse response) {
-        return snippetService.getSubmitCode(response);
+    public ModelAndView submitCode() {
+        return snippetService.getSubmitCode();
     }
 }
