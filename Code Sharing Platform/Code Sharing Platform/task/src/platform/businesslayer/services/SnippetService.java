@@ -13,7 +13,6 @@ import platform.dataaccesslayer.SnippetsRepository;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,14 +27,13 @@ public class SnippetService {
         this.snippetsRepository = snippetsRepository;
     }
 
-    public Snippet getSnippet(Long id) {
+        public Snippet getSnippet(Long id) {
         return snippetsRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+           .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public ResponseEntity<List<Snippet>> getAllSnippet() {
         List<Snippet> snippets = getTenMostRecentlyUploadedSnippets(snippetsRepository.findAll());
-     //   snippets = snippets.stream().sorted(Comparator.comparing(Snippet::getDate).reversed()).collect(Collectors.toList());
         return snippets.isEmpty() ? ResponseEntity.ok().build() : ResponseEntity.ok(snippets);
     }
 
