@@ -1,41 +1,64 @@
 package platform.businesslayer.services;
 
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 import platform.businesslayer.entities.Snippet;
 import platform.dataaccesslayer.SnippetsRepository;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SnippetService {
     private final SnippetsRepository snippetsRepository;
-    private static final String DATE_FORMATTER = "yyyy/MM/dd HH:mm:ss";
-    private Snippet snippetDB = new Snippet("public static void ...", "2020/01/01 12:00:03");
+    private static final String DATE_FORMATTER = "yyyy-MM-dd HH:mm:ss.SSS";
 
     @Autowired
     public SnippetService(SnippetsRepository snippetsRepository) {
         this.snippetsRepository = snippetsRepository;
     }
 
-    public Snippet getSnippet() {
-        return snippetDB;
+    public Snippet getSnippet(Long id) {
+        return snippetsRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    public ResponseEntity<String> updateSnippet(Snippet snippet) {
+    public ResponseEntity<List<Snippet>> getAllSnippet() {
+        List<Snippet> snippets = getTenMostRecentlyUploadedSnippets(snippetsRepository.findAll());
+     //   snippets = snippets.stream().sorted(Comparator.comparing(Snippet::getDate).reversed()).collect(Collectors.toList());
+        return snippets.isEmpty() ? ResponseEntity.ok().build() : ResponseEntity.ok(snippets);
+    }
+
+    public ResponseEntity<String> saveSnippet(Snippet snippet) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATTER);
-        snippetDB.setDate(LocalDateTime.now().format(formatter));
-        snippetDB.setCode(snippet.getCode());
-        return ResponseEntity.ok().body("{}");
+        snippet.setDate(LocalDateTime.now().format(formatter));
+        snippetsRepository.save(snippet);
+        return ResponseEntity.ok().body("{ \"id\" : \"" + snippet.getId() + "\" }");
     }
 
-    public ModelAndView getCode() {
-        ModelAndView model = new ModelAndView("Code");
-        model.addObject("code", snippetDB.getCode());
-        model.addObject("date", snippetDB.getDate());
+    public ModelAndView getWebSnippet(Long id) {
+        ModelAndView model = new ModelAndView("Snippet");
+        Snippet snippet = snippetsRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        model.addObject("code", snippet.getCode());
+        model.addObject("date", snippet.getDate());
+        return model;
+    }
+
+    public ModelAndView getLatestWebSnippets() {
+        ModelAndView model = new ModelAndView("LatestSnippets");
+        List<Snippet> snippets = getTenMostRecentlyUploadedSnippets(snippetsRepository.findAll());
+        model.addObject("snippets", snippets);
         return model;
     }
 
@@ -43,27 +66,20 @@ public class SnippetService {
         return new ModelAndView("CodeNew");
     }
 
-}
-
-
-/*
-    public ResponseEntity<List<Snippet>> getAllSnippet() {
-        Iterable<Snippet> iterable = snippetsRepository.findAll();
+    public static List<Snippet> getTenMostRecentlyUploadedSnippets(Iterable<Snippet> iterable) {
         List<Snippet> snippets = new ArrayList<>();
         iterable.iterator().forEachRemaining(snippets::add);
-        return snippets.isEmpty() ? ResponseEntity.ok().build() : ResponseEntity.ok(snippets);
+        if (snippets.size() < 11) {
+            return snippets.stream()
+                    .sorted(Comparator.comparing(Snippet::getDate).reversed())
+                    .collect(Collectors.toList());
+        } else {
+            return snippets.stream()
+                    .skip(snippets.size() - 10)
+                    .sorted(Comparator.comparing(Snippet::getDate).reversed())
+                    .collect(Collectors.toList());
+        }
     }
 
-    public String getCodeFromSnippetById(Long id) {
-        return snippetsRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
-                .getCode();
-    }
+}
 
-    public Snippet saveNewSnippet(Snippet snippet) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATTER);
-        snippet.setDate(LocalDateTime.now().format(formatter));
-        snippetsRepository.save(snippet);
-        return new Snippet();
-    }
-*/

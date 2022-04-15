@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Latest</title>
+    <link th:href="@{/css/mystyle.css}" rel="stylesheet"/>
+</head>
+<body>
+<h2>Snippets repository</h2>
+<tr th:each="snippet : ${snippets}">
+    <span><td th:text="${snippet.date}"></td></span>
+    <pre><td th:text="${snippet.code}"></td></pre>
+</tr>
+</body>
+</html>

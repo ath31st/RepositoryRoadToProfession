@@ -643,76 +643,21 @@ files:
         }
     }
   learner_created: true
-- name: src/platform/webpage/WEB-INF/views/example.html
-  visible: true
-  text: |-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Code</title>
-    </head>
-    <body>
-        <pre>
-    public static void main(String[] args) {
-        SpringApplication.run(CodeSharingPlatform.class, args);
-    }</pre>
-    </body>
-    </html>
-  learner_created: true
-- name: src/resources/templates/Code.html
-  visible: true
-  learner_created: true
 - name: src/resources/templates/CodeNew.html
   visible: true
   learner_created: true
+- name: src/resources/templates/LatestSnippets.html
+  visible: true
+  learner_created: true
+- name: src/resources/templates/Snippet.html
+  visible: true
+  learner_created: true
+- name: src/resources/static/css/mystyle.css
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/11029#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #2
-
-    The JSON object should contain a key &quot;id&quot;
-
-    Full JSON:
-    {}
-
-    Please find below the output of your program during this failed test.
-
-    ---
-
-    .   ____          _            __ _ _
-     /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
-    ( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
-     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-      &#39;  |____| .__|_| |_|_| |_\__, | / / / /
-     =========|_|==============|___/=/_/_/_/
-     :: Spring Boot ::                (v2.5.6)
-
-    2022-04-13 15:56:54.812  INFO 9544 --- [    Test worker] platform.CodeSharingPlatform             : Starting CodeSharingPlatform using Java 17.0.1 on Fractal with PID 9544 (started by Fractal in D:\RepositoryRoadToProfession\Code Sharing Platform\Code Sharing Platform\task)
-    2022-04-13 15:56:54.814  INFO 9544 --- [    Test worker] platform.CodeSharingPlatform             : No active profile set, falling back to default profiles: default
-    2022-04-13 15:56:55.787  INFO 9544 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-    2022-04-13 15:56:55.842  INFO 9544 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 1 JPA repository interfaces.
-    2022-04-13 15:56:56.446  INFO 9544 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
-    2022-04-13 15:56:56.456  INFO 9544 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-    2022-04-13 15:56:56.457  INFO 9544 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-    2022-04-13 15:56:56.566  INFO 9544 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-    2022-04-13 15:56:56.566  INFO 9544 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1697 ms
-    2022-04-13 15:56:56.693  INFO 9544 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-    2022-04-13 15:56:56.914  INFO 9544 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-    2022-04-13 15:56:56.934  INFO 9544 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../snippetsdb&#39;
-    2022-04-13 15:56:57.117  INFO 9544 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-    2022-04-13 15:56:57.196  INFO 9544 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
-    2022-04-13 15:56:57.390  INFO 9544 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-    2022-04-13 15:56:57.529  INFO 9544 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-    2022-04-13 15:56:58.120  INFO 9544 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-    2022-04-13 15:56:58.128  INFO 9544 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
-    2022-04-13 15:56:58.421  WARN 9544 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-    2022-04-13 15:56:58.975  INFO 9544 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
-    2022-04-13 15:56:59.009  INFO 9544 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path &#39;&#39;
-    2022-04-13 15:56:59.022  INFO 9544 --- [    Test worker] platform.CodeSharingPlatform             : Started CodeSharingPlatform in 4.56 seconds (JVM running for 5.317)
-    2022-04-13 15:56:59.310  INFO 9544 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
-    2022-04-13 15:56:59.310  INFO 9544 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
-    2022-04-13 15:56:59.312  INFO 9544 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-  time: Wed, 13 Apr 2022 12:57:00 UTC
+  message: Congratulations!
+  time: Fri, 15 Apr 2022 15:37:22 UTC
 record: 3

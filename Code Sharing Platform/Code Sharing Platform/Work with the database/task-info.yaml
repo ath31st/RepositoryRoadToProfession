@@ -474,6 +474,303 @@ files:
         }
     }
   learner_created: false
+- name: src/platform/businesslayer/entities/Snippet.java
+  visible: true
+  text: |
+    package platform.businesslayer.entities;
+
+    import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+    import javax.persistence.Column;
+    import javax.persistence.Entity;
+    import javax.persistence.GeneratedValue;
+    import javax.persistence.Id;
+
+    @Entity
+    public class Snippet {
+
+        @Column
+        private String code;
+        @Id
+        @GeneratedValue
+        private Long id;
+
+        @Column
+        private String date;
+
+
+        public Snippet() {
+        }
+
+        public Snippet(String code, String date) {
+            this.code = code;
+            this.date = date;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public void setCode(String code) {
+            this.code = code;
+        }
+
+        @JsonIgnore
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
+    }
+  learner_created: true
+- name: src/platform/dataaccesslayer/SnippetsRepository.java
+  visible: true
+  text: |
+    package platform.dataaccesslayer;
+
+    import org.springframework.data.repository.CrudRepository;
+    import org.springframework.stereotype.Repository;
+    import platform.businesslayer.entities.Snippet;
+
+    @Repository
+    public interface SnippetsRepository extends CrudRepository<Snippet,Long> {
+    }
+  learner_created: true
+- name: src/platform/businesslayer/services/SnippetService.java
+  visible: true
+  text: |+
+    package platform.businesslayer.services;
+
+    import org.hibernate.mapping.Collection;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpStatus;
+    import org.springframework.http.ResponseEntity;
+    import org.springframework.stereotype.Service;
+    import org.springframework.web.server.ResponseStatusException;
+    import org.springframework.web.servlet.ModelAndView;
+    import platform.businesslayer.entities.Snippet;
+    import platform.dataaccesslayer.SnippetsRepository;
+
+    import java.time.LocalDateTime;
+    import java.time.format.DateTimeFormatter;
+    import java.util.ArrayList;
+    import java.util.Collections;
+    import java.util.Comparator;
+    import java.util.List;
+    import java.util.stream.Collectors;
+
+    @Service
+    public class SnippetService {
+        private final SnippetsRepository snippetsRepository;
+        private static final String DATE_FORMATTER = "yyyy-MM-dd HH:mm:ss.SSS";
+
+        @Autowired
+        public SnippetService(SnippetsRepository snippetsRepository) {
+            this.snippetsRepository = snippetsRepository;
+        }
+
+        public Snippet getSnippet(Long id) {
+            return snippetsRepository.findById(id)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        }
+
+        public ResponseEntity<List<Snippet>> getAllSnippet() {
+            List<Snippet> snippets = getTenMostRecentlyUploadedSnippets(snippetsRepository.findAll());
+         //   snippets = snippets.stream().sorted(Comparator.comparing(Snippet::getDate).reversed()).collect(Collectors.toList());
+            return snippets.isEmpty() ? ResponseEntity.ok().build() : ResponseEntity.ok(snippets);
+        }
+
+        public ResponseEntity<String> saveSnippet(Snippet snippet) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATTER);
+            snippet.setDate(LocalDateTime.now().format(formatter));
+            snippetsRepository.save(snippet);
+            return ResponseEntity.ok().body("{ \"id\" : \"" + snippet.getId() + "\" }");
+        }
+
+        public ModelAndView getWebSnippet(Long id) {
+            ModelAndView model = new ModelAndView("Snippet");
+            Snippet snippet = snippetsRepository.findById(id)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+            model.addObject("code", snippet.getCode());
+            model.addObject("date", snippet.getDate());
+            return model;
+        }
+
+        public ModelAndView getLatestWebSnippets() {
+            ModelAndView model = new ModelAndView("LatestSnippets");
+            List<Snippet> snippets = getTenMostRecentlyUploadedSnippets(snippetsRepository.findAll());
+            model.addObject("snippets", snippets);
+            return model;
+        }
+
+        public ModelAndView getSubmitCode() {
+            return new ModelAndView("CodeNew");
+        }
+
+        public static List<Snippet> getTenMostRecentlyUploadedSnippets(Iterable<Snippet> iterable) {
+            List<Snippet> snippets = new ArrayList<>();
+            iterable.iterator().forEachRemaining(snippets::add);
+            if (snippets.size() < 11) {
+                return snippets.stream()
+                        .sorted(Comparator.comparing(Snippet::getDate).reversed())
+                        .collect(Collectors.toList());
+            } else {
+                return snippets.stream()
+                        .skip(snippets.size() - 10)
+                        .sorted(Comparator.comparing(Snippet::getDate).reversed())
+                        .collect(Collectors.toList());
+            }
+        }
+
+    }
+
+  learner_created: true
+- name: src/resources/templates/CodeNew.html
+  visible: true
+  text: |-
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Create</title>
+
+    </head>
+    <body>
+    <script>
+        function send() {
+        let object = {
+            "code": document.getElementById("code_snippet").value
+        };
+
+        let json = JSON.stringify(object);
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", '/api/code/new', false)
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.send(json);
+
+        if (xhr.status == 200) {
+          alert("Success!");
+        }
+    }
+
+    </script>
+    <textarea id="code_snippet"></textarea>
+    <br>
+    <button id="send_snippet" type="submit" onclick="send()">Sumbit</button>
+
+    </body>
+    </html>
+  learner_created: true
+- name: src/platform/presentation/ApiController.java
+  visible: true
+  text: |
+    package platform.presentation;
+
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.ResponseEntity;
+    import org.springframework.web.bind.annotation.*;
+    import org.springframework.web.servlet.ModelAndView;
+    import platform.businesslayer.entities.Snippet;
+    import platform.businesslayer.services.SnippetService;
+
+    import java.util.List;
+
+
+    @RestController
+    public class ApiController {
+
+        @Autowired
+        SnippetService snippetService;
+
+        @GetMapping("/api/code/{id}")
+        public Snippet getSnippetById(@PathVariable Long id) {
+            return snippetService.getSnippet(id);
+        }
+
+
+        @PostMapping("/api/code/new")
+        public ResponseEntity<String> saveNewSnippet(@RequestBody Snippet snippet) {
+            return snippetService.saveSnippet(snippet);
+        }
+
+        @GetMapping("/api/code/latest")
+        public ResponseEntity<List<Snippet>> getLatestSnippets() {
+            return snippetService.getAllSnippet();
+        }
+
+        @GetMapping("/code/{id}")
+        public ModelAndView getWebSnippet(@PathVariable Long id) {
+            return snippetService.getWebSnippet(id);
+        }
+
+        @GetMapping("/code/latest")
+        public ModelAndView getLatestWebSnippets() {
+            return snippetService.getLatestWebSnippets();
+        }
+
+        @GetMapping("/code/new")
+        public ModelAndView submitCode() {
+            return snippetService.getSubmitCode();
+        }
+    }
+  learner_created: true
+- name: src/resources/static/css/mystyle.css
+  visible: true
+  text: |2-
+
+     h2 {
+          font-family: sans-serif;
+          font-size: 1.5em;
+          text-transform: uppercase;
+     }
+  learner_created: true
+- name: src/resources/templates/Snippet.html
+  visible: true
+  text: |-
+    <!DOCTYPE html>
+    <html lang="en"  xmlns:th="http://www.thymeleaf.org">
+        <head>
+            <meta charset="UTF-8">
+            <title>Code</title>
+        </head>
+        <body>
+            <span id="load_date" th:text="${date}"></span>
+            <br>
+            <pre th:text="${code}" id="code_snippet"> </pre>
+        </body>
+    </html>
+  learner_created: true
+- name: src/resources/templates/LatestSnippets.html
+  visible: true
+  text: |-
+    <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Latest</title>
+        <link th:href="@{/css/mystyle.css}" rel="stylesheet"/>
+    </head>
+    <body>
+    <h2>Snippets repository</h2>
+    <tr th:each="snippet : ${snippets}">
+        <span><td th:text="${snippet.date}"></td></span>
+        <pre><td th:text="${snippet.code}"></td></pre>
+    </tr>
+    </body>
+    </html>
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/11030#comment
 status: Unchecked
 record: -1
