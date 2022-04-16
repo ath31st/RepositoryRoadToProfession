@@ -1,6 +1,7 @@
 package platform.businesslayer.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 
 import javax.persistence.Column;
@@ -19,6 +20,13 @@ public class Snippet {
 
     @Column
     private String date;
+
+    @Column
+    private Long time;
+    @Column
+    private Long views;
+
+    private String uuid;
 
 
     public Snippet() {
@@ -52,5 +60,32 @@ public class Snippet {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public Long getTime() {
+        return time;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public Long getViews() {
+        return views;
+    }
+
+    public void setViews(Long views) {
+        this.views = views;
+    }
+
+    @JsonIgnore
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }
