@@ -1,21 +1,32 @@
 package recipes;
 
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
 public class Recipe {
-
+    @Id
+    @GeneratedValue
+    private Long id;
+    @Column
     private String name;
+    @Column
     private String description;
-    private String ingredients;
-    private String directions;
 
-    public Recipe(String name, String description, String ingredients, String directions) {
-        this.name = name;
-        this.description = description;
-        this.ingredients = ingredients;
-        this.directions = directions;
-    }
+    @ElementCollection
+    private List<String> ingredients;
+    @ElementCollection
+    private List<String> directions;
 
     public Recipe() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -34,19 +45,19 @@ public class Recipe {
         this.description = description;
     }
 
-    public String getIngredients() {
+    public List<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String ingredients) {
+    public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
 
-    public String getDirections() {
+    public List<String> getDirections() {
         return directions;
     }
 
-    public void setDirections(String directions) {
+    public void setDirections(List<String> directions) {
         this.directions = directions;
     }
 }

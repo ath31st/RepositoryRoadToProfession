@@ -1,10 +1,7 @@
 package recipes;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
@@ -12,13 +9,13 @@ public class Controller {
     @Autowired
     RecipeService recipeService;
 
-    @GetMapping("/api/recipe")
-    public Recipe getRecipe(){
-        return recipeService.getRecipeFromBD();
+    @GetMapping("/api/recipe/{id}")
+    public Recipe getRecipe(@PathVariable Long id) {
+        return recipeService.findRecipeById(id);
     }
 
-    @PostMapping("/api/recipe")
-    public void saveNewRecipe(@RequestBody Recipe recipe){
-        recipeService.saveNewRecipe(recipe);
+    @PostMapping("/api/recipe/new")
+    public String saveNewRecipe(@RequestBody Recipe recipe) {
+       return recipeService.addNewRecipe(recipe);
     }
 }
