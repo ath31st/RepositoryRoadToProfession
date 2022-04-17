@@ -5,7 +5,6 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../../Recipes/task/src">
       <sourceFolder url="file://$MODULE_DIR$/../../../../Recipes/task/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../../Recipes/task/src/generated" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../../Recipes/task/src/resources" type="java-resource" />
     </content>
     <orderEntry type="inheritedJdk" />

@@ -20,7 +20,7 @@ public class RecipeService {
 
     public String addNewRecipe(Recipe recipe){
         recipeRepository.save(recipe);
-        return "\"id\": " + recipe.getId();
+        return "{\"id\": " + recipe.getId() + "}";
     }
 
 
