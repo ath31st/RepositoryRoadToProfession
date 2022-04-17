@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Service
 public class SnippetService {
     private final SnippetsRepository snippetsRepository;
-    private static final String DATE_FORMATTER = "yyyy-MM-dd HH:mm:ss.SSS";
+    private static final String DATE_FORMATTER = "yyyy-MM-dd HH:mm:ss.SSSS";
 
     @Autowired
     public SnippetService(SnippetsRepository snippetsRepository) {
@@ -26,14 +26,18 @@ public class SnippetService {
     }
 
     public Snippet getSnippet(String uuid) {
-       Snippet snippet = snippetsRepository.findByUuid(uuid)
-               .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Snippet snippet = snippetsRepository.findByUuid(uuid)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         if (isSecretCode(snippet)) {
-            viewsRemaining(snippet);
-            snippetsRepository.save(snippet);
-            timesRemaining(snippet);
-            if (snippet.getTime() == 0 | snippet.getViews() == 0){
+            if (snippet.getViews() != 0) {
+                viewsRemaining(snippet);
+                snippetsRepository.save(snippet);
+            }
+            if (snippet.getTime() != 0)
+                timesRemaining(snippet);
+            if (snippet.getTime() == 0 & snippet.getViews() == 0) {
                 snippetsRepository.delete(snippet);
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
             }
         }
         return snippet;
@@ -60,11 +64,15 @@ public class SnippetService {
         Snippet snippet = snippetsRepository.findByUuid(uuid)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         if (isSecretCode(snippet)) {
-            viewsRemaining(snippet);
-            snippetsRepository.save(snippet);
-            timesRemaining(snippet);
-            if (snippet.getTime() == 0 | snippet.getViews() == 0){
+            if (snippet.getViews() != 0) {
+                viewsRemaining(snippet);
+                snippetsRepository.save(snippet);
+            }
+            if (snippet.getTime() != 0)
+                timesRemaining(snippet);
+            if (snippet.getTime() == 0 & snippet.getViews() == 0) {
                 snippetsRepository.delete(snippet);
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
             }
         }
         model.addObject("code", snippet.getCode());
@@ -88,16 +96,16 @@ public class SnippetService {
     public static List<Snippet> getTenMostRecentlyUploadedSnippets(Iterable<Snippet> iterable) {
         List<Snippet> snippets = new ArrayList<>();
         iterable.iterator().forEachRemaining(snippets::add);
+        snippets = snippets.stream()
+                .filter(snippet -> snippet.getTime() == 0 & snippet.getViews() == 0)
+                .sorted(Comparator.comparing(Snippet::getDate).reversed())
+                .collect(Collectors.toList());
+
         if (snippets.size() < 11) {
-            return snippets.stream()
-                    .filter(snippet -> snippet.getTime() == 0 & snippet.getViews() == 0)
-                    .sorted(Comparator.comparing(Snippet::getDate).reversed())
-                    .collect(Collectors.toList());
+            return snippets;
         } else {
             return snippets.stream()
-                    .filter(snippet -> snippet.getTime() == 0 & snippet.getViews() == 0)
-                    .skip(snippets.size() - 10)
-                    .sorted(Comparator.comparing(Snippet::getDate).reversed())
+                    .limit(10)
                     .collect(Collectors.toList());
         }
     }
@@ -108,7 +116,7 @@ public class SnippetService {
 
     public static void viewsRemaining(Snippet snippet) {
         if (snippet.getViews() != null) {
-            snippet.setViews((Math.max(0L,snippet.getViews() - 1)));
+            snippet.setViews((Math.max(0L, snippet.getViews() - 1)));
         }
     }
 
