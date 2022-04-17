@@ -12,7 +12,7 @@
     <body>
         <span id="load_date" th:text="${date}"></span>
         <br>
-        <div th:if="${views > 0}">
+        <div th:if="${snippet.restrictedByViews}">
             <span id="views_restriction" th:text="${views}"></span> more views allowed
         </div>
         <div th:if="${time > 0}">

@@ -28,16 +28,21 @@ public class SnippetService {
     public Snippet getSnippet(String uuid) {
         Snippet snippet = snippetsRepository.findByUuid(uuid)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        if (isSecretCode(snippet)) {
-            if (snippet.getViews() != 0) {
+        if (snippet.isRestricted()) {
+            if (snippet.isRestrictedByViews()) {
+                if (snippet.getViews() == 0) {
+                    snippetsRepository.delete(snippet);
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                }
                 viewsRemaining(snippet);
                 snippetsRepository.save(snippet);
             }
-            if (snippet.getTime() != 0)
+            if (snippet.isRestrictedByTime()) {
                 timesRemaining(snippet);
-            if (snippet.getTime() == 0 & snippet.getViews() == 0) {
-                snippetsRepository.delete(snippet);
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                if (snippet.getTime() == 0) {
+                    snippetsRepository.delete(snippet);
+                    throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                }
             }
         }
         return snippet;
@@ -49,8 +54,14 @@ public class SnippetService {
     }
 
     public ResponseEntity<String> saveSnippet(Snippet snippet) {
-//        if (snippet.getViews() != null && snippet.getViews() < 1) snippet.setViews(null);
-//        if (snippet.getTime() != null && snippet.getTime() < 1) snippet.setTime(null);
+        if (isSecretCode(snippet)) {
+            snippet.setRestricted(true);
+            if (snippet.getTime() != 0)
+                snippet.setRestrictedByTime(true);
+            if (snippet.getViews() != 0) {
+                snippet.setRestrictedByViews(true);
+            }
+        }
         UUID uuid = UUID.randomUUID();
         snippet.setUuid(uuid.toString());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATTER);
@@ -61,20 +72,8 @@ public class SnippetService {
 
     public ModelAndView getWebSnippet(String uuid) {
         ModelAndView model = new ModelAndView("Snippet");
-        Snippet snippet = snippetsRepository.findByUuid(uuid)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        if (isSecretCode(snippet)) {
-            if (snippet.getViews() != 0) {
-                viewsRemaining(snippet);
-                snippetsRepository.save(snippet);
-            }
-            if (snippet.getTime() != 0)
-                timesRemaining(snippet);
-            if (snippet.getTime() == 0 & snippet.getViews() == 0) {
-                snippetsRepository.delete(snippet);
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-            }
-        }
+        Snippet snippet = getSnippet(uuid);
+        model.addObject("restrictedByViews", snippet.isRestrictedByViews());
         model.addObject("code", snippet.getCode());
         model.addObject("date", snippet.getDate());
         model.addObject("views", snippet.getViews());
@@ -115,17 +114,13 @@ public class SnippetService {
     }
 
     public static void viewsRemaining(Snippet snippet) {
-        if (snippet.getViews() != null) {
-            snippet.setViews((Math.max(0L, snippet.getViews() - 1)));
-        }
+        snippet.setViews((Math.max(0L, snippet.getViews() - 1)));
     }
 
     public static void timesRemaining(Snippet snippet) {
-        if (snippet.getTime() != null) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATTER);
-            long secondsDiff = Math.abs(ChronoUnit.SECONDS.between(LocalDateTime.parse(snippet.getDate(), formatter), LocalDateTime.now()));
-            snippet.setTime(Math.max(0L, snippet.getTime() - secondsDiff));
-        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMATTER);
+        long secondsDiff = Math.abs(ChronoUnit.SECONDS.between(LocalDateTime.parse(snippet.getDate(), formatter), LocalDateTime.now()));
+        snippet.setTime(Math.max(0L, snippet.getTime() - secondsDiff));
     }
 
 }

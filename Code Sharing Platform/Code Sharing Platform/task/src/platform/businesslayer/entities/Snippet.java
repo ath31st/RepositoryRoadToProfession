@@ -1,7 +1,6 @@
 package platform.businesslayer.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 
 
 import javax.persistence.Column;
@@ -25,8 +24,17 @@ public class Snippet {
     private Long time = 0L;
     @Column
     private Long views = 0L;
-
+    @Column
     private String uuid;
+    @Column
+    @JsonIgnore
+    private boolean restricted;
+    @JsonIgnore
+    @Column
+    private boolean restrictedByTime;
+    @JsonIgnore
+    @Column
+    private boolean restrictedByViews;
 
 
     public Snippet() {
@@ -62,7 +70,6 @@ public class Snippet {
         this.date = date;
     }
 
-   // @JsonInclude(JsonInclude.Include.NON_NULL)
     public Long getTime() {
         return time;
     }
@@ -71,7 +78,6 @@ public class Snippet {
         this.time = time;
     }
 
-  //  @JsonInclude(JsonInclude.Include.NON_NULL)
     public Long getViews() {
         return views;
     }
@@ -87,5 +93,29 @@ public class Snippet {
 
     public void setUuid(String uuid) {
         this.uuid = uuid;
+    }
+
+    public boolean isRestricted() {
+        return restricted;
+    }
+
+    public void setRestricted(boolean restricted) {
+        this.restricted = restricted;
+    }
+
+    public boolean isRestrictedByTime() {
+        return restrictedByTime;
+    }
+
+    public void setRestrictedByTime(boolean restrictedByTime) {
+        this.restrictedByTime = restrictedByTime;
+    }
+
+    public boolean isRestrictedByViews() {
+        return restrictedByViews;
+    }
+
+    public void setRestrictedByViews(boolean restrictedByViews) {
+        this.restrictedByViews = restrictedByViews;
     }
 }
