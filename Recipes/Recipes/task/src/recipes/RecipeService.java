@@ -20,6 +20,10 @@ public class RecipeService {
     }
 
     public String addNewRecipe(Recipe recipe) {
+        if (recipe.getDirections().stream().anyMatch(String::isBlank) |
+                recipe.getIngredients().stream().anyMatch(String::isBlank)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
         recipeRepository.save(recipe);
         return "{\"id\": " + recipe.getId() + "}";
     }

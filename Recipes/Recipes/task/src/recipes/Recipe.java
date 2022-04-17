@@ -3,6 +3,9 @@ package recipes;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -11,15 +14,19 @@ public class Recipe {
     @Id
     @GeneratedValue
     private Long id;
-    @Column
+    @NotBlank
     private String name;
-    @Column
+    @NotBlank
     private String description;
 
+    @NotNull
     @ElementCollection
-    private List<String> ingredients;
+    @Size(min = 1, max = 100)
+    private List<String> ingredients = new java.util.ArrayList<>();
+    @NotNull
     @ElementCollection
-    private List<String> directions;
+    @Size(min = 1, max = 100)
+    private List<String> directions = new java.util.ArrayList<>();
 
     public Recipe() {
     }
