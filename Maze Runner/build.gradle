@@ -28,19 +28,6 @@ subprojects {
     }
 
     dependencies {
-	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
-implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.13.1'
-// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations
-implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.13.1'
-// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.1'
-// https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
-implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.13.1'
-// https://mvnrepository.com/artifact/com.fasterxml.woodstox/woodstox-core
-implementation group: 'com.fasterxml.woodstox', name: 'woodstox-core', version: '6.2.8'
-// https://mvnrepository.com/artifact/org.codehaus.woodstox/stax2-api
-implementation group: 'org.codehaus.woodstox', name: 'stax2-api', version: '4.2.1'
-
         testImplementation 'com.github.hyperskill:hs-test:release-SNAPSHOT'
     }
 
