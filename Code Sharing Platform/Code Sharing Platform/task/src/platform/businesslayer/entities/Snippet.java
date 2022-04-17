@@ -22,9 +22,9 @@ public class Snippet {
     private String date;
 
     @Column
-    private Long time;
+    private Long time = 0L;
     @Column
-    private Long views;
+    private Long views = 0L;
 
     private String uuid;
 
@@ -62,7 +62,7 @@ public class Snippet {
         this.date = date;
     }
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+   // @JsonInclude(JsonInclude.Include.NON_NULL)
     public Long getTime() {
         return time;
     }
@@ -71,7 +71,7 @@ public class Snippet {
         this.time = time;
     }
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+  //  @JsonInclude(JsonInclude.Include.NON_NULL)
     public Long getViews() {
         return views;
     }

@@ -953,13 +953,13 @@ feedback_link: https://hyperskill.org/learn/step/11031#comment
 status: Failed
 feedback:
   message: |-
-    Wrong answer in test #3
+    Wrong answer in test #108
 
-    GET /api/code/f7e5b72a-0404-43db-ada2-193225bbaebc should respond with status code 200, responded: 400
+    GET /code/8d4bc95a-68f0-4e79-8b7e-5bd5f2bdda51 should respond with status code 200, responded: 404
 
     Response body:
 
-    {&quot;timestamp&quot;:&quot;2022-04-16T07:12:50.512+00:00&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/code/f7e5b72a-0404-43db-ada2-193225bbaebc&quot;}
+    {&quot;timestamp&quot;:&quot;2022-04-17T06:25:26.749+00:00&quot;,&quot;status&quot;:404,&quot;error&quot;:&quot;Not Found&quot;,&quot;path&quot;:&quot;/code/8d4bc95a-68f0-4e79-8b7e-5bd5f2bdda51&quot;}
 
     Please find below the output of your program during this failed test.
 
@@ -973,31 +973,100 @@ feedback:
      =========|_|==============|___/=/_/_/_/
      :: Spring Boot ::                (v2.5.6)
 
-    2022-04-16 10:12:45.633  INFO 7804 --- [    Test worker] platform.CodeSharingPlatform             : Starting CodeSharingPlatform using Java 17.0.1 on Fractal with PID 7804 (started by Fractal in D:\RepositoryRoadToProfession\Code Sharing Platform\Code Sharing Platform\task)
-    2022-04-16 10:12:45.635  INFO 7804 --- [    Test worker] platform.CodeSharingPlatform             : No active profile set, falling back to default profiles: default
-    2022-04-16 10:12:46.656  INFO 7804 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-    2022-04-16 10:12:46.701  INFO 7804 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 1 JPA repository interfaces.
-    2022-04-16 10:12:47.286  INFO 7804 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
-    2022-04-16 10:12:47.297  INFO 7804 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-    2022-04-16 10:12:47.297  INFO 7804 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-    2022-04-16 10:12:47.398  INFO 7804 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-    2022-04-16 10:12:47.399  INFO 7804 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1700 ms
-    2022-04-16 10:12:47.536  INFO 7804 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-    2022-04-16 10:12:47.743  INFO 7804 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-    2022-04-16 10:12:47.754  INFO 7804 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../snippets&#39;
-    2022-04-16 10:12:47.914  INFO 7804 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-    2022-04-16 10:12:47.984  INFO 7804 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
-    2022-04-16 10:12:48.152  INFO 7804 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-    2022-04-16 10:12:48.302  INFO 7804 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-    2022-04-16 10:12:48.862  INFO 7804 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-    2022-04-16 10:12:48.869  INFO 7804 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
-    2022-04-16 10:12:49.153  WARN 7804 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-    2022-04-16 10:12:49.699  INFO 7804 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
-    2022-04-16 10:12:49.741  INFO 7804 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path &#39;&#39;
-    2022-04-16 10:12:49.759  INFO 7804 --- [    Test worker] platform.CodeSharingPlatform             : Started CodeSharingPlatform in 4.485 seconds (JVM running for 5.304)
-    2022-04-16 10:12:50.065  INFO 7804 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
-    2022-04-16 10:12:50.065  INFO 7804 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
-    2022-04-16 10:12:50.067  INFO 7804 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-    2022-04-16 10:12:50.504  WARN 7804 --- [nio-8889-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type &#39;java.lang.String&#39; to required type &#39;java.lang.Long&#39;; nested exception is java.lang.NumberFormatException: For input string: &quot;f7e5b72a-0404-43db-ada2-193225bbaebc&quot;]
-  time: Sat, 16 Apr 2022 07:12:51 UTC
+    2022-04-17 09:25:12.906  INFO 6904 --- [    Test worker] platform.CodeSharingPlatform             : Starting CodeSharingPlatform using Java 17.0.1 on Fractal with PID 6904 (started by Fractal in D:\RepositoryRoadToProfession\Code Sharing Platform\Code Sharing Platform\task)
+    2022-04-17 09:25:12.909  INFO 6904 --- [    Test worker] platform.CodeSharingPlatform             : No active profile set, falling back to default profiles: default
+    2022-04-17 09:25:13.881  INFO 6904 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2022-04-17 09:25:13.940  INFO 6904 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 1 JPA repository interfaces.
+    2022-04-17 09:25:14.542  INFO 6904 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
+    2022-04-17 09:25:14.556  INFO 6904 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2022-04-17 09:25:14.556  INFO 6904 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+    2022-04-17 09:25:14.660  INFO 6904 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+    2022-04-17 09:25:14.660  INFO 6904 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1696 ms
+    2022-04-17 09:25:14.795  INFO 6904 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+    2022-04-17 09:25:15.018  INFO 6904 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+    2022-04-17 09:25:15.031  INFO 6904 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../snippets&#39;
+    2022-04-17 09:25:15.193  INFO 6904 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+    2022-04-17 09:25:15.262  INFO 6904 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+    2022-04-17 09:25:15.508  INFO 6904 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+    2022-04-17 09:25:15.657  INFO 6904 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+    2022-04-17 09:25:16.312  INFO 6904 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+    2022-04-17 09:25:16.322  INFO 6904 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-04-17 09:25:16.683  WARN 6904 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2022-04-17 09:25:17.222  INFO 6904 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
+    2022-04-17 09:25:17.263  INFO 6904 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path &#39;&#39;
+    2022-04-17 09:25:17.276  INFO 6904 --- [    Test worker] platform.CodeSharingPlatform             : Started CodeSharingPlatform in 4.725 seconds (JVM running for 5.46)
+    2022-04-17 09:25:17.553  INFO 6904 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
+    2022-04-17 09:25:17.554  INFO 6904 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
+    2022-04-17 09:25:17.556  INFO 6904 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+    2022-04-17 09:25:19.181  INFO 6904 --- [       Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-04-17 09:25:19.183  INFO 6904 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+    2022-04-17 09:25:19.200  INFO 6904 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+      .   ____          _            __ _ _
+     /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      &#39;  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+     :: Spring Boot ::                (v2.5.6)
+
+    2022-04-17 09:25:19.290  INFO 6904 --- [    Test worker] platform.CodeSharingPlatform             : Starting CodeSharingPlatform using Java 17.0.1 on Fractal with PID 6904 (started by Fractal in D:\RepositoryRoadToProfession\Code Sharing Platform\Code Sharing Platform\task)
+    2022-04-17 09:25:19.290  INFO 6904 --- [    Test worker] platform.CodeSharingPlatform             : No active profile set, falling back to default profiles: default
+    2022-04-17 09:25:19.538  INFO 6904 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2022-04-17 09:25:19.544  INFO 6904 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 1 JPA repository interfaces.
+    2022-04-17 09:25:19.625  INFO 6904 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
+    2022-04-17 09:25:19.626  INFO 6904 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2022-04-17 09:25:19.627  INFO 6904 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+    2022-04-17 09:25:19.650  INFO 6904 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+    2022-04-17 09:25:19.650  INFO 6904 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 358 ms
+    2022-04-17 09:25:19.682  INFO 6904 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+    2022-04-17 09:25:19.694  INFO 6904 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+    2022-04-17 09:25:19.697  INFO 6904 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../snippets&#39;
+    2022-04-17 09:25:19.744  INFO 6904 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+    2022-04-17 09:25:19.750  INFO 6904 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+    2022-04-17 09:25:19.793  INFO 6904 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+    2022-04-17 09:25:19.793  INFO 6904 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-04-17 09:25:19.850  WARN 6904 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2022-04-17 09:25:20.020  INFO 6904 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
+    2022-04-17 09:25:20.035  INFO 6904 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path &#39;&#39;
+    2022-04-17 09:25:20.042  INFO 6904 --- [    Test worker] platform.CodeSharingPlatform             : Started CodeSharingPlatform in 0.772 seconds (JVM running for 8.225)
+    2022-04-17 09:25:20.050  INFO 6904 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
+    2022-04-17 09:25:20.050  INFO 6904 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
+    2022-04-17 09:25:20.051  INFO 6904 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+    2022-04-17 09:25:25.917  INFO 6904 --- [       Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-04-17 09:25:25.918  INFO 6904 --- [       Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+    2022-04-17 09:25:25.932  INFO 6904 --- [       Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+
+      .   ____          _            __ _ _
+     /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      &#39;  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+     :: Spring Boot ::                (v2.5.6)
+
+    2022-04-17 09:25:26.027  INFO 6904 --- [    Test worker] platform.CodeSharingPlatform             : Starting CodeSharingPlatform using Java 17.0.1 on Fractal with PID 6904 (started by Fractal in D:\RepositoryRoadToProfession\Code Sharing Platform\Code Sharing Platform\task)
+    2022-04-17 09:25:26.027  INFO 6904 --- [    Test worker] platform.CodeSharingPlatform             : No active profile set, falling back to default profiles: default
+    2022-04-17 09:25:26.238  INFO 6904 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2022-04-17 09:25:26.243  INFO 6904 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 1 JPA repository interfaces.
+    2022-04-17 09:25:26.316  INFO 6904 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8889 (http)
+    2022-04-17 09:25:26.317  INFO 6904 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2022-04-17 09:25:26.317  INFO 6904 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+    2022-04-17 09:25:26.341  INFO 6904 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+    2022-04-17 09:25:26.341  INFO 6904 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 310 ms
+    2022-04-17 09:25:26.371  INFO 6904 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+    2022-04-17 09:25:26.383  INFO 6904 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+    2022-04-17 09:25:26.383  INFO 6904 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../snippets&#39;
+    2022-04-17 09:25:26.420  INFO 6904 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+    2022-04-17 09:25:26.425  INFO 6904 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+    2022-04-17 09:25:26.455  INFO 6904 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+    2022-04-17 09:25:26.456  INFO 6904 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-04-17 09:25:26.503  WARN 6904 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2022-04-17 09:25:26.644  INFO 6904 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
+    2022-04-17 09:25:26.657  INFO 6904 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8889 (http) with context path &#39;&#39;
+    2022-04-17 09:25:26.663  INFO 6904 --- [    Test worker] platform.CodeSharingPlatform             : Started CodeSharingPlatform in 0.67 seconds (JVM running for 14.847)
+    2022-04-17 09:25:26.668  INFO 6904 --- [nio-8889-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
+    2022-04-17 09:25:26.668  INFO 6904 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
+    2022-04-17 09:25:26.670  INFO 6904 --- [nio-8889-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+  time: Sun, 17 Apr 2022 06:25:27 UTC
 record: 5

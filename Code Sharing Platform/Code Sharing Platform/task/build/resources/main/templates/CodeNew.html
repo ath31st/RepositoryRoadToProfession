@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Create</title>
-
-</head>
-<body>
-<script>
+    <script>
     function send() {
     let object = {
         "code": document.getElementById("code_snippet").value
@@ -23,11 +20,18 @@
       alert("Success!");
     }
 }
-
 </script>
-<textarea id="code_snippet"></textarea>
-<br>
-<button id="send_snippet" type="submit" onclick="send()">Sumbit</button>
+</head>
 
+<body>
+    <form>
+        <textarea id="code_snippet" type="text" placeholder="//Write your code here"></textarea>
+        <div>
+        <p> <label>Time restriction:</label><input id="time_restriction" type="text" placeholder="0"/>
+        <p> <label>Views restriction:</label><input id="views_restriction" type="text" placeholder="0"/>
+        </div>
+        <button id="send_snippet" type="submit" onclick="send()">Submit</button>
+    </form>
 </body>
+
 </html>

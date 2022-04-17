@@ -16,9 +16,9 @@ public class ApiController {
     @Autowired
     SnippetService snippetService;
 
-    @GetMapping("/api/code/{id}")
-    public Snippet getSnippetById(@PathVariable Long id) {
-        return snippetService.getSnippet(id);
+    @GetMapping("/api/code/{uuid}")
+    public Snippet getSnippetById(@PathVariable String uuid) {
+        return snippetService.getSnippet(uuid);
     }
 
 
@@ -32,9 +32,9 @@ public class ApiController {
         return snippetService.getAllSnippet();
     }
 
-    @GetMapping("/code/{id}")
-    public ModelAndView getWebSnippet(@PathVariable Long id) {
-        return snippetService.getWebSnippet(id);
+    @GetMapping("/code/{uuid}")
+    public ModelAndView getWebSnippet(@PathVariable String uuid) {
+        return snippetService.getWebSnippet(uuid);
     }
 
     @GetMapping("/code/latest")
