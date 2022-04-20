@@ -55,12 +55,15 @@ public class RecipeService {
     public ResponseEntity updateRecipeById(Long id, Recipe recipe) {
         Recipe recipeFromDb = recipeRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         Authentication authentication = authenticationFacade.getAuthentication();
-        recipeFromDb = recipe;
-        recipeFromDb.setAuthor(authentication.getName());
-        recipeFromDb.setId(id);
-        recipeFromDb.setDate(LocalDateTime.now());
-        recipeRepository.save(recipeFromDb);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        if (recipeFromDb.getAuthor().equals(authentication.getName())) {
+            recipeFromDb = recipe;
+            recipeFromDb.setAuthor(authentication.getName());
+            recipeFromDb.setId(id);
+            recipeFromDb.setDate(LocalDateTime.now());
+            recipeRepository.save(recipeFromDb);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+
     }
 
     public List<Recipe> findRecipeByParam(String category, String name) {
