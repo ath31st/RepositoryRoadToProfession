@@ -1,10 +1,12 @@
-package recipes;
+package recipes.servicies;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import recipes.entites.User;
+import recipes.repositories.UserRepository;
 
 @Service
 public class UserService {

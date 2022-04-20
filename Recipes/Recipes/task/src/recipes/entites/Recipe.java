@@ -1,4 +1,4 @@
-package recipes;
+package recipes.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,6 +24,8 @@ public class Recipe {
     private String category;
 
     private LocalDateTime date;
+
+    private String author;
 
     @NotNull
     @ElementCollection
@@ -91,5 +93,14 @@ public class Recipe {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    @JsonIgnore
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }

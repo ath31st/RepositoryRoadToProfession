@@ -1,7 +1,8 @@
-package recipes;
+package recipes.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import recipes.entites.Recipe;
 
 import java.util.List;
 

@@ -72,138 +72,6 @@ files:
         runtimeOnly 'com.h2database:h2'
     }
   learner_created: false
-- name: src/recipes/RecipeRepository.java
-  visible: true
-  text: |
-    package recipes;
-
-    import org.springframework.data.repository.CrudRepository;
-    import org.springframework.stereotype.Repository;
-
-    @Repository
-    public interface RecipeRepository extends CrudRepository<Recipe,Long> {
-    }
-  learner_created: false
-- name: src/recipes/Recipe.java
-  visible: true
-  text: |
-    package recipes;
-
-    import com.fasterxml.jackson.annotation.JsonIgnore;
-
-    import javax.persistence.*;
-    import javax.validation.constraints.NotBlank;
-    import javax.validation.constraints.NotNull;
-    import javax.validation.constraints.Size;
-    import java.util.List;
-
-    @Entity
-    public class Recipe {
-        @JsonIgnore
-        @Id
-        @GeneratedValue
-        private Long id;
-        @NotBlank
-        private String name;
-        @NotBlank
-        private String description;
-
-        @NotNull
-        @ElementCollection
-        @Size(min = 1, max = 100)
-        private List<String> ingredients = new java.util.ArrayList<>();
-        @NotNull
-        @ElementCollection
-        @Size(min = 1, max = 100)
-        private List<String> directions = new java.util.ArrayList<>();
-
-        public Recipe() {
-        }
-
-        public Long getId() {
-            return id;
-        }
-
-        public void setId(Long id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public List<String> getIngredients() {
-            return ingredients;
-        }
-
-        public void setIngredients(List<String> ingredients) {
-            this.ingredients = ingredients;
-        }
-
-        public List<String> getDirections() {
-            return directions;
-        }
-
-        public void setDirections(List<String> directions) {
-            this.directions = directions;
-        }
-    }
-  learner_created: false
-- name: src/recipes/RecipeService.java
-  visible: true
-  text: |
-    package recipes;
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.http.ResponseEntity;
-    import org.springframework.stereotype.Service;
-    import org.springframework.web.server.ResponseStatusException;
-
-    @Service
-    public class RecipeService {
-
-        private final RecipeRepository recipeRepository;
-
-        public RecipeService(RecipeRepository recipeRepository) {
-            this.recipeRepository = recipeRepository;
-        }
-
-        public Recipe findRecipeById(Long id) {
-            return recipeRepository.findById(id)
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        }
-
-        public String addNewRecipe(Recipe recipe) {
-            if (recipe.getDirections().stream().anyMatch(String::isBlank) |
-                    recipe.getIngredients().stream().anyMatch(String::isBlank)) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-            }
-            recipeRepository.save(recipe);
-            return "{\"id\": " + recipe.getId() + "}";
-        }
-
-        public ResponseEntity deleteRecipeById(Long id) {
-            if (recipeRepository.findById(id).isPresent()) {
-                recipeRepository.deleteById(id);
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-
-    }
-  learner_created: false
 - name: src/recipes/Controller.java
   visible: true
   text: |
@@ -998,31 +866,166 @@ files:
         }
     }
   learner_created: false
-- name: src/recipes/User.java
+- name: src/recipes/entites/Recipe.java
+  visible: true
+  text: |
+    package recipes;
+
+    import com.fasterxml.jackson.annotation.JsonIgnore;
+
+    import javax.persistence.*;
+    import javax.validation.constraints.NotBlank;
+    import javax.validation.constraints.NotNull;
+    import javax.validation.constraints.Size;
+    import java.util.List;
+
+    @Entity
+    public class Recipe {
+        @JsonIgnore
+        @Id
+        @GeneratedValue
+        private Long id;
+        @NotBlank
+        private String name;
+        @NotBlank
+        private String description;
+
+        @NotNull
+        @ElementCollection
+        @Size(min = 1, max = 100)
+        private List<String> ingredients = new java.util.ArrayList<>();
+        @NotNull
+        @ElementCollection
+        @Size(min = 1, max = 100)
+        private List<String> directions = new java.util.ArrayList<>();
+
+        public Recipe() {
+        }
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public List<String> getIngredients() {
+            return ingredients;
+        }
+
+        public void setIngredients(List<String> ingredients) {
+            this.ingredients = ingredients;
+        }
+
+        public List<String> getDirections() {
+            return directions;
+        }
+
+        public void setDirections(List<String> directions) {
+            this.directions = directions;
+        }
+    }
+  learner_created: false
+- name: src/recipes/entites/User.java
   visible: true
   learner_created: true
-- name: src/recipes/UserRepository.java
+- name: src/recipes/repositories/UserRepository.java
   visible: true
   learner_created: true
-- name: src/recipes/UserService.java
+- name: src/recipes/repositories/RecipeRepository.java
+  visible: true
+  text: |
+    package recipes;
+
+    import org.springframework.data.repository.CrudRepository;
+    import org.springframework.stereotype.Repository;
+
+    @Repository
+    public interface RecipeRepository extends CrudRepository<Recipe,Long> {
+    }
+  learner_created: false
+- name: src/recipes/servicies/UserService.java
   visible: true
   learner_created: true
-- name: src/recipes/WebSecurityConfigurerImpl.java
+- name: src/recipes/servicies/UserDetailsServiceImpl.java
   visible: true
   learner_created: true
-- name: src/recipes/UserDetailsImpl.java
+- name: src/recipes/servicies/UserDetailsImpl.java
   visible: true
   learner_created: true
-- name: src/recipes/UserDetailsServiceImpl.java
+- name: src/recipes/servicies/RecipeService.java
+  visible: true
+  text: |
+    package recipes;
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.http.ResponseEntity;
+    import org.springframework.stereotype.Service;
+    import org.springframework.web.server.ResponseStatusException;
+
+    @Service
+    public class RecipeService {
+
+        private final RecipeRepository recipeRepository;
+
+        public RecipeService(RecipeRepository recipeRepository) {
+            this.recipeRepository = recipeRepository;
+        }
+
+        public Recipe findRecipeById(Long id) {
+            return recipeRepository.findById(id)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        }
+
+        public String addNewRecipe(Recipe recipe) {
+            if (recipe.getDirections().stream().anyMatch(String::isBlank) |
+                    recipe.getIngredients().stream().anyMatch(String::isBlank)) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            }
+            recipeRepository.save(recipe);
+            return "{\"id\": " + recipe.getId() + "}";
+        }
+
+        public ResponseEntity deleteRecipeById(Long id) {
+            if (recipeRepository.findById(id).isPresent()) {
+                recipeRepository.deleteById(id);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+
+    }
+  learner_created: false
+- name: src/recipes/securityconfig/IAuthenticationFacade.java
+  visible: true
+  learner_created: true
+- name: src/recipes/securityconfig/WebSecurityConfigurerImpl.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/180/stages/921/implement#comment
 status: Failed
 feedback:
   message: |-
-    Wrong answer in test #68
+    Wrong answer in test #69
 
-    DELETE /api/recipe/5 should respond with status code 403, responded: 204
+    PUT /api/recipe/5 should respond with status code 403, responded: 204
 
     Response body:
 
@@ -1038,39 +1041,39 @@ feedback:
      =========|_|==============|___/=/_/_/_/
      :: Spring Boot ::                (v2.5.6)
 
-    2022-04-20 15:26:35.372  INFO 6124 --- [    Test worker] recipes.RecipesApplication               : Starting RecipesApplication using Java 17.0.1 on Fractal with PID 6124 (started by Fractal in D:\RepositoryRoadToProfession\Recipes\Recipes\task)
-    2022-04-20 15:26:35.374  INFO 6124 --- [    Test worker] recipes.RecipesApplication               : No active profile set, falling back to default profiles: default
-    2022-04-20 15:26:36.364  INFO 6124 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-    2022-04-20 15:26:36.421  INFO 6124 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 2 JPA repository interfaces.
-    2022-04-20 15:26:37.039  INFO 6124 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8881 (http)
-    2022-04-20 15:26:37.050  INFO 6124 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-    2022-04-20 15:26:37.051  INFO 6124 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-    2022-04-20 15:26:37.174  INFO 6124 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-    2022-04-20 15:26:37.174  INFO 6124 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1751 ms
-    2022-04-20 15:26:37.302  INFO 6124 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-    2022-04-20 15:26:37.523  INFO 6124 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-    2022-04-20 15:26:37.535  INFO 6124 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../recipes_db&#39;
-    2022-04-20 15:26:37.719  INFO 6124 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-    2022-04-20 15:26:37.790  INFO 6124 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
-    2022-04-20 15:26:37.957  INFO 6124 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-    2022-04-20 15:26:38.109  INFO 6124 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-    2022-04-20 15:26:38.864  INFO 6124 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-    2022-04-20 15:26:38.874  INFO 6124 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
-    2022-04-20 15:26:39.276  WARN 6124 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-    2022-04-20 15:26:39.473  INFO 6124 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5e085259, org.springframework.security.web.context.SecurityContextPersistenceFilter@5b160208, org.springframework.security.web.header.HeaderWriterFilter@3f030217, org.springframework.security.web.authentication.logout.LogoutFilter@4c9bed65, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1c15a6aa, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@16a15261, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@522f74a1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@68ea1eb5, org.springframework.security.web.session.SessionManagementFilter@673a5aa7, org.springframework.security.web.access.ExceptionTranslationFilter@62cb977a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6c68f29c]
-    2022-04-20 15:26:39.980  INFO 6124 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
-    2022-04-20 15:26:40.019  INFO 6124 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8881 (http) with context path &#39;&#39;
-    2022-04-20 15:26:40.032  INFO 6124 --- [    Test worker] recipes.RecipesApplication               : Started RecipesApplication in 5.005 seconds (JVM running for 5.815)
-    2022-04-20 15:26:40.322  INFO 6124 --- [nio-8881-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
-    2022-04-20 15:26:40.322  INFO 6124 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
-    2022-04-20 15:26:40.325  INFO 6124 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-    2022-04-20 15:26:40.942  WARN 6124 --- [nio-8881-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void recipes.Controller.register(recipes.User): [Field error in object &#39;user&#39; on field &#39;username&#39;: rejected value [Test3@testcom]; codes [Pattern.user.username,Pattern.username,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.username,username]; arguments []; default message [username],[Ljavax.validation.constraints.Pattern$Flag;@1e7d6cd6,.+@.+\..+]; default message [must match &quot;.+@.+\..+&quot;]] ]
-    2022-04-20 15:26:40.954  WARN 6124 --- [nio-8881-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void recipes.Controller.register(recipes.User): [Field error in object &#39;user&#39; on field &#39;username&#39;: rejected value [Test4test.com]; codes [Pattern.user.username,Pattern.username,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.username,username]; arguments []; default message [username],[Ljavax.validation.constraints.Pattern$Flag;@1e7d6cd6,.+@.+\..+]; default message [must match &quot;.+@.+\..+&quot;]] ]
-    2022-04-20 15:26:40.968  WARN 6124 --- [nio-8881-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void recipes.Controller.register(recipes.User): [Field error in object &#39;user&#39; on field &#39;password&#39;: rejected value [Test555]; codes [Length.user.password,Length.password,Length.java.lang.String,Length]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password],2147483647,8]; default message [length must be between 8 and 2147483647]] ]
-    2022-04-20 15:26:40.980  WARN 6124 --- [nio-8881-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void recipes.Controller.register(recipes.User): [Field error in object &#39;user&#39; on field &#39;password&#39;: rejected value [        ]; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
-    2022-04-20 15:26:42.040  INFO 6124 --- [       Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit &#39;default&#39;
-    2022-04-20 15:26:42.042  INFO 6124 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-    2022-04-20 15:26:42.061  INFO 6124 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+    2022-04-20 15:59:38.302  INFO 944 --- [    Test worker] recipes.RecipesApplication               : Starting RecipesApplication using Java 17.0.1 on Fractal with PID 944 (started by Fractal in D:\RepositoryRoadToProfession\Recipes\Recipes\task)
+    2022-04-20 15:59:38.305  INFO 944 --- [    Test worker] recipes.RecipesApplication               : No active profile set, falling back to default profiles: default
+    2022-04-20 15:59:39.294  INFO 944 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2022-04-20 15:59:39.354  INFO 944 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 2 JPA repository interfaces.
+    2022-04-20 15:59:39.964  INFO 944 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8881 (http)
+    2022-04-20 15:59:39.978  INFO 944 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2022-04-20 15:59:39.978  INFO 944 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+    2022-04-20 15:59:40.090  INFO 944 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+    2022-04-20 15:59:40.090  INFO 944 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1738 ms
+    2022-04-20 15:59:40.216  INFO 944 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+    2022-04-20 15:59:40.429  INFO 944 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+    2022-04-20 15:59:40.443  INFO 944 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../recipes_db&#39;
+    2022-04-20 15:59:40.621  INFO 944 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+    2022-04-20 15:59:40.695  INFO 944 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+    2022-04-20 15:59:40.860  INFO 944 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+    2022-04-20 15:59:40.992  INFO 944 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+    2022-04-20 15:59:41.692  INFO 944 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+    2022-04-20 15:59:41.705  INFO 944 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-04-20 15:59:42.099  WARN 944 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2022-04-20 15:59:42.292  INFO 944 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2604940, org.springframework.security.web.context.SecurityContextPersistenceFilter@467421cc, org.springframework.security.web.header.HeaderWriterFilter@6c167296, org.springframework.security.web.authentication.logout.LogoutFilter@2487b621, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3fe3ebb3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@28521ed5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@28c00acd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e564c78, org.springframework.security.web.session.SessionManagementFilter@1256925b, org.springframework.security.web.access.ExceptionTranslationFilter@5afa0b1a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4c678a1f]
+    2022-04-20 15:59:42.816  INFO 944 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
+    2022-04-20 15:59:42.858  INFO 944 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8881 (http) with context path &#39;&#39;
+    2022-04-20 15:59:42.871  INFO 944 --- [    Test worker] recipes.RecipesApplication               : Started RecipesApplication in 4.931 seconds (JVM running for 5.674)
+    2022-04-20 15:59:43.214  INFO 944 --- [nio-8881-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
+    2022-04-20 15:59:43.215  INFO 944 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
+    2022-04-20 15:59:43.216  INFO 944 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+    2022-04-20 15:59:43.828  WARN 944 --- [nio-8881-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void recipes.Controller.register(recipes.entites.User): [Field error in object &#39;user&#39; on field &#39;username&#39;: rejected value [Test3@testcom]; codes [Pattern.user.username,Pattern.username,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.username,username]; arguments []; default message [username],[Ljavax.validation.constraints.Pattern$Flag;@1a8b6126,.+@.+\..+]; default message [must match &quot;.+@.+\..+&quot;]] ]
+    2022-04-20 15:59:43.838  WARN 944 --- [nio-8881-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void recipes.Controller.register(recipes.entites.User): [Field error in object &#39;user&#39; on field &#39;username&#39;: rejected value [Test4test.com]; codes [Pattern.user.username,Pattern.username,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.username,username]; arguments []; default message [username],[Ljavax.validation.constraints.Pattern$Flag;@1a8b6126,.+@.+\..+]; default message [must match &quot;.+@.+\..+&quot;]] ]
+    2022-04-20 15:59:43.848  WARN 944 --- [nio-8881-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void recipes.Controller.register(recipes.entites.User): [Field error in object &#39;user&#39; on field &#39;password&#39;: rejected value [Test555]; codes [Length.user.password,Length.password,Length.java.lang.String,Length]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password],2147483647,8]; default message [length must be between 8 and 2147483647]] ]
+    2022-04-20 15:59:43.857  WARN 944 --- [io-8881-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void recipes.Controller.register(recipes.entites.User): [Field error in object &#39;user&#39; on field &#39;password&#39;: rejected value [        ]; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
+    2022-04-20 15:59:44.899  INFO 944 --- [       Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-04-20 15:59:44.903  INFO 944 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+    2022-04-20 15:59:44.945  INFO 944 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 
       .   ____          _            __ _ _
      /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -1080,53 +1083,53 @@ feedback:
      =========|_|==============|___/=/_/_/_/
      :: Spring Boot ::                (v2.5.6)
 
-    2022-04-20 15:26:42.139  INFO 6124 --- [    Test worker] recipes.RecipesApplication               : Starting RecipesApplication using Java 17.0.1 on Fractal with PID 6124 (started by Fractal in D:\RepositoryRoadToProfession\Recipes\Recipes\task)
-    2022-04-20 15:26:42.139  INFO 6124 --- [    Test worker] recipes.RecipesApplication               : No active profile set, falling back to default profiles: default
-    2022-04-20 15:26:42.413  INFO 6124 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-    2022-04-20 15:26:42.424  INFO 6124 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 2 JPA repository interfaces.
-    2022-04-20 15:26:42.679  INFO 6124 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8881 (http)
-    2022-04-20 15:26:42.680  INFO 6124 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-    2022-04-20 15:26:42.681  INFO 6124 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-    2022-04-20 15:26:42.734  INFO 6124 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-    2022-04-20 15:26:42.734  INFO 6124 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 593 ms
-    2022-04-20 15:26:42.773  INFO 6124 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-    2022-04-20 15:26:42.789  INFO 6124 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-    2022-04-20 15:26:42.789  INFO 6124 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../recipes_db&#39;
-    2022-04-20 15:26:42.853  INFO 6124 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-    2022-04-20 15:26:42.860  INFO 6124 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-    2022-04-20 15:26:42.959  INFO 6124 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-    2022-04-20 15:26:42.960  INFO 6124 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
-    2022-04-20 15:26:43.027  WARN 6124 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-    2022-04-20 15:26:43.051  INFO 6124 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7b0a69b9, org.springframework.security.web.context.SecurityContextPersistenceFilter@489a722d, org.springframework.security.web.header.HeaderWriterFilter@26c349fc, org.springframework.security.web.authentication.logout.LogoutFilter@41413c5a, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4f1072ee, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3448a248, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@8788194, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6d398b6c, org.springframework.security.web.session.SessionManagementFilter@54d0d561, org.springframework.security.web.access.ExceptionTranslationFilter@6f526f91, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6921ce3f]
-    2022-04-20 15:26:43.229  INFO 6124 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
-    2022-04-20 15:26:43.243  INFO 6124 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8881 (http) with context path &#39;&#39;
-    2022-04-20 15:26:43.252  INFO 6124 --- [    Test worker] recipes.RecipesApplication               : Started RecipesApplication in 1.137 seconds (JVM running for 9.035)
-    2022-04-20 15:26:43.258  INFO 6124 --- [nio-8881-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
-    2022-04-20 15:26:43.258  INFO 6124 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
-    2022-04-20 15:26:43.260  INFO 6124 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-    2022-04-20 15:26:45.624  WARN 6124 --- [nio-8881-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;name&#39;: rejected value [null]; codes [NotBlank.recipe.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.name,name]; arguments []; default message [name]]; default message [must not be blank]] ]
-    2022-04-20 15:26:45.691  WARN 6124 --- [nio-8881-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;category&#39;: rejected value [null]; codes [NotBlank.recipe.category,NotBlank.category,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.category,category]; arguments []; default message [category]]; default message [must not be blank]] ]
-    2022-04-20 15:26:45.760  WARN 6124 --- [nio-8881-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;description&#39;: rejected value [null]; codes [NotBlank.recipe.description,NotBlank.description,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.description,description]; arguments []; default message [description]]; default message [must not be blank]] ]
-    2022-04-20 15:26:45.832  WARN 6124 --- [nio-8881-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;ingredients&#39;: rejected value [[]]; codes [Size.recipe.ingredients,Size.ingredients,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.ingredients,ingredients]; arguments []; default message [ingredients],100,1]; default message [size must be between 1 and 100]] ]
-    2022-04-20 15:26:45.902  WARN 6124 --- [nio-8881-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;directions&#39;: rejected value [[]]; codes [Size.recipe.directions,Size.directions,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.directions,directions]; arguments []; default message [directions],100,1]; default message [size must be between 1 and 100]] ]
-    2022-04-20 15:26:45.967  WARN 6124 --- [nio-8881-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;name&#39;: rejected value [  ]; codes [NotBlank.recipe.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.name,name]; arguments []; default message [name]]; default message [must not be blank]] ]
-    2022-04-20 15:26:46.033  WARN 6124 --- [nio-8881-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;category&#39;: rejected value [  ]; codes [NotBlank.recipe.category,NotBlank.category,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.category,category]; arguments []; default message [category]]; default message [must not be blank]] ]
-    2022-04-20 15:26:46.100  WARN 6124 --- [nio-8881-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;description&#39;: rejected value [  ]; codes [NotBlank.recipe.description,NotBlank.description,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.description,description]; arguments []; default message [description]]; default message [must not be blank]] ]
-    2022-04-20 15:26:46.168  WARN 6124 --- [nio-8881-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;ingredients&#39;: rejected value [[]]; codes [Size.recipe.ingredients,Size.ingredients,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.ingredients,ingredients]; arguments []; default message [ingredients],100,1]; default message [size must be between 1 and 100]] ]
-    2022-04-20 15:26:46.233  WARN 6124 --- [io-8881-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;directions&#39;: rejected value [[]]; codes [Size.recipe.directions,Size.directions,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.directions,directions]; arguments []; default message [directions],100,1]; default message [size must be between 1 and 100]] ]
-    2022-04-20 15:26:46.299  WARN 6124 --- [nio-8881-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;name&#39;: rejected value [null]; codes [NotBlank.recipe.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.name,name]; arguments []; default message [name]]; default message [must not be blank]] ]
-    2022-04-20 15:26:46.381  WARN 6124 --- [nio-8881-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;category&#39;: rejected value [null]; codes [NotBlank.recipe.category,NotBlank.category,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.category,category]; arguments []; default message [category]]; default message [must not be blank]] ]
-    2022-04-20 15:26:46.448  WARN 6124 --- [nio-8881-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;description&#39;: rejected value [null]; codes [NotBlank.recipe.description,NotBlank.description,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.description,description]; arguments []; default message [description]]; default message [must not be blank]] ]
-    2022-04-20 15:26:46.515  WARN 6124 --- [nio-8881-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;ingredients&#39;: rejected value [[]]; codes [Size.recipe.ingredients,Size.ingredients,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.ingredients,ingredients]; arguments []; default message [ingredients],100,1]; default message [size must be between 1 and 100]] ]
-    2022-04-20 15:26:46.583  WARN 6124 --- [nio-8881-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;directions&#39;: rejected value [[]]; codes [Size.recipe.directions,Size.directions,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.directions,directions]; arguments []; default message [directions],100,1]; default message [size must be between 1 and 100]] ]
-    2022-04-20 15:26:46.653  WARN 6124 --- [nio-8881-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;name&#39;: rejected value [  ]; codes [NotBlank.recipe.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.name,name]; arguments []; default message [name]]; default message [must not be blank]] ]
-    2022-04-20 15:26:46.724  WARN 6124 --- [nio-8881-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;category&#39;: rejected value [  ]; codes [NotBlank.recipe.category,NotBlank.category,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.category,category]; arguments []; default message [category]]; default message [must not be blank]] ]
-    2022-04-20 15:26:46.793  WARN 6124 --- [nio-8881-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;description&#39;: rejected value [  ]; codes [NotBlank.recipe.description,NotBlank.description,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.description,description]; arguments []; default message [description]]; default message [must not be blank]] ]
-    2022-04-20 15:26:46.862  WARN 6124 --- [nio-8881-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;ingredients&#39;: rejected value [[]]; codes [Size.recipe.ingredients,Size.ingredients,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.ingredients,ingredients]; arguments []; default message [ingredients],100,1]; default message [size must be between 1 and 100]] ]
-    2022-04-20 15:26:46.929  WARN 6124 --- [io-8881-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.Recipe): [Field error in object &#39;recipe&#39; on field &#39;directions&#39;: rejected value [[]]; codes [Size.recipe.directions,Size.directions,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.directions,directions]; arguments []; default message [directions],100,1]; default message [size must be between 1 and 100]] ]
-    2022-04-20 15:26:47.479  INFO 6124 --- [       Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit &#39;default&#39;
-    2022-04-20 15:26:47.480  INFO 6124 --- [       Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
-    2022-04-20 15:26:47.509  INFO 6124 --- [       Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+    2022-04-20 15:59:44.981  INFO 944 --- [    Test worker] recipes.RecipesApplication               : Starting RecipesApplication using Java 17.0.1 on Fractal with PID 944 (started by Fractal in D:\RepositoryRoadToProfession\Recipes\Recipes\task)
+    2022-04-20 15:59:44.981  INFO 944 --- [    Test worker] recipes.RecipesApplication               : No active profile set, falling back to default profiles: default
+    2022-04-20 15:59:45.247  INFO 944 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2022-04-20 15:59:45.255  INFO 944 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 2 JPA repository interfaces.
+    2022-04-20 15:59:45.340  INFO 944 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8881 (http)
+    2022-04-20 15:59:45.341  INFO 944 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2022-04-20 15:59:45.341  INFO 944 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+    2022-04-20 15:59:45.381  INFO 944 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+    2022-04-20 15:59:45.381  INFO 944 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 397 ms
+    2022-04-20 15:59:45.424  INFO 944 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+    2022-04-20 15:59:45.436  INFO 944 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+    2022-04-20 15:59:45.436  INFO 944 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../recipes_db&#39;
+    2022-04-20 15:59:45.475  INFO 944 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+    2022-04-20 15:59:45.479  INFO 944 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+    2022-04-20 15:59:45.561  INFO 944 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+    2022-04-20 15:59:45.561  INFO 944 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-04-20 15:59:45.631  WARN 944 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2022-04-20 15:59:45.661  INFO 944 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@651bec9a, org.springframework.security.web.context.SecurityContextPersistenceFilter@6b9ce7a3, org.springframework.security.web.header.HeaderWriterFilter@71739267, org.springframework.security.web.authentication.logout.LogoutFilter@13a35d3b, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@65145fb7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@17931cc0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7a9e44ff, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@76d4e1af, org.springframework.security.web.session.SessionManagementFilter@6d810e94, org.springframework.security.web.access.ExceptionTranslationFilter@219bad15, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@72499396]
+    2022-04-20 15:59:45.813  INFO 944 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
+    2022-04-20 15:59:45.832  INFO 944 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8881 (http) with context path &#39;&#39;
+    2022-04-20 15:59:45.838  INFO 944 --- [    Test worker] recipes.RecipesApplication               : Started RecipesApplication in 0.88 seconds (JVM running for 8.641)
+    2022-04-20 15:59:45.844  INFO 944 --- [nio-8881-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
+    2022-04-20 15:59:45.845  INFO 944 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
+    2022-04-20 15:59:45.848  INFO 944 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+    2022-04-20 15:59:48.225  WARN 944 --- [io-8881-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;name&#39;: rejected value [null]; codes [NotBlank.recipe.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.name,name]; arguments []; default message [name]]; default message [must not be blank]] ]
+    2022-04-20 15:59:48.290  WARN 944 --- [nio-8881-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;category&#39;: rejected value [null]; codes [NotBlank.recipe.category,NotBlank.category,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.category,category]; arguments []; default message [category]]; default message [must not be blank]] ]
+    2022-04-20 15:59:48.355  WARN 944 --- [nio-8881-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;description&#39;: rejected value [null]; codes [NotBlank.recipe.description,NotBlank.description,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.description,description]; arguments []; default message [description]]; default message [must not be blank]] ]
+    2022-04-20 15:59:48.419  WARN 944 --- [nio-8881-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;ingredients&#39;: rejected value [[]]; codes [Size.recipe.ingredients,Size.ingredients,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.ingredients,ingredients]; arguments []; default message [ingredients],100,1]; default message [size must be between 1 and 100]] ]
+    2022-04-20 15:59:48.484  WARN 944 --- [nio-8881-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;directions&#39;: rejected value [[]]; codes [Size.recipe.directions,Size.directions,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.directions,directions]; arguments []; default message [directions],100,1]; default message [size must be between 1 and 100]] ]
+    2022-04-20 15:59:48.550  WARN 944 --- [nio-8881-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;name&#39;: rejected value [  ]; codes [NotBlank.recipe.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.name,name]; arguments []; default message [name]]; default message [must not be blank]] ]
+    2022-04-20 15:59:48.639  WARN 944 --- [nio-8881-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;category&#39;: rejected value [  ]; codes [NotBlank.recipe.category,NotBlank.category,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.category,category]; arguments []; default message [category]]; default message [must not be blank]] ]
+    2022-04-20 15:59:48.705  WARN 944 --- [nio-8881-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;description&#39;: rejected value [  ]; codes [NotBlank.recipe.description,NotBlank.description,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.description,description]; arguments []; default message [description]]; default message [must not be blank]] ]
+    2022-04-20 15:59:48.770  WARN 944 --- [nio-8881-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;ingredients&#39;: rejected value [[]]; codes [Size.recipe.ingredients,Size.ingredients,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.ingredients,ingredients]; arguments []; default message [ingredients],100,1]; default message [size must be between 1 and 100]] ]
+    2022-04-20 15:59:48.838  WARN 944 --- [nio-8881-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public java.lang.String recipes.Controller.saveNewRecipe(recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;directions&#39;: rejected value [[]]; codes [Size.recipe.directions,Size.directions,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.directions,directions]; arguments []; default message [directions],100,1]; default message [size must be between 1 and 100]] ]
+    2022-04-20 15:59:48.903  WARN 944 --- [io-8881-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;name&#39;: rejected value [null]; codes [NotBlank.recipe.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.name,name]; arguments []; default message [name]]; default message [must not be blank]] ]
+    2022-04-20 15:59:48.976  WARN 944 --- [io-8881-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;category&#39;: rejected value [null]; codes [NotBlank.recipe.category,NotBlank.category,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.category,category]; arguments []; default message [category]]; default message [must not be blank]] ]
+    2022-04-20 15:59:49.045  WARN 944 --- [nio-8881-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;description&#39;: rejected value [null]; codes [NotBlank.recipe.description,NotBlank.description,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.description,description]; arguments []; default message [description]]; default message [must not be blank]] ]
+    2022-04-20 15:59:49.111  WARN 944 --- [nio-8881-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;ingredients&#39;: rejected value [[]]; codes [Size.recipe.ingredients,Size.ingredients,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.ingredients,ingredients]; arguments []; default message [ingredients],100,1]; default message [size must be between 1 and 100]] ]
+    2022-04-20 15:59:49.177  WARN 944 --- [nio-8881-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;directions&#39;: rejected value [[]]; codes [Size.recipe.directions,Size.directions,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.directions,directions]; arguments []; default message [directions],100,1]; default message [size must be between 1 and 100]] ]
+    2022-04-20 15:59:49.242  WARN 944 --- [nio-8881-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;name&#39;: rejected value [  ]; codes [NotBlank.recipe.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.name,name]; arguments []; default message [name]]; default message [must not be blank]] ]
+    2022-04-20 15:59:49.308  WARN 944 --- [nio-8881-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;category&#39;: rejected value [  ]; codes [NotBlank.recipe.category,NotBlank.category,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.category,category]; arguments []; default message [category]]; default message [must not be blank]] ]
+    2022-04-20 15:59:49.375  WARN 944 --- [nio-8881-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;description&#39;: rejected value [  ]; codes [NotBlank.recipe.description,NotBlank.description,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.description,description]; arguments []; default message [description]]; default message [must not be blank]] ]
+    2022-04-20 15:59:49.440  WARN 944 --- [nio-8881-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;ingredients&#39;: rejected value [[]]; codes [Size.recipe.ingredients,Size.ingredients,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.ingredients,ingredients]; arguments []; default message [ingredients],100,1]; default message [size must be between 1 and 100]] ]
+    2022-04-20 15:59:49.506  WARN 944 --- [nio-8881-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public org.springframework.http.ResponseEntity recipes.Controller.updateRecipeById(java.lang.Long,recipes.entites.Recipe): [Field error in object &#39;recipe&#39; on field &#39;directions&#39;: rejected value [[]]; codes [Size.recipe.directions,Size.directions,Size.java.util.List,Size]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [recipe.directions,directions]; arguments []; default message [directions],100,1]; default message [size must be between 1 and 100]] ]
+    2022-04-20 15:59:50.060  INFO 944 --- [       Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-04-20 15:59:50.062  INFO 944 --- [       Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+    2022-04-20 15:59:50.101  INFO 944 --- [       Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
 
       .   ____          _            __ _ _
      /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -1136,29 +1139,29 @@ feedback:
      =========|_|==============|___/=/_/_/_/
      :: Spring Boot ::                (v2.5.6)
 
-    2022-04-20 15:26:47.564  INFO 6124 --- [    Test worker] recipes.RecipesApplication               : Starting RecipesApplication using Java 17.0.1 on Fractal with PID 6124 (started by Fractal in D:\RepositoryRoadToProfession\Recipes\Recipes\task)
-    2022-04-20 15:26:47.564  INFO 6124 --- [    Test worker] recipes.RecipesApplication               : No active profile set, falling back to default profiles: default
-    2022-04-20 15:26:47.758  INFO 6124 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-    2022-04-20 15:26:47.764  INFO 6124 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 2 JPA repository interfaces.
-    2022-04-20 15:26:47.829  INFO 6124 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8881 (http)
-    2022-04-20 15:26:47.830  INFO 6124 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-    2022-04-20 15:26:47.830  INFO 6124 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-    2022-04-20 15:26:47.859  INFO 6124 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-    2022-04-20 15:26:47.859  INFO 6124 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 293 ms
-    2022-04-20 15:26:47.890  INFO 6124 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
-    2022-04-20 15:26:47.905  INFO 6124 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
-    2022-04-20 15:26:47.905  INFO 6124 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../recipes_db&#39;
-    2022-04-20 15:26:47.953  INFO 6124 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-    2022-04-20 15:26:47.958  INFO 6124 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-    2022-04-20 15:26:48.014  INFO 6124 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-    2022-04-20 15:26:48.014  INFO 6124 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
-    2022-04-20 15:26:48.085  WARN 6124 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-    2022-04-20 15:26:48.108  INFO 6124 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5522f9b, org.springframework.security.web.context.SecurityContextPersistenceFilter@5af08232, org.springframework.security.web.header.HeaderWriterFilter@19d75d3c, org.springframework.security.web.authentication.logout.LogoutFilter@6d9f624, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@24e6bd00, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@41f57420, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@62e8ef9f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@70bbc163, org.springframework.security.web.session.SessionManagementFilter@5c3cc103, org.springframework.security.web.access.ExceptionTranslationFilter@23471b2f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@41e156ee]
-    2022-04-20 15:26:48.243  INFO 6124 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
-    2022-04-20 15:26:48.254  INFO 6124 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8881 (http) with context path &#39;&#39;
-    2022-04-20 15:26:48.260  INFO 6124 --- [    Test worker] recipes.RecipesApplication               : Started RecipesApplication in 0.714 seconds (JVM running for 14.043)
-    2022-04-20 15:26:48.265  INFO 6124 --- [nio-8881-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
-    2022-04-20 15:26:48.265  INFO 6124 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
-    2022-04-20 15:26:48.268  INFO 6124 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-  time: Wed, 20 Apr 2022 12:26:49 UTC
+    2022-04-20 15:59:50.154  INFO 944 --- [    Test worker] recipes.RecipesApplication               : Starting RecipesApplication using Java 17.0.1 on Fractal with PID 944 (started by Fractal in D:\RepositoryRoadToProfession\Recipes\Recipes\task)
+    2022-04-20 15:59:50.154  INFO 944 --- [    Test worker] recipes.RecipesApplication               : No active profile set, falling back to default profiles: default
+    2022-04-20 15:59:50.367  INFO 944 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+    2022-04-20 15:59:50.373  INFO 944 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 2 JPA repository interfaces.
+    2022-04-20 15:59:50.440  INFO 944 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8881 (http)
+    2022-04-20 15:59:50.440  INFO 944 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2022-04-20 15:59:50.441  INFO 944 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
+    2022-04-20 15:59:50.471  INFO 944 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+    2022-04-20 15:59:50.471  INFO 944 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 313 ms
+    2022-04-20 15:59:50.502  INFO 944 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+    2022-04-20 15:59:50.511  INFO 944 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+    2022-04-20 15:59:50.512  INFO 944 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../recipes_db&#39;
+    2022-04-20 15:59:50.544  INFO 944 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+    2022-04-20 15:59:50.549  INFO 944 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+    2022-04-20 15:59:50.607  INFO 944 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+    2022-04-20 15:59:50.607  INFO 944 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-04-20 15:59:50.675  WARN 944 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2022-04-20 15:59:50.700  INFO 944 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@386cc1c4, org.springframework.security.web.context.SecurityContextPersistenceFilter@16488ed7, org.springframework.security.web.header.HeaderWriterFilter@36361951, org.springframework.security.web.authentication.logout.LogoutFilter@f9d7d3f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@43ef1243, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3ac2772d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3c380db5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e3c5ecc, org.springframework.security.web.session.SessionManagementFilter@24c8bc1e, org.springframework.security.web.access.ExceptionTranslationFilter@6149adee, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5b1e5366]
+    2022-04-20 15:59:50.846  INFO 944 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
+    2022-04-20 15:59:50.858  INFO 944 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8881 (http) with context path &#39;&#39;
+    2022-04-20 15:59:50.863  INFO 944 --- [    Test worker] recipes.RecipesApplication               : Started RecipesApplication in 0.735 seconds (JVM running for 13.666)
+    2022-04-20 15:59:50.867  INFO 944 --- [nio-8881-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
+    2022-04-20 15:59:50.868  INFO 944 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
+    2022-04-20 15:59:50.869  INFO 944 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+  time: Wed, 20 Apr 2022 12:59:51 UTC
 record: -1

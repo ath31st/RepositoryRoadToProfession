@@ -3,6 +3,10 @@ package recipes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import recipes.entites.Recipe;
+import recipes.entites.User;
+import recipes.servicies.RecipeService;
+import recipes.servicies.UserService;
 
 import javax.validation.Valid;
 import java.util.List;
