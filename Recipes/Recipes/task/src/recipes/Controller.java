@@ -34,7 +34,7 @@ public class Controller {
     }
 
     @GetMapping("/api/recipe/search")
-    public List<Recipe> findRecipeByParam(@RequestParam String category, @RequestParam String name) {
+    public List<Recipe> findRecipeByParam(@RequestParam(required = false) String category, @RequestParam(required = false) String name) {
         return recipeService.findRecipeByParam(category, name);
     }
 }

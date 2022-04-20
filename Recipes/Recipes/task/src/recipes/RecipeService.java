@@ -48,10 +48,10 @@ public class RecipeService {
     public List<Recipe> findRecipeByParam(String category, String name) {
         if (isCorrectRequest(category, name)) {
             if (category != null) {
-                return recipeRepository.findRecipesByCategory(category);
+                return recipeRepository.findByCategoryIgnoreCaseOrderByDateDesc(category);
             }
             if (name != null) {
-                return recipeRepository.findRecipesByName(name);
+                return recipeRepository.findByNameIgnoreCaseOrderByDateDesc(name);
             }
         }
         return new ArrayList<>();
