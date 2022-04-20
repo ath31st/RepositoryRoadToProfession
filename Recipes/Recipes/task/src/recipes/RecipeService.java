@@ -5,6 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class RecipeService {
 
@@ -20,10 +24,7 @@ public class RecipeService {
     }
 
     public String addNewRecipe(Recipe recipe) {
-        if (recipe.getDirections().stream().anyMatch(String::isBlank) |
-                recipe.getIngredients().stream().anyMatch(String::isBlank)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-        }
+        recipe.setDate(LocalDateTime.now());
         recipeRepository.save(recipe);
         return "{\"id\": " + recipe.getId() + "}";
     }
@@ -35,5 +36,32 @@ public class RecipeService {
         } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    public ResponseEntity updateRecipeById(Long id, Recipe recipe) {
+        Recipe recipeFromDb = recipeRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        recipeFromDb = recipe;
+        recipeFromDb.setId(id);
+        recipeFromDb.setDate(LocalDateTime.now());
+        recipeRepository.save(recipeFromDb);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    public List<Recipe> findRecipeByParam(String category, String name) {
+        if (isCorrectRequest(category, name)) {
+            if (category != null) {
+                return recipeRepository.findRecipesByCategory(category);
+            }
+            if (name != null) {
+                return recipeRepository.findRecipesByName(name);
+            }
+        }
+        return new ArrayList<>();
+    }
+
+    public static boolean isCorrectRequest(String category, String name) {
+        if ((category == null & name == null) | (category != null & name != null)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        return true;
+    }
 
 }

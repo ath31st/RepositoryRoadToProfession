@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class Controller {
@@ -25,5 +26,15 @@ public class Controller {
     @DeleteMapping("/api/recipe/{id}")
     public ResponseEntity deleteRecipeById(@PathVariable Long id) {
         return recipeService.deleteRecipeById(id);
+    }
+
+    @PutMapping("/api/recipe/{id}")
+    public ResponseEntity updateRecipeById(@PathVariable Long id, @Valid @RequestBody Recipe recipe) {
+        return recipeService.updateRecipeById(id, recipe);
+    }
+
+    @GetMapping("/api/recipe/search")
+    public List<Recipe> findRecipeByParam(@RequestParam String category, @RequestParam String name) {
+        return recipeService.findRecipeByParam(category, name);
     }
 }

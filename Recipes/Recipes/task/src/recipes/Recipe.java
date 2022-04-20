@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -19,14 +20,19 @@ public class Recipe {
     @NotBlank
     private String description;
 
+    @NotBlank
+    private String category;
+
+    private LocalDateTime date;
+
     @NotNull
     @ElementCollection
     @Size(min = 1, max = 100)
-    private List<String> ingredients = new java.util.ArrayList<>();
+    private List<@NotBlank String> ingredients = new java.util.ArrayList<>();
     @NotNull
     @ElementCollection
     @Size(min = 1, max = 100)
-    private List<String> directions = new java.util.ArrayList<>();
+    private List<@NotBlank String> directions = new java.util.ArrayList<>();
 
     public Recipe() {
     }
@@ -69,5 +75,21 @@ public class Recipe {
 
     public void setDirections(List<String> directions) {
         this.directions = directions;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 }

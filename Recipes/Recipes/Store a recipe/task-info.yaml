@@ -71,28 +71,19 @@ files:
         runtimeOnly 'com.h2database:h2'
     }
   learner_created: false
-- name: src/recipes/RecipeRepository.java
-  visible: true
-  text: |
-    package recipes;
-
-    import org.springframework.data.repository.CrudRepository;
-    import org.springframework.stereotype.Repository;
-
-    @Repository
-    public interface RecipeRepository extends CrudRepository<Recipe,Long> {
-    }
-  learner_created: false
 - name: src/recipes/Recipe.java
   visible: true
   text: |
     package recipes;
+
+    import com.fasterxml.jackson.annotation.JsonIgnore;
 
     import javax.persistence.*;
     import java.util.List;
 
     @Entity
     public class Recipe {
+        @JsonIgnore
         @Id
         @GeneratedValue
         private Long id;
@@ -150,6 +141,31 @@ files:
         }
     }
   learner_created: false
+- name: src/recipes/Controller.java
+  visible: true
+  text: |
+    package recipes;
+
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.web.bind.annotation.*;
+
+    @RestController
+    public class Controller {
+
+        @Autowired
+        RecipeService recipeService;
+
+        @GetMapping("/api/recipe/{id}")
+        public Recipe getRecipe(@PathVariable Long id) {
+            return recipeService.findRecipeById(id);
+        }
+
+        @PostMapping("/api/recipe/new")
+        public String saveNewRecipe(@RequestBody Recipe recipe) {
+           return recipeService.addNewRecipe(recipe);
+        }
+    }
+  learner_created: false
 - name: src/recipes/RecipeService.java
   visible: true
   text: |
@@ -175,35 +191,22 @@ files:
 
         public String addNewRecipe(Recipe recipe){
             recipeRepository.save(recipe);
-            return "\"id\": " + recipe.getId();
+            return "{\"id\": " + recipe.getId() + "}";
         }
 
 
     }
   learner_created: false
-- name: src/recipes/Controller.java
+- name: src/recipes/RecipeRepository.java
   visible: true
   text: |
     package recipes;
 
-    import org.springframework.beans.factory.annotation.Autowired;
-    import org.springframework.web.bind.annotation.*;
+    import org.springframework.data.repository.CrudRepository;
+    import org.springframework.stereotype.Repository;
 
-    @RestController
-    public class Controller {
-
-        @Autowired
-        RecipeService recipeService;
-
-        @GetMapping("/api/recipe/{id}")
-        public Recipe getRecipe(@PathVariable Long id) {
-            return recipeService.findRecipeById(id);
-        }
-
-        @PostMapping("/api/recipe/new")
-        public String saveNewRecipe(@RequestBody Recipe recipe) {
-           return recipeService.addNewRecipe(recipe);
-        }
+    @Repository
+    public interface RecipeRepository extends CrudRepository<Recipe,Long> {
     }
   learner_created: false
 - name: test/RecipesApplicationTest.java
@@ -463,7 +466,4 @@ files:
   learner_created: false
 feedback_link: https://hyperskill.org/projects/180/stages/919/implement#comment
 status: Solved
-feedback:
-  message: Congratulations!
-  time: Sun, 17 Apr 2022 17:26:50 UTC
-record: 3
+record: 2

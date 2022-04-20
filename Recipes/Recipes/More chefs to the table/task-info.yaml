@@ -1,5 +1,4 @@
 type: edu
-custom_name: Sort & update
 files:
 - name: src/recipes/RecipesApplication.java
   visible: true
@@ -246,6 +245,7 @@ files:
     import org.hyperskill.hstest.dynamic.input.DynamicTesting;
     import org.hyperskill.hstest.exception.outcomes.UnexpectedError;
     import org.hyperskill.hstest.exception.outcomes.WrongAnswer;
+    import org.hyperskill.hstest.mocks.web.request.HttpRequest;
     import org.hyperskill.hstest.mocks.web.response.HttpResponse;
     import org.hyperskill.hstest.stage.SpringTest;
     import org.hyperskill.hstest.testcase.CheckResult;
@@ -504,15 +504,32 @@ files:
         final String API_RECIPE_NEW = "/api/recipe/new";
         final String API_RECIPE = "/api/recipe/";
         final String API_RECIPE_SEARCH = "/api/recipe/search/";
+        final String API_REGISTER = "/api/register";
 
         // recipes ids will be saved when testing POST requests and used later to test GET/PUT/DELETE requests
         final List<Integer> recipeIds = new ArrayList<>();
+
+        final String CATEGORY = "category";
+        final String NAME = "name";
+
+        final static Gson gson = new Gson();
+
+        final String[] MAIN_LOGIN_PASS = {"LoginTest2@test.com", "Test2222222"};
+        final String[] ADDITIONAL_LOGIN_PASS_1 = {"LoginTest1@test.com", "Test1111"};
+        final String[] ADDITIONAL_LOGIN_PASS_2 = {"LoginTest3@test.com", "Test33333333333"};
+
+        final String[] INCORRECT_LOGIN_CORRECT_PASS_1 = {"Test3@testcom", "Test3333"};
+        final String[] INCORRECT_LOGIN_CORRECT_PASS_2 = {"Test4test.com", "Test44444444"};
+
+        final String[] CORRECT_LOGIN_INCORRECT_PASS_1 = {"Test5@test.com", "Test555"};
+        final String[] CORRECT_LOGIN_INCORRECT_PASS_2 = {"Test6@test.com", "        "};
+
+        final String[] UNREGISTERED_LOGIN_PASS = {"abc@test.com", "password99"};
 
 
         // Helper functions ---
 
         static String[] toJson(Object[] objects) {
-            final Gson gson = new Gson();
             return Arrays
                 .stream(objects)
                 .map(gson::toJson)
@@ -576,27 +593,42 @@ files:
             return isArray;
         }
 
+        public HttpRequest addAuthUnregisteredUser(HttpRequest request) {
+            return request.basicAuth(UNREGISTERED_LOGIN_PASS[0], UNREGISTERED_LOGIN_PASS[1]);
+        }
+
+
         // Tests ---
 
         @DynamicTest
         DynamicTesting[] dt = new DynamicTesting[]{
-            () -> testPostRecipe(JSON_RECIPES[0]),
-            () -> testPostRecipe(JSON_RECIPES[1]),
-            // test 3
-            () -> testGetRecipe(recipeIds.get(0), RECIPES[0]),
-            () -> testGetRecipe(recipeIds.get(1), RECIPES[1]),
-            this::reloadServer,
-            () -> testGetRecipe(recipeIds.get(0), RECIPES[0]),
-            () -> testGetRecipe(recipeIds.get(1), RECIPES[1]),
-            // test 8
-            () -> testUpdateRecipe(recipeIds.get(0), JSON_RECIPES[1]),
-            () -> testGetRecipe(recipeIds.get(0), RECIPES[1]),
+            () -> testPostRegister(ADDITIONAL_LOGIN_PASS_1, 200),
+            () -> testPostRegister(ADDITIONAL_LOGIN_PASS_1, 400),
+            () -> testPostRegister(MAIN_LOGIN_PASS, 200),
+            () -> testPostRegister(ADDITIONAL_LOGIN_PASS_2, 200),
+            () -> testPostRegister(INCORRECT_LOGIN_CORRECT_PASS_1, 400),
+            () -> testPostRegister(INCORRECT_LOGIN_CORRECT_PASS_2, 400),
+            () -> testPostRegister(CORRECT_LOGIN_INCORRECT_PASS_1, 400),
+            () -> testPostRegister(CORRECT_LOGIN_INCORRECT_PASS_2, 400),
 
-            () -> testDeleteRecipe(recipeIds.get(0)),
-            // test 11
-            () -> testDeleteRecipeNotFoundStatusCode(recipeIds.get(0)),
-            () -> testGetRecipeNotFoundStatusCode(recipeIds.get(0)),
-            () -> testUpdateRecipeNotFoundStatusCode(recipeIds.get(0), JSON_RECIPES[1]),
+            // Tests with authentication
+            () -> testPostRecipe(JSON_RECIPES[0], MAIN_LOGIN_PASS),
+            () -> testPostRecipe(JSON_RECIPES[1], MAIN_LOGIN_PASS),
+
+            () -> testGetRecipe(recipeIds.get(0), RECIPES[0], MAIN_LOGIN_PASS),
+            () -> testGetRecipe(recipeIds.get(1), RECIPES[1], MAIN_LOGIN_PASS),
+            this::reloadServer,
+            () -> testGetRecipe(recipeIds.get(0), RECIPES[0], MAIN_LOGIN_PASS),
+            () -> testGetRecipe(recipeIds.get(1), RECIPES[1], MAIN_LOGIN_PASS),
+
+            () -> testUpdateRecipe(recipeIds.get(0), JSON_RECIPES[1], MAIN_LOGIN_PASS),
+            () -> testGetRecipe(recipeIds.get(0), RECIPES[1], MAIN_LOGIN_PASS),
+
+            () -> testDeleteRecipe(recipeIds.get(0), MAIN_LOGIN_PASS),
+
+            () -> testDeleteRecipeNotFoundStatusCode(recipeIds.get(0), MAIN_LOGIN_PASS),
+            () -> testGetRecipeNotFoundStatusCode(recipeIds.get(0), MAIN_LOGIN_PASS),
+            () -> testUpdateRecipeNotFoundStatusCode(recipeIds.get(0), JSON_RECIPES[1], MAIN_LOGIN_PASS),
 
 
             // Add more recipes before testing if elems sorted correctly by date.
@@ -604,98 +636,130 @@ files:
             // And if a user uses "unstable" sort to sort recipes, tests will be unstable. Thread sleep prevents duplicates.
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[2]);
+                return testPostRecipe(JSON_RECIPES[2], MAIN_LOGIN_PASS);
             },
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[3]);
+                return testPostRecipe(JSON_RECIPES[3], MAIN_LOGIN_PASS);
             },
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[4]);
+                return testPostRecipe(JSON_RECIPES[4], MAIN_LOGIN_PASS);
             },
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[5]);
+                return testPostRecipe(JSON_RECIPES[5], MAIN_LOGIN_PASS);
             },
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[6]);
+                return testPostRecipe(JSON_RECIPES[6], MAIN_LOGIN_PASS);
             },
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[7]);
+                return testPostRecipe(JSON_RECIPES[7], MAIN_LOGIN_PASS);
             },
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[8]);
+                return testPostRecipe(JSON_RECIPES[8], MAIN_LOGIN_PASS);
             },
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[9]);
+                return testPostRecipe(JSON_RECIPES[9], MAIN_LOGIN_PASS);
             },
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[10]);
+                return testPostRecipe(JSON_RECIPES[10], MAIN_LOGIN_PASS);
             },
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[11]);
+                return testPostRecipe(JSON_RECIPES[11], MAIN_LOGIN_PASS);
             },
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[12]);
+                return testPostRecipe(JSON_RECIPES[12], MAIN_LOGIN_PASS);
             },
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[13]);
+                return testPostRecipe(JSON_RECIPES[13], MAIN_LOGIN_PASS);
             },
             () -> {
                 sleep(10);
-                return testPostRecipe(JSON_RECIPES[14]);
+                return testPostRecipe(JSON_RECIPES[14], MAIN_LOGIN_PASS);
             },
 
-            // test 27
-            () -> testGetRecipesByCategorySorted(RECIPES_CATEGORY_DESSERT_REVERSED, "dessert"),
-            () -> testGetRecipesByNameContainsSorted(RECIPES_NAME_CONTAINS_ICE_CREAM_REVERSED, "ice-cream"),
+            () -> testGetRecipesByCategorySorted(RECIPES_CATEGORY_DESSERT_REVERSED, "dessert", MAIN_LOGIN_PASS),
+            () -> testGetRecipesByNameContainsSorted(RECIPES_NAME_CONTAINS_ICE_CREAM_REVERSED, "ice-cream", MAIN_LOGIN_PASS),
 
-            // test 29
-            () -> testGetRecipesByCategorySorted(new Recipe[]{}, "should_return_empty_array_1"),
-            () -> testGetRecipesByNameContainsSorted(new Recipe[]{}, "should_return_empty_array_2"),
+            () -> testGetRecipesByCategorySorted(new Recipe[]{}, "should_return_empty_array_1", MAIN_LOGIN_PASS),
+            () -> testGetRecipesByNameContainsSorted(new Recipe[]{}, "should_return_empty_array_2", MAIN_LOGIN_PASS),
 
-            // test 31
-            () -> testGetRecipesBadRequestStatusCode(0),
-            () -> testGetRecipesBadRequestStatusCode(1),
-            () -> testGetRecipesBadRequestStatusCode(2),
-            () -> testGetRecipesBadRequestStatusCode(5),
+            () -> testGetRecipesBadRequestStatusCode(0, MAIN_LOGIN_PASS),
+            () -> testGetRecipesBadRequestStatusCode(1, MAIN_LOGIN_PASS),
+            () -> testGetRecipesBadRequestStatusCode(2, MAIN_LOGIN_PASS),
+            () -> testGetRecipesBadRequestStatusCode(5, MAIN_LOGIN_PASS),
 
-            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[0]),
-            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[1]),
-            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[2]),
-            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[3]),
-            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[4]),
-            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[5]),
-            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[6]),
-            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[7]),
-            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[8]),
-            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[9]),
+            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[0], MAIN_LOGIN_PASS),
+            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[1], MAIN_LOGIN_PASS),
+            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[2], MAIN_LOGIN_PASS),
+            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[3], MAIN_LOGIN_PASS),
+            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[4], MAIN_LOGIN_PASS),
+            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[5], MAIN_LOGIN_PASS),
+            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[6], MAIN_LOGIN_PASS),
+            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[7], MAIN_LOGIN_PASS),
+            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[8], MAIN_LOGIN_PASS),
+            () -> testPostIncorrectRecipeStatusCode(JSON_INCORRECT_RECIPES[9], MAIN_LOGIN_PASS),
 
-            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[0]),
-            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[1]),
-            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[2]),
-            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[3]),
-            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[4]),
-            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[5]),
-            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[6]),
-            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[7]),
-            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[8]),
-            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[9])
+            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[0], MAIN_LOGIN_PASS),
+            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[1], MAIN_LOGIN_PASS),
+            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[2], MAIN_LOGIN_PASS),
+            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[3], MAIN_LOGIN_PASS),
+            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[4], MAIN_LOGIN_PASS),
+            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[5], MAIN_LOGIN_PASS),
+            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[6], MAIN_LOGIN_PASS),
+            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[7], MAIN_LOGIN_PASS),
+            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[8], MAIN_LOGIN_PASS),
+            () -> testUpdateIncorrectRecipeStatusCode(recipeIds.get(1), JSON_INCORRECT_RECIPES[9], MAIN_LOGIN_PASS),
+            this::reloadServer,
+
+            // Use second registered user to check if endpoints are available.
+            () -> testPostRecipe(JSON_RECIPES[0], ADDITIONAL_LOGIN_PASS_1),
+            () -> testGetRecipe(recipeIds.get(1), RECIPES[1], ADDITIONAL_LOGIN_PASS_1),
+            () -> testGetRecipesByCategorySorted(RECIPES_CATEGORY_DESSERT_REVERSED, "dessert", ADDITIONAL_LOGIN_PASS_1),
+            () -> testGetRecipesByNameContainsSorted(RECIPES_NAME_CONTAINS_ICE_CREAM_REVERSED, "ice-cream", ADDITIONAL_LOGIN_PASS_1),
+            // Use third registered user to check forbidden status code.
+            () -> testDeleteRecipeForbiddenStatusCode(recipeIds.get(1), ADDITIONAL_LOGIN_PASS_2),
+            () -> testUpdateRecipeForbiddenStatusCode(recipeIds.get(1), JSON_RECIPES[2], ADDITIONAL_LOGIN_PASS_2),
+
+            // unregistered login and pass
+            () -> testPostRecipeUnregisteredUser(JSON_RECIPES[0]),
+            () -> testGetRecipeUnregisteredUser(recipeIds.get(0)),
+            () -> testUpdateRecipeUnregisteredUser(recipeIds.get(0), JSON_RECIPES[1]),
+            () -> testDeleteRecipeUnregisteredUser(recipeIds.get(0)),
+            () -> testGetRecipesByCategorySortedUnregisteredUser("dessert"),
+            () -> testGetRecipesByNameContainsSortedUnregisteredUser("ice-cream"),
+
+            // without authentication
+            () -> testPostRecipeNoAuth(JSON_RECIPES[0]),
+            () -> testGetRecipeNoAuth(recipeIds.get(0)),
+            () -> testUpdateRecipeNoAuth(recipeIds.get(0), JSON_RECIPES[1]),
+            () -> testDeleteRecipeNoAuth(recipeIds.get(0)),
+            () -> testGetRecipesByCategorySortedNoAuth("dessert"),
+            () -> testGetRecipesByNameContainsSortedNoAuth("ice-cream")
         };
 
+        CheckResult testPostRegister(String[] loginAndPass, int statusCode) {
+            final String JSON_LOGIN_PASS = "{\"email\":\"" + loginAndPass[0] + "\",\"password\":\"" + loginAndPass[1] + "\"}";
 
-        CheckResult testPostRecipe(String jsonRecipe) {
+            HttpResponse response = post(API_REGISTER, JSON_LOGIN_PASS).send();
 
-            HttpResponse response = post(API_RECIPE_NEW, jsonRecipe).send();
+            throwIfIncorrectStatusCode(response, statusCode);
+
+            return correct();
+        }
+
+        // Tests with authentication
+        CheckResult testPostRecipe(String jsonRecipe, String[] loginPass) {
+            HttpResponse response = post(API_RECIPE_NEW, jsonRecipe).basicAuth(loginPass[0], loginPass[1]).send();
 
             throwIfIncorrectStatusCode(response, 200);
 
@@ -709,9 +773,8 @@ files:
             return correct();
         }
 
-        CheckResult testGetRecipe(int recipeId, Recipe recipe) {
-
-            HttpResponse response = get(API_RECIPE + recipeId).send();
+        CheckResult testGetRecipe(int recipeId, Recipe recipe, String[] loginPass) {
+            HttpResponse response = get(API_RECIPE + recipeId).basicAuth(loginPass[0], loginPass[1]).send();
 
             throwIfIncorrectStatusCode(response, 200);
 
@@ -727,24 +790,24 @@ files:
             return correct();
         }
 
-        CheckResult testUpdateRecipe(int recipeId, String jsonRecipe) {
-            HttpResponse response = put(API_RECIPE + recipeId, jsonRecipe).send();
+        CheckResult testUpdateRecipe(int recipeId, String jsonRecipe, String[] loginPass) {
+            HttpResponse response = put(API_RECIPE + recipeId, jsonRecipe).basicAuth(loginPass[0], loginPass[1]).send();
 
             throwIfIncorrectStatusCode(response, 204);
 
             return correct();
         }
 
-        CheckResult testDeleteRecipe(int recipeId) {
-            HttpResponse response = delete(API_RECIPE + recipeId).send();
+        CheckResult testDeleteRecipe(int recipeId, String[] loginPass) {
+            HttpResponse response = delete(API_RECIPE + recipeId).basicAuth(loginPass[0], loginPass[1]).send();
 
             throwIfIncorrectStatusCode(response, 204);
 
             return correct();
         }
 
-        CheckResult testGetRecipesByCategorySorted(Recipe[] recipes, String category) {
-            HttpResponse response = get(API_RECIPE_SEARCH).addParam("category", category).send();
+        CheckResult testGetRecipesByCategorySorted(Recipe[] recipes, String paramValue, String[] loginPass) {
+            HttpResponse response = get(API_RECIPE_SEARCH).addParam(CATEGORY, paramValue).basicAuth(loginPass[0], loginPass[1]).send();
 
             throwIfIncorrectStatusCode(response, 200);
 
@@ -755,8 +818,8 @@ files:
             return correct();
         }
 
-        private CheckResult testGetRecipesByNameContainsSorted(Recipe[] recipes, String name) {
-            HttpResponse response = get(API_RECIPE_SEARCH).addParam("name", name).send();
+        private CheckResult testGetRecipesByNameContainsSorted(Recipe[] recipes, String paramValue, String[] loginPass) {
+            HttpResponse response = get(API_RECIPE_SEARCH).basicAuth(loginPass[0], loginPass[1]).addParam(NAME, paramValue).send();
 
             throwIfIncorrectStatusCode(response, 200);
 
@@ -767,141 +830,174 @@ files:
             return correct();
         }
 
-        // Status codes tests
-        CheckResult testGetRecipeNotFoundStatusCode(int recipeId) {
-            HttpResponse response = get(API_RECIPE + recipeId).send();
+        // Status codes tests with authentication
+        CheckResult testGetRecipeNotFoundStatusCode(int recipeId, String[] loginPass) {
+            HttpResponse response = get(API_RECIPE + recipeId).basicAuth(loginPass[0], loginPass[1]).send();
 
             throwIfIncorrectStatusCode(response, 404);
 
             return correct();
         }
 
-        CheckResult testUpdateRecipeNotFoundStatusCode(int recipeId, String jsonRecipe) {
-            HttpResponse response = put(API_RECIPE + recipeId, jsonRecipe).send();
+        CheckResult testUpdateRecipeNotFoundStatusCode(int recipeId, String jsonRecipe, String[] loginPass) {
+            HttpResponse response = put(API_RECIPE + recipeId, jsonRecipe).basicAuth(loginPass[0], loginPass[1]).send();
 
             throwIfIncorrectStatusCode(response, 404);
 
             return correct();
         }
 
-        CheckResult testDeleteRecipeNotFoundStatusCode(int recipeId) {
-            HttpResponse response = delete(API_RECIPE + recipeId).send();
+        CheckResult testDeleteRecipeNotFoundStatusCode(int recipeId, String[] loginPass) {
+            HttpResponse response = delete(API_RECIPE + recipeId).basicAuth(loginPass[0], loginPass[1]).send();
 
             throwIfIncorrectStatusCode(response, 404);
 
             return correct();
         }
 
-        CheckResult testGetRecipesBadRequestStatusCode(int numberOfQueryParams) {
+        CheckResult testGetRecipesBadRequestStatusCode(int numberOfQueryParams, String[] loginPass) {
             Map<String, String> params = generateUrlParams(numberOfQueryParams);
 
-            HttpResponse response = get(API_RECIPE_SEARCH).addParams(params).send();
+            HttpResponse response = get(API_RECIPE_SEARCH).addParams(params).basicAuth(loginPass[0], loginPass[1]).send();
 
             throwIfIncorrectStatusCode(response, 400);
 
             return correct();
         }
 
-        CheckResult testPostIncorrectRecipeStatusCode(String incorrectJsonRecipe) {
-            HttpResponse response = post(API_RECIPE_NEW, incorrectJsonRecipe).send();
+        CheckResult testPostIncorrectRecipeStatusCode(String incorrectJsonRecipe, String[] loginPass) {
+            HttpResponse response = post(API_RECIPE_NEW, incorrectJsonRecipe).basicAuth(loginPass[0], loginPass[1]).send();
 
             throwIfIncorrectStatusCode(response, 400);
 
             return correct();
         }
 
-        CheckResult testUpdateIncorrectRecipeStatusCode(int recipeId, String incorrectJsonRecipe) {
-            HttpResponse response = put(API_RECIPE + recipeId, incorrectJsonRecipe).send();
+        CheckResult testUpdateIncorrectRecipeStatusCode(int recipeId, String incorrectJsonRecipe, String[] loginPass) {
+            HttpResponse response = put(API_RECIPE + recipeId, incorrectJsonRecipe).basicAuth(loginPass[0], loginPass[1]).send();
 
             throwIfIncorrectStatusCode(response, 400);
+
+            return correct();
+        }
+
+        CheckResult testDeleteRecipeForbiddenStatusCode(int recipeId, String[] loginPass) {
+            HttpResponse response = delete(API_RECIPE + recipeId).basicAuth(loginPass[0], loginPass[1]).send();
+
+            throwIfIncorrectStatusCode(response, 403);
+
+            return correct();
+        }
+
+        CheckResult testUpdateRecipeForbiddenStatusCode(int recipeId, String jsonRecipe, String[] loginPass) {
+            HttpResponse response = put(API_RECIPE + recipeId, jsonRecipe).basicAuth(loginPass[0], loginPass[1]).send();
+
+            throwIfIncorrectStatusCode(response, 403);
+
+            return correct();
+        }
+
+        // Not registered user tests
+        CheckResult testPostRecipeUnregisteredUser(String jsonRecipe) {
+            HttpResponse response = addAuthUnregisteredUser(post(API_RECIPE_NEW, jsonRecipe)).send();
+
+            throwIfIncorrectStatusCode(response, 401);
+
+            return correct();
+        }
+
+        CheckResult testGetRecipeUnregisteredUser(int recipeId) {
+            HttpResponse response = addAuthUnregisteredUser(get(API_RECIPE + recipeId)).send();
+
+            throwIfIncorrectStatusCode(response, 401);
+
+            return correct();
+        }
+
+        CheckResult testUpdateRecipeUnregisteredUser(int recipeId, String jsonRecipe) {
+            HttpResponse response = addAuthUnregisteredUser(put(API_RECIPE + recipeId, jsonRecipe)).send();
+
+            throwIfIncorrectStatusCode(response, 401);
+
+            return correct();
+        }
+
+        CheckResult testDeleteRecipeUnregisteredUser(int recipeId) {
+            HttpResponse response = addAuthUnregisteredUser(delete(API_RECIPE + recipeId)).send();
+
+            throwIfIncorrectStatusCode(response, 401);
+
+            return correct();
+        }
+
+        CheckResult testGetRecipesByCategorySortedUnregisteredUser(String paramValue) {
+            HttpResponse response = addAuthUnregisteredUser(get(API_RECIPE_SEARCH)).addParam(CATEGORY, paramValue).send();
+
+            throwIfIncorrectStatusCode(response, 401);
+
+
+            return correct();
+        }
+
+        private CheckResult testGetRecipesByNameContainsSortedUnregisteredUser(String paramValue) {
+            HttpResponse response = addAuthUnregisteredUser(get(API_RECIPE_SEARCH)).addParam(NAME, paramValue).send();
+
+            throwIfIncorrectStatusCode(response, 401);
+
+            return correct();
+        }
+
+        // No authentication tests
+        CheckResult testPostRecipeNoAuth(String jsonRecipe) {
+            HttpResponse response = post(API_RECIPE_NEW, jsonRecipe).send();
+
+            throwIfIncorrectStatusCode(response, 401);
+
+            return correct();
+        }
+
+        CheckResult testGetRecipeNoAuth(int recipeId) {
+            HttpResponse response = get(API_RECIPE + recipeId).send();
+
+            throwIfIncorrectStatusCode(response, 401);
+
+            return correct();
+        }
+
+        CheckResult testUpdateRecipeNoAuth(int recipeId, String jsonRecipe) {
+            HttpResponse response = put(API_RECIPE + recipeId, jsonRecipe).send();
+
+            throwIfIncorrectStatusCode(response, 401);
+
+            return correct();
+        }
+
+        CheckResult testDeleteRecipeNoAuth(int recipeId) {
+            HttpResponse response = delete(API_RECIPE + recipeId).send();
+
+            throwIfIncorrectStatusCode(response, 401);
+
+            return correct();
+        }
+
+        CheckResult testGetRecipesByCategorySortedNoAuth(String paramValue) {
+            HttpResponse response = get(API_RECIPE_SEARCH).addParam(CATEGORY, paramValue).send();
+
+            throwIfIncorrectStatusCode(response, 401);
+
+
+            return correct();
+        }
+
+        private CheckResult testGetRecipesByNameContainsSortedNoAuth(String paramValue) {
+            HttpResponse response = get(API_RECIPE_SEARCH).addParam(NAME, paramValue).send();
+
+            throwIfIncorrectStatusCode(response, 401);
 
             return correct();
         }
     }
   learner_created: false
-feedback_link: https://hyperskill.org/projects/180/stages/920/implement#comment
-status: Failed
-feedback:
-  message: |-
-    Wrong answer in test #27
-
-    GET /api/recipe/search/?category=dessert should respond with status code 200, responded: 400
-
-    Response body:
-    {&quot;timestamp&quot;:&quot;2022-04-20T08:12:37.402+00:00&quot;,&quot;status&quot;:400,&quot;error&quot;:&quot;Bad Request&quot;,&quot;path&quot;:&quot;/api/recipe/search/&quot;}
-
-    Please find below the output of your program during this failed test.
-
-    ---
-
-    .   ____          _            __ _ _
-     /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
-    ( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
-     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-      &#39;  |____| .__|_| |_|_| |_\__, | / / / /
-     =========|_|==============|___/=/_/_/_/
-     :: Spring Boot ::                (v2.5.6)
-
-    2022-04-20 11:12:30.679  INFO 5708 --- [    Test worker] recipes.RecipesApplication               : Starting RecipesApplication using Java 17.0.1 on Fractal with PID 5708 (started by Fractal in D:\RepositoryRoadToProfession\Recipes\Recipes\task)
-    2022-04-20 11:12:30.682  INFO 5708 --- [    Test worker] recipes.RecipesApplication               : No active profile set, falling back to default profiles: default
-    2022-04-20 11:12:31.640  INFO 5708 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-    2022-04-20 11:12:31.693  INFO 5708 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 1 JPA repository interfaces.
-    2022-04-20 11:12:32.292  INFO 5708 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8881 (http)
-    2022-04-20 11:12:32.305  INFO 5708 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-    2022-04-20 11:12:32.305  INFO 5708 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-    2022-04-20 11:12:32.425  INFO 5708 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-    2022-04-20 11:12:32.426  INFO 5708 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1694 ms
-    2022-04-20 11:12:32.563  INFO 5708 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-    2022-04-20 11:12:32.775  INFO 5708 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-    2022-04-20 11:12:32.789  INFO 5708 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../recipes_db&#39;
-    2022-04-20 11:12:32.957  INFO 5708 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-    2022-04-20 11:12:33.026  INFO 5708 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
-    2022-04-20 11:12:33.192  INFO 5708 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-    2022-04-20 11:12:33.343  INFO 5708 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-    2022-04-20 11:12:34.025  INFO 5708 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-    2022-04-20 11:12:34.035  INFO 5708 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
-    2022-04-20 11:12:34.403  WARN 5708 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-    2022-04-20 11:12:34.894  INFO 5708 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
-    2022-04-20 11:12:34.930  INFO 5708 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8881 (http) with context path &#39;&#39;
-    2022-04-20 11:12:34.943  INFO 5708 --- [    Test worker] recipes.RecipesApplication               : Started RecipesApplication in 4.627 seconds (JVM running for 5.36)
-    2022-04-20 11:12:35.284  INFO 5708 --- [nio-8881-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
-    2022-04-20 11:12:35.284  INFO 5708 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
-    2022-04-20 11:12:35.286  INFO 5708 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-    2022-04-20 11:12:36.160  INFO 5708 --- [       Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit &#39;default&#39;
-    2022-04-20 11:12:36.166  INFO 5708 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-    2022-04-20 11:12:36.193  INFO 5708 --- [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-
-      .   ____          _            __ _ _
-     /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
-    ( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
-     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-      &#39;  |____| .__|_| |_|_| |_\__, | / / / /
-     =========|_|==============|___/=/_/_/_/
-     :: Spring Boot ::                (v2.5.6)
-
-    2022-04-20 11:12:36.239  INFO 5708 --- [    Test worker] recipes.RecipesApplication               : Starting RecipesApplication using Java 17.0.1 on Fractal with PID 5708 (started by Fractal in D:\RepositoryRoadToProfession\Recipes\Recipes\task)
-    2022-04-20 11:12:36.240  INFO 5708 --- [    Test worker] recipes.RecipesApplication               : No active profile set, falling back to default profiles: default
-    2022-04-20 11:12:36.468  INFO 5708 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-    2022-04-20 11:12:36.473  INFO 5708 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 1 JPA repository interfaces.
-    2022-04-20 11:12:36.561  INFO 5708 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8881 (http)
-    2022-04-20 11:12:36.562  INFO 5708 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-    2022-04-20 11:12:36.563  INFO 5708 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.54]
-    2022-04-20 11:12:36.597  INFO 5708 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-    2022-04-20 11:12:36.597  INFO 5708 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 355 ms
-    2022-04-20 11:12:36.638  INFO 5708 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-    2022-04-20 11:12:36.650  INFO 5708 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-    2022-04-20 11:12:36.650  INFO 5708 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../recipes_db&#39;
-    2022-04-20 11:12:36.687  INFO 5708 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-    2022-04-20 11:12:36.693  INFO 5708 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-    2022-04-20 11:12:36.756  INFO 5708 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-    2022-04-20 11:12:36.756  INFO 5708 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
-    2022-04-20 11:12:36.812  WARN 5708 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-    2022-04-20 11:12:36.977  INFO 5708 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
-    2022-04-20 11:12:36.991  INFO 5708 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8881 (http) with context path &#39;&#39;
-    2022-04-20 11:12:36.996  INFO 5708 --- [    Test worker] recipes.RecipesApplication               : Started RecipesApplication in 0.773 seconds (JVM running for 7.414)
-    2022-04-20 11:12:37.004  INFO 5708 --- [nio-8881-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
-    2022-04-20 11:12:37.004  INFO 5708 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
-    2022-04-20 11:12:37.005  INFO 5708 --- [nio-8881-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-    2022-04-20 11:12:37.400  WARN 5708 --- [nio-8881-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter &#39;name&#39; for method parameter type String is not present]
-  time: Wed, 20 Apr 2022 08:12:37 UTC
+feedback_link: https://hyperskill.org/projects/180/stages/921/implement#comment
+status: Unchecked
 record: -1
