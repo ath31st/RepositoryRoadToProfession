@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8d78c86-d9b1-40e6-be0c-760f6dd5268a" name="Changes" comment="project Recipes, accomplishment stage 4.1">
-      <change afterPath="$PROJECT_DIR$/Recipes/recipes_db.mv.db-real" afterDir="false" />
+    <list default="true" id="b8d78c86-d9b1-40e6-be0c-760f6dd5268a" name="Changes" comment="project Recipes, accomplishment stage 4 v2">
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.bin" afterDir="false" />
@@ -16,8 +15,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recipes/Sort   update/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/Sort   update/task-info.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recipes/lesson-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/lesson-info.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recipes/recipes_db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/recipes_db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recipes/task/build/classes/java/main/recipes/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/task/build/classes/java/main/recipes/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recipes/task/build/classes/java/main/recipes/RecipeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/task/build/classes/java/main/recipes/RecipeRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recipes/task/build/classes/java/main/recipes/RecipeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/task/build/classes/java/main/recipes/RecipeService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recipes/task/build/reports/tests/test/classes/RecipesApplicationTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/task/build/reports/tests/test/classes/RecipesApplicationTest.html" afterDir="false" />
@@ -28,9 +27,10 @@
       <change beforePath="$PROJECT_DIR$/Recipes/task/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/task/build/test-results/test/binary/output.bin.idx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recipes/task/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/task/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recipes/task/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/task/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recipes/task/src/recipes/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/task/src/recipes/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recipes/task/src/recipes/RecipeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/task/src/recipes/RecipeRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Recipes/task/src/recipes/RecipeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/task/src/recipes/RecipeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Recipes/task/test/RecipesApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recipes/task/test/RecipesApplicationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/course-remote-info.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650442445299</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="project Recipes, accomplishment stage 4 v2">
+      <created>1650445026600</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650445026600</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -142,6 +149,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="project Recipes, accomplishment stage 4.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="project Recipes, accomplishment stage 4.1" />
+    <MESSAGE value="project Recipes, accomplishment stage 4 v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="project Recipes, accomplishment stage 4 v2" />
   </component>
 </project>

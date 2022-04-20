@@ -51,7 +51,7 @@ public class RecipeService {
                 return recipeRepository.findByCategoryIgnoreCaseOrderByDateDesc(category);
             }
             if (name != null) {
-                return recipeRepository.findByNameIgnoreCaseOrderByDateDesc(name);
+                return recipeRepository.findByNameIgnoreCaseContainsOrderByDateDesc(name);
             }
         }
         return new ArrayList<>();
