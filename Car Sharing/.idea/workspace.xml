@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a623df63-a162-4ec4-9703-51af5621a0f2" name="Changes" comment="Start project Carsharing. Accomplishment stage 2 v1.">
+      <change afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/Companies/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/Companies/task-info.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/Companies/task-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/Companies/task-remote-info.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/Initialization/task-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/Initialization/task-remote-info.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/Relationship/task-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/Relationship/task-remote-info.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/Welcome, customer/task-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/Welcome, customer/task-remote-info.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/course-remote-info.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="285yguSiFHuhMADIO5eUf8USO7G" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "show.inlinked.gradle.project.popup": "false"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="carsharing.Main" />
+      <module name="Car_Sharing.Car_Sharing-task.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="carsharing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a623df63-a162-4ec4-9703-51af5621a0f2" name="Changes" comment="" />
+      <created>1650520855338</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650520855338</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Start project Carsharing. Accomplishment stage 2 v1.">
+      <created>1650525734103</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1650525734103</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Start project Carsharing. Accomplishment stage 2 v1." />
+    <option name="LAST_COMMIT_MESSAGE" value="Start project Carsharing. Accomplishment stage 2 v1." />
+  </component>
+</project>
