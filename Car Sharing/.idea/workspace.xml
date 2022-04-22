@@ -4,15 +4,89 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a623df63-a162-4ec4-9703-51af5621a0f2" name="Changes" comment="Start project Carsharing. Accomplishment stage 2 v1.">
-      <change afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Menu.java" afterDir="false" />
+    <list default="true" id="7be68b1f-d594-4228-bb80-ee207ebd7d2f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Carsharing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/Company.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/CompanyDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/frameworkLessonHistory/storage.storageData" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/frameworkLessonHistory/storage.storageData" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/frameworkLessonHistory/storage.storageRecordIndex" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/frameworkLessonHistory/storage.storageRecordIndex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/classes/java/Car_Sharing.Car_Sharing-task-build-classes-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/classes/java/Car_Sharing.Car_Sharing-task-build-classes-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/classes/java/Car_Sharing.Car_Sharing-task-build-classes-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/generated/sources/annotationProcessor/java/Car_Sharing.Car_Sharing-task-build-generated-sources-annotationProcessor-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/generated/sources/annotationProcessor/java/Car_Sharing.Car_Sharing-task-build-generated-sources-annotationProcessor-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/generated/sources/annotationProcessor/java/Car_Sharing.Car_Sharing-task-build-generated-sources-annotationProcessor-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/generated/sources/headers/java/Car_Sharing.Car_Sharing-task-build-generated-sources-headers-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/generated/sources/headers/java/Car_Sharing.Car_Sharing-task-build-generated-sources-headers-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/generated/sources/headers/java/Car_Sharing.Car_Sharing-task-build-generated-sources-headers-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/reports/tests/Car_Sharing.Car_Sharing-task-build-reports-tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/reports/tests/Car_Sharing.Car_Sharing-task-build-reports-tests.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/reports/tests/Car_Sharing.Car_Sharing-task-build-reports-tests.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/test-results/Car_Sharing.Car_Sharing-task-build-test-results.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/test-results/Car_Sharing.Car_Sharing-task-build-test-results.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/test-results/Car_Sharing.Car_Sharing-task-build-test-results.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/tmp/Car_Sharing.Car_Sharing-task-build-tmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/tmp/Car_Sharing.Car_Sharing-task-build-tmp.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Car Sharing/task/build/tmp/Car_Sharing.Car_Sharing-task-build-tmp.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car Sharing/Companies/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/Companies/task-info.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car Sharing/Companies/task-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/Companies/task-remote-info.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car Sharing/Initialization/task-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/Initialization/task-remote-info.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car Sharing/Relationship/task-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/Relationship/task-remote-info.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car Sharing/Welcome, customer/task-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/Welcome, customer/task-remote-info.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/Initialization/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/Initialization/task-info.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/main/carsharing/Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/main/carsharing/DataBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/main/carsharing/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/main/carsharing/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/test/CarSharingTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/test/CarSharingTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/test/DatabaseUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/test/DatabaseUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/reports/tests/test/classes/CarSharingTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/reports/tests/test/classes/CarSharingTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/reports/tests/test/packages/default-package.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/reports/tests/test/packages/default-package.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/test-results/test/TEST-CarSharingTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/test-results/test/TEST-CarSharingTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/tmp/test/jar_extract_14147952520625269043_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/tmp/test/jar_extract_14941051521292124812_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/tmp/test/jar_extract_15848377581471021902_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/tmp/test/jar_extract_2681281087845816178_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/tmp/test/jar_extract_3471430622079208949_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/tmp/test/jar_extract_3984989210211768873_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/tmp/test/jar_extract_7569022504986278827_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/tmp/test/jar_extract_9092114012827963994_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/Application.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/DataBase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/DataBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/carsharing.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/carsharing.trace.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/course-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/course-remote-info.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +103,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -38,19 +113,17 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="285yguSiFHuhMADIO5eUf8USO7G" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="288uq2AozLcgCpnKj3Ipyb7Impa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "show.inlinked.gradle.project.popup": "false"
   }
 }]]></component>
@@ -58,6 +131,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="carsharing.Main" />
       <module name="Car_Sharing.Car_Sharing-task.main" />
+      <option name="PROGRAM_PARAMETERS" value="-databaseFileName carsharing" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="carsharing.*" />
@@ -88,20 +162,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a623df63-a162-4ec4-9703-51af5621a0f2" name="Changes" comment="" />
-      <created>1650520855338</created>
+      <changelist id="7be68b1f-d594-4228-bb80-ee207ebd7d2f" name="Changes" comment="" />
+      <created>1650610720853</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1650520855338</updated>
+      <updated>1650610720853</updated>
     </task>
-    <task id="LOCAL-00001" summary="Start project Carsharing. Accomplishment stage 2 v1.">
-      <created>1650525734103</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1650525734103</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,10 +180,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Start project Carsharing. Accomplishment stage 2 v1." />
-    <option name="LAST_COMMIT_MESSAGE" value="Start project Carsharing. Accomplishment stage 2 v1." />
   </component>
 </project>

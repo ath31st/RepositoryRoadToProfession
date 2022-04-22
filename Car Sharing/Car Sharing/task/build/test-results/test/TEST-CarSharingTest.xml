@@ -1,19 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CarSharingTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-21T07:16:43" hostname="FRACTAL" time="0.296">
+<testsuite name="CarSharingTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-22T11:39:57" hostname="FRACTAL" time="0.312">
   <properties/>
-  <testcase name="start" classname="CarSharingTest" time="0.296"/>
+  <testcase name="start" classname="CarSharingTest" time="0.312"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
-[-databaseFileName, carsharing]
+1. Log in as a manager
+0. Exit
+> 0
 ?[1;31m
 Start test 2?[0m
-[-databaseFileName, carsharing]
+1. Log in as a manager
+0. Exit
+> 1
+1. Company list
+2. Create a company
+0. Back
+> 0
+1. Log in as a manager
+0. Exit
 ?[1;31m
 Start test 3?[0m
 ?[1;31m
 Start test 4?[0m
 ?[1;31m
 Start test 5?[0m
+?[1;31m
+Start test 6?[0m
+1. Log in as a manager
+0. Exit
+> 1
+1. Company list
+2. Create a company
+0. Back
+> 1
+The company list is empty!
+1. Company list
+2. Create a company
+0. Back
+> 2
+Enter the company name:
+> Super company
+1. Company list
+2. Create a company
+0. Back
+> 1
+1. Super company
+1. Company list
+2. Create a company
+0. Back
+> 2
+Enter the company name:
+> Another company
+1. Company list
+2. Create a company
+0. Back
+> 2
+Enter the company name:
+> One more company
+1. Company list
+2. Create a company
+0. Back
+> 1
+1. Super company
+2. Another company
+3. One more company
+1. Company list
+2. Create a company
+0. Back
+> 0
+1. Log in as a manager
+0. Exit
+> 0
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
