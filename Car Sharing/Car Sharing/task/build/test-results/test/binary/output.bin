@@ -42,9 +42,55 @@
 > 1
 Choose a company:
 1. Super company
+	0. Back
 > 0
-7prep4: SELECT * FROM COMPANY WHERE NAME = ?; {1: '0'}
-The car list is empty!
 1. Company list
 2. Create a company
+	0. Back
+> 2
+Enter the company name:
+> Another company
+1. Company list
+2. Create a company
+	0. Back
+> 2
+Enter the company name:
+> One more company
+1. Company list
+2. Create a company
+	0. Back
+> 1
+Choose a company:
+1. Super company
+2. Another company
+3. One more company
+	0. Back
+> 2
+1. Company list
+2. Create a company
+	0. Back
+[1;31m
+Start test 7[0m
+1. Log in as a manager
+	0. Exit
+> 1
+1. Company list
+2. Create a company
+	0. Back
+> 2
+Enter the company name:
+> Car To Go
+1. Company list
+2. Create a company
+	0. Back
+> 2
+Enter the company name:
+> Drive Now
+1. Company list
+2. Create a company
+	0. Back
+> 1
+Choose a company:
+4. Car To Go
+5. Drive Now
 	0. Back

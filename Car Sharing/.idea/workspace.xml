@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7be68b1f-d594-4228-bb80-ee207ebd7d2f" name="Changes" comment="Project Carshering, stage 3 v2.">
+    <list default="true" id="7be68b1f-d594-4228-bb80-ee207ebd7d2f" name="Changes" comment="Project Carshering, stage 3 v3.">
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.3.3/executionHistory/executionHistory.bin" afterDir="false" />
@@ -17,8 +17,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car Sharing/Relationship/task-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/Relationship/task-info.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/main/carsharing/Carsharing.class" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/main/carsharing/Carsharing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/main/carsharing/db/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/main/carsharing/db/Company.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/main/carsharing/db/CompanyDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/main/carsharing/db/CompanyDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/main/carsharing/db/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/classes/java/main/carsharing/db/Database.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/reports/tests/test/classes/CarSharingTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/reports/tests/test/classes/CarSharingTest.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/reports/tests/test/index.html" afterDir="false" />
@@ -29,15 +27,10 @@
       <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/test-results/test/binary/results.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car Sharing/task/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/Carsharing.class" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/Carsharing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/db/Company.class" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/db/Company.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/db/CompanyDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/db/CompanyDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/db/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/out/production/classes/carsharing/db/Database.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Carsharing.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/Carsharing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/CompanyDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/CompanyDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/carsharing.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/Car Sharing/task/src/carsharing/db/carsharing.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-remote-info.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/course-remote-info.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650638199294</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Project Carshering, stage 3 v3.">
+      <created>1650651175011</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650651175011</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,6 +149,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project Carshering, stage 3 v1." />
     <MESSAGE value="Project Carshering, stage 3 v2." />
-    <option name="LAST_COMMIT_MESSAGE" value="Project Carshering, stage 3 v2." />
+    <MESSAGE value="Project Carshering, stage 3 v3." />
+    <option name="LAST_COMMIT_MESSAGE" value="Project Carshering, stage 3 v3." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Car Sharing/task/src/carsharing/Carsharing.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

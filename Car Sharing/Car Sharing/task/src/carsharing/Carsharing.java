@@ -52,11 +52,35 @@ public class Carsharing {
                         for (Company company : companies) {
                             System.out.println(company.getId() + ". " + company.getCompanyName());
                         }
-                        String companyName = scanner.next();
+                        System.out.println("0. Back");
+                        String companyName = scanner.nextLine();
                         Company company = database.findCompanyByName(companyName);
-                        if (!company.getCars().isEmpty()) {
-                            company.getCars().forEach(car -> System.out.println(car.getId() + ". " + car.getCarName()));
-                        } else System.out.println("The car list is empty!");
+                        if (company.getCompanyName() == null) break;
+                        final String companyMenuMessage = "1. Car list\n" +
+                                "2. Create a car\n" +
+                                "0. Back";
+                        do {
+                            System.out.println(companyMenuMessage);
+
+                            action = Integer.parseInt(scanner.nextLine());
+                            switch (action) {
+                                case 1:
+                                    if (!company.getCars().isEmpty()) {
+                                        company.getCars().forEach(car -> System.out.println(car.getId() + ". " + car.getCarName()));
+                                    } else System.out.println("The car list is empty!");
+                                    break;
+                                case 2:
+                                    System.out.println("Enter the car name:");
+                                    String carName = scanner.next();
+                                    database.addCar(carName);
+                                    System.out.println("The car was added!");
+                                    break;
+                                case 0:
+                                    break;
+                            }
+
+                        } while (action != 0);
+
                     } else {
                         System.out.println("The company list is empty!");
                     }

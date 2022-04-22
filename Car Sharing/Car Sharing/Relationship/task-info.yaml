@@ -780,19 +780,42 @@ files:
 feedback_link: https://hyperskill.org/projects/140/stages/760/implement#comment
 status: Failed
 feedback:
-  message: "Exception in test #6\n\njava.lang.NumberFormatException: For input string:\
-    \ &quot;&quot;\r\n\tat java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)\r\
-    \n\tat java.base/java.lang.Integer.parseInt(Integer.java:678)\r\n\tat java.base/java.lang.Integer.parseInt(Integer.java:786)\r\
-    \n\tat carsharing.Carsharing.managerMenu(Carsharing.java:45)\r\n\tat carsharing.Carsharing.mainMenu(Carsharing.java:31)\r\
-    \n\tat carsharing.Carsharing.run(Carsharing.java:18)\r\n\tat carsharing.Main.main(Main.java:17)\n\
-    \nPlease find below the output of your program during this failed test.\nNote\
-    \ that the &#39;&gt;&#39; character indicates the beginning of the input line.\n\
-    \n---\n\nArguments: -databaseFileName carsharing\n\n1. Log in as a manager\n0.\
-    \ Exit\n&gt; 1\n1. Company list\n2. Create a company\n0. Back\n&gt; 1\nThe company\
-    \ list is empty!\n1. Company list\n2. Create a company\n0. Back\n&gt; 2\nEnter\
-    \ the company name:\n&gt; Super company\n1. Company list\n2. Create a company\n\
-    0. Back\n&gt; 1\nChoose a company:\n1. Super company\n&gt; 0\nprep4: SELECT *\
-    \ FROM COMPANY WHERE NAME = ?; {1: &#39;0&#39;}\nThe car list is empty!\n1. Company\
-    \ list\n2. Create a company\n0. Back"
-  time: Fri, 22 Apr 2022 18:07:15 UTC
+  message: |-
+    Wrong answer in test #7
+
+    In the company list expected one company.
+    Your output should contain &#39;1. Car To Go&#39;.
+    Companies should be sorted by &#39;ID&#39; column
+
+    Please find below the output of your program during this failed test.
+    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
+
+    ---
+
+    Arguments: -databaseFileName carsharing
+
+    1. Log in as a manager
+    0. Exit
+    &gt; 1
+    1. Company list
+    2. Create a company
+    0. Back
+    &gt; 2
+    Enter the company name:
+    &gt; Car To Go
+    1. Company list
+    2. Create a company
+    0. Back
+    &gt; 2
+    Enter the company name:
+    &gt; Drive Now
+    1. Company list
+    2. Create a company
+    0. Back
+    &gt; 1
+    Choose a company:
+    4. Car To Go
+    5. Drive Now
+    0. Back
+  time: Fri, 22 Apr 2022 18:50:23 UTC
 record: -1

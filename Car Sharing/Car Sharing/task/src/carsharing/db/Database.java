@@ -147,7 +147,6 @@ public class Database implements CompanyDAO {
     public Company findCompanyByName(String companyName) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ONE)) {
             preparedStatement.setString(1, companyName);
-            System.out.println(preparedStatement);
             ResultSet resultSet = preparedStatement.executeQuery();
             Company company = new Company();
             while (resultSet.next()) {
