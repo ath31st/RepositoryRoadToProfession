@@ -31,7 +31,7 @@ public class Carsharing {
                 managerMenu();
             }
 
-        } while(action != 0);
+        } while (action != 0);
     }
 
     public void managerMenu() {
@@ -44,18 +44,25 @@ public class Carsharing {
 
             action = Integer.parseInt(scanner.nextLine());
             switch (action) {
+                // Company List
                 case 1: {
                     List<Company> companies = database.getAllCompanies();
                     if (!companies.isEmpty()) {
+                        System.out.println("Choose a company:");
                         for (Company company : companies) {
                             System.out.println(company.getId() + ". " + company.getCompanyName());
                         }
+                        String companyName = scanner.next();
+                        Company company = database.findCompanyByName(companyName);
+                        if (!company.getCars().isEmpty()) {
+                            company.getCars().forEach(car -> System.out.println(car.getId() + ". " + car.getCarName()));
+                        } else System.out.println("The car list is empty!");
                     } else {
                         System.out.println("The company list is empty!");
                     }
                     break;
                 }
-
+                // Create Company
                 case 2: {
                     System.out.println("Enter the company name:");
                     String companyName = scanner.nextLine();

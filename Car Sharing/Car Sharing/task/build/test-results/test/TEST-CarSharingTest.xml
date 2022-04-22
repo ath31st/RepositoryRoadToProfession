@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CarSharingTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-04-22T14:36:11" hostname="FRACTAL" time="0.295">
+<testsuite name="CarSharingTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-04-22T18:07:14" hostname="FRACTAL" time="0.308">
   <properties/>
-  <testcase name="start" classname="CarSharingTest" time="0.295">
-    <failure message="java.lang.AssertionError: Exception in test #6&#10;&#10;java.lang.NumberFormatException: For input string: &quot;Another company&quot;&#13;&#10;&#9;at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)&#13;&#10;&#9;at java.base/java.lang.Integer.parseInt(Integer.java:668)&#13;&#10;&#9;at java.base/java.lang.Integer.parseInt(Integer.java:786)&#13;&#10;&#9;at carsharing.Carsharing.mainMenu(Carsharing.java:29)&#13;&#10;&#9;at carsharing.Carsharing.run(Carsharing.java:18)&#13;&#10;&#9;at carsharing.Main.main(Main.java:17)&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Arguments: -databaseFileName carsharing&#10;&#10;1. Log in as a manager&#10;0. Exit&#10;&gt; 1&#10;1. Company list&#10;2. Create a company&#10;0. Back&#10;&gt; 1&#10;The company list is empty!&#10;1. Company list&#10;2. Create a company&#10;0. Back&#10;&gt; 2&#10;Enter the company name:&#10;&gt; Super company&#10;1. Company list&#10;2. Create a company&#10;0. Back&#10;&gt; 1&#10;1. Super company&#10;1. Company list&#10;2. Create a company&#10;0. Back&#10;&gt; 0&#10;1. Log in as a manager&#10;0. Exit&#10;&gt; 2&#10;1. Log in as a manager&#10;0. Exit&#10;&gt; Another company" type="java.lang.AssertionError">java.lang.AssertionError: Exception in test #6
+  <testcase name="start" classname="CarSharingTest" time="0.308">
+    <failure message="java.lang.AssertionError: Exception in test #6&#10;&#10;java.lang.NumberFormatException: For input string: &quot;&quot;&#13;&#10;&#9;at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)&#13;&#10;&#9;at java.base/java.lang.Integer.parseInt(Integer.java:678)&#13;&#10;&#9;at java.base/java.lang.Integer.parseInt(Integer.java:786)&#13;&#10;&#9;at carsharing.Carsharing.managerMenu(Carsharing.java:45)&#13;&#10;&#9;at carsharing.Carsharing.mainMenu(Carsharing.java:31)&#13;&#10;&#9;at carsharing.Carsharing.run(Carsharing.java:18)&#13;&#10;&#9;at carsharing.Main.main(Main.java:17)&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Arguments: -databaseFileName carsharing&#10;&#10;1. Log in as a manager&#10;0. Exit&#10;&gt; 1&#10;1. Company list&#10;2. Create a company&#10;0. Back&#10;&gt; 1&#10;The company list is empty!&#10;1. Company list&#10;2. Create a company&#10;0. Back&#10;&gt; 2&#10;Enter the company name:&#10;&gt; Super company&#10;1. Company list&#10;2. Create a company&#10;0. Back&#10;&gt; 1&#10;Choose a company:&#10;1. Super company&#10;&gt; 0&#10;prep4: SELECT * FROM COMPANY WHERE NAME = ?; {1: '0'}&#10;The car list is empty!&#10;1. Company list&#10;2. Create a company&#10;0. Back" type="java.lang.AssertionError">java.lang.AssertionError: Exception in test #6
 
-java.lang.NumberFormatException: For input string: &quot;Another company&quot;
+java.lang.NumberFormatException: For input string: &quot;&quot;
 	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
-	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:678)
 	at java.base/java.lang.Integer.parseInt(Integer.java:786)
-	at carsharing.Carsharing.mainMenu(Carsharing.java:29)
+	at carsharing.Carsharing.managerMenu(Carsharing.java:45)
+	at carsharing.Carsharing.mainMenu(Carsharing.java:31)
 	at carsharing.Carsharing.run(Carsharing.java:18)
 	at carsharing.Main.main(Main.java:17)
 
@@ -37,17 +38,14 @@ Enter the company name:
 2. Create a company
 0. Back
 &gt; 1
+Choose a company:
 1. Super company
+&gt; 0
+prep4: SELECT * FROM COMPANY WHERE NAME = ?; {1: '0'}
+The car list is empty!
 1. Company list
 2. Create a company
 0. Back
-&gt; 0
-1. Log in as a manager
-0. Exit
-&gt; 2
-1. Log in as a manager
-0. Exit
-&gt; Another company
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -135,17 +133,14 @@ Enter the company name:
 2. Create a company
 0. Back
 > 1
+Choose a company:
 1. Super company
+> 0
+prep4: SELECT * FROM COMPANY WHERE NAME = ?; {1: '0'}
+The car list is empty!
 1. Company list
 2. Create a company
 0. Back
-> 0
-1. Log in as a manager
-0. Exit
-> 2
-1. Log in as a manager
-0. Exit
-> Another company
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

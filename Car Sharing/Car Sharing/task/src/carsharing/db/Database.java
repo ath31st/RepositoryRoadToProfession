@@ -2,7 +2,9 @@ package carsharing.db;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class Database implements CompanyDAO {
     static final String JDBC_DRIVER = "org.h2.Driver";
@@ -10,6 +12,7 @@ public class Database implements CompanyDAO {
     private final Connection connection;
     private static Database db = null;
     private static final String SQL_GET_ALL = "SELECT * FROM COMPANY;";
+    private static final String SQL_GET_ONE = "SELECT * FROM COMPANY WHERE NAME = ?;";
     private static final String SQL_GET_ALL_CARS = "SELECT * FROM CAR;";
     private static final String SQL_ADD_ONE = "INSERT INTO COMPANY (NAME) VALUES (?);";
     private static final String SQL_ADD_ONE_CAR = "INSERT INTO CAR (NAME) VALUES (?);";
@@ -134,8 +137,26 @@ public class Database implements CompanyDAO {
     public void addCompany(String companyName) {
         insertNewCompany(companyName);
     }
+
     @Override
     public void addCar(String carName) {
         insertNewCar(carName);
+    }
+
+    @Override
+    public Company findCompanyByName(String companyName) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ONE)) {
+            preparedStatement.setString(1, companyName);
+            System.out.println(preparedStatement);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Company company = new Company();
+            while (resultSet.next()) {
+                company.setId(resultSet.getInt("id"));
+                company.setCompanyName(resultSet.getString("name"));
+            }
+            return company;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

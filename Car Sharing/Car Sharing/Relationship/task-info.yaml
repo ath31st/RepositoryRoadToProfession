@@ -774,21 +774,25 @@ files:
 - name: src/carsharing/db/Car.java
   visible: true
   learner_created: true
+- name: src/carsharing/db/carsharing.trace.db
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/140/stages/760/implement#comment
 status: Failed
 feedback:
   message: "Exception in test #6\n\njava.lang.NumberFormatException: For input string:\
-    \ &quot;Another company&quot;\r\n\tat java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)\r\
-    \n\tat java.base/java.lang.Integer.parseInt(Integer.java:668)\r\n\tat java.base/java.lang.Integer.parseInt(Integer.java:786)\r\
-    \n\tat carsharing.Carsharing.mainMenu(Carsharing.java:29)\r\n\tat carsharing.Carsharing.run(Carsharing.java:18)\r\
-    \n\tat carsharing.Main.main(Main.java:17)\n\nPlease find below the output of your\
-    \ program during this failed test.\nNote that the &#39;&gt;&#39; character indicates\
-    \ the beginning of the input line.\n\n---\n\nArguments: -databaseFileName carsharing\n\
-    \n1. Log in as a manager\n0. Exit\n&gt; 1\n1. Company list\n2. Create a company\n\
-    0. Back\n&gt; 1\nThe company list is empty!\n1. Company list\n2. Create a company\n\
-    0. Back\n&gt; 2\nEnter the company name:\n&gt; Super company\n1. Company list\n\
-    2. Create a company\n0. Back\n&gt; 1\n1. Super company\n1. Company list\n2. Create\
-    \ a company\n0. Back\n&gt; 0\n1. Log in as a manager\n0. Exit\n&gt; 2\n1. Log\
-    \ in as a manager\n0. Exit\n&gt; Another company"
-  time: Fri, 22 Apr 2022 14:36:12 UTC
+    \ &quot;&quot;\r\n\tat java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)\r\
+    \n\tat java.base/java.lang.Integer.parseInt(Integer.java:678)\r\n\tat java.base/java.lang.Integer.parseInt(Integer.java:786)\r\
+    \n\tat carsharing.Carsharing.managerMenu(Carsharing.java:45)\r\n\tat carsharing.Carsharing.mainMenu(Carsharing.java:31)\r\
+    \n\tat carsharing.Carsharing.run(Carsharing.java:18)\r\n\tat carsharing.Main.main(Main.java:17)\n\
+    \nPlease find below the output of your program during this failed test.\nNote\
+    \ that the &#39;&gt;&#39; character indicates the beginning of the input line.\n\
+    \n---\n\nArguments: -databaseFileName carsharing\n\n1. Log in as a manager\n0.\
+    \ Exit\n&gt; 1\n1. Company list\n2. Create a company\n0. Back\n&gt; 1\nThe company\
+    \ list is empty!\n1. Company list\n2. Create a company\n0. Back\n&gt; 2\nEnter\
+    \ the company name:\n&gt; Super company\n1. Company list\n2. Create a company\n\
+    0. Back\n&gt; 1\nChoose a company:\n1. Super company\n&gt; 0\nprep4: SELECT *\
+    \ FROM COMPANY WHERE NAME = ?; {1: &#39;0&#39;}\nThe car list is empty!\n1. Company\
+    \ list\n2. Create a company\n0. Back"
+  time: Fri, 22 Apr 2022 18:07:15 UTC
 record: -1

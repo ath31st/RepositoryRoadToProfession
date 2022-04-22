@@ -40,14 +40,11 @@
 2. Create a company
 	0. Back
 > 1
+Choose a company:
 1. Super company
+> 0
+7prep4: SELECT * FROM COMPANY WHERE NAME = ?; {1: '0'}
+The car list is empty!
 1. Company list
 2. Create a company
 	0. Back
-> 0
-1. Log in as a manager
-	0. Exit
-> 2
-1. Log in as a manager
-	0. Exit
-> Another company

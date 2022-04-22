@@ -1,12 +1,20 @@
 package carsharing.db;
 
-public class Company {
-    private final String companyName;
-    private final int id;
+import java.util.ArrayList;
+import java.util.List;
 
-    Company (int id, String companyName) {
+public class Company {
+    private String companyName;
+    private int id;
+
+    private List<Car> cars = new ArrayList<>();
+
+    Company(int id, String companyName) {
         this.companyName = companyName;
         this.id = id;
+    }
+
+    public Company() {
     }
 
     public int getId() {
@@ -15,5 +23,21 @@ public class Company {
 
     public String getCompanyName() {
         return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
     }
 }
