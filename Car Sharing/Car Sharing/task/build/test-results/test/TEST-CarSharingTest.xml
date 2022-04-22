@@ -1,7 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CarSharingTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-04-22T11:39:57" hostname="FRACTAL" time="0.312">
+<testsuite name="CarSharingTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-04-22T14:36:11" hostname="FRACTAL" time="0.295">
   <properties/>
-  <testcase name="start" classname="CarSharingTest" time="0.312"/>
+  <testcase name="start" classname="CarSharingTest" time="0.295">
+    <failure message="java.lang.AssertionError: Exception in test #6&#10;&#10;java.lang.NumberFormatException: For input string: &quot;Another company&quot;&#13;&#10;&#9;at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)&#13;&#10;&#9;at java.base/java.lang.Integer.parseInt(Integer.java:668)&#13;&#10;&#9;at java.base/java.lang.Integer.parseInt(Integer.java:786)&#13;&#10;&#9;at carsharing.Carsharing.mainMenu(Carsharing.java:29)&#13;&#10;&#9;at carsharing.Carsharing.run(Carsharing.java:18)&#13;&#10;&#9;at carsharing.Main.main(Main.java:17)&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Arguments: -databaseFileName carsharing&#10;&#10;1. Log in as a manager&#10;0. Exit&#10;&gt; 1&#10;1. Company list&#10;2. Create a company&#10;0. Back&#10;&gt; 1&#10;The company list is empty!&#10;1. Company list&#10;2. Create a company&#10;0. Back&#10;&gt; 2&#10;Enter the company name:&#10;&gt; Super company&#10;1. Company list&#10;2. Create a company&#10;0. Back&#10;&gt; 1&#10;1. Super company&#10;1. Company list&#10;2. Create a company&#10;0. Back&#10;&gt; 0&#10;1. Log in as a manager&#10;0. Exit&#10;&gt; 2&#10;1. Log in as a manager&#10;0. Exit&#10;&gt; Another company" type="java.lang.AssertionError">java.lang.AssertionError: Exception in test #6
+
+java.lang.NumberFormatException: For input string: &quot;Another company&quot;
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at carsharing.Carsharing.mainMenu(Carsharing.java:29)
+	at carsharing.Carsharing.run(Carsharing.java:18)
+	at carsharing.Main.main(Main.java:17)
+
+Please find below the output of your program during this failed test.
+Note that the '&gt;' character indicates the beginning of the input line.
+
+---
+
+Arguments: -databaseFileName carsharing
+
+1. Log in as a manager
+0. Exit
+&gt; 1
+1. Company list
+2. Create a company
+0. Back
+&gt; 1
+The company list is empty!
+1. Company list
+2. Create a company
+0. Back
+&gt; 2
+Enter the company name:
+&gt; Super company
+1. Company list
+2. Create a company
+0. Back
+&gt; 1
+1. Super company
+1. Company list
+2. Create a company
+0. Back
+&gt; 0
+1. Log in as a manager
+0. Exit
+&gt; 2
+1. Log in as a manager
+0. Exit
+&gt; Another company
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</failure>
+  </testcase>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 1. Log in as a manager
@@ -48,29 +139,13 @@ Enter the company name:
 1. Company list
 2. Create a company
 0. Back
-> 2
-Enter the company name:
-> Another company
-1. Company list
-2. Create a company
-0. Back
-> 2
-Enter the company name:
-> One more company
-1. Company list
-2. Create a company
-0. Back
-> 1
-1. Super company
-2. Another company
-3. One more company
-1. Company list
-2. Create a company
-0. Back
 > 0
 1. Log in as a manager
 0. Exit
-> 0
+> 2
+1. Log in as a manager
+0. Exit
+> Another company
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

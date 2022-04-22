@@ -44,26 +44,10 @@
 1. Company list
 2. Create a company
 	0. Back
-> 2
-Enter the company name:
-> Another company
-1. Company list
-2. Create a company
-	0. Back
-> 2
-Enter the company name:
-> One more company
-1. Company list
-2. Create a company
-	0. Back
-> 1
-1. Super company
-2. Another company
-3. One more company
-1. Company list
-2. Create a company
-	0. Back
 > 0
 1. Log in as a manager
 	0. Exit
-> 0
+> 2
+1. Log in as a manager
+	0. Exit
+> Another company
