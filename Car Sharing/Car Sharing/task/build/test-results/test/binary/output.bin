@@ -66,8 +66,8 @@
 3. One more company
 	0. Back
 > 2
-1. Company list
-2. Create a company
+1. Car list
+2. Create a car
 	0. Back
 [1;31m
 Start test 7[0m
@@ -91,6 +91,73 @@
 	0. Back
 > 1
 Choose a company:
-4. Car To Go
-5. Drive Now
+1. Car To Go
+2. Drive Now
 	0. Back
+> 1
+1. Car list
+2. Create a car
+	0. Back
+> 1
+The car list is empty!
+1. Car list
+2. Create a car
+	0. Back
+> 2
+Enter the car name:
+> Hyundai Venue
+The car was added!
+1. Car list
+2. Create a car
+	0. Back
+> 2
+Enter the car name:
+> Maruti Suzuki Dzire
+The car was added!
+1. Car list
+2. Create a car
+	0. Back
+> 1
+1. Hyundai Venue
+2. Maruti Suzuki Dzire
+1. Car list
+2. Create a car
+	0. Back
+> 0
+1. Company list
+2. Create a company
+	0. Back
+> 1
+Choose a company:
+1. Car To Go
+2. Drive Now
+	0. Back
+> 2
+1. Car list
+2. Create a car
+	0. Back
+> 1
+The car list is empty!
+1. Car list
+2. Create a car
+	0. Back
+> 2
+Enter the car name:
+> Lamborghini Urraco
+The car was added!
+1. Car list
+2. Create a car
+	0. Back
+> 1
+1. Lamborghini Urraco
+1. Car list
+2. Create a car
+	0. Back
+> 0
+1. Company list
+2. Create a company
+	0. Back
+> 0
+1. Log in as a manager
+	0. Exit
+> 0

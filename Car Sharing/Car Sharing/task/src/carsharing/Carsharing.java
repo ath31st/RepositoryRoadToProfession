@@ -1,5 +1,6 @@
 package carsharing;
 
+import carsharing.db.Car;
 import carsharing.db.Company;
 import carsharing.db.Database;
 
@@ -49,14 +50,20 @@ public class Carsharing {
                     List<Company> companies = database.getAllCompanies();
                     if (!companies.isEmpty()) {
                         System.out.println("Choose a company:");
+                        int counter = 1;
                         for (Company company : companies) {
-                            System.out.println(company.getId() + ". " + company.getCompanyName());
+                            System.out.println(counter + ". " + company.getCompanyName());
+                            counter++;
                         }
                         System.out.println("0. Back");
-                        String companyName = scanner.nextLine();
-                        Company company = database.findCompanyByName(companyName);
-                        if (company.getCompanyName() == null) break;
-                        final String companyMenuMessage = "1. Car list\n" +
+//                        String companyName = scanner.nextLine();
+//                        Company company = database.findCompanyByName(companyName);
+//                        if (company.getCompanyName() == null) break;
+                        action = Integer.parseInt(scanner.nextLine());
+                        if (action == 0) managerMenu();
+                        Company company = companies.get(action - 1);
+                        final String companyMenuMessage =
+                                "1. Car list\n" +
                                 "2. Create a car\n" +
                                 "0. Back";
                         do {
@@ -65,18 +72,23 @@ public class Carsharing {
                             action = Integer.parseInt(scanner.nextLine());
                             switch (action) {
                                 case 1:
-                                    if (!company.getCars().isEmpty()) {
-                                        company.getCars().forEach(car -> System.out.println(car.getId() + ". " + car.getCarName()));
+                                    List<Car> cars = database.getAllCars(company.getId());
+                                    if (!cars.isEmpty()) {
+                                        int counterCar = 1;
+                                        for (Car car : cars) {
+                                            System.out.println(counterCar + ". " + car.getCarName());
+                                            counterCar++;
+                                        }
                                     } else System.out.println("The car list is empty!");
                                     break;
                                 case 2:
                                     System.out.println("Enter the car name:");
-                                    String carName = scanner.next();
-                                    database.addCar(carName);
+                                    String carName = scanner.nextLine();
+                                    database.insertNewCar(carName, company.getId());
                                     System.out.println("The car was added!");
                                     break;
                                 case 0:
-                                    break;
+                                    managerMenu();
                             }
 
                         } while (action != 0);
@@ -90,7 +102,7 @@ public class Carsharing {
                 case 2: {
                     System.out.println("Enter the company name:");
                     String companyName = scanner.nextLine();
-                    database.addCompany(companyName);
+                    database.insertNewCompany(companyName);
                     break;
                 }
 

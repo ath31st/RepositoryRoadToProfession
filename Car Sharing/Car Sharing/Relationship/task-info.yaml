@@ -7,8 +7,20 @@ files:
 
     public class Main {
 
+
         public static void main(String[] args) {
-            Application.run(args);
+            String dbName = "test";
+
+            for (int i = 0; i < args.length; i++) {
+                if ("-databaseFileName".equals(args[i])) {
+                    dbName = args[i + 1];
+                    break;
+                }
+            }
+
+            Carsharing carsharing = new Carsharing(dbName);
+            carsharing.run();
+
         }
     }
   learner_created: false
@@ -555,6 +567,9 @@ files:
         }
     }
   learner_created: false
+- name: src/carsharing/db/carsharing.trace.db
+  visible: true
+  learner_created: true
 - name: src/carsharing/db/CompanyDAO.java
   visible: true
   text: |-
@@ -567,7 +582,7 @@ files:
         public void addCompany(String companyName);
 
     }
-  learner_created: true
+  learner_created: false
 - name: src/carsharing/db/Database.java
   visible: true
   text: |-
@@ -668,7 +683,7 @@ files:
             insertNewCompany(companyName);
         }
     }
-  learner_created: true
+  learner_created: false
 - name: src/carsharing/Carsharing.java
   visible: true
   text: |-
@@ -747,7 +762,7 @@ files:
         }
 
     }
-  learner_created: true
+  learner_created: false
 - name: src/carsharing/db/Company.java
   visible: true
   text: |-
@@ -770,52 +785,16 @@ files:
             return companyName;
         }
     }
-  learner_created: true
+  learner_created: false
 - name: src/carsharing/db/Car.java
   visible: true
   learner_created: true
-- name: src/carsharing/db/carsharing.trace.db
+- name: src/carsharing/db/carsharing.mv.db
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/140/stages/760/implement#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #7
-
-    In the company list expected one company.
-    Your output should contain &#39;1. Car To Go&#39;.
-    Companies should be sorted by &#39;ID&#39; column
-
-    Please find below the output of your program during this failed test.
-    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
-
-    ---
-
-    Arguments: -databaseFileName carsharing
-
-    1. Log in as a manager
-    0. Exit
-    &gt; 1
-    1. Company list
-    2. Create a company
-    0. Back
-    &gt; 2
-    Enter the company name:
-    &gt; Car To Go
-    1. Company list
-    2. Create a company
-    0. Back
-    &gt; 2
-    Enter the company name:
-    &gt; Drive Now
-    1. Company list
-    2. Create a company
-    0. Back
-    &gt; 1
-    Choose a company:
-    4. Car To Go
-    5. Drive Now
-    0. Back
-  time: Fri, 22 Apr 2022 18:50:23 UTC
-record: -1
+  message: Congratulations!
+  time: Sat, 23 Apr 2022 06:17:38 UTC
+record: 1

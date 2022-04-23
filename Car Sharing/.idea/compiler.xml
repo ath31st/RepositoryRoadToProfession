@@ -8,7 +8,6 @@
       <module name="Car_Sharing.Car_Sharing-task-build-reports-tests.main" target="11" />
       <module name="Car_Sharing.Car_Sharing-task-build-test-results.main" target="11" />
       <module name="Car_Sharing.Car_Sharing-task-build-tmp.main" target="11" />
-      <module name="Car_Sharing.Car_Sharing-task-Car_Sharing-task.main" target="11" />
       <module name="Car_Sharing.Car_Sharing-task.main" target="11" />
       <module name="Car_Sharing.util.main" target="11" />
     </bytecodeTargetLevel>

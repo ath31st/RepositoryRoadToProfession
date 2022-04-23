@@ -347,10 +347,7 @@ files:
         }
     }
   learner_created: false
-- name: src/carsharing/db/carsharing.trace.db
-  visible: true
-  learner_created: true
-- name: src/carsharing/db/carsharing.mv.db
+- name: src/carsharing/db/CompanyDAO.java
   visible: true
   learner_created: true
 - name: src/carsharing/db/Database.java
@@ -362,12 +359,6 @@ files:
 - name: src/carsharing/db/Company.java
   visible: true
   learner_created: true
-- name: src/carsharing/db/CompanyDAO.java
-  visible: true
-  learner_created: true
 feedback_link: https://hyperskill.org/projects/140/stages/759/implement#comment
 status: Solved
-feedback:
-  message: Congratulations!
-  time: Fri, 22 Apr 2022 11:39:58 UTC
 record: 2

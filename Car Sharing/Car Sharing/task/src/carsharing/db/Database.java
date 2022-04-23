@@ -13,9 +13,9 @@ public class Database implements CompanyDAO {
     private static Database db = null;
     private static final String SQL_GET_ALL = "SELECT * FROM COMPANY;";
     private static final String SQL_GET_ONE = "SELECT * FROM COMPANY WHERE NAME = ?;";
-    private static final String SQL_GET_ALL_CARS = "SELECT * FROM CAR;";
+    private static final String SQL_GET_ALL_CARS = "SELECT * FROM CAR WHERE COMPANY_ID = ?;";
     private static final String SQL_ADD_ONE = "INSERT INTO COMPANY (NAME) VALUES (?);";
-    private static final String SQL_ADD_ONE_CAR = "INSERT INTO CAR (NAME) VALUES (?);";
+    private static final String SQL_ADD_ONE_CAR = "INSERT INTO CAR (NAME, COMPANY_ID) VALUES (?,?);";
 
     private Database(String dbName) {
         DB_URL = DB_URL + dbName;
@@ -63,7 +63,7 @@ public class Database implements CompanyDAO {
         }
     }
 
-    private void insertNewCompany(String companyName) {
+    public void insertNewCompany(String companyName) {
         try (PreparedStatement statement = connection.prepareStatement(SQL_ADD_ONE)) {
             statement.setString(1, companyName);
             statement.executeUpdate();
@@ -72,9 +72,10 @@ public class Database implements CompanyDAO {
         }
     }
 
-    private void insertNewCar(String carName) {
+    public void insertNewCar(String carName, int companyId) {
         try (PreparedStatement statement = connection.prepareStatement(SQL_ADD_ONE_CAR)) {
             statement.setString(1, carName);
+            statement.setInt(2,companyId);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.getStackTrace();
@@ -121,9 +122,11 @@ public class Database implements CompanyDAO {
     }
 
     @Override
-    public List<Car> getAllCars() {
+    public List<Car> getAllCars(int companyId) {
         List<Car> result = new ArrayList<>();
-        try (ResultSet resultSet = connection.prepareStatement(SQL_GET_ALL_CARS).executeQuery()) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_ALL_CARS)) {
+            preparedStatement.setInt(1, companyId);
+            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 result.add(new Car(resultSet.getInt(1), resultSet.getString(2)));
             }
@@ -131,16 +134,6 @@ public class Database implements CompanyDAO {
             e.printStackTrace();
         }
         return result;
-    }
-
-    @Override
-    public void addCompany(String companyName) {
-        insertNewCompany(companyName);
-    }
-
-    @Override
-    public void addCar(String carName) {
-        insertNewCar(carName);
     }
 
     @Override

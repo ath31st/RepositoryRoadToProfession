@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/440790/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Fri, 22 Apr 2022 16:58:47 UTC
+update_date: Sat, 23 Apr 2022 05:22:37 UTC
 stages:
 - id: 758
   step: 11501
@@ -13,7 +13,7 @@ stages:
   is_completed: true
 - id: 760
   step: 11503
-  is_completed: false
+  is_completed: true
 - id: 761
   step: 11504
   is_completed: false
@@ -27,7 +27,7 @@ topics:
     theory_id: 6865
   - title: Immutability
     theory_id: 7929
-  - title: Introduction to operating systems
+  - title: Introduction to Operating systems
     theory_id: 9704
   - title: Computer algorithms
     theory_id: 16547
@@ -123,7 +123,7 @@ topics:
     theory_id: 3552
   - title: Command line overview
     theory_id: 8977
-  - title: Parameters and options
+  - title: Parameters and Options
     theory_id: 9746
   - title: Running programs on your computer
     theory_id: 3746

@@ -5,11 +5,7 @@ import java.util.Optional;
 
 public interface CompanyDAO {
     List<Company> getAllCompanies();
-    List<Car> getAllCars();
-
-    void addCompany(String companyName);
-
-    void addCar(String carName);
+    List<Car> getAllCars(int companyId);
 
     Company findCompanyByName(String companyName);
 
