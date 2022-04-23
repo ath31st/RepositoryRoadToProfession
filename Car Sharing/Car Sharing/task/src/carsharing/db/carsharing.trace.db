@@ -1,48 +1,17 @@
-2022-04-22 19:08:01 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-200]
-2022-04-22 19:10:41 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLDataException: Invalid value "2" for parameter "parameterIndex" [90008-200]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590)
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
-	at org.h2.message.DbException.get(DbException.java:205)
-	at org.h2.message.DbException.getInvalidValueException(DbException.java:280)
-	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1503)
-	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:413)
-	at carsharing.db.Database.findCompanyByName(Database.java:149)
-	at carsharing.Carsharing.managerMenu(Carsharing.java:57)
-	at carsharing.Carsharing.mainMenu(Carsharing.java:31)
-	at carsharing.Carsharing.run(Carsharing.java:18)
-	at carsharing.Main.main(Main.java:17)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-2022-04-22 19:13:33 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-200]
-2022-04-22 19:16:52 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLDataException: Parameter "#1" is not set; SQL statement:
-SELECT * FROM COMPANY WHERE NAME = ?; [90012-200]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590)
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+2022-04-23 13:32:47 jdbc[13]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
 	at org.h2.message.DbException.get(DbException.java:205)
 	at org.h2.message.DbException.get(DbException.java:181)
-	at org.h2.expression.Parameter.checkSet(Parameter.java:83)
-	at org.h2.command.Prepared.checkParameters(Prepared.java:182)
-	at org.h2.command.CommandContainer.query(CommandContainer.java:284)
-	at org.h2.command.Command.executeQuery(Command.java:195)
-	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:114)
-	at carsharing.db.Database.findCompanyByName(Database.java:150)
-	at carsharing.Carsharing.managerMenu(Carsharing.java:57)
-	at carsharing.Carsharing.mainMenu(Carsharing.java:31)
-	at carsharing.Carsharing.run(Carsharing.java:18)
-	at carsharing.Main.main(Main.java:17)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:252)
+	at carsharing.dbclasses.DBClass.<init>(DBClass.java:15)
+	at carsharing.dbclasses.Host.start(Host.java:10)
+	at carsharing.Main.main(Main.java:8)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -54,30 +23,24 @@ SELECT * FROM COMPANY WHERE NAME = ?; [90012-200]
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-2022-04-22 19:17:35 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-200]
-2022-04-22 19:17:59 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-200]
-2022-04-22 19:18:16 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-200]
-2022-04-22 19:18:32 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM COMPANY WHERE NAME=ANOTHER COMPANY[*];"; SQL statement:
-SELECT * FROM COMPANY WHERE NAME=Another company; [42000-200]
-2022-04-22 19:19:08 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-200]
-2022-04-22 19:19:33 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterIndex" [90008-200]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	... 23 more
+2022-04-23 13:32:47 jdbc[13]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-200]
 	at org.h2.message.DbException.get(DbException.java:205)
-	at org.h2.message.DbException.getInvalidValueException(DbException.java:280)
-	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1503)
-	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:413)
-	at carsharing.db.Database.findCompanyByName(Database.java:149)
-	at carsharing.Carsharing.managerMenu(Carsharing.java:57)
-	at carsharing.Carsharing.mainMenu(Carsharing.java:31)
-	at carsharing.Carsharing.run(Carsharing.java:18)
-	at carsharing.Main.main(Main.java:17)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:245)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:186)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:152)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:252)
+	at carsharing.dbclasses.DBClass.<init>(DBClass.java:15)
+	at carsharing.dbclasses.Host.start(Host.java:10)
+	at carsharing.Main.main(Main.java:8)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -89,95 +52,7 @@ org.h2.jdbc.JdbcSQLDataException: Invalid value "1" for parameter "parameterInde
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-2022-04-22 19:19:48 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLDataException: Invalid value "2" for parameter "parameterIndex" [90008-200]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection was not closed by the application and is garbage collected [90018-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
-	at org.h2.message.DbException.get(DbException.java:205)
-	at org.h2.message.DbException.getInvalidValueException(DbException.java:280)
-	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1503)
-	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:413)
-	at carsharing.db.Database.findCompanyByName(Database.java:149)
-	at carsharing.Carsharing.managerMenu(Carsharing.java:57)
-	at carsharing.Carsharing.mainMenu(Carsharing.java:31)
-	at carsharing.Carsharing.run(Carsharing.java:18)
-	at carsharing.Main.main(Main.java:17)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-2022-04-22 19:23:03 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLDataException: Invalid value "2" for parameter "parameterIndex" [90008-200]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590)
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
-	at org.h2.message.DbException.get(DbException.java:205)
-	at org.h2.message.DbException.getInvalidValueException(DbException.java:280)
-	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1503)
-	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:413)
-	at carsharing.db.Database.findCompanyByName(Database.java:149)
-	at carsharing.Carsharing.managerMenu(Carsharing.java:57)
-	at carsharing.Carsharing.mainMenu(Carsharing.java:31)
-	at carsharing.Carsharing.run(Carsharing.java:18)
-	at carsharing.Main.main(Main.java:17)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:172)
-	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$0(MainMethodExecutor.java:199)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:833)
-2022-04-22 19:25:28 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-200]
-2022-04-22 19:26:43 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-200]
-2022-04-22 19:45:08 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-200]
-2022-04-22 19:47:07 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-200]
-2022-04-22 20:00:29 jdbc[7]: exception
-org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-200]
-2022-04-23 08:31:26 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DROP TABLE IF EXISTS COMPANY
- CREATE[*] TABLE IF NOT EXISTS COMPANY (
-     ID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-     NAME VARCHAR(24) UNIQUE NOT NULL);"; SQL statement:
-DROP TABLE IF EXISTS COMPANY
- CREATE TABLE IF NOT EXISTS COMPANY (
-     ID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-     NAME VARCHAR(24) UNIQUE NOT NULL); [42000-200]
-2022-04-23 08:31:26 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
-CREATE TABLE IF NOT EXISTS CAR (
-     ID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-     NAME VARCHAR(24) UNIQUE NOT NULL,
-     COMPANY_ID INTEGER NOT NULL,
-     CONSTRAINT FK_COMPANY FOREIGN KEY (COMPANY_ID)
-     REFERENCES COMPANY (ID)); [42102-200]
-2022-04-23 08:31:26 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "DROP TABLE IF EXISTS COMPANY
- CREATE[*] TABLE IF NOT EXISTS COMPANY (
-     ID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-     NAME VARCHAR(24) UNIQUE NOT NULL);"; SQL statement:
-DROP TABLE IF EXISTS COMPANY
- CREATE TABLE IF NOT EXISTS COMPANY (
-     ID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-     NAME VARCHAR(24) UNIQUE NOT NULL); [42000-200]
-2022-04-23 08:31:26 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
-CREATE TABLE IF NOT EXISTS CAR (
-     ID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-     NAME VARCHAR(24) UNIQUE NOT NULL,
-     COMPANY_ID INTEGER NOT NULL,
-     CONSTRAINT FK_COMPANY FOREIGN KEY (COMPANY_ID)
-     REFERENCES COMPANY (ID)); [42102-200]
+	... 23 more
