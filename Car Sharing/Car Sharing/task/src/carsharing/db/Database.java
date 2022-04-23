@@ -12,9 +12,11 @@ public class Database implements CompanyDAO {
     private final Connection connection;
     private static Database db = null;
     private static final String SQL_GET_ALL = "SELECT * FROM COMPANY;";
+    private static final String SQL_GET_ALL_CUSTOMERS = "SELECT * FROM CUSTOMER;";
     private static final String SQL_GET_ONE = "SELECT * FROM COMPANY WHERE NAME = ?;";
     private static final String SQL_GET_ALL_CARS = "SELECT * FROM CAR WHERE COMPANY_ID = ?;";
     private static final String SQL_ADD_ONE = "INSERT INTO COMPANY (NAME) VALUES (?);";
+    private static final String SQL_ADD_ONE_CUSTOMER = "INSERT INTO CUSTOMER (NAME) VALUES (?);";
     private static final String SQL_ADD_ONE_CAR = "INSERT INTO CAR (NAME, COMPANY_ID) VALUES (?,?);";
 
     private Database(String dbName) {
@@ -22,6 +24,7 @@ public class Database implements CompanyDAO {
         connection = getConnection();
         addCompanyTable();
         addCarTable();
+        addCustomerTable();
     }
 
     private Connection getConnection() {
@@ -63,6 +66,21 @@ public class Database implements CompanyDAO {
         }
     }
 
+    private void addCustomerTable() {
+        try (Statement statement = connection.createStatement()) {
+            String sql = "CREATE TABLE IF NOT EXISTS CUSTOMER (\n"
+                    + "     ID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,\n"
+                    + "     NAME VARCHAR(50) UNIQUE NOT NULL,\n"
+                    + "     RENTED_CAR_ID INTEGER,\n"
+                    + "     CONSTRAINT FK_CAR FOREIGN KEY (RENTED_CAR_ID)\n"
+                    + "     REFERENCES CAR (ID)"
+                    + ");";
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.getStackTrace();
+        }
+    }
+
     public void insertNewCompany(String companyName) {
         try (PreparedStatement statement = connection.prepareStatement(SQL_ADD_ONE)) {
             statement.setString(1, companyName);
@@ -76,6 +94,15 @@ public class Database implements CompanyDAO {
         try (PreparedStatement statement = connection.prepareStatement(SQL_ADD_ONE_CAR)) {
             statement.setString(1, carName);
             statement.setInt(2,companyId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.getStackTrace();
+        }
+    }
+
+    public void insertNewCustomer(String customerName) {
+        try (PreparedStatement statement = connection.prepareStatement(SQL_ADD_ONE_CUSTOMER)) {
+            statement.setString(1, customerName);
             statement.executeUpdate();
         } catch (SQLException e) {
             e.getStackTrace();
@@ -114,6 +141,17 @@ public class Database implements CompanyDAO {
         try (ResultSet resultSet = connection.prepareStatement(SQL_GET_ALL).executeQuery()) {
             while (resultSet.next()) {
                 result.add(new Company(resultSet.getInt(1), resultSet.getString(2)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    public List<Customer> getAllCustomers() {
+        List<Customer> result = new ArrayList<>();
+        try (ResultSet resultSet = connection.prepareStatement(SQL_GET_ALL_CUSTOMERS).executeQuery()) {
+            while (resultSet.next()) {
+                result.add(new Customer(resultSet.getInt(1), resultSet.getString(2)));
             }
         } catch (SQLException e) {
             e.printStackTrace();

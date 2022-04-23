@@ -1242,6 +1242,64 @@ files:
         }
     }
   learner_created: false
+- name: src/carsharing/db/Customer.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/140/stages/761/implement#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #8
+
+    After choosing &#39;3. My rented car&#39; option you should print &#39;You didn&#39;t rent a car!&#39; if a customer didn&#39;t rent a car.
+
+    Please find below the output of your program during this failed test.
+    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
+
+    ---
+
+    Arguments: -databaseFileName carsharing
+
+    1. Log in as a manager
+    2. Log in as a customer
+    3. Create a customer
+    0. Exit
+    &gt; 2
+    The customer list is empty!
+    1. Log in as a manager
+    2. Log in as a customer
+    3. Create a customer
+    0. Exit
+    &gt; 3
+    Enter the customer name:
+    &gt; First customer
+    The customer was added!
+    1. Log in as a manager
+    2. Log in as a customer
+    3. Create a customer
+    0. Exit
+    &gt; 3
+    Enter the customer name:
+    &gt; Second customer
+    The customer was added!
+    1. Log in as a manager
+    2. Log in as a customer
+    3. Create a customer
+    0. Exit
+    &gt; 2
+    Customer list:
+    1. First customer
+    2. Second customer
+    0. Back
+    &gt; 1
+    1. Rent a car
+    2. Return a rented car
+    3. My rented car
+    0. Back
+    &gt; 3
+    1. Rent a car
+    2. Return a rented car
+    3. My rented car
+    0. Back
+  time: Sat, 23 Apr 2022 08:30:16 UTC
 record: -1

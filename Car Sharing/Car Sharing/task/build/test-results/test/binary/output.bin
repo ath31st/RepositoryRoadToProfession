@@ -1,11 +1,15 @@
 [1;31m
 Start test 1[0m
 1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
 	0. Exit
 > 0
 [1;31m
 Start test 2[0m
 1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
 	0. Exit
 > 1
 1. Company list
@@ -13,6 +17,8 @@
 	0. Back
 > 0
 1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
 	0. Exit
 [1;31m
 Start test 3[0m
@@ -23,6 +29,8 @@
 [1;31m
 Start test 6[0m
 1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
 	0. Exit
 > 1
 1. Company list
@@ -72,6 +80,8 @@
 [1;31m
 Start test 7[0m
 1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
 	0. Exit
 > 1
 1. Company list
@@ -159,5 +169,50 @@
 	0. Back
 > 0
 1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
 	0. Exit
 > 0
+[1;31m
+Start test 8[0m
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 2
+The customer list is empty!
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 3
+Enter the customer name:
+> First customer
+The customer was added!
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 3
+Enter the customer name:
+> Second customer
+The customer was added!
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 2
+Customer list:
+1. First customer
+2. Second customer
+	0. Back
+> 1
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
+> 3
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
