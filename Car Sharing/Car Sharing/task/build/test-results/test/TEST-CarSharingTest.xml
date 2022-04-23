@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CarSharingTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-04-23T08:30:15" hostname="FRACTAL" time="0.44">
+<testsuite name="CarSharingTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-04-23T10:15:18" hostname="FRACTAL" time="0.414">
   <properties/>
-  <testcase name="start" classname="CarSharingTest" time="0.44">
-    <failure message="java.lang.AssertionError: Wrong answer in test #8&#10;&#10;After choosing '3. My rented car' option you should print 'You didn't rent a car!' if a customer didn't rent a car.&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Arguments: -databaseFileName carsharing&#10;&#10;1. Log in as a manager&#10;2. Log in as a customer&#10;3. Create a customer&#10;0. Exit&#10;&gt; 2&#10;The customer list is empty!&#10;1. Log in as a manager&#10;2. Log in as a customer&#10;3. Create a customer&#10;0. Exit&#10;&gt; 3&#10;Enter the customer name:&#10;&gt; First customer&#10;The customer was added!&#10;1. Log in as a manager&#10;2. Log in as a customer&#10;3. Create a customer&#10;0. Exit&#10;&gt; 3&#10;Enter the customer name:&#10;&gt; Second customer&#10;The customer was added!&#10;1. Log in as a manager&#10;2. Log in as a customer&#10;3. Create a customer&#10;0. Exit&#10;&gt; 2&#10;Customer list:&#10;1. First customer&#10;2. Second customer&#10;0. Back&#10;&gt; 1&#10;1. Rent a car&#10;2. Return a rented car&#10;3. My rented car&#10;0. Back&#10;&gt; 3&#10;1. Rent a car&#10;2. Return a rented car&#10;3. My rented car&#10;0. Back" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #8
+  <testcase name="start" classname="CarSharingTest" time="0.414">
+    <failure message="java.lang.AssertionError: Wrong answer in test #8&#10;&#10;After choosing '2. Return a rented car' option you should print 'You didn't rent a car!' if a customer didn't rent a car.&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Arguments: -databaseFileName carsharing&#10;&#10;1. Log in as a manager&#10;2. Log in as a customer&#10;3. Create a customer&#10;0. Exit&#10;&gt; 2&#10;The customer list is empty!&#10;1. Log in as a manager&#10;2. Log in as a customer&#10;3. Create a customer&#10;0. Exit&#10;&gt; 3&#10;Enter the customer name:&#10;&gt; First customer&#10;The customer was added!&#10;1. Log in as a manager&#10;2. Log in as a customer&#10;3. Create a customer&#10;0. Exit&#10;&gt; 3&#10;Enter the customer name:&#10;&gt; Second customer&#10;The customer was added!&#10;1. Log in as a manager&#10;2. Log in as a customer&#10;3. Create a customer&#10;0. Exit&#10;&gt; 2&#10;Customer list:&#10;1. First customer&#10;2. Second customer&#10;0. Back&#10;&gt; 1&#10;1. Rent a car&#10;2. Return a rented car&#10;3. My rented car&#10;0. Back&#10;&gt; 3&#10;You didn't rent a car!&#10;1. Rent a car&#10;2. Return a rented car&#10;3. My rented car&#10;0. Back&#10;&gt; 2&#10;1. Rent a car&#10;2. Return a rented car&#10;3. My rented car&#10;0. Back" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #8
 
-After choosing '3. My rented car' option you should print 'You didn't rent a car!' if a customer didn't rent a car.
+After choosing '2. Return a rented car' option you should print 'You didn't rent a car!' if a customer didn't rent a car.
 
 Please find below the output of your program during this failed test.
 Note that the '&gt;' character indicates the beginning of the input line.
@@ -50,6 +50,12 @@ Customer list:
 3. My rented car
 0. Back
 &gt; 3
+You didn't rent a car!
+1. Rent a car
+2. Return a rented car
+3. My rented car
+0. Back
+&gt; 2
 1. Rent a car
 2. Return a rented car
 3. My rented car
@@ -313,6 +319,12 @@ Customer list:
 3. My rented car
 0. Back
 > 3
+You didn't rent a car!
+1. Rent a car
+2. Return a rented car
+3. My rented car
+0. Back
+> 2
 1. Rent a car
 2. Return a rented car
 3. My rented car

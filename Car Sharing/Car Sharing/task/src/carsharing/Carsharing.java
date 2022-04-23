@@ -5,7 +5,6 @@ import carsharing.db.Company;
 import carsharing.db.Customer;
 import carsharing.db.Database;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -68,22 +67,7 @@ public class Carsharing {
             switch (action) {
                 // Company List
                 case 1: {
-                    List<Company> companies = database.getAllCompanies();
-                    if (!companies.isEmpty()) {
-                        System.out.println("Choose a company:");
-                        int counter = 1;
-                        for (Company company : companies) {
-                            System.out.println(counter + ". " + company.getCompanyName());
-                            counter++;
-                        }
-                        System.out.println("0. Back");
-                        action = Integer.parseInt(scanner.nextLine());
-                        if (action == 0) managerMenu();
-                        company = companies.get(action - 1);
-                        companyMenu();
-                    } else {
-                        System.out.println("The company list is empty!");
-                    }
+                    companyMenu();
                     break;
                 }
                 // Create Company
@@ -103,7 +87,7 @@ public class Carsharing {
         } while (action != 0);
     }
 
-    public void companyMenu() {
+    public void companyCarMenu() {
         final String companyMenuMessage =
                 "1. Car list\n" +
                         "2. Create a car\n" +
@@ -114,14 +98,7 @@ public class Carsharing {
             action = Integer.parseInt(scanner.nextLine());
             switch (action) {
                 case 1:
-                    List<Car> cars = database.getAllCars(company.getId());
-                    if (!cars.isEmpty()) {
-                        int counterCar = 1;
-                        for (Car car : cars) {
-                            System.out.println(counterCar + ". " + car.getCarName());
-                            counterCar++;
-                        }
-                    } else System.out.println("The car list is empty!");
+                    carCompanyList();
                     break;
                 case 2:
                     System.out.println("Enter the car name:");
@@ -164,16 +141,53 @@ public class Carsharing {
             action = Integer.parseInt(scanner.nextLine());
             switch (action) {
                 case 1:
+                    companyMenu();
                     break;
                 case 2:
                     break;
                 case 3:
+                    Car car = database.rentedCar(customer.getCustomerName());
+                    if (car.getCarName() != null) {
+                        System.out.println("You rented '" + car.getCarName() + "'");
+                    } else {
+                        System.out.println("You didn't rent a car!");
+                    }
                     break;
                 case 0:
                     break;
             }
         } while (action != 0);
 
+    }
+
+    public void companyMenu() {
+        List<Company> companies = database.getAllCompanies();
+        if (!companies.isEmpty()) {
+            System.out.println("Choose a company:");
+            int counter = 1;
+            for (Company company : companies) {
+                System.out.println(counter + ". " + company.getCompanyName());
+                counter++;
+            }
+            System.out.println("0. Back");
+            action = Integer.parseInt(scanner.nextLine());
+            if (action == 0) managerMenu();
+            company = companies.get(action - 1);
+            companyCarMenu();
+        } else {
+            System.out.println("The company list is empty!");
+        }
+    }
+
+    public void carCompanyList() {
+        List<Car> cars = database.getAllCars(company.getId());
+        if (!cars.isEmpty()) {
+            int counterCar = 1;
+            for (Car car : cars) {
+                System.out.println(counterCar + ". " + car.getCarName());
+                counterCar++;
+            }
+        } else System.out.println("The car list is empty!");
     }
 
 }

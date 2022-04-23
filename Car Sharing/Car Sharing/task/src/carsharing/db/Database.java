@@ -2,9 +2,7 @@ package carsharing.db;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 public class Database implements CompanyDAO {
     static final String JDBC_DRIVER = "org.h2.Driver";
@@ -14,6 +12,11 @@ public class Database implements CompanyDAO {
     private static final String SQL_GET_ALL = "SELECT * FROM COMPANY;";
     private static final String SQL_GET_ALL_CUSTOMERS = "SELECT * FROM CUSTOMER;";
     private static final String SQL_GET_ONE = "SELECT * FROM COMPANY WHERE NAME = ?;";
+    private static final String SQL_GET_RENTED_CAR = "SELECT * " +
+            "FROM CUSTOMER " +
+            "INNER JOIN CAR " +
+            "ON RENTED_CAR_ID = CAR.ID " +
+            "WHERE CUSTOMER.NAME = ?;";
     private static final String SQL_GET_ALL_CARS = "SELECT * FROM CAR WHERE COMPANY_ID = ?;";
     private static final String SQL_ADD_ONE = "INSERT INTO COMPANY (NAME) VALUES (?);";
     private static final String SQL_ADD_ONE_CUSTOMER = "INSERT INTO CUSTOMER (NAME) VALUES (?);";
@@ -188,5 +191,25 @@ public class Database implements CompanyDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    public Car rentedCar(String customerName) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_RENTED_CAR)) {
+            preparedStatement.setString(1, customerName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Car car = new Car();
+            while (resultSet.next()) {
+                car.setId(resultSet.getInt("id"));
+                car.setCarName(resultSet.getString("name"));
+            }
+            return car;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void rentCar() {
+
+    }
+    public void returnRentedCar() {
+
     }
 }

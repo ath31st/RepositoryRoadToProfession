@@ -1251,7 +1251,7 @@ feedback:
   message: |-
     Wrong answer in test #8
 
-    After choosing &#39;3. My rented car&#39; option you should print &#39;You didn&#39;t rent a car!&#39; if a customer didn&#39;t rent a car.
+    After choosing &#39;2. Return a rented car&#39; option you should print &#39;You didn&#39;t rent a car!&#39; if a customer didn&#39;t rent a car.
 
     Please find below the output of your program during this failed test.
     Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
@@ -1297,9 +1297,15 @@ feedback:
     3. My rented car
     0. Back
     &gt; 3
+    You didn&#39;t rent a car!
     1. Rent a car
     2. Return a rented car
     3. My rented car
     0. Back
-  time: Sat, 23 Apr 2022 08:30:16 UTC
+    &gt; 2
+    1. Rent a car
+    2. Return a rented car
+    3. My rented car
+    0. Back
+  time: Sat, 23 Apr 2022 10:15:19 UTC
 record: -1
