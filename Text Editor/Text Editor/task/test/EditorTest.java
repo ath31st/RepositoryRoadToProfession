@@ -1,5 +1,7 @@
 import editor.TextEditor;
+import org.assertj.swing.exception.ActionFailedException;
 import org.assertj.swing.fixture.JButtonFixture;
+import org.assertj.swing.fixture.JMenuItemFixture;
 import org.assertj.swing.fixture.JScrollPaneFixture;
 import org.assertj.swing.fixture.JTextComponentFixture;
 import org.hyperskill.hstest.dynamic.DynamicTest;
@@ -17,7 +19,6 @@ import static org.hyperskill.hstest.testcase.CheckResult.correct;
 public class EditorTest extends SwingTest {
     public EditorTest() {
         super(new TextEditor());
-        System.setProperty("user.dir", System.getProperty("user.dir").replaceAll("\\\\Text Editor\\\\task",""));
     }
 
     @SwingComponent private JTextComponentFixture textArea;
@@ -25,6 +26,10 @@ public class EditorTest extends SwingTest {
     @SwingComponent private JButtonFixture saveButton;
     @SwingComponent private JButtonFixture loadButton;
     @SwingComponent private JScrollPaneFixture scrollPane;
+    @SwingComponent private JMenuItemFixture menuFile;
+    @SwingComponent private JMenuItemFixture menuLoad;
+    @SwingComponent private JMenuItemFixture menuSave;
+    @SwingComponent private JMenuItemFixture menuExit;
 
     String filename1 = "SomeFile.txt";
     String filename2 = "AnotherFile.txt";
@@ -190,6 +195,120 @@ public class EditorTest extends SwingTest {
         saveButton.click();
         textArea.setText(textToSave2);
         loadButton.click();
+        textArea.requireText("");
+        return correct();
+    }
+
+    // menu-related tests
+
+    @DynamicTest
+    CheckResult test10() {
+        requireEnabled(menuLoad, menuSave, menuFile, menuExit);
+        return correct();
+    }
+
+    @DynamicTest(feedback = "Text in FilenameField and in TextArea " +
+        "should stay the same after saving file using MenuSave")
+    CheckResult test11() {
+        filenameField.setText(filename1);
+        textArea.setText(textToSave1);
+
+        try {
+            menuSave.click();
+        } catch (ActionFailedException e) {
+            return CheckResult.wrong("Make sure that the JMenu and it's respective JMenuItem are present and clickable.");
+        }
+
+        filenameField.requireText(filename1);
+        textArea.requireText(textToSave1);
+        return correct();
+    }
+
+    @DynamicTest(feedback = "Text in FilenameField and in TextArea " +
+        "should stay the same after saving file using MenuSave")
+    CheckResult test12() {
+        String text = textToSave2;
+        String file = filename2;
+
+        filenameField.setText(file);
+        textArea.setText(text);
+
+        menuSave.click();
+
+        filenameField.requireText(file);
+        textArea.requireText(text);
+
+        filenameField.setText("");
+        textArea.setText("");
+        return correct();
+    }
+
+    @DynamicTest(feedback = "Text in FilenameField stay " +
+        "the same after loading file using MenuLoad")
+    CheckResult test13() {
+        String file = filename1;
+
+        filenameField.setText(file);
+        textArea.setText("");
+
+        menuLoad.click();
+
+        filenameField.requireText(file);
+
+        filenameField.setText("");
+        textArea.setText("");
+        return correct();
+    }
+
+    @DynamicTest(feedback = "Text should be the same after saving " +
+        "and loading same file using MenuLoad")
+    CheckResult test14() {
+        String[] texts = {textToSave2, textToSave1};
+        String[] files = {filename1, filename2};
+
+        for (int i = 0; i < 2; i++) {
+
+            String text = texts[i];
+            String file = files[i];
+
+            filenameField.setText("");
+            textArea.setText("");
+
+            filenameField.setText(file);
+            textArea.setText(text);
+
+            menuSave.click();
+
+            filenameField.setText("");
+            textArea.setText("");
+
+            filenameField.setText(file);
+            menuLoad.click();
+
+            textArea.requireText(text);
+        }
+        return correct();
+    }
+
+    @DynamicTest(feedback = "TextArea should be empty if user tries to " +
+        "load file that doesn't exist using MenuLoad")
+    CheckResult test15() {
+        textArea.setText(textToSave1);
+        filenameField.setText(noExistFile);
+
+        menuLoad.click();
+        textArea.requireText("");
+        return correct();
+    }
+
+    @DynamicTest(feedback = "TextArea should correctly save and load an empty file using menu")
+    CheckResult test16() {
+        textArea.setText("");
+        filenameField.setText(filename1);
+
+        menuSave.click();
+        textArea.setText(textToSave2);
+        menuLoad.click();
         textArea.requireText("");
         return correct();
     }
