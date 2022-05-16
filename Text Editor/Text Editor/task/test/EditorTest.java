@@ -1,44 +1,93 @@
 import editor.TextEditor;
-import org.assertj.swing.exception.ActionFailedException;
-import org.assertj.swing.fixture.JButtonFixture;
-import org.assertj.swing.fixture.JMenuItemFixture;
-import org.assertj.swing.fixture.JScrollPaneFixture;
-import org.assertj.swing.fixture.JTextComponentFixture;
+import org.assertj.swing.fixture.*;
 import org.hyperskill.hstest.dynamic.DynamicTest;
+import org.hyperskill.hstest.exception.outcomes.WrongAnswer;
 import org.hyperskill.hstest.stage.SwingTest;
 import org.hyperskill.hstest.testcase.CheckResult;
 import org.hyperskill.hstest.testing.swing.SwingComponent;
 import org.junit.After;
 
-import java.io.IOException;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Locale;
+import java.util.Objects;
 
 import static org.hyperskill.hstest.testcase.CheckResult.correct;
+
+class OsCheck {
+    /**
+     * types of Operating Systems
+     */
+    public enum OSType {
+        Windows, MacOS, Linux, Other
+    };
+
+    // cached result of OS detection
+    protected static OSType detectedOS;
+
+    public static OSType getOperatingSystemType() {
+        if (detectedOS == null) {
+            String OS = System.getProperty(
+                "os.name", "generic")
+                .toLowerCase(Locale.ENGLISH);
+            if ((OS.contains("mac"))
+                || (OS.contains("darwin"))) {
+                detectedOS = OSType.MacOS;
+            } else if (OS.contains("win")) {
+                detectedOS = OSType.Windows;
+            } else if (OS.contains("nux")) {
+                detectedOS = OSType.Linux;
+            } else {
+                detectedOS = OSType.Other;
+            }
+        }
+        return detectedOS;
+    }
+}
 
 public class EditorTest extends SwingTest {
     public EditorTest() {
         super(new TextEditor());
     }
 
-    @SwingComponent private JTextComponentFixture textArea;
-    @SwingComponent private JTextComponentFixture filenameField;
-    @SwingComponent private JButtonFixture saveButton;
-    @SwingComponent private JButtonFixture loadButton;
-    @SwingComponent private JScrollPaneFixture scrollPane;
-    @SwingComponent private JMenuItemFixture menuFile;
-    @SwingComponent private JMenuItemFixture menuLoad;
-    @SwingComponent private JMenuItemFixture menuSave;
-    @SwingComponent private JMenuItemFixture menuExit;
+    static boolean notWindows =
+        OsCheck.getOperatingSystemType() != OsCheck.OSType.Windows;
+
+    private String dir = System.getProperty("user.dir") + File.separator;
+    private File fileDir = new File(dir);
+
+    @SwingComponent JTextComponentFixture textArea;
+    @SwingComponent JTextComponentFixture searchField;
+    @SwingComponent JButtonFixture saveButton;
+    @SwingComponent JButtonFixture openButton;
+    @SwingComponent JButtonFixture startSearchButton;
+    @SwingComponent JButtonFixture previousMatchButton;
+    @SwingComponent JButtonFixture nextMatchButton;
+    @SwingComponent JCheckBoxFixture useRegExCheckbox;
+    @SwingComponent JScrollPaneFixture scrollPane;
+    @SwingComponent JMenuItemFixture menuFile;
+    @SwingComponent JMenuItemFixture menuSearch;
+    @SwingComponent JMenuItemFixture menuOpen;
+    @SwingComponent JMenuItemFixture menuSave;
+    @SwingComponent JMenuItemFixture menuExit;
+    @SwingComponent JMenuItemFixture menuStartSearch;
+    @SwingComponent JMenuItemFixture menuPreviousMatch;
+    @SwingComponent JMenuItemFixture menuNextMatch;
+    @SwingComponent JMenuItemFixture menuUseRegExp;
+    @SwingComponent JFileChooserFixture fileChooser;
 
     String filename1 = "SomeFile.txt";
     String filename2 = "AnotherFile.txt";
     String noExistFile = "FileDoesNotExist";
 
+    String searchText = "Sonnet";
+    String regExSearchText = "[fr]uel";
+
     String textToSave1 = "Basic text editor\nType here too\nHere also\n\n";
-    String textToSave2 = "                Sonnet I\n" +
-        "     \n" +
-        "     \n" +
+    String textToSave2 = "          Sonnet I\n" +
+        "\n" +
+        "\n" +
         "FROM fairest creatures we desire increase,\n" +
         "That thereby beauty's rose might never die,\n" +
         "But as the riper should by time decease,\n" +
@@ -54,9 +103,9 @@ public class EditorTest extends SwingTest {
         "Pity the world, or else this glutton be,\n" +
         "To eat the world's due, by the grave and thee.\n" +
         "\n" +
-        "                 Sonnet II                   \n" +
-        "\n" +
-        "\n" +
+        " Sonnet II\n" +
+        "       \n" +
+        "         \n" +
         "When forty winters shall beseige thy brow,\n" +
         "And dig deep trenches in thy beauty's field,\n" +
         "Thy youth's proud livery, so gazed on now,\n" +
@@ -70,85 +119,102 @@ public class EditorTest extends SwingTest {
         "Shall sum my count and make my old excuse,'\n" +
         "Proving his beauty by succession thine!\n" +
         "This were to be new made when thou art old,\n" +
-        "And see thy blood warm when thou feel'st it cold.";
+        "And see thy blood warm when thou feel'st it cold.\n" +
+        "\n" +
+        "Sonnet III\n" +
+        "\n" +
+        "\n" +
+        "Look in thy glass, and tell the face thou viewest\n" +
+        "Now is the time that face should form another;\n" +
+        "Whose fresh repair if now thou not renewest,\n" +
+        "Thou dost beguile the world, unbless some mother.\n" +
+        "For where is she so fair whose unear'd womb\n" +
+        "Disdains the tillage of thy husbandry?\n" +
+        "Or who is he so fond will be the tomb\n" +
+        "Of his self-love, to stop posterity?\n" +
+        "Thou art thy mother's glass, and she in thee\n" +
+        "Calls back the lovely April of her prime:\n" +
+        "So thou through windows of thine age shall see\n" +
+        "Despite of wrinkles this thy golden time.\n" +
+        "But if thou live, remember'd not to be,\n" +
+        "Die single, and thine image dies with thee.\n" +
+        "\n" +
+        "Sonnet IV\n" +
+        "\n" +
+        "\n" +
+        "Unthrifty loveliness, why dost thou spend\n" +
+        "Upon thyself thy beauty's legacy?\n" +
+        "Nature's bequest gives nothing but doth lend,\n" +
+        "And being frank she lends to those are free.\n" +
+        "Then, beauteous niggard, why dost thou abuse\n" +
+        "The bounteous largess given thee to give?\n" +
+        "Profitless usurer, why dost thou use\n" +
+        "So great a sum of sums, yet canst not live?\n" +
+        "For having traffic with thyself alone,\n" +
+        "Thou of thyself thy sweet self dost deceive.\n" +
+        "Then how, when nature calls thee to be gone,\n" +
+        "What acceptable audit canst thou leave?\n" +
+        "Thy unused beauty must be tomb'd with thee,\n" +
+        "Which, used, lives th' executor to be.";
+
+    public void fileAction() {
+        if(!fileChooser.target().isVisible()) {
+            throw new AssertionError();
+        }
+        frame.setVisible(false);
+        fileChooser.setCurrentDirectory(fileDir);
+
+        if (OsCheck.getOperatingSystemType() == OsCheck.OSType.MacOS) {
+            fileChooser.selectFile(new File(
+                fileDir + File.separator + searchField.text()));
+        } else {
+            fileChooser.fileNameTextBox().setText(searchField.text());
+        }
+
+        fileChooser.approve();
+        frame.setVisible(true);
+    }
 
     @DynamicTest
     CheckResult test1() {
         requireEditable(textArea);
-        requireEmpty(textArea, filenameField);
-        requireEnabled(saveButton, loadButton);
+        requireEmpty(textArea, searchField);
+        requireEnabled(
+            saveButton, openButton,
+            startSearchButton, nextMatchButton, previousMatchButton,
+            menuOpen, menuSave, menuSave, menuFile, menuExit,
+            menuStartSearch, menuPreviousMatch, menuNextMatch, menuUseRegExp
+        );
         return correct();
     }
 
-    @DynamicTest(feedback = "Can't enter multiline text in TextArea.")
+    @DynamicTest(feedback = "FileChooser doesn't appear on the second " +
+        "press on SaveButton but should appear every time")
     CheckResult test2() {
-        textArea.setText(textToSave1);
-        textArea.requireText(textToSave1);
-        textArea.setText("");
-        textArea.setText(textToSave2);
-        textArea.requireText(textToSave2);
-        return correct();
-    }
+        if (notWindows) {
+            return correct();
+        }
 
-    @DynamicTest(feedback = "Can enter multiline text in FilenameField, but shouldn't")
-    CheckResult test3() {
-        String text = textToSave1;
-        filenameField.setText(text);
-        filenameField.requireText(text.replace("\n", " "));
-        filenameField.setText("");
-        return correct();
-    }
-
-    @DynamicTest(feedback = "Text in FilenameField and in TextArea " +
-        "should stay the same after saving file")
-    CheckResult test4() {
-        filenameField.setText(filename1);
+        searchField.setText(filename1);
         textArea.setText(textToSave1);
 
         saveButton.click();
 
-        filenameField.requireText(filename1);
-        textArea.requireText(textToSave1);
-        return correct();
-    }
+        try {
+            fileAction();
+        } catch (IllegalStateException ex) {
+            throw new AssertionError();
+        }
 
-    @DynamicTest(feedback = "Text in FilenameField and in TextArea " +
-        "should stay the same after saving file")
-    CheckResult test5() {
-        String text = textToSave2;
-        String file = filename2;
-
-        filenameField.setText(file);
-        textArea.setText(text);
-
-        saveButton.click();
-
-        filenameField.requireText(file);
-        textArea.requireText(text);
-
-        filenameField.setText("");
-        textArea.setText("");
-        return correct();
-    }
-
-    @DynamicTest(feedback = "Text in FilenameField stay the same after loading file")
-    CheckResult test6() {
-        String file = filename1;
-
-        filenameField.setText(file);
-        textArea.setText("");
-
-        loadButton.click();
-
-        filenameField.requireText(file);
-
-        filenameField.setText("");
-        textArea.setText("");
         return correct();
     }
 
     @DynamicTest(feedback = "Text should be the same after saving and loading same file")
-    CheckResult test7() {
+    CheckResult test3() {
+        if (notWindows) {
+            return correct();
+        }
+
         String[] texts = {textToSave2, textToSave1};
         String[] files = {filename1, filename2};
 
@@ -157,112 +223,72 @@ public class EditorTest extends SwingTest {
             String text = texts[i];
             String file = files[i];
 
-            filenameField.setText("");
+            searchField.setText("");
             textArea.setText("");
 
-            filenameField.setText(file);
+            searchField.setText(file);
             textArea.setText(text);
 
             saveButton.click();
+            fileAction();
 
-            filenameField.setText("");
+            searchField.setText("");
             textArea.setText("");
 
-            filenameField.setText(file);
-            loadButton.click();
+            searchField.setText(file);
+            openButton.click();
+            fileAction();
 
             textArea.requireText(text);
         }
+
         return correct();
     }
 
-    @DynamicTest(feedback = "TextArea should be empty if user tries to " +
-        "load file that doesn't exist")
-    CheckResult test8() {
-        textArea.setText(textToSave1);
-        filenameField.setText(noExistFile);
+    @DynamicTest(feedback = "TextArea should be empty if user tries to load file that doesn't exist")
+    CheckResult test4() {
+        if (notWindows) {
+            return correct();
+        }
 
-        loadButton.click();
+        textArea.setText(textToSave1);
+        searchField.setText(noExistFile);
+
+        openButton.click();
+        fileAction();
         textArea.requireText("");
+
         return correct();
     }
 
     @DynamicTest(feedback = "TextArea should correctly save and load an empty file")
-    CheckResult test9() {
-        textArea.setText("");
-        filenameField.setText(filename1);
-
-        saveButton.click();
-        textArea.setText(textToSave2);
-        loadButton.click();
-        textArea.requireText("");
-        return correct();
-    }
-
-    // menu-related tests
-
-    @DynamicTest
-    CheckResult test10() {
-        requireEnabled(menuLoad, menuSave, menuFile, menuExit);
-        return correct();
-    }
-
-    @DynamicTest(feedback = "Text in FilenameField and in TextArea " +
-        "should stay the same after saving file using MenuSave")
-    CheckResult test11() {
-        filenameField.setText(filename1);
-        textArea.setText(textToSave1);
-
-        try {
-            menuSave.click();
-        } catch (ActionFailedException e) {
-            return CheckResult.wrong("Make sure that the JMenu and it's respective JMenuItem are present and clickable.");
+    CheckResult test5() {
+        if (notWindows) {
+            return correct();
         }
 
-        filenameField.requireText(filename1);
-        textArea.requireText(textToSave1);
+        textArea.setText("");
+        searchField.setText(filename1);
+
+        saveButton.click();
+        fileAction();
+        textArea.setText(textToSave2);
+        openButton.click();
+        fileAction();
+        textArea.requireText("");
+
         return correct();
     }
 
-    @DynamicTest(feedback = "Text in FilenameField and in TextArea " +
-        "should stay the same after saving file using MenuSave")
-    CheckResult test12() {
-        String text = textToSave2;
-        String file = filename2;
-
-        filenameField.setText(file);
-        textArea.setText(text);
-
-        menuSave.click();
-
-        filenameField.requireText(file);
-        textArea.requireText(text);
-
-        filenameField.setText("");
-        textArea.setText("");
-        return correct();
-    }
-
-    @DynamicTest(feedback = "Text in FilenameField stay " +
-        "the same after loading file using MenuLoad")
-    CheckResult test13() {
-        String file = filename1;
-
-        filenameField.setText(file);
-        textArea.setText("");
-
-        menuLoad.click();
-
-        filenameField.requireText(file);
-
-        filenameField.setText("");
-        textArea.setText("");
-        return correct();
-    }
+    // menu-related tests for save and load
 
     @DynamicTest(feedback = "Text should be the same after saving " +
         "and loading same file using MenuLoad")
-    CheckResult test14() {
+    CheckResult test6() {
+        if (notWindows) {
+            return correct();
+        }
+
         String[] texts = {textToSave2, textToSave1};
         String[] files = {filename1, filename2};
 
@@ -271,55 +297,328 @@ public class EditorTest extends SwingTest {
             String text = texts[i];
             String file = files[i];
 
-            filenameField.setText("");
+            searchField.setText("");
             textArea.setText("");
 
-            filenameField.setText(file);
+            searchField.setText(file);
             textArea.setText(text);
 
             menuSave.click();
+            fileAction();
 
-            filenameField.setText("");
+            searchField.setText("");
             textArea.setText("");
 
-            filenameField.setText(file);
-            menuLoad.click();
+            searchField.setText(file);
+            menuOpen.click();
+            fileAction();
 
             textArea.requireText(text);
         }
+
         return correct();
     }
 
     @DynamicTest(feedback = "TextArea should be empty if user tries to " +
         "load file that doesn't exist using MenuLoad")
-    CheckResult test15() {
-        textArea.setText(textToSave1);
-        filenameField.setText(noExistFile);
+    CheckResult test7() {
+        if (notWindows) {
+            return correct();
+        }
 
-        menuLoad.click();
+        textArea.setText(textToSave1);
+        searchField.setText(noExistFile);
+
+        menuOpen.click();
+        fileAction();
         textArea.requireText("");
+
         return correct();
     }
 
-    @DynamicTest(feedback = "TextArea should correctly save and load an empty file using menu")
-    CheckResult test16() {
+    @DynamicTest(feedback = "TextArea should correctly save " +
+        "and load an empty file using menu")
+    CheckResult test8() {
+        if (notWindows) {
+            return correct();
+        }
+
         textArea.setText("");
-        filenameField.setText(filename1);
+        searchField.setText(filename1);
 
         menuSave.click();
+        fileAction();
         textArea.setText(textToSave2);
-        menuLoad.click();
+        menuOpen.click();
+        fileAction();
         textArea.requireText("");
+
+        return correct();
+    }
+
+
+    // search related tests
+
+    @DynamicTest
+    CheckResult test9() {
+        searchField.setText(searchText);
+        textArea.setText(textToSave2);
+        startSearchButton.click();
+
+        if (!Objects.equals(textArea.target().getSelectedText(), searchText)) {
+            throw new WrongAnswer("After clicking StartSearchButton should " +
+                "be selected founded text");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test10() {
+        searchField.setText(searchText);
+        textArea.setText(textToSave2);
+        startSearchButton.click();
+        nextMatchButton.click();
+
+        if (!Objects.equals(textArea.target().getSelectedText(), searchText)) {
+            throw new WrongAnswer("After clicking NextMatchButton should " +
+                "be selected founded text");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test11() {
+        searchField.setText(searchText);
+        textArea.setText(textToSave2);
+        startSearchButton.click();
+        previousMatchButton.click();
+
+        if (!Objects.equals(textArea.target().getSelectedText(), searchText)) {
+            throw new WrongAnswer("After clicking PreviousMatchButton should " +
+                "be selected founded text");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test12() {
+        searchField.setText(searchText);
+        textArea.setText(textToSave2);
+        menuStartSearch.click();
+
+        if (!Objects.equals(textArea.target().getSelectedText(), searchText)) {
+            throw new WrongAnswer("After clicking MenuStartSearch should " +
+                "be selected founded text");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test13() {
+        searchField.setText(searchText);
+        textArea.setText(textToSave2);
+        startSearchButton.click();
+        menuNextMatch.click();
+
+        if (!Objects.equals(textArea.target().getSelectedText(), searchText)) {
+            throw new WrongAnswer("After clicking MenuNextMatch should " +
+                "be selected founded text");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test14() {
+        searchField.setText(searchText);
+        textArea.setText(textToSave2);
+        startSearchButton.click();
+        menuPreviousMatch.click();
+
+        if (!Objects.equals(textArea.target().getSelectedText(), searchText)) {
+            throw new WrongAnswer("After clicking MenuPreviousMatch should " +
+                "be selected founded text");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test15() {
+        searchField.setText(searchText);
+        textArea.setText(textToSave2);
+
+        startSearchButton.click();
+
+        // confirmed with working program AND provided text
+        if (textArea.target().getCaretPosition() != 16) {
+            throw new WrongAnswer("Wrong caret position after clicking StartSearchButton " +
+                "(should be at the end of founded text)");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test16() {
+        searchField.setText(searchText);
+        textArea.setText(textToSave2);
+
+        menuStartSearch.click();
+
+        // confirmed with working program AND provided text
+        if (textArea.target().getCaretPosition() != 16) {
+            throw new WrongAnswer("Wrong caret position after clicking MenuStartSearch " +
+                "(should be at the end of founded text)");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test17() {
+        searchField.setText(searchText);
+        textArea.setText(textToSave2);
+
+        startSearchButton.click();
+        nextMatchButton.click();
+
+        // confirmed with working program AND provided text
+        if (textArea.target().getCaretPosition() != 640) {
+            throw new WrongAnswer("Wrong caret position after clicking NextMatchButton");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test18() {
+        searchField.setText(searchText);
+        textArea.setText(textToSave2);
+
+        menuStartSearch.click();
+        menuNextMatch.click();
+
+        // confirmed with working program AND provided text
+        if (textArea.target().getCaretPosition() != 640) {
+            throw new WrongAnswer("Wrong caret position after clicking MenuNextMatch");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test19() {
+        searchField.setText(searchText);
+        textArea.setText(textToSave2);
+
+        startSearchButton.click();
+        previousMatchButton.click();
+
+        // confirmed with working program AND provided text
+        if (textArea.target().getCaretPosition() != 1921) {
+            throw new WrongAnswer("Wrong caret position after clicking PreviousMatchButton");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test20() {
+        searchField.setText(searchText);
+        textArea.setText(textToSave2);
+
+        startSearchButton.click();
+        menuPreviousMatch.click();
+
+        // confirmed with working program AND provided text
+        if (textArea.target().getCaretPosition() != 1921) {
+            throw new WrongAnswer("Wrong caret position after clicking MenuPreviousMatch");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test21() {
+        useRegExCheckbox.check(true);
+        if (!useRegExCheckbox.target().isSelected()) {
+            throw new WrongAnswer( "Checkbox is not clickable");
+        }
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test22() {
+        useRegExCheckbox.check(false);
+        menuUseRegExp.click();
+        if (!useRegExCheckbox.target().isSelected()) {
+            throw new WrongAnswer( "MenuUseRegExp does't work");
+        }
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test23() {
+        searchField.setText(regExSearchText);
+        textArea.setText(textToSave2);
+
+        startSearchButton.click();
+
+        // confirmed with working program AND provided text
+        if (textArea.target().getCaretPosition() != 288) {
+            throw new WrongAnswer("Wrong caret position after clicking StartSearchButton " +
+                "using regular expression");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test24() {
+        searchField.setText(regExSearchText);
+        textArea.setText(textToSave2);
+
+        menuStartSearch.click();
+        nextMatchButton.click();
+
+        // confirmed with working program AND provided text
+        if (textArea.target().getCaretPosition() != 372) {
+            throw new WrongAnswer("Wrong caret position after clicking NextMatchButton " +
+                "using regular expression");
+        }
+
+        return correct();
+    }
+
+    @DynamicTest
+    CheckResult test25() {
+        searchField.setText(regExSearchText);
+        textArea.setText(textToSave2);
+
+        menuStartSearch.click();
+        previousMatchButton.click();
+
+        // confirmed with working program AND provided text
+        if (textArea.target().getCaretPosition() != 372) {
+            throw new WrongAnswer("Wrong caret position after clicking PreviousMatchButton " +
+                "using regular expression");
+        }
+
         return correct();
     }
 
     @After
     public void deleteFiles() {
         try {
-            Files.delete(Paths.get(filename1));
-            Files.delete(Paths.get(filename2));
+            Files.deleteIfExists(Paths.get(filename1));
+            Files.deleteIfExists(Paths.get(filename2));
         }
-        catch (IOException ex) {
+        catch (Exception ex) {
             ex.printStackTrace();
         }
     }

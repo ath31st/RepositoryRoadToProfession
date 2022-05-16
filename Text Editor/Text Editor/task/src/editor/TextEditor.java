@@ -57,5 +57,47 @@ public class TextEditor extends JFrame {
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setName("ScrollPane");
         add(scrollPane);
+
+
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+
+        JMenu fileMenu = new JMenu("File");
+        fileMenu.setName("MenuFile");
+       // fileMenu.setMnemonic(KeyEvent.VK_F);
+        menuBar.add(fileMenu);
+
+        JMenuItem loadItem = new JMenuItem("Load");
+        loadItem.setName("MenuLoad");
+        JMenuItem saveItem = new JMenuItem("Save");
+        saveItem.setName("MenuSave");
+        JMenuItem exitItem = new JMenuItem("Exit");
+        exitItem.setName("MenuExit");
+        fileMenu.add(loadItem);
+        fileMenu.add(saveItem);
+        fileMenu.addSeparator();
+        fileMenu.add(exitItem);
+
+        saveItem.addActionListener(e -> {
+            String fileName = fileNameField.getText();
+            String text = textArea.getText();
+            try {
+                Files.write(Paths.get(fileName), text.getBytes());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        loadItem.addActionListener(e -> {
+            textArea.setText(null);
+            String textFromFile;
+            try {
+                textFromFile = Files.readString(Paths.get(fileNameField.getText()));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            textArea.setText(textFromFile);
+        });
+        exitItem.addActionListener(e -> dispose());
     }
 }
