@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TicTacToeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-19T12:07:05" hostname="FRACTAL" time="0.793">
+  <properties/>
+  <testcase name="start" classname="TicTacToeTest" time="0.793"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+?[1;31m
+Start test 2?[0m
+?[1;31m
+Start test 3?[0m
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

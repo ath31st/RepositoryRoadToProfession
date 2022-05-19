@@ -1,0 +1,46 @@
+<h5 id="description">Description</h5>
+
+<p>In this stage, we will add an event listener for our field cells. When you click on a free cell for the first time, add an <code class="java">X</code> symbol to the cell. The second click on another free cell should add an <code class="java">O</code> symbol. You will also need a status bar and a <code class="java">Reset</code> button. A click on the <code class="java">Reset</code> button should clear the field. These improvements can allow you to play Tic-tac-toe against your friend.</p>
+
+<h5 id="objectives">Objectives</h5>
+
+<p>You need to add a listener for each cell of the field. When you click on a free cell, the program should add <code class="java">X</code> or <code class="java">O</code>, depending on the move. If a user clicks on an occupied cell, ignore this click.</p>
+
+<p>The program should track the status of the game. If the game is over, the program should ignore further clicks. At any time, when you press the <code class="java">Reset</code> button, the program should clear the field and start a new game.</p>
+
+<p>The status field should contain one of the following messages:</p>
+
+<ul>
+	<li>Game is not started</li>
+	<li>Game in progress</li>
+	<li>X wins</li>
+	<li>O wins</li>
+	<li>Draw</li>
+</ul>
+
+<p>For testing purposes, add names for the following components:</p>
+
+<ul>
+	<li><code class="java">LabelStatus</code> for the component that displays the game status.</li>
+	<li><code class="java">ButtonReset</code> for the reset button.</li>
+</ul>
+
+<p>The cell names should remain as in the previous stage. To display a symbol, set the button text. It must be one of the three strings: <code class="java"> </code> (one space) for an empty cell, <code class="java">X</code> for the first player, and <code class="java">O</code> for the second player.</p>
+
+<p>To remove the border around the text of the active cell, use the <code class="java">setFocusPainted(false)</code> method when creating a field cell component.</p>
+
+<p>You can set any font, size, and color for cell symbols and any cell background. The tests only check the names of the components and their text.</p>
+
+<h5 id="examples">Examples</h5>
+
+<p><strong>Example 1: </strong><em>Before the game</em></p>
+
+<p><img alt="Before the game" height="273" name="stage2-1.png" src="https://ucarecdn.com/84b2d017-888d-4afa-8287-6ff3145552e0/" width="270"></p>
+
+<p><strong>Example 2:</strong> <em>Game in progress</em></p>
+
+<p><img alt="Game in progress" height="273" name="stage2-2.png" src="https://ucarecdn.com/c6234860-2f37-4d32-bffd-db110cc0b3db/" width="270"></p>
+
+<p><strong>Example 3:</strong> <em>X wins</em></p>
+
+<p><img alt="" height="285" src="https://ucarecdn.com/fb7d0af7-58d2-45c4-9718-9a1b68dd2826/" width="269"></p>

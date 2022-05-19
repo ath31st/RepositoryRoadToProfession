@@ -1,0 +1,11 @@
+type: hyperskill
+title: Desktop Tic-Tac-Toe
+language: English
+summary: Everyone is familiar with Tic-tac-toe. Create a version of this game using
+  the Swing graphics library. Teach a computer to play this game and compete against
+  both your friend and AI.<br/><br/>Learn more at <a href="https://hyperskill.org/projects/174?utm_source=ide&utm_medium=ide&utm_campaign=ide&utm_content=project-card">https://hyperskill.org/projects/174</a>
+programming_language: Java
+programming_language_version: 11
+content:
+- Desktop Tic-Tac-Toe
+mode: Study

@@ -1,0 +1,55 @@
+<h5 id="description">Description</h5>
+
+<p>This is the final stage of our project. You need to add a menu for a quick game launch with a specific player configuration. Your program also lacks more detailed messages in the status bar about the current status of the game.</p>
+
+<h5 id="objectives">Objectives</h5>
+
+<p>Make the status bar more informative. We already have the <code class="language-java">Game in progress</code> status; add a new message that displays the current turn: <code class="language-java">The turn of {0} Player ({1})</code>. After the end of the game, the program should output the following message: <code class="language-java">The {0} Player ({1}) wins</code>. You can use the <code class="language-java">MessageFormat</code> class for this (take a look at the official <a target="_blank" target="_blank" target="_blank" target="_blank" target="_blank" href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/text/MessageFormat.html" rel="noopener noreferrer nofollow">Oracle doc</a> for help). Instead of <code class="language-java">{0}</code>, insert either <code class="language-java">Human</code> or <code class="language-java">Robot</code>. Instead of <code class="language-java">{1}</code>, output either <code class="language-java">X</code> or <code class="language-java">O</code>.</p>
+
+<p>Add a Game menu that includes five items:</p>
+
+<ol>
+	<li>Human vs Human</li>
+	<li>Human vs Robot</li>
+	<li>Robot vs Human</li>
+	<li>Robot vs Robot</li>
+	<li>Exit</li>
+</ol>
+
+<p>You can add a dividing line before the <code class="language-java">Exit</code> item. You can use the following piece of code for this:</p>
+
+<pre><code class="language-java">menuGame.addSeparator();
+menuGame.add(menuItemExit);</code></pre>
+
+<p>When you select one of the first four menu items, the program must clear the field, set the desired player values in the toolbar, and start the game. When the game is on, the <code class="language-java">Start/Reset</code> button must be set to <code class="language-java">Reset</code> mode, the player buttons must be disabled, and the field cells must be enabled.</p>
+
+<p>For testing purposes, the menu components should be named as follows:</p>
+
+<ul>
+	<li><code class="language-java">MenuGame</code></li>
+	<li><code class="language-java">MenuHumanHuman</code></li>
+	<li><code class="language-java">MenuHumanRobot</code></li>
+	<li><code class="language-java">MenuRobotHuman</code></li>
+	<li><code class="language-java">MenuRobotRobot</code></li>
+	<li><code class="language-java">MenuExit</code></li>
+</ul>
+
+<h5 id="examples">Examples</h5>
+
+<p><strong>Example 1:</strong> <em>Initial setup</em></p>
+
+<p> </p>
+
+<p><img alt="" height="274" name="stage4-1.png" src="https://ucarecdn.com/22dd9fab-a8c6-4e24-af06-faf962f41315/" width="270"></p>
+
+<p><strong>Example 2:</strong> <em>New game</em></p>
+
+<p><img alt="" height="300" src="https://ucarecdn.com/06dd9e11-7c20-4d46-a0dd-180b14795cfc/" width="266"></p>
+
+<p><strong>Example 3:</strong> <em>X wins</em></p>
+
+<p><img alt="Human Player (X) wins" height="300" src="https://ucarecdn.com/6779c714-252e-4c4e-a8a9-0179e93462ca/" width="266"></p>
+
+<p><strong>Example 4:</strong> <em>The menu</em></p>
+
+<p><img alt="" height="300" src="https://ucarecdn.com/41942a86-e9fd-4609-aa15-c9c80c7bcf13/" width="266"></p>
