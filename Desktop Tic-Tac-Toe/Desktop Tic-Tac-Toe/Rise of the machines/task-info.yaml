@@ -325,6 +325,21 @@ files:
         }
     }
   learner_created: false
-feedback_link: https://hyperskill.org/projects/174/stages/899/implement#comment
-status: Unchecked
-record: -1
+- name: src/tictactoe/GamePadStatusBar.java
+  visible: true
+  learner_created: true
+- name: src/tictactoe/GamePad.java
+  visible: true
+  learner_created: true
+- name: src/tictactoe/AutoPlayer.java
+  visible: true
+  learner_created: true
+- name: src/tictactoe/ButtonActionListener.java
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/12896#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Sat, 21 May 2022 15:18:49 UTC
+record: 3

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TicTacToeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-19T16:23:19" hostname="FRACTAL" time="14.692">
+<testsuite name="TicTacToeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-21T15:20:32" hostname="FRACTAL" time="33.315">
   <properties/>
-  <testcase name="start" classname="TicTacToeTest" time="14.692"/>
+  <testcase name="start" classname="TicTacToeTest" time="33.315"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
 ?[1;31m
@@ -108,6 +108,56 @@ Start test 51?[0m
 Start test 52?[0m
 ?[1;31m
 Start test 53?[0m
+?[1;31m
+Start test 54?[0m
+?[1;31m
+Start test 55?[0m
+?[1;31m
+Start test 56?[0m
+?[1;31m
+Start test 57?[0m
+?[1;31m
+Start test 58?[0m
+?[1;31m
+Start test 59?[0m
+?[1;31m
+Start test 60?[0m
+?[1;31m
+Start test 61?[0m
+?[1;31m
+Start test 62?[0m
+?[1;31m
+Start test 63?[0m
+?[1;31m
+Start test 64?[0m
+?[1;31m
+Start test 65?[0m
+?[1;31m
+Start test 66?[0m
+?[1;31m
+Start test 67?[0m
+?[1;31m
+Start test 68?[0m
+?[1;31m
+Start test 69?[0m
+?[1;31m
+Start test 70?[0m
+?[1;31m
+Start test 71?[0m
+?[1;31m
+Start test 72?[0m
+?[1;31m
+Start test 73?[0m
+?[1;31m
+Start test 74?[0m
+?[1;31m
+Start test 75?[0m
+?[1;31m
+Start test 76?[0m
+?[1;31m
+Start test 77?[0m
+?[1;31m
+Start test 78?[0m
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

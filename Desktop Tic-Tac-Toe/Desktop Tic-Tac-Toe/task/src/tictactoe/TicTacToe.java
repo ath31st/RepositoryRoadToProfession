@@ -2,77 +2,219 @@ package tictactoe;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import static tictactoe.Constants.*;
+public class TicTacToe extends JFrame implements ActionListener {
+    private final int GAME_PAD_WIDTH = 300;
+    private final int GAME_PAD_HEIGHT = 300;
+    private final int GAME_PAD_ROWS = 3;
+    private final int GAME_PAD_COLS = 3;
+    private final int STATUS_BAR_HEIGHT = 30;
+    JButton btnPlayerX;
+    JButton btnPlayerO;
+    JButton btnStartReset;
+    GamePad gp;
 
-public class TicTacToe extends JFrame {
 
-    static int countTurn = 1;
-    static String status = GAME_IS_NOT_STARTED;
-    static List<JButton> buttons = new ArrayList<>();
+
 
     public TicTacToe() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(GAME_PAD_WIDTH, GAME_PAD_HEIGHT + 2 * STATUS_BAR_HEIGHT);
         setTitle("Tic Tac Toe");
-        setResizable(false);
-        setSize(450, 480);
         setLocationRelativeTo(null);
-
-        JButton a1button = ButtonsFactory.createButton("ButtonA1", NULLCELL);
-        JButton a2button = ButtonsFactory.createButton("ButtonA2", NULLCELL);
-        JButton a3button = ButtonsFactory.createButton("ButtonA3", NULLCELL);
-        JButton b1button = ButtonsFactory.createButton("ButtonB1", NULLCELL);
-        JButton b2button = ButtonsFactory.createButton("ButtonB2", NULLCELL);
-        JButton b3button = ButtonsFactory.createButton("ButtonB3", NULLCELL);
-        JButton c1button = ButtonsFactory.createButton("ButtonC1", NULLCELL);
-        JButton c2button = ButtonsFactory.createButton("ButtonC2", NULLCELL);
-        JButton c3button = ButtonsFactory.createButton("ButtonC3", NULLCELL);
-
-        add(a3button);
-        add(b3button);
-        add(c3button);
-        add(a2button);
-        add(b2button);
-        add(c2button);
-        add(a1button);
-        add(b1button);
-        add(c1button);
-        buttons.add(a3button);
-        buttons.add(a2button);
-        buttons.add(a1button);
-        buttons.add(b3button);
-        buttons.add(b2button);
-        buttons.add(b1button);
-        buttons.add(c3button);
-        buttons.add(c2button);
-        buttons.add(c1button);
-        ButtonsFactory.setButtons(buttons);
-
-        JLabel statusLabel = new JLabel(status);
-        statusLabel.setName("LabelStatus");
-        add(statusLabel);
-
-        JButton resetButton = ButtonsFactory.createButton("ButtonReset", "Reset");
-        resetButton.setVisible(true);
-        add(resetButton);
-
-        resetButton.addActionListener(actionEvent -> ButtonsFactory.resetButtonsText(buttons,statusLabel));
-
-        a1button.addActionListener(actionEvent -> ButtonsFactory.changeTextButton(a1button, statusLabel));
-        a2button.addActionListener(actionEvent -> ButtonsFactory.changeTextButton(a2button,statusLabel));
-        a3button.addActionListener(actionEvent -> ButtonsFactory.changeTextButton(a3button,statusLabel));
-        b1button.addActionListener(actionEvent -> ButtonsFactory.changeTextButton(b1button,statusLabel));
-        b2button.addActionListener(actionEvent -> ButtonsFactory.changeTextButton(b2button,statusLabel));
-        b3button.addActionListener(actionEvent -> ButtonsFactory.changeTextButton(b3button,statusLabel));
-        c1button.addActionListener(actionEvent -> ButtonsFactory.changeTextButton(c1button,statusLabel));
-        c2button.addActionListener(actionEvent -> ButtonsFactory.changeTextButton(c2button,statusLabel));
-        c3button.addActionListener(actionEvent -> ButtonsFactory.changeTextButton(c3button,statusLabel));
-
-
-        GridLayout gridLayout = new GridLayout(4, 3);
-        setLayout(gridLayout);
         setVisible(true);
+
+        LayoutManager lom = new BorderLayout();
+        setLayout(lom);
+
+        gp = new GamePad(GAME_PAD_WIDTH, GAME_PAD_HEIGHT, GAME_PAD_ROWS, GAME_PAD_COLS);
+        add(gp, BorderLayout.CENTER);
+
+        GamePadStatusBar gamePadStatusBar = new GamePadStatusBar(30, gp);
+        gp.setStatusBar(gamePadStatusBar);
+        add(gamePadStatusBar, BorderLayout.SOUTH);
+
+        JPanel topBar = new JPanel(new GridLayout(1, 3, 3, 3));
+        btnPlayerX = new JButton();
+        btnPlayerX.setName("ButtonPlayer1");
+        btnPlayerX.setText("Human");
+        btnPlayerX.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (btnPlayerX.getText()) {
+                    case "Human":
+                        btnPlayerX.setText("Robot");
+                        gp.setAutoPlayX(true);
+                        break;
+                    case "Robot":
+                        btnPlayerX.setText("Human");
+                        gp.setAutoPlayX(false);
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(TicTacToe.this,
+                                "Invalid button text: " + btnPlayerX.getText());
+                        btnPlayerX.setText("Human");
+                        gp.setAutoPlayX(false);
+                }
+            }
+        });
+
+        btnPlayerO = new JButton();
+        btnPlayerO.setName("ButtonPlayer2");
+        btnPlayerO.setText("Human");
+        btnPlayerO.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (btnPlayerO.getText()) {
+                    case "Human":
+                        btnPlayerO.setText("Robot");
+                        gp.setAutoPlayO(true);
+                        break;
+                    case "Robot":
+                        btnPlayerO.setText("Human");
+                        gp.setAutoPlayO(false);
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(TicTacToe.this,
+                                "Invalid button text: " + btnPlayerO.getText());
+                        btnPlayerO.setText("Human");
+                        gp.setAutoPlayO(false);
+                }
+
+            }
+        } );
+
+        btnStartReset = new JButton();
+        btnStartReset.setName("ButtonStartReset");
+        btnStartReset.setText("Start");
+        btnStartReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (btnStartReset.getText()) {
+                    case "Start":
+                        btnStartReset.setText("Reset");
+                        btnPlayerX.setEnabled(false);
+                        btnPlayerO.setEnabled(false);
+                        gp.start();
+                        break;
+                    case "Reset":
+                        btnStartReset.setText("Start");
+                        btnPlayerX.setEnabled(true);
+                        btnPlayerO.setEnabled(true);
+                        gp.reset();
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(TicTacToe.this,
+                                "Invalid button text: " + btnStartReset.getText());
+                        btnStartReset.setText("Start");
+                        btnPlayerX.setEnabled(true);
+                        btnPlayerO.setEnabled(true);
+                        gp.reset();
+                }
+            }
+        });
+
+        topBar.add(btnPlayerX);
+        topBar.add(btnStartReset);
+        topBar.add(btnPlayerO);
+        add(topBar, BorderLayout.NORTH);
+
+
+
+
+
+
+
+        JMenuBar menuBar = new JMenuBar();
+        JMenu gameMenu = new JMenu("Game");
+        gameMenu.setName("MenuGame");
+
+        JMenuItem humanHuman = new JMenuItem("Human vs Human");
+        humanHuman.setActionCommand("Human vs Human");
+        humanHuman.setName("MenuHumanHuman");
+        humanHuman.addActionListener(this);
+
+        JMenuItem humanRobot = new JMenuItem("Human vs Robot");
+        humanRobot.setActionCommand("Human vs Robot");
+        humanRobot.setName("MenuHumanRobot");
+        humanRobot.addActionListener(this);
+
+        JMenuItem robotHuman = new JMenuItem("Robot vs Human");
+        robotHuman.setActionCommand("Robot vs Human");
+        robotHuman.setName("MenuRobotHuman");
+        robotHuman.addActionListener(this);
+
+        JMenuItem robotRobot = new JMenuItem("Robot vs Robot");
+        robotRobot.setActionCommand("Robot vs Robot");
+        robotRobot.setName("MenuRobotRobot");
+        robotRobot.addActionListener(this);
+
+        JMenuItem exit = new JMenuItem("Exit");
+        exit.setName("MenuExit");
+        exit.addActionListener(this);
+
+        gameMenu.add(humanHuman);
+        gameMenu.add(humanRobot);
+        gameMenu.add(robotHuman);
+        gameMenu.add(robotRobot);
+        gameMenu.addSeparator();
+        gameMenu.add(exit);
+        menuBar.add(gameMenu);
+        gameMenu.setVisible(true);
+        menuBar.setVisible(true);
+        setJMenuBar(menuBar);
+
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String selection = e.getActionCommand();
+        switch (selection) {
+            case "Human vs Human":
+                startGame(false, false);
+                break;
+            case "Human vs Robot":
+                startGame(false, true);
+                break;
+            case "Robot vs Human":
+                startGame(true, false);
+                break;
+            case "Robot vs Robot":
+                startGame(true, true);
+                break;
+            case "Exit":
+                this.dispose();
+                break;
+            default:
+                JOptionPane.showMessageDialog(TicTacToe.this, "Warning, invalid menu action!");
+        }
+
+    }
+
+    private void startGame(boolean X_IsRobot, boolean O_IsRobot) {
+        //Used for starting game via menu
+        if (X_IsRobot) {
+            btnPlayerX.setText("Robot");
+            gp.setAutoPlayX(true);
+        } else {
+            btnPlayerX.setText("Human");
+            gp.setAutoPlayX(false);
+        }
+        if (O_IsRobot) {
+            btnPlayerO.setText("Robot");
+            gp.setAutoPlayO(true);
+        } else {
+            btnPlayerO.setText("Human");
+            gp.setAutoPlayO(false);
+        }
+        gp.reset();
+        gp.start();
+        btnStartReset.setText("Reset");
+        btnStartReset.setEnabled(true);
+        btnPlayerO.setEnabled(false);
+        btnPlayerX.setEnabled(false);
     }
 }

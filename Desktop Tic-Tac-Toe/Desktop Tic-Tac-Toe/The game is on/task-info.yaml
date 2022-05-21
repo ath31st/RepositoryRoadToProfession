@@ -327,18 +327,12 @@ files:
         }
     }
   learner_created: true
-- name: src/tictactoe/WindowListenerExample.java
-  visible: true
-  learner_created: true
-- name: src/tictactoe/WindowAdapterExample.java
-  visible: true
-  learner_created: true
 - name: src/tictactoe/Constants.java
   visible: true
   learner_created: true
-feedback_link: https://hyperskill.org/projects/174/stages/898/implement#comment
+feedback_link: https://hyperskill.org/learn/step/12895#comment
 status: Solved
 feedback:
   message: Congratulations!
   time: Thu, 19 May 2022 16:23:34 UTC
-record: -1
+record: 2
