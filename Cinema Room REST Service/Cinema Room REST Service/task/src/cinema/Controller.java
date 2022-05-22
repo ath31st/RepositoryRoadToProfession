@@ -3,10 +3,7 @@ package cinema;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -16,6 +13,8 @@ public class Controller {
     CinemaRoom cinemaRoom;
     @Autowired
     SeatsService seatsService;
+    @Autowired
+    StatService statService;
 
     @GetMapping("/seats")
     public CinemaRoom getSeats() {
@@ -31,5 +30,8 @@ public class Controller {
     public ResponseEntity returnTicket(@RequestBody Ticket ticket){
         return seatsService.returnedTicket(ticket);
     }
-
+    @PostMapping("/stats")
+    public ResponseEntity getStats(@RequestParam(value = "password",required = false) String password){
+       return statService.getStats(password);
+    }
 }

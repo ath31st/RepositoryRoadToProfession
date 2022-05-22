@@ -55,10 +55,11 @@ public class SeatsService {
     public ResponseEntity returnedTicket(Ticket ticket) {
         UUID token = ticket.getToken();
         if (tickets.containsKey(token)) {
-            return ResponseEntity.ok().body(Map.of("returned_ticket",tickets.get(token)));
+            Seat tmpSeat = tickets.get(token);
+            tickets.remove(token);
+            return ResponseEntity.ok().body(Map.of("returned_ticket", tmpSeat));
         } else {
             return new ResponseEntity(Map.of("error", "Wrong token!"), HttpStatus.BAD_REQUEST);
-
         }
     }
 }
