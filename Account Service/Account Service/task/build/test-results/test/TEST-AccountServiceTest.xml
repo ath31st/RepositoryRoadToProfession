@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="AccountServiceTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-05-24T18:04:08" hostname="FRACTAL" time="6.539">
+  <properties/>
+  <testcase name="start" classname="AccountServiceTest" time="6.539">
+    <failure message="java.lang.AssertionError: Wrong answer in test #13&#10;&#10;The JSON object shouldn't have the key &quot;timestamp&quot;&#10;&#10;Full JSON:&#10;{&#10;  &quot;timestamp&quot;: &quot;2022-05-24&quot;,&#10;  &quot;status&quot;: 400,&#10;  &quot;error&quot;: &quot;Bad Request&quot;,&#10;  &quot;message&quot;: &quot;User already exists!&quot;&#10;}&#10;&#10;Please find below the output of your program during this failed test.&#10;&#10;---&#10;&#10;stdout:&#10;.   ____          _            __ _ _&#10; /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \&#10;( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \&#10; \\/  ___)| |_)| | | | | || (_| |  ) ) ) )&#10;  '  |____| .__|_| |_|_| |_\__, | / / / /&#10; =========|_|==============|___/=/_/_/_/&#10; :: Spring Boot ::        (v2.3.1.RELEASE)&#10;&#10;2022-05-24 21:04:09.166  INFO 9332 --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication on Fractal with PID 9332 (started by Fractal in D:\RepositoryRoadToProfession\Account Service\Account Service\task)&#10;2022-05-24 21:04:09.171  INFO 9332 --- [    Test worker] account.AccountServiceApplication        : No active profile set, falling back to default profiles: default&#10;2022-05-24 21:04:10.270  INFO 9332 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.&#10;2022-05-24 21:04:10.339  INFO 9332 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61ms. Found 1 JPA repository interfaces.&#10;2022-05-24 21:04:11.021  INFO 9332 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)&#10;2022-05-24 21:04:11.035  INFO 9332 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]&#10;2022-05-24 21:04:11.036  INFO 9332 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]&#10;2022-05-24 21:04:11.174  INFO 9332 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext&#10;2022-05-24 21:04:11.174  INFO 9332 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1914 ms&#10;2022-05-24 21:04:11.327  INFO 9332 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...&#10;2022-05-24 21:04:11.615  INFO 9332 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.&#10;2022-05-24 21:04:11.639  INFO 9332 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../userdb'&#10;2022-05-24 21:04:11.795  INFO 9332 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'&#10;2022-05-24 21:04:11.880  INFO 9332 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]&#10;2022-05-24 21:04:11.922  WARN 9332 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning&#10;2022-05-24 21:04:11.997  INFO 9332 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final&#10;2022-05-24 21:04:12.224  INFO 9332 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}&#10;2022-05-24 21:04:12.411  INFO 9332 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect&#10;2022-05-24 21:04:13.284  INFO 9332 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]&#10;2022-05-24 21:04:13.296  INFO 9332 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'&#10;2022-05-24 21:04:13.390  INFO 9332 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'&#10;2022-05-24 21:04:13.440  INFO 9332 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''&#10;2022-05-24 21:04:13.441  INFO 9332 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…&#10;2022-05-24 21:04:13.752  INFO 9332 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!&#10;2022-05-24 21:04:13.764  INFO 9332 --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication in 5.074 seconds (JVM running for 6.395)&#10;2022-05-24 21:04:14.136  INFO 9332 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'&#10;2022-05-24 21:04:14.136  INFO 9332 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'&#10;2022-05-24 21:04:14.144  INFO 9332 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms&#10;2022-05-24 21:04:14.523  WARN 9332 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'name': rejected value []; codes [NotEmpty.user.name,NotEmpty.name,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.name,name]; arguments []; default message [name]]; default message [must not be empty]] ]&#10;2022-05-24 21:04:14.556  WARN 9332 --- [io-28852-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'name': rejected value [null]; codes [NotEmpty.user.name,NotEmpty.name,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.name,name]; arguments []; default message [name]]; default message [must not be empty]] ]&#10;2022-05-24 21:04:14.565  WARN 9332 --- [io-28852-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'lastname': rejected value []; codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.lastname,lastname]; arguments []; default message [lastname]]; default message [must not be empty]] ]&#10;2022-05-24 21:04:14.574  WARN 9332 --- [io-28852-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'lastname': rejected value [null]; codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.lastname,lastname]; arguments []; default message [lastname]]; default message [must not be empty]] ]&#10;2022-05-24 21:04:14.587  WARN 9332 --- [io-28852-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User) with 2 errors: [Field error in object 'user' on field 'email': rejected value []; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@7218a687,^([\w-]+(?:\.[\w-]+)*)@(acme.com)$]; default message [must match &quot;^([\w-]+(?:\.[\w-]+)*)@(acme.com)$&quot;]] [Field error in object 'user' on field 'email': rejected value []; codes [NotBlank.user.email,NotBlank.email,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email]]; default message [must not be blank]] ]&#10;2022-05-24 21:04:14.596  WARN 9332 --- [io-28852-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'lastname': rejected value [null]; codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.lastname,lastname]; arguments []; default message [lastname]]; default message [must not be empty]] ]&#10;2022-05-24 21:04:14.606  WARN 9332 --- [io-28852-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'password': rejected value []; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]&#10;2022-05-24 21:04:14.615  WARN 9332 --- [io-28852-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User) with 2 errors: [Field error in object 'user' on field 'password': rejected value [null]; codes [NotNull.user.password,NotNull.password,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be null]] [Field error in object 'user' on field 'password': rejected value [null]; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]&#10;2022-05-24 21:04:14.623  WARN 9332 --- [o-28852-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'email': rejected value [johndoeacme.com]; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@7218a687,^([\w-]+(?:\.[\w-]+)*)@(acme.com)$]; default message [must match &quot;^([\w-]+(?:\.[\w-]+)*)@(acme.com)$&quot;]] ]&#10;2022-05-24 21:04:14.632  WARN 9332 --- [io-28852-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'email': rejected value [johndoe@google.com]; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@7218a687,^([\w-]+(?:\.[\w-]+)*)@(acme.com)$]; default message [must match &quot;^([\w-]+(?:\.[\w-]+)*)@(acme.com)$&quot;]] ]&#10;2022-05-24 21:04:14.643  WARN 9332 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]&#10;2022-05-24 21:04:14.649  WARN 9332 --- [io-28852-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported]&#10;2022-05-24 21:04:14.655  WARN 9332 --- [io-28852-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' not supported]&#10;&#10;stderr:&#10;[last 250 lines of output are shown, 20 skipped]&#10;&#9;at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)&#10;&#9;at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)&#10;&#9;at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:170)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:225)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)&#10;&#9;at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)&#10;&#9;at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)&#10;&#9;at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)&#10;&#9;at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)&#10;&#9;at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)&#10;&#9;at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)&#10;&#9;at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)&#10;&#9;at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)&#10;&#9;at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)&#10;&#9;at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)&#10;&#9;at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)&#10;&#9;at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)&#10;&#9;at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)&#10;&#9;at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)&#10;&#9;at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)&#10;&#9;at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)&#10;&#9;at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)&#10;&#9;at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)&#10;&#9;at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)&#10;&#9;at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)&#10;&#9;at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)&#10;&#9;at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)&#10;&#9;at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)&#10;&#9;at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)&#10;&#9;at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)&#10;&#9;at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)&#10;&#9;at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)&#10;&#9;at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)&#10;&#9;at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)&#10;&#9;at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)&#10;&#9;at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)&#10;&#9;at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)&#10;&#9;at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)&#10;&#9;at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)&#10;&#9;at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)&#10;&#9;at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)&#10;&#9;at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)&#10;&#9;at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)&#10;&#9;at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)&#10;&#9;at java.base/java.lang.Thread.run(Thread.java:829)&#10;org.springframework.web.server.ResponseStatusException: 400 BAD_REQUEST &quot;User already exists!&quot;&#10;&#9;at account.UserService.registerNewUser(UserService.java:26)&#10;&#9;at account.controller.AuthController.registerUser(AuthController.java:23)&#10;&#9;at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#10;&#9;at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)&#10;&#9;at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)&#10;&#9;at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)&#10;&#9;at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879)&#10;&#9;at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)&#10;&#9;at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)&#10;&#9;at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)&#10;&#9;at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)&#10;&#9;at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)&#10;&#9;at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)&#10;&#9;at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)&#10;&#9;at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)&#10;&#9;at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)&#10;&#9;at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)&#10;&#9;at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)&#10;&#9;at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:170)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:225)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)&#10;&#9;at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)&#10;&#9;at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)&#10;&#9;at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)&#10;&#9;at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)&#10;&#9;at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)&#10;&#9;at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)&#10;&#9;at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)&#10;&#9;at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)&#10;&#9;at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)&#10;&#9;at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)&#10;&#9;at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)&#10;&#9;at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)&#10;&#9;at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)&#10;&#9;at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)&#10;&#9;at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)&#10;&#9;at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)&#10;&#9;at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)&#10;&#9;at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)&#10;&#9;at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)&#10;&#9;at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)&#10;&#9;at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)&#10;&#9;at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)&#10;&#9;at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#10;&#9;at java.base/java.lang.reflect.Method.invoke(Method.java:566)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)&#10;&#9;at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)&#10;&#9;at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)&#10;&#9;at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)&#10;&#9;at java.base/java.security.AccessController.doPrivileged(Native Method)&#10;&#9;at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)&#10;&#9;at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)&#10;&#9;at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)&#10;&#9;at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)&#10;&#9;at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)&#10;&#9;at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)&#10;&#9;at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)&#10;&#9;at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)&#10;&#9;at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)&#10;&#9;at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)&#10;&#9;at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)&#10;&#9;at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)&#10;&#9;at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)&#10;&#9;at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)&#10;&#9;at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)&#10;&#9;at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)&#10;&#9;at java.base/java.lang.Thread.run(Thread.java:829)" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #13
+
+The JSON object shouldn't have the key &quot;timestamp&quot;
+
+Full JSON:
+{
+  &quot;timestamp&quot;: &quot;2022-05-24&quot;,
+  &quot;status&quot;: 400,
+  &quot;error&quot;: &quot;Bad Request&quot;,
+  &quot;message&quot;: &quot;User already exists!&quot;
+}
+
+Please find below the output of your program during this failed test.
+
+---
+
+stdout:
+.   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.1.RELEASE)
+
+2022-05-24 21:04:09.166  INFO 9332 --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication on Fractal with PID 9332 (started by Fractal in D:\RepositoryRoadToProfession\Account Service\Account Service\task)
+2022-05-24 21:04:09.171  INFO 9332 --- [    Test worker] account.AccountServiceApplication        : No active profile set, falling back to default profiles: default
+2022-05-24 21:04:10.270  INFO 9332 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2022-05-24 21:04:10.339  INFO 9332 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61ms. Found 1 JPA repository interfaces.
+2022-05-24 21:04:11.021  INFO 9332 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
+2022-05-24 21:04:11.035  INFO 9332 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-05-24 21:04:11.036  INFO 9332 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2022-05-24 21:04:11.174  INFO 9332 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-05-24 21:04:11.174  INFO 9332 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1914 ms
+2022-05-24 21:04:11.327  INFO 9332 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-05-24 21:04:11.615  INFO 9332 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-05-24 21:04:11.639  INFO 9332 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../userdb'
+2022-05-24 21:04:11.795  INFO 9332 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-05-24 21:04:11.880  INFO 9332 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-05-24 21:04:11.922  WARN 9332 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-05-24 21:04:11.997  INFO 9332 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+2022-05-24 21:04:12.224  INFO 9332 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2022-05-24 21:04:12.411  INFO 9332 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-05-24 21:04:13.284  INFO 9332 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-05-24 21:04:13.296  INFO 9332 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-05-24 21:04:13.390  INFO 9332 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2022-05-24 21:04:13.440  INFO 9332 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
+2022-05-24 21:04:13.441  INFO 9332 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2022-05-24 21:04:13.752  INFO 9332 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2022-05-24 21:04:13.764  INFO 9332 --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication in 5.074 seconds (JVM running for 6.395)
+2022-05-24 21:04:14.136  INFO 9332 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-05-24 21:04:14.136  INFO 9332 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-05-24 21:04:14.144  INFO 9332 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2022-05-24 21:04:14.523  WARN 9332 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'name': rejected value []; codes [NotEmpty.user.name,NotEmpty.name,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.name,name]; arguments []; default message [name]]; default message [must not be empty]] ]
+2022-05-24 21:04:14.556  WARN 9332 --- [io-28852-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'name': rejected value [null]; codes [NotEmpty.user.name,NotEmpty.name,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.name,name]; arguments []; default message [name]]; default message [must not be empty]] ]
+2022-05-24 21:04:14.565  WARN 9332 --- [io-28852-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'lastname': rejected value []; codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.lastname,lastname]; arguments []; default message [lastname]]; default message [must not be empty]] ]
+2022-05-24 21:04:14.574  WARN 9332 --- [io-28852-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'lastname': rejected value [null]; codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.lastname,lastname]; arguments []; default message [lastname]]; default message [must not be empty]] ]
+2022-05-24 21:04:14.587  WARN 9332 --- [io-28852-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User) with 2 errors: [Field error in object 'user' on field 'email': rejected value []; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@7218a687,^([\w-]+(?:\.[\w-]+)*)@(acme.com)$]; default message [must match &quot;^([\w-]+(?:\.[\w-]+)*)@(acme.com)$&quot;]] [Field error in object 'user' on field 'email': rejected value []; codes [NotBlank.user.email,NotBlank.email,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email]]; default message [must not be blank]] ]
+2022-05-24 21:04:14.596  WARN 9332 --- [io-28852-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'lastname': rejected value [null]; codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.lastname,lastname]; arguments []; default message [lastname]]; default message [must not be empty]] ]
+2022-05-24 21:04:14.606  WARN 9332 --- [io-28852-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'password': rejected value []; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
+2022-05-24 21:04:14.615  WARN 9332 --- [io-28852-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User) with 2 errors: [Field error in object 'user' on field 'password': rejected value [null]; codes [NotNull.user.password,NotNull.password,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be null]] [Field error in object 'user' on field 'password': rejected value [null]; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
+2022-05-24 21:04:14.623  WARN 9332 --- [o-28852-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'email': rejected value [johndoeacme.com]; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@7218a687,^([\w-]+(?:\.[\w-]+)*)@(acme.com)$]; default message [must match &quot;^([\w-]+(?:\.[\w-]+)*)@(acme.com)$&quot;]] ]
+2022-05-24 21:04:14.632  WARN 9332 --- [io-28852-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.User&gt; account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'email': rejected value [johndoe@google.com]; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@7218a687,^([\w-]+(?:\.[\w-]+)*)@(acme.com)$]; default message [must match &quot;^([\w-]+(?:\.[\w-]+)*)@(acme.com)$&quot;]] ]
+2022-05-24 21:04:14.643  WARN 9332 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2022-05-24 21:04:14.649  WARN 9332 --- [io-28852-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported]
+2022-05-24 21:04:14.655  WARN 9332 --- [io-28852-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' not supported]
+
+stderr:
+[last 250 lines of output are shown, 20 skipped]
+	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:170)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:225)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+org.springframework.web.server.ResponseStatusException: 400 BAD_REQUEST &quot;User already exists!&quot;
+	at account.UserService.registerNewUser(UserService.java:26)
+	at account.controller.AuthController.registerUser(AuthController.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:170)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:225)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:155)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</failure>
+  </testcase>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.3.1.RELEASE)
+
+2022-05-24 21:04:09.166  INFO 9332 --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication on Fractal with PID 9332 (started by Fractal in D:\RepositoryRoadToProfession\Account Service\Account Service\task)
+2022-05-24 21:04:09.171  INFO 9332 --- [    Test worker] account.AccountServiceApplication        : No active profile set, falling back to default profiles: default
+2022-05-24 21:04:10.270  INFO 9332 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2022-05-24 21:04:10.339  INFO 9332 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61ms. Found 1 JPA repository interfaces.
+2022-05-24 21:04:11.021  INFO 9332 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
+2022-05-24 21:04:11.035  INFO 9332 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-05-24 21:04:11.036  INFO 9332 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2022-05-24 21:04:11.174  INFO 9332 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-05-24 21:04:11.174  INFO 9332 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1914 ms
+2022-05-24 21:04:11.327  INFO 9332 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-05-24 21:04:11.615  INFO 9332 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-05-24 21:04:11.639  INFO 9332 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../userdb'
+2022-05-24 21:04:11.795  INFO 9332 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-05-24 21:04:11.880  INFO 9332 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-05-24 21:04:11.922  WARN 9332 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-05-24 21:04:11.997  INFO 9332 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+2022-05-24 21:04:12.224  INFO 9332 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2022-05-24 21:04:12.411  INFO 9332 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-05-24 21:04:13.284  INFO 9332 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-05-24 21:04:13.296  INFO 9332 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-05-24 21:04:13.390  INFO 9332 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2022-05-24 21:04:13.440  INFO 9332 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
+2022-05-24 21:04:13.441  INFO 9332 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2022-05-24 21:04:13.752  INFO 9332 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2022-05-24 21:04:13.764  INFO 9332 --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication in 5.074 seconds (JVM running for 6.395)
+2022-05-24 21:04:14.136  INFO 9332 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-05-24 21:04:14.136  INFO 9332 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-05-24 21:04:14.144  INFO 9332 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+?[1;31m
+Start test 2?[0m
+2022-05-24 21:04:14.523  WARN 9332 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<account.User> account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'name': rejected value []; codes [NotEmpty.user.name,NotEmpty.name,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.name,name]; arguments []; default message [name]]; default message [must not be empty]] ]
+?[1;31m
+Start test 3?[0m
+2022-05-24 21:04:14.556  WARN 9332 --- [io-28852-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<account.User> account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'name': rejected value [null]; codes [NotEmpty.user.name,NotEmpty.name,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.name,name]; arguments []; default message [name]]; default message [must not be empty]] ]
+?[1;31m
+Start test 4?[0m
+2022-05-24 21:04:14.565  WARN 9332 --- [io-28852-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<account.User> account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'lastname': rejected value []; codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.lastname,lastname]; arguments []; default message [lastname]]; default message [must not be empty]] ]
+?[1;31m
+Start test 5?[0m
+2022-05-24 21:04:14.574  WARN 9332 --- [io-28852-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<account.User> account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'lastname': rejected value [null]; codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.lastname,lastname]; arguments []; default message [lastname]]; default message [must not be empty]] ]
+?[1;31m
+Start test 6?[0m
+2022-05-24 21:04:14.587  WARN 9332 --- [io-28852-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<account.User> account.controller.AuthController.registerUser(account.User) with 2 errors: [Field error in object 'user' on field 'email': rejected value []; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@7218a687,^([\w-]+(?:\.[\w-]+)*)@(acme.com)$]; default message [must match "^([\w-]+(?:\.[\w-]+)*)@(acme.com)$"]] [Field error in object 'user' on field 'email': rejected value []; codes [NotBlank.user.email,NotBlank.email,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email]]; default message [must not be blank]] ]
+?[1;31m
+Start test 7?[0m
+2022-05-24 21:04:14.596  WARN 9332 --- [io-28852-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<account.User> account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'lastname': rejected value [null]; codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.lastname,lastname]; arguments []; default message [lastname]]; default message [must not be empty]] ]
+?[1;31m
+Start test 8?[0m
+2022-05-24 21:04:14.606  WARN 9332 --- [io-28852-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<account.User> account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'password': rejected value []; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
+?[1;31m
+Start test 9?[0m
+2022-05-24 21:04:14.615  WARN 9332 --- [io-28852-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<account.User> account.controller.AuthController.registerUser(account.User) with 2 errors: [Field error in object 'user' on field 'password': rejected value [null]; codes [NotNull.user.password,NotNull.password,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be null]] [Field error in object 'user' on field 'password': rejected value [null]; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
+?[1;31m
+Start test 10?[0m
+2022-05-24 21:04:14.623  WARN 9332 --- [o-28852-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<account.User> account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'email': rejected value [johndoeacme.com]; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@7218a687,^([\w-]+(?:\.[\w-]+)*)@(acme.com)$]; default message [must match "^([\w-]+(?:\.[\w-]+)*)@(acme.com)$"]] ]
+?[1;31m
+Start test 11?[0m
+2022-05-24 21:04:14.632  WARN 9332 --- [io-28852-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<account.User> account.controller.AuthController.registerUser(account.User): [Field error in object 'user' on field 'email': rejected value [johndoe@google.com]; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@7218a687,^([\w-]+(?:\.[\w-]+)*)@(acme.com)$]; default message [must match "^([\w-]+(?:\.[\w-]+)*)@(acme.com)$"]] ]
+?[1;31m
+Start test 12?[0m
+2022-05-24 21:04:14.643  WARN 9332 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2022-05-24 21:04:14.649  WARN 9332 --- [io-28852-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported]
+2022-05-24 21:04:14.655  WARN 9332 --- [io-28852-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'DELETE' not supported]
+?[1;31m
+Start test 13?[0m
+]]></system-out>
+  <system-err><![CDATA[org.springframework.web.server.ResponseStatusException: 400 BAD_REQUEST "User already exists!"
+	at account.UserService.registerNewUser(UserService.java:26)
+	at account.controller.AuthController.registerUser(AuthController.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:170)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:225)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+org.springframework.web.server.ResponseStatusException: 400 BAD_REQUEST "User already exists!"
+	at account.UserService.registerNewUser(UserService.java:26)
+	at account.controller.AuthController.registerUser(AuthController.java:23)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:879)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at jdk.internal.reflect.GeneratedMethodAccessor54.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:170)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:225)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at jdk.internal.reflect.GeneratedMethodAccessor49.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:282)
+	at org.apache.catalina.security.SecurityUtil$1.run(SecurityUtil.java:279)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/javax.security.auth.Subject.doAsPrivileged(Subject.java:550)
+	at org.apache.catalina.security.SecurityUtil.execute(SecurityUtil.java:314)
+	at org.apache.catalina.security.SecurityUtil.doAsPrivilege(SecurityUtil.java:253)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:191)
+	at org.apache.catalina.core.ApplicationFilterChain.access$000(ApplicationFilterChain.java:47)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.ApplicationFilterChain$1.run(ApplicationFilterChain.java:145)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:144)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+]]></system-err>
+</testsuite>
