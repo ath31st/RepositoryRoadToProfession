@@ -1,7 +1,11 @@
-package account;
+package account.service;
 
+import account.repository.UserRepository;
 import account.entites.Role;
 import account.entites.User;
+import account.exceptionhandler.BreachedPasswordException;
+import account.exceptionhandler.InvalidLengthPasswordException;
+import account.exceptionhandler.RepetitivePasswordException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -50,10 +55,7 @@ public class UserService implements UserDetailsService {
         User tmpUser = userRepository.findUserByEmailIgnoreCase(authUser.getEmail()).get();
         tmpUser.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(tmpUser);
-        return ResponseEntity.ok()
-                .header("email", tmpUser.getEmail())
-                .header("status", "The password has been updated successfully")
-                .build();
+        return ResponseEntity.ok().body(Map.of("email",authUser.getEmail(),"status","The password has been updated successfully"));
     }
 
     @Override
@@ -69,16 +71,16 @@ public class UserService implements UserDetailsService {
 
     private void checkValidPassword(String password) {
         if (password == null || password.length() < 12) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Password length must be 12 chars minimum!");
+            throw new InvalidLengthPasswordException();
         }
         if (breachedPasswords.contains(password)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The password is in the hacker's database!");
+            throw new BreachedPasswordException();
         }
     }
 
     private void checkDifferencePasswords(String newPassword, String oldPassword) {
         if (passwordEncoder.matches(newPassword, oldPassword)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The passwords must be different!");
+            throw new RepetitivePasswordException();
         }
     }
 }

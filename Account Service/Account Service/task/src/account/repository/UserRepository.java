@@ -1,4 +1,4 @@
-package account;
+package account.repository;
 
 import account.entites.User;
 import org.springframework.data.repository.CrudRepository;
