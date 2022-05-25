@@ -103,9 +103,9 @@
 <p>Add the <code class="language-json">GET api/empl/payment</code> endpoint. It should be available only to authenticated users. It takes the <code class="language-json">period</code> parameter that specifies the period (the month and year) and provides the information for this period. If the parameter <code class="language-json">period</code> is not specified, the endpoint provides information about the employee's salary for each period from the database as an array of objects in descending order by date. JSON representation information about user salary must look like this:</p>
 
 <pre><code class="language-json">{
-   "name": "&lt;user name&gt;",
+   "username": "&lt;user username&gt;",
    "lastname": "&lt;user lastname&gt;",
-   "period": "&lt;name of month-YYYY&gt;",
+   "period": "&lt;username of month-YYYY&gt;",
    "salary": "X dollar(s) Y cent(s)"
 }</code></pre>
 
@@ -242,7 +242,7 @@
 <p><em>Response body:</em></p>
 
 <pre><code class="language-json">{
-   "name": "John",
+   "username": "John",
    "lastname": "Doe",
    "period": "January-2021",
    "salary": "1234 dollar(s) 56 cent(s)"
@@ -256,19 +256,19 @@
 
 <pre><code class="language-json">[
     {
-       "name": "John",
+       "username": "John",
        "lastname": "Doe",
        "period": "March-2021",
        "salary": "1234 dollar(s) 56 cent(s)"
     },
     {
-       "name": "John",
+       "username": "John",
        "lastname": "Doe",
        "period": "February-2021",
        "salary": "1234 dollar(s) 56 cent(s)"
     },
     {
-       "name": "John",
+       "username": "John",
        "lastname": "Doe",
        "period": "January-2021",
        "salary": "1234 dollar(s) 56 cent(s)"

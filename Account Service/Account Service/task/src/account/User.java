@@ -1,6 +1,5 @@
 package account;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -12,14 +11,13 @@ import java.util.Objects;
 
 @Entity
 public class User {
-    @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-
+    @JsonProperty("name")
     @NotEmpty
-    private String name;
+    private String username;
     @NotEmpty
     private String lastname;
     // @Pattern(regexp = "^([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([a-z]{2,6}(?:\\.[a-z]{2})?)$")
@@ -31,6 +29,17 @@ public class User {
     @NotNull
     @NotBlank
     private String password;
+    private String role;
+
+    public User() {
+    }
+
+    public User(String username, String lastname, String email, String password) {
+        this.username = username;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+    }
 
     public Long getId() {
         return id;
@@ -40,22 +49,12 @@ public class User {
         this.id = id;
     }
 
-    public User() {
+    public String getUsername() {
+        return username;
     }
 
-    public User(String name, String lastname, String email, String password) {
-        this.name = name;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getLastname() {
@@ -77,8 +76,17 @@ public class User {
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
@@ -86,19 +94,19 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(name, user.name) && Objects.equals(lastname, user.lastname) && Objects.equals(email, user.email) && Objects.equals(password, user.password);
+        return Objects.equals(username, user.username) && Objects.equals(lastname, user.lastname) && Objects.equals(email, user.email) && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, lastname, email, password);
+        return Objects.hash(username, lastname, email, password);
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +

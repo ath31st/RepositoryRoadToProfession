@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 @ControllerAdvice
 public class CustomResponseException {
-    @ExceptionHandler
+   // @ExceptionHandler
     public ResponseEntity<Response> handle400Exception(ResponseStatusException e) {
         Response response = new Response();
         response.setTimestamp(LocalDate.now());

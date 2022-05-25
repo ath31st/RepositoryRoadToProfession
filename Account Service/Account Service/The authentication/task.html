@@ -59,7 +59,7 @@ public class UserExistException extends RuntimeException { }</code></pre>
 <p>Change the <code class="language-java">POST api/auth/signup</code> endpoint. It must be available to unauthorized users for registration and accepts data in the JSON format:</p>
 
 <pre><code class="language-json">{
-   "name": "&lt;String value, not empty&gt;",
+   "username": "&lt;String value, not empty&gt;",
    "lastname": "&lt;String value, not empty&gt;",
    "email": "&lt;String value, not empty&gt;",
    "password": "&lt;String value, not empty&gt;"
@@ -69,7 +69,7 @@ public class UserExistException extends RuntimeException { }</code></pre>
 
 <pre><code class="language-json">{
    "id": "&lt;Long value, not empty&gt;",   
-   "name": "&lt;String value, not empty&gt;",
+   "username": "&lt;String value, not empty&gt;",
    "lastname": "&lt;String value, not empty&gt;",
    "email": "&lt;String value, not empty&gt;"
 }</code></pre>
@@ -88,7 +88,7 @@ public class UserExistException extends RuntimeException { }</code></pre>
 
 <pre><code class="language-json">{
    "id": "&lt;Long value, not empty&gt;",   
-   "name": "&lt;String value, not empty&gt;",
+   "username": "&lt;String value, not empty&gt;",
    "lastname": "&lt;String value, not empty&gt;",
    "email": "&lt;String value, not empty&gt;"
 }</code></pre>
@@ -102,7 +102,7 @@ public class UserExistException extends RuntimeException { }</code></pre>
 <p><em>Request body:</em></p>
 
 <pre><code class="language-json">{
-   "name": "John",
+   "username": "John",
    "lastname": "Doe",
    "email": "JohnDoe@acme.com",
    "password": "secret"
@@ -114,7 +114,7 @@ public class UserExistException extends RuntimeException { }</code></pre>
 
 <pre><code class="language-json">{
    "id": 1,
-   "name": "John",
+   "username": "John",
    "lastname": "Doe",
    "email": "JohnDoe@acme.com"
 }</code></pre>
@@ -124,7 +124,7 @@ public class UserExistException extends RuntimeException { }</code></pre>
 <p><em>Request body:</em></p>
 
 <pre><code class="language-json">{
-   "name": "John",
+   "username": "John",
    "lastname": "Doe",
    "email": "johndoe@acme.com",
    "password": "secret"
@@ -171,7 +171,7 @@ public class UserExistException extends RuntimeException { }</code></pre>
 
 <pre><code class="language-json">{
     "id": 1,
-    "name": "John",
+    "username": "John",
     "lastname": "Doe",
     "email": "johndoe@acme.com"
 }</code></pre>
@@ -184,7 +184,7 @@ public class UserExistException extends RuntimeException { }</code></pre>
 
 <pre><code class="language-json">{
     "id": 1,
-    "name": "John",
+    "username": "John",
     "lastname": "Doe",
     "email": "johndoe@acme.com"
 }</code></pre>

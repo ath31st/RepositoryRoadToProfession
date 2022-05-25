@@ -15,11 +15,11 @@ public class UserService {
     }
 
     public User findByUsername(String username) throws ResponseStatusException {
-        return userRepository.findByName(username.toLowerCase());
+        return userRepository.findByUsername(username.toLowerCase());
         // .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
     public User registerNewUser(User user) {
-        if (userRepository.findByName(user.getName()) == null) {
+        if (userRepository.findByUsername(user.getUsername()) == null) {
 //            user.setRole("ROLE_USER");
 //            user.setPassword(encoder.encode(user.getPassword()));
             userRepository.save(user);

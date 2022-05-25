@@ -112,7 +112,7 @@
 <p>Create the <code class="language-json">POST api/auth/signup</code> endpoint that accepts data in the JSON format:</p>
 
 <pre><code class="language-json">{
-   "name": "&lt;String value, not empty&gt;",
+   "username": "&lt;String value, not empty&gt;",
    "lastname": "&lt;String value, not empty&gt;",
    "email": "&lt;String value, not empty&gt;",
    "password": "&lt;String value, not empty&gt;"
@@ -121,7 +121,7 @@
 <p>It should return a response in the JSON format (without the password field):</p>
 
 <pre><code class="language-json">{
-   "name": "&lt;String value&gt;",
+   "username": "&lt;String value&gt;",
    "lastname": "&lt;String value&gt;",
    "email": "&lt;String value&gt;"
 }</code></pre>
@@ -135,7 +135,7 @@
 <p><em>Request body:</em></p>
 
 <pre><code class="language-json">{
-   "name": "John",
+   "username": "John",
    "lastname": "Doe",
    "email": "johndoe@acme.com",
    "password": "secret"
@@ -146,7 +146,7 @@
 <p><em>Response body:</em></p>
 
 <pre><code class="language-json">{
-   "name": "John",
+   "username": "John",
    "lastname": "Doe",
    "email": "johndoe@acme.com",
 }</code></pre>
@@ -177,7 +177,7 @@
 <p><em>Request body:</em></p>
 
 <pre><code class="language-json">{
-   "name": "John",
+   "username": "John",
    "lastname": "Doe",
    "email": "johndoe@google.com",
    "password": "secret"
