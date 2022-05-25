@@ -14,6 +14,7 @@ class BusinessFuncController {
     @Autowired
     private UserService userService;
 
+
     @GetMapping("/api/empl/payment")
     public ResponseEntity<User> getPayment(@AuthenticationPrincipal User user) {
         User tmpUser = userService.findByEmail(user.getEmail());

@@ -1,5 +1,6 @@
-package account;
+package account.config;
 
+import account.UserService;
 import account.entites.Role;
 import account.exceptionhandler.RestAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +12,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private UserService userService;
+    DaoAuthenticationProvider authenticationProvider;
     @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
@@ -31,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/auth/singup").permitAll()
                 .antMatchers("/api/empl/payment").hasAuthority(Role.ROLE_USER.toString())
+                .antMatchers("/api/auth/changepass").hasAuthority(Role.ROLE_USER.toString())
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // no session
@@ -38,19 +38,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) {
-        auth.authenticationProvider(authenticationProvider());
-    }
-
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(getEncoder());
-        provider.setUserDetailsService(userService);
-        return provider;
-    }
-
-    @Bean
-    public PasswordEncoder getEncoder() {
-        return new BCryptPasswordEncoder();
+        auth.authenticationProvider(authenticationProvider);
     }
 }

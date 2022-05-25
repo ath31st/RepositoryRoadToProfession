@@ -602,66 +602,6 @@ files:
     }
 
   learner_created: true
-- name: src/account/SecurityConfig.java
-  visible: true
-  text: |
-    package account;
-
-    import account.entites.Role;
-    import account.exceptionhandler.RestAuthenticationEntryPoint;
-    import org.springframework.beans.factory.annotation.Autowired;
-    import org.springframework.context.annotation.Bean;
-    import org.springframework.context.annotation.Configuration;
-    import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-    import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-    import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-    import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-    import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-    import org.springframework.security.config.http.SessionCreationPolicy;
-    import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-    import org.springframework.security.crypto.password.PasswordEncoder;
-
-    @Configuration
-    @EnableWebSecurity
-    public class SecurityConfig extends WebSecurityConfigurerAdapter {
-        @Autowired
-        private UserService userService;
-        @Autowired
-        private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
-
-        public void configure(HttpSecurity http) throws Exception {
-            http.httpBasic()
-                    .authenticationEntryPoint(restAuthenticationEntryPoint) // Handle auth error
-                    .and()
-                    .csrf().disable().headers().frameOptions().disable() // for Postman, the H2 console
-                    .and()
-                    .authorizeRequests()
-                    .antMatchers("/api/auth/singup").permitAll()
-                    .antMatchers("/api/empl/payment").hasAuthority(Role.ROLE_USER.toString())
-                    .and()
-                    .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // no session
-        }
-
-        @Override
-        public void configure(AuthenticationManagerBuilder auth) {
-            auth.authenticationProvider(authenticationProvider());
-        }
-
-        @Bean
-        public DaoAuthenticationProvider authenticationProvider() {
-            DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-            provider.setPasswordEncoder(getEncoder());
-            provider.setUserDetailsService(userService);
-            return provider;
-        }
-
-        @Bean
-        public PasswordEncoder getEncoder() {
-            return new BCryptPasswordEncoder();
-        }
-    }
-  learner_created: true
 - name: src/account/exceptionhandler/RestAuthenticationEntryPoint.java
   visible: true
   text: |-
@@ -990,6 +930,131 @@ files:
         Optional<User> findUserByEmailIgnoreCase(String email);
     }
   learner_created: true
+- name: src/account/config/SecurityConfig.java
+  visible: true
+  text: |
+    package account;
+
+    import account.entites.Role;
+    import account.exceptionhandler.RestAuthenticationEntryPoint;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+    import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+    import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+    import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+    import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+    import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+    import org.springframework.security.config.http.SessionCreationPolicy;
+    import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+    import org.springframework.security.crypto.password.PasswordEncoder;
+
+    @Configuration
+    @EnableWebSecurity
+    public class SecurityConfig extends WebSecurityConfigurerAdapter {
+        @Autowired
+        private UserService userService;
+        @Autowired
+        private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
+        public void configure(HttpSecurity http) throws Exception {
+            http.httpBasic()
+                    .authenticationEntryPoint(restAuthenticationEntryPoint) // Handle auth error
+                    .and()
+                    .csrf().disable().headers().frameOptions().disable() // for Postman, the H2 console
+                    .and()
+                    .authorizeRequests()
+                    .antMatchers("/api/auth/singup").permitAll()
+                    .antMatchers("/api/empl/payment").hasAuthority(Role.ROLE_USER.toString())
+                    .and()
+                    .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // no session
+        }
+
+        @Override
+        public void configure(AuthenticationManagerBuilder auth) {
+            auth.authenticationProvider(authenticationProvider());
+        }
+
+        @Bean
+        public DaoAuthenticationProvider authenticationProvider() {
+            DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+            provider.setPasswordEncoder(getEncoder());
+            provider.setUserDetailsService(userService);
+            return provider;
+        }
+
+        @Bean
+        public PasswordEncoder getEncoder() {
+            return new BCryptPasswordEncoder();
+        }
+    }
+  learner_created: true
+- name: src/account/config/BeanConfig.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/16603#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #29
+
+    POST /api/auth/changepass should respond with status code 400, responded: 200
+    Response body:
+
+    Request body:
+    {&quot;new_password&quot;:&quot;o&quot;}
+
+    Please find below the output of your program during this failed test.
+
+    ---
+
+    .   ____          _            __ _ _
+     /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      &#39;  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+     :: Spring Boot ::        (v2.3.1.RELEASE)
+
+    2022-05-25 16:01:57.518  INFO 4432 --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication on Fractal with PID 4432 (started by Fractal in D:\RepositoryRoadToProfession\Account Service\Account Service\task)
+    2022-05-25 16:01:57.523  INFO 4432 --- [    Test worker] account.AccountServiceApplication        : No active profile set, falling back to default profiles: default
+    2022-05-25 16:01:58.640  INFO 4432 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+    2022-05-25 16:01:58.716  INFO 4432 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65ms. Found 1 JPA repository interfaces.
+    2022-05-25 16:01:59.394  INFO 4432 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
+    2022-05-25 16:01:59.406  INFO 4432 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2022-05-25 16:01:59.407  INFO 4432 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+    2022-05-25 16:01:59.546  INFO 4432 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+    2022-05-25 16:01:59.547  INFO 4432 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1962 ms
+    2022-05-25 16:01:59.696  INFO 4432 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+    2022-05-25 16:01:59.939  INFO 4432 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+    2022-05-25 16:01:59.951  INFO 4432 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../service_db&#39;
+    2022-05-25 16:02:00.113  INFO 4432 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService &#39;applicationTaskExecutor&#39;
+    2022-05-25 16:02:00.178  INFO 4432 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+    2022-05-25 16:02:00.232  WARN 4432 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2022-05-25 16:02:00.257  INFO 4432 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+    2022-05-25 16:02:00.488  INFO 4432 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+    2022-05-25 16:02:00.490  INFO 4432 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@48e74764, org.springframework.security.web.context.SecurityContextPersistenceFilter@31d4b3e8, org.springframework.security.web.header.HeaderWriterFilter@3348c987, org.springframework.security.web.authentication.logout.LogoutFilter@31006a75, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1b94c789, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1fc1c7e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@37e55819, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@338d47b, org.springframework.security.web.session.SessionManagementFilter@5f3f3d00, org.springframework.security.web.access.ExceptionTranslationFilter@7540160e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@365bfc5f]
+    2022-05-25 16:02:00.669  INFO 4432 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+    2022-05-25 16:02:01.630  INFO 4432 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+    2022-05-25 16:02:01.643  INFO 4432 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-05-25 16:02:01.731  INFO 4432 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
+    2022-05-25 16:02:01.792  INFO 4432 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path &#39;&#39;
+    2022-05-25 16:02:01.793  INFO 4432 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+    2022-05-25 16:02:02.112  INFO 4432 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+    2022-05-25 16:02:02.124  INFO 4432 --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication in 5.01 seconds (JVM running for 6.018)
+    2022-05-25 16:02:02.436  INFO 4432 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
+    2022-05-25 16:02:02.437  INFO 4432 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
+    2022-05-25 16:02:02.446  INFO 4432 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+    2022-05-25 16:02:02.620  WARN 4432 --- [io-28852-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt; account.controller.AuthController.registerUser(account.entites.User): [Field error in object &#39;user&#39; on field &#39;username&#39;: rejected value []; codes [NotEmpty.user.username,NotEmpty.username,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.username,username]; arguments []; default message [username]]; default message [must not be empty]] ]
+    2022-05-25 16:02:02.663  WARN 4432 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt; account.controller.AuthController.registerUser(account.entites.User): [Field error in object &#39;user&#39; on field &#39;username&#39;: rejected value [null]; codes [NotEmpty.user.username,NotEmpty.username,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.username,username]; arguments []; default message [username]]; default message [must not be empty]] ]
+    2022-05-25 16:02:02.673  WARN 4432 --- [io-28852-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt; account.controller.AuthController.registerUser(account.entites.User): [Field error in object &#39;user&#39; on field &#39;lastname&#39;: rejected value []; codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.lastname,lastname]; arguments []; default message [lastname]]; default message [must not be empty]] ]
+    2022-05-25 16:02:02.683  WARN 4432 --- [io-28852-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt; account.controller.AuthController.registerUser(account.entites.User): [Field error in object &#39;user&#39; on field &#39;lastname&#39;: rejected value [null]; codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.lastname,lastname]; arguments []; default message [lastname]]; default message [must not be empty]] ]
+    2022-05-25 16:02:02.697  WARN 4432 --- [io-28852-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt; account.controller.AuthController.registerUser(account.entites.User) with 2 errors: [Field error in object &#39;user&#39; on field &#39;email&#39;: rejected value []; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@64066ce7,^([\w-]+(?:\.[\w-]+)*)@(acme.com)$]; default message [must match &quot;^([\w-]+(?:\.[\w-]+)*)@(acme.com)$&quot;]] [Field error in object &#39;user&#39; on field &#39;email&#39;: rejected value []; codes [NotBlank.user.email,NotBlank.email,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email]]; default message [must not be blank]] ]
+    2022-05-25 16:02:02.708  WARN 4432 --- [io-28852-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt; account.controller.AuthController.registerUser(account.entites.User) with 2 errors: [Field error in object &#39;user&#39; on field &#39;email&#39;: rejected value [null]; codes [NotNull.user.email,NotNull.email,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email]]; default message [must not be null]] [Field error in object &#39;user&#39; on field &#39;email&#39;: rejected value [null]; codes [NotBlank.user.email,NotBlank.email,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email]]; default message [must not be blank]] ]
+    2022-05-25 16:02:02.717  WARN 4432 --- [io-28852-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt; account.controller.AuthController.registerUser(account.entites.User): [Field error in object &#39;user&#39; on field &#39;password&#39;: rejected value []; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
+    2022-05-25 16:02:02.726  WARN 4432 --- [io-28852-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt; account.controller.AuthController.registerUser(account.entites.User) with 2 errors: [Field error in object &#39;user&#39; on field &#39;password&#39;: rejected value [null]; codes [NotNull.user.password,NotNull.password,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be null]] [Field error in object &#39;user&#39; on field &#39;password&#39;: rejected value [null]; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
+    2022-05-25 16:02:02.737  WARN 4432 --- [io-28852-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt; account.controller.AuthController.registerUser(account.entites.User): [Field error in object &#39;user&#39; on field &#39;email&#39;: rejected value [johndoeacme.com]; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@64066ce7,^([\w-]+(?:\.[\w-]+)*)@(acme.com)$]; default message [must match &quot;^([\w-]+(?:\.[\w-]+)*)@(acme.com)$&quot;]] ]
+    2022-05-25 16:02:02.746  WARN 4432 --- [o-28852-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt; account.controller.AuthController.registerUser(account.entites.User): [Field error in object &#39;user&#39; on field &#39;email&#39;: rejected value [johndoe@google.com]; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@64066ce7,^([\w-]+(?:\.[\w-]+)*)@(acme.com)$]; default message [must match &quot;^([\w-]+(?:\.[\w-]+)*)@(acme.com)$&quot;]] ]
+  time: Wed, 25 May 2022 13:02:04 UTC
 record: -1
