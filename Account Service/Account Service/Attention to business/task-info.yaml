@@ -1200,6 +1200,271 @@ files:
         Optional<User> findUserByEmailIgnoreCase(String email);
     }
   learner_created: true
+- name: src/account/entites/Payment.java
+  visible: true
+  learner_created: true
+- name: src/account/service/PaymentService.java
+  visible: true
+  learner_created: true
+- name: src/account/repository/PaymentRepository.java
+  visible: true
+  learner_created: true
+- name: src/account/exceptionhandler/DuplicatePaymentException.java
+  visible: true
+  learner_created: true
+- name: src/account/exceptionhandler/EmoloyeeNotFoundException.java
+  visible: true
+  learner_created: true
+- name: src/account/exceptionhandler/SalaryException.java
+  visible: true
+  learner_created: true
+- name: src/account/config/YearMonthDateAttributeConverter.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/16604#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: "Wrong answer in test #38\n\nWrong object in response, expected array of\
+    \ JSON but was \nclass java.lang.String\n\nPlease find below the output of your\
+    \ program during this failed test.\n\n---\n\n.   ____          _            __\
+    \ _ _\n /\\\\ / ___&#39;_ __ _ _(_)_ __  __ _ \\ \\ \\ \\\n( ( )\\___ | &#39;_\
+    \ | &#39;_| | &#39;_ \\/ _` | \\ \\ \\ \\\n \\\\/  ___)| |_)| | | | | || (_| |\
+    \  ) ) ) )\n  &#39;  |____| .__|_| |_|_| |_\\__, | / / / /\n =========|_|==============|___/=/_/_/_/\n\
+    \ :: Spring Boot ::        (v2.3.1.RELEASE)\n\n2022-05-26 13:53:26.737  INFO 3264\
+    \ --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication\
+    \ on Fractal with PID 3264 (started by Fractal in D:\\RepositoryRoadToProfession\\\
+    Account Service\\Account Service\\task)\n2022-05-26 13:53:26.742  INFO 3264 ---\
+    \ [    Test worker] account.AccountServiceApplication        : No active profile\
+    \ set, falling back to default profiles: default\n2022-05-26 13:53:27.818  INFO\
+    \ 3264 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping\
+    \ Spring Data JPA repositories in DEFERRED mode.\n2022-05-26 13:53:27.888  INFO\
+    \ 3264 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished\
+    \ Spring Data repository scanning in 61ms. Found 2 JPA repository interfaces.\n\
+    2022-05-26 13:53:28.623  INFO 3264 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer\
+    \  : Tomcat initialized with port(s): 28852 (http)\n2022-05-26 13:53:28.634  INFO\
+    \ 3264 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting\
+    \ service [Tomcat]\n2022-05-26 13:53:28.634  INFO 3264 --- [    Test worker] org.apache.catalina.core.StandardEngine\
+    \  : Starting Servlet engine: [Apache Tomcat/9.0.36]\n2022-05-26 13:53:28.776\
+    \  INFO 3264 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       :\
+    \ Initializing Spring embedded WebApplicationContext\n2022-05-26 13:53:28.776\
+    \  INFO 3264 --- [    Test worker] w.s.c.ServletWebServerApplicationContext :\
+    \ Root WebApplicationContext: initialization completed in 1964 ms\n2022-05-26\
+    \ 13:53:28.916  INFO 3264 --- [    Test worker] com.zaxxer.hikari.HikariDataSource\
+    \       : HikariPool-1 - Starting...\n2022-05-26 13:53:29.150  INFO 3264 --- [\
+    \    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start\
+    \ completed.\n2022-05-26 13:53:29.165  INFO 3264 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration\
+    \    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../service_db&#39;\n\
+    2022-05-26 13:53:29.311  INFO 3264 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor\
+    \  : Initializing ExecutorService &#39;applicationTaskExecutor&#39;\n2022-05-26\
+    \ 13:53:29.379  INFO 3264 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper\
+    \  : HHH000204: Processing PersistenceUnitInfo [name: default]\n2022-05-26 13:53:29.430\
+    \  WARN 3264 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration :\
+    \ spring.jpa.open-in-view is enabled by default. Therefore, database queries may\
+    \ be performed during view rendering. Explicitly configure spring.jpa.open-in-view\
+    \ to disable this warning\n2022-05-26 13:53:29.467  INFO 3264 --- [         task-1]\
+    \ org.hibernate.Version                    : HHH000412: Hibernate ORM core version\
+    \ 5.4.17.Final\n2022-05-26 13:53:29.696  INFO 3264 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain\
+    \     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@29f3185c,\
+    \ org.springframework.security.web.context.SecurityContextPersistenceFilter@6c421123,\
+    \ org.springframework.security.web.header.HeaderWriterFilter@2a667f44, org.springframework.security.web.authentication.logout.LogoutFilter@222d9d4f,\
+    \ org.springframework.security.web.authentication.www.BasicAuthenticationFilter@38ef1a0a,\
+    \ org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2a631049,\
+    \ org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@59a94d0f,\
+    \ org.springframework.security.web.authentication.AnonymousAuthenticationFilter@74bbc273,\
+    \ org.springframework.security.web.session.SessionManagementFilter@5db9f51f, org.springframework.security.web.access.ExceptionTranslationFilter@34cb0e49,\
+    \ org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7d537616]\n\
+    2022-05-26 13:53:29.704  INFO 3264 --- [         task-1] o.hibernate.annotations.common.Version\
+    \   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}\n2022-05-26 13:53:29.891\
+    \  INFO 3264 --- [         task-1] org.hibernate.dialect.Dialect            :\
+    \ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect\n2022-05-26 13:53:30.851\
+    \  INFO 3264 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       :\
+    \ HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]\n\
+    2022-05-26 13:53:30.861  INFO 3264 --- [         task-1] j.LocalContainerEntityManagerFactoryBean\
+    \ : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;\n\
+    2022-05-26 13:53:30.938  INFO 3264 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver\
+    \      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;\n2022-05-26\
+    \ 13:53:30.997  INFO 3264 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer\
+    \  : Tomcat started on port(s): 28852 (http) with context path &#39;&#39;\n2022-05-26\
+    \ 13:53:30.998  INFO 3264 --- [    Test worker] DeferredRepositoryInitializationListener\
+    \ : Triggering deferred initialization of Spring Data repositories…\n2022-05-26\
+    \ 13:53:31.289  INFO 3264 --- [    Test worker] DeferredRepositoryInitializationListener\
+    \ : Spring Data repositories initialized!\n2022-05-26 13:53:31.301  INFO 3264\
+    \ --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication\
+    \ in 4.917 seconds (JVM running for 5.918)\n2022-05-26 13:53:31.614  INFO 3264\
+    \ --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing\
+    \ Spring DispatcherServlet &#39;dispatcherServlet&#39;\n2022-05-26 13:53:31.614\
+    \  INFO 3264 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        :\
+    \ Initializing Servlet &#39;dispatcherServlet&#39;\n2022-05-26 13:53:31.623  INFO\
+    \ 3264 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed\
+    \ initialization in 9 ms\n2022-05-26 13:53:31.778  WARN 3264 --- [io-28852-exec-1]\
+    \ .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException:\
+    \ Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt;\
+    \ account.controller.AuthController.registerUser(account.entites.User): [Field\
+    \ error in object &#39;user&#39; on field &#39;username&#39;: rejected value [];\
+    \ codes [NotEmpty.user.username,NotEmpty.username,NotEmpty.java.lang.String,NotEmpty];\
+    \ arguments [org.springframework.context.support.DefaultMessageSourceResolvable:\
+    \ codes [user.username,username]; arguments []; default message [username]]; default\
+    \ message [must not be empty]] ]\n2022-05-26 13:53:31.819  WARN 3264 --- [io-28852-exec-3]\
+    \ .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException:\
+    \ Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt;\
+    \ account.controller.AuthController.registerUser(account.entites.User): [Field\
+    \ error in object &#39;user&#39; on field &#39;username&#39;: rejected value [null];\
+    \ codes [NotEmpty.user.username,NotEmpty.username,NotEmpty.java.lang.String,NotEmpty];\
+    \ arguments [org.springframework.context.support.DefaultMessageSourceResolvable:\
+    \ codes [user.username,username]; arguments []; default message [username]]; default\
+    \ message [must not be empty]] ]\n2022-05-26 13:53:31.829  WARN 3264 --- [io-28852-exec-2]\
+    \ .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException:\
+    \ Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt;\
+    \ account.controller.AuthController.registerUser(account.entites.User): [Field\
+    \ error in object &#39;user&#39; on field &#39;lastname&#39;: rejected value [];\
+    \ codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty];\
+    \ arguments [org.springframework.context.support.DefaultMessageSourceResolvable:\
+    \ codes [user.lastname,lastname]; arguments []; default message [lastname]]; default\
+    \ message [must not be empty]] ]\n2022-05-26 13:53:31.840  WARN 3264 --- [io-28852-exec-4]\
+    \ .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException:\
+    \ Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt;\
+    \ account.controller.AuthController.registerUser(account.entites.User): [Field\
+    \ error in object &#39;user&#39; on field &#39;lastname&#39;: rejected value [null];\
+    \ codes [NotEmpty.user.lastname,NotEmpty.lastname,NotEmpty.java.lang.String,NotEmpty];\
+    \ arguments [org.springframework.context.support.DefaultMessageSourceResolvable:\
+    \ codes [user.lastname,lastname]; arguments []; default message [lastname]]; default\
+    \ message [must not be empty]] ]\n2022-05-26 13:53:31.853  WARN 3264 --- [io-28852-exec-5]\
+    \ .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException:\
+    \ Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt;\
+    \ account.controller.AuthController.registerUser(account.entites.User) with 2\
+    \ errors: [Field error in object &#39;user&#39; on field &#39;email&#39;: rejected\
+    \ value []; codes [NotBlank.user.email,NotBlank.email,NotBlank.java.lang.String,NotBlank];\
+    \ arguments [org.springframework.context.support.DefaultMessageSourceResolvable:\
+    \ codes [user.email,email]; arguments []; default message [email]]; default message\
+    \ [must not be blank]] [Field error in object &#39;user&#39; on field &#39;email&#39;:\
+    \ rejected value []; codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern];\
+    \ arguments [org.springframework.context.support.DefaultMessageSourceResolvable:\
+    \ codes [user.email,email]; arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@6a03a737,^([\\\
+    w-]+(?:\\.[\\w-]+)*)@(acme.com)$]; default message [must match &quot;^([\\w-]+(?:\\\
+    .[\\w-]+)*)@(acme.com)$&quot;]] ]\n2022-05-26 13:53:31.863  WARN 3264 --- [io-28852-exec-6]\
+    \ .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException:\
+    \ Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt;\
+    \ account.controller.AuthController.registerUser(account.entites.User) with 2\
+    \ errors: [Field error in object &#39;user&#39; on field &#39;email&#39;: rejected\
+    \ value [null]; codes [NotBlank.user.email,NotBlank.email,NotBlank.java.lang.String,NotBlank];\
+    \ arguments [org.springframework.context.support.DefaultMessageSourceResolvable:\
+    \ codes [user.email,email]; arguments []; default message [email]]; default message\
+    \ [must not be blank]] [Field error in object &#39;user&#39; on field &#39;email&#39;:\
+    \ rejected value [null]; codes [NotNull.user.email,NotNull.email,NotNull.java.lang.String,NotNull];\
+    \ arguments [org.springframework.context.support.DefaultMessageSourceResolvable:\
+    \ codes [user.email,email]; arguments []; default message [email]]; default message\
+    \ [must not be null]] ]\n2022-05-26 13:53:31.874  WARN 3264 --- [io-28852-exec-7]\
+    \ .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException:\
+    \ Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt;\
+    \ account.controller.AuthController.registerUser(account.entites.User): [Field\
+    \ error in object &#39;user&#39; on field &#39;password&#39;: rejected value [];\
+    \ codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank];\
+    \ arguments [org.springframework.context.support.DefaultMessageSourceResolvable:\
+    \ codes [user.password,password]; arguments []; default message [password]]; default\
+    \ message [must not be blank]] ]\n2022-05-26 13:53:31.882  WARN 3264 --- [io-28852-exec-8]\
+    \ .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException:\
+    \ Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt;\
+    \ account.controller.AuthController.registerUser(account.entites.User) with 2\
+    \ errors: [Field error in object &#39;user&#39; on field &#39;password&#39;: rejected\
+    \ value [null]; codes [NotNull.user.password,NotNull.password,NotNull.java.lang.String,NotNull];\
+    \ arguments [org.springframework.context.support.DefaultMessageSourceResolvable:\
+    \ codes [user.password,password]; arguments []; default message [password]]; default\
+    \ message [must not be null]] [Field error in object &#39;user&#39; on field &#39;password&#39;:\
+    \ rejected value [null]; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank];\
+    \ arguments [org.springframework.context.support.DefaultMessageSourceResolvable:\
+    \ codes [user.password,password]; arguments []; default message [password]]; default\
+    \ message [must not be blank]] ]\n2022-05-26 13:53:31.893  WARN 3264 --- [io-28852-exec-9]\
+    \ .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException:\
+    \ Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt;\
+    \ account.controller.AuthController.registerUser(account.entites.User): [Field\
+    \ error in object &#39;user&#39; on field &#39;email&#39;: rejected value [johndoeacme.com];\
+    \ codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments\
+    \ [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email];\
+    \ arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@6a03a737,^([\\\
+    w-]+(?:\\.[\\w-]+)*)@(acme.com)$]; default message [must match &quot;^([\\w-]+(?:\\\
+    .[\\w-]+)*)@(acme.com)$&quot;]] ]\n2022-05-26 13:53:31.902  WARN 3264 --- [o-28852-exec-10]\
+    \ .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException:\
+    \ Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;account.entites.User&gt;\
+    \ account.controller.AuthController.registerUser(account.entites.User): [Field\
+    \ error in object &#39;user&#39; on field &#39;email&#39;: rejected value [johndoe@google.com];\
+    \ codes [Pattern.user.email,Pattern.email,Pattern.java.lang.String,Pattern]; arguments\
+    \ [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.email,email];\
+    \ arguments []; default message [email],[Ljavax.validation.constraints.Pattern$Flag;@6a03a737,^([\\\
+    w-]+(?:\\.[\\w-]+)*)@(acme.com)$]; default message [must match &quot;^([\\w-]+(?:\\\
+    .[\\w-]+)*)@(acme.com)$&quot;]] ]\n2022-05-26 13:53:35.170  INFO 3264 --- [  \
+    \   Thread-336] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory\
+    \ for persistence unit &#39;default&#39;\n2022-05-26 13:53:35.172  INFO 3264 ---\
+    \ [     Thread-336] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService\
+    \ &#39;applicationTaskExecutor&#39;\n2022-05-26 13:53:35.176  INFO 3264 --- [\
+    \     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown\
+    \ initiated...\n2022-05-26 13:53:35.208  INFO 3264 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource\
+    \       : HikariPool-1 - Shutdown completed.\n\n  .   ____          _        \
+    \    __ _ _\n /\\\\ / ___&#39;_ __ _ _(_)_ __  __ _ \\ \\ \\ \\\n( ( )\\___ |\
+    \ &#39;_ | &#39;_| | &#39;_ \\/ _` | \\ \\ \\ \\\n \\\\/  ___)| |_)| | | | | ||\
+    \ (_| |  ) ) ) )\n  &#39;  |____| .__|_| |_|_| |_\\__, | / / / /\n =========|_|==============|___/=/_/_/_/\n\
+    \ :: Spring Boot ::        (v2.3.1.RELEASE)\n\n2022-05-26 13:53:35.303  INFO 3264\
+    \ --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication\
+    \ on Fractal with PID 3264 (started by Fractal in D:\\RepositoryRoadToProfession\\\
+    Account Service\\Account Service\\task)\n2022-05-26 13:53:35.304  INFO 3264 ---\
+    \ [    Test worker] account.AccountServiceApplication        : No active profile\
+    \ set, falling back to default profiles: default\n2022-05-26 13:53:35.689  INFO\
+    \ 3264 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping\
+    \ Spring Data JPA repositories in DEFERRED mode.\n2022-05-26 13:53:35.700  INFO\
+    \ 3264 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished\
+    \ Spring Data repository scanning in 9ms. Found 2 JPA repository interfaces.\n\
+    2022-05-26 13:53:35.795  INFO 3264 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer\
+    \  : Tomcat initialized with port(s): 28852 (http)\n2022-05-26 13:53:35.796  INFO\
+    \ 3264 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting\
+    \ service [Tomcat]\n2022-05-26 13:53:35.797  INFO 3264 --- [    Test worker] org.apache.catalina.core.StandardEngine\
+    \  : Starting Servlet engine: [Apache Tomcat/9.0.36]\n2022-05-26 13:53:35.836\
+    \  INFO 3264 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       :\
+    \ Initializing Spring embedded WebApplicationContext\n2022-05-26 13:53:35.836\
+    \  INFO 3264 --- [    Test worker] w.s.c.ServletWebServerApplicationContext :\
+    \ Root WebApplicationContext: initialization completed in 530 ms\n2022-05-26 13:53:35.880\
+    \  INFO 3264 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       :\
+    \ HikariPool-2 - Starting...\n2022-05-26 13:53:35.893  INFO 3264 --- [    Test\
+    \ worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.\n\
+    2022-05-26 13:53:35.893  INFO 3264 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration\
+    \    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../service_db&#39;\n\
+    2022-05-26 13:53:35.940  INFO 3264 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor\
+    \  : Initializing ExecutorService &#39;applicationTaskExecutor&#39;\n2022-05-26\
+    \ 13:53:35.944  INFO 3264 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper\
+    \  : HHH000204: Processing PersistenceUnitInfo [name: default]\n2022-05-26 13:53:35.951\
+    \  INFO 3264 --- [         task-1] org.hibernate.dialect.Dialect            :\
+    \ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect\n2022-05-26 13:53:35.986\
+    \  WARN 3264 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration :\
+    \ spring.jpa.open-in-view is enabled by default. Therefore, database queries may\
+    \ be performed during view rendering. Explicitly configure spring.jpa.open-in-view\
+    \ to disable this warning\n2022-05-26 13:53:36.080  INFO 3264 --- [    Test worker]\
+    \ o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request,\
+    \ [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4d1b4fa1,\
+    \ org.springframework.security.web.context.SecurityContextPersistenceFilter@21b2579d,\
+    \ org.springframework.security.web.header.HeaderWriterFilter@22ea6051, org.springframework.security.web.authentication.logout.LogoutFilter@44df834c,\
+    \ org.springframework.security.web.authentication.www.BasicAuthenticationFilter@34c07ecc,\
+    \ org.springframework.security.web.savedrequest.RequestCacheAwareFilter@87f1201,\
+    \ org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@796613b7,\
+    \ org.springframework.security.web.authentication.AnonymousAuthenticationFilter@27b7e663,\
+    \ org.springframework.security.web.session.SessionManagementFilter@539bb233, org.springframework.security.web.access.ExceptionTranslationFilter@4f0cdd0f,\
+    \ org.springframework.security.web.access.intercept.FilterSecurityInterceptor@29b0c169]\n\
+    2022-05-26 13:53:36.083  INFO 3264 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator\
+    \       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]\n\
+    2022-05-26 13:53:36.084  INFO 3264 --- [         task-1] j.LocalContainerEntityManagerFactoryBean\
+    \ : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;\n\
+    2022-05-26 13:53:36.268  INFO 3264 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver\
+    \      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;\n2022-05-26\
+    \ 13:53:36.288  INFO 3264 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer\
+    \  : Tomcat started on port(s): 28852 (http) with context path &#39;&#39;\n2022-05-26\
+    \ 13:53:36.288  INFO 3264 --- [    Test worker] DeferredRepositoryInitializationListener\
+    \ : Triggering deferred initialization of Spring Data repositories…\n2022-05-26\
+    \ 13:53:36.334  INFO 3264 --- [    Test worker] DeferredRepositoryInitializationListener\
+    \ : Spring Data repositories initialized!\n2022-05-26 13:53:36.339  INFO 3264\
+    \ --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication\
+    \ in 1.078 seconds (JVM running for 10.956)\n2022-05-26 13:53:36.347  INFO 3264\
+    \ --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing\
+    \ Spring DispatcherServlet &#39;dispatcherServlet&#39;\n2022-05-26 13:53:36.347\
+    \  INFO 3264 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        :\
+    \ Initializing Servlet &#39;dispatcherServlet&#39;\n2022-05-26 13:53:36.349  INFO\
+    \ 3264 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed\
+    \ initialization in 2 ms"
+  time: Thu, 26 May 2022 10:53:36 UTC
 record: -1
