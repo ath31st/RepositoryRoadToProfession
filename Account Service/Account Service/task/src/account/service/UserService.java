@@ -1,7 +1,7 @@
 package account.service;
 
 import account.repository.UserRepository;
-import account.entites.Role;
+import account.util.Role;
 import account.entites.User;
 import account.exceptionhandler.BreachedPasswordException;
 import account.exceptionhandler.InvalidLengthPasswordException;

@@ -1,6 +1,6 @@
 package account.entites;
 
-import account.config.YearMonthDateAttributeConverter;
+import account.util.YearMonthDateAttributeConverter;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;

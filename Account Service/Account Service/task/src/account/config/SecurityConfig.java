@@ -1,6 +1,6 @@
 package account.config;
 
-import account.entites.Role;
+import account.util.Role;
 import account.exceptionhandler.RestAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

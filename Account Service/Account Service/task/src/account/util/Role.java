@@ -1,4 +1,4 @@
-package account.entites;
+package account.util;
 
 public enum Role {
     ROLE_USER,

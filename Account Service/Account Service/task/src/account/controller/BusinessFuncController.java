@@ -5,7 +5,6 @@ import account.service.PaymentService;
 import account.service.UserService;
 import account.entites.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -23,9 +22,8 @@ class BusinessFuncController {
 
 
     @GetMapping("/empl/payment")
-    public ResponseEntity<User> getPayment(@AuthenticationPrincipal User user) {
-        User tmpUser = userService.findByEmail(user.getEmail());
-        return new ResponseEntity<>(tmpUser, HttpStatus.OK);
+    public ResponseEntity getPaymentForPeriod(@RequestParam(value = "period",required = false) String period, @AuthenticationPrincipal User user) {
+        return paymentService.getPaymentForPeriod(period, user);
     }
 
     @PostMapping("/acct/payments")
@@ -34,7 +32,7 @@ class BusinessFuncController {
     }
 
     @PutMapping("/acct/payments")
-    public void updatePaymentinfo() {
-
+    public ResponseEntity updatePaymentinfo(@RequestBody Payment payment) {
+        return paymentService.putPaymentChanges(payment);
     }
 }
