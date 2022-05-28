@@ -11,9 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class RoleService {
@@ -22,14 +21,21 @@ public class RoleService {
 
     public ResponseEntity<User> changeUserRole(RoleChangeRequest roleChangeRequest) {
         User user = userRepository.findUserByEmailIgnoreCase(roleChangeRequest.getUser()).orElseThrow(
-                () -> new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found!")
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!")
         );
-        Role roleFromReq = Role.valueOf("ROLE_" + roleChangeRequest.getRole().name().toUpperCase());
-        checkExistingRole(roleFromReq);
-        checkExistingOperation(roleChangeRequest);
-        if (roleChangeRequest.getOperation().equals(Operation.GRANT)) {
+
+        String stringRoleFromReq = "ROLE_" + roleChangeRequest.getRole().toUpperCase();
+        String stringOperationFromReq = roleChangeRequest.getOperation().toUpperCase();
+
+        checkExistingRole(stringRoleFromReq);
+        checkExistingOperation(stringOperationFromReq);
+
+        Role roleFromReq = Role.valueOf(stringRoleFromReq);
+        Operation operationFromReq = Operation.valueOf(stringOperationFromReq);
+
+        if (operationFromReq.equals(Operation.GRANT)) {
             grantOperation(user, roleFromReq);
-        } else if (roleChangeRequest.getOperation().equals(Operation.REMOVE)) {
+        } else if (operationFromReq.equals(Operation.REMOVE)) {
             removeOperation(user, roleFromReq);
         }
         userRepository.save(user);
@@ -37,9 +43,9 @@ public class RoleService {
     }
 
     private void grantOperation(User user, Role roleFromReq) {
-        List<Role> roles = user.getRoles();
+        Set<Role> roles = user.getRoles();
+        checkCompatibleRoles(roles, roleFromReq);
         roles.add(roleFromReq);
-        Collections.sort(roles);
         user.setRoles(roles);
     }
 
@@ -47,25 +53,25 @@ public class RoleService {
         checkAdminRole(roleFromReq);
         checkExistingRoleUser(user, roleFromReq);
         checkCountRolesUser(user);
-        List<Role> roles = user.getRoles();
+        Set<Role> roles = user.getRoles();
         roles.remove(roleFromReq);
         user.setRoles(roles);
     }
 
-    private void checkExistingRole(Role roleFromReq) {
-        if (!Arrays.asList(Role.values()).contains(roleFromReq)) {
+    private void checkExistingRole(String roleFromReq) {
+        if (Arrays.stream(Role.values()).noneMatch(role -> role.name().equals(roleFromReq)))
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Role not found!");
-        }
     }
 
-    private void checkExistingOperation(RoleChangeRequest roleChangeRequest) {
-        if (!Arrays.asList(Operation.values()).contains(roleChangeRequest.getOperation())) {
+
+    private void checkExistingOperation(String operationFromReq) {
+        if (Arrays.stream(Operation.values()).noneMatch(operation -> operation.name().equals(operationFromReq)))
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Operation not found!");
-        }
     }
+
 
     private void checkExistingRoleUser(User user, Role roleFromReq) {
-        if (user.getRoles().contains(roleFromReq)) {
+        if (!user.getRoles().contains(roleFromReq)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The user does not have a role!");
         }
     }
@@ -79,6 +85,14 @@ public class RoleService {
     private void checkAdminRole(Role roleFromReq) {
         if (roleFromReq.equals(Role.ROLE_ADMINISTRATOR)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't remove ADMINISTRATOR role!");
+        }
+    }
+
+    private void checkCompatibleRoles(Set<Role> roles, Role roleFromReq) {
+        if ((roles.contains(Role.ROLE_ACCOUNTANT) | roles.contains(Role.ROLE_USER)) & roleFromReq.equals(Role.ROLE_ADMINISTRATOR)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't add new role!");
+        } else if (roles.contains(Role.ROLE_ADMINISTRATOR) & (roleFromReq.equals(Role.ROLE_ACCOUNTANT)) | roleFromReq.equals(Role.ROLE_USER)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't add new role!");
         }
     }
 }

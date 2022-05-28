@@ -2,8 +2,8 @@ package account.util;
 
 public class RoleChangeRequest {
     private String user;
-    private Role role;
-    private Operation operation;
+    private String role;
+    private String operation;
 
     public RoleChangeRequest() {
     }
@@ -16,19 +16,19 @@ public class RoleChangeRequest {
         this.user = user;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
-    public Operation getOperation() {
+    public String getOperation() {
         return operation;
     }
 
-    public void setOperation(Operation operation) {
+    public void setOperation(String operation) {
         this.operation = operation;
     }
 }

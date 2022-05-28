@@ -12,8 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class User implements UserDetails {
@@ -37,7 +36,7 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     @ElementCollection(fetch = FetchType.EAGER)
-    private List<Role> roles;
+    private Set<Role> roles;
     @JsonIgnore
     private boolean accountNonExpired;
     @JsonIgnore
@@ -107,7 +106,7 @@ public class User implements UserDetails {
     }
 
     public void grantAuthority(Role authority) {
-        if (roles == null) roles = new ArrayList<>();
+        if (roles == null) roles = new TreeSet<>();
         roles.add(authority);
     }
     @JsonIgnore
@@ -126,11 +125,11 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 }

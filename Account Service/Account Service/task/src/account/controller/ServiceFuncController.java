@@ -5,9 +5,11 @@ import account.service.RoleService;
 import account.service.UserService;
 import account.util.RoleChangeRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +23,7 @@ public class ServiceFuncController {
     private RoleService roleService;
 
     @PutMapping("/user/role")
-    public ResponseEntity<User> changeUserRole(@RequestBody RoleChangeRequest roleChangeRequest) {
+    public ResponseEntity<User> changeUserRole(@RequestBody @Valid RoleChangeRequest roleChangeRequest) {
         return roleService.changeUserRole(roleChangeRequest);
     }
 

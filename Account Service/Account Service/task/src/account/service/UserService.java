@@ -71,7 +71,7 @@ public class UserService implements UserDetailsService {
 
     public ResponseEntity<Map<String, String>> deleteUser(String email) {
         User user = userRepository.findUserByEmailIgnoreCase(email)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found!"));
         if (user.getRoles().contains(Role.ROLE_ADMINISTRATOR))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't remove ADMINISTRATOR role!");
         userRepository.delete(user);
