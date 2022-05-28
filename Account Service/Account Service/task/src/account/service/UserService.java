@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -41,7 +42,11 @@ public class UserService implements UserDetailsService {
     public User registerNewUser(User user) {
         user.setEmail(user.getEmail().toLowerCase());
         checkValidPassword(user.getPassword());
-        if (userRepository.findUserByEmailIgnoreCase(user.getEmail()).isEmpty()) {
+        if (userRepository.count() == 0) {
+            user.grantAuthority(Role.ROLE_ADMINISTRATOR);
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userRepository.save(user);
+        } else if (userRepository.findUserByEmailIgnoreCase(user.getEmail()).isEmpty()) {
             user.grantAuthority(Role.ROLE_USER);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepository.save(user);
@@ -55,7 +60,22 @@ public class UserService implements UserDetailsService {
         User tmpUser = userRepository.findUserByEmailIgnoreCase(authUser.getEmail()).get();
         tmpUser.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(tmpUser);
-        return ResponseEntity.ok().body(Map.of("email",authUser.getEmail(),"status","The password has been updated successfully"));
+        return ResponseEntity.ok().body(Map.of("email", authUser.getEmail(), "status", "The password has been updated successfully"));
+    }
+
+    public ResponseEntity<List<User>> getUsersInfo() {
+        List<User> users = new ArrayList<>();
+        userRepository.findAll().iterator().forEachRemaining(users::add);
+        return ResponseEntity.ok().body(users);
+    }
+
+    public ResponseEntity<Map<String, String>> deleteUser(String email) {
+        User user = userRepository.findUserByEmailIgnoreCase(email)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        if (user.getRoles().contains(Role.ROLE_ADMINISTRATOR))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't remove ADMINISTRATOR role!");
+        userRepository.delete(user);
+        return ResponseEntity.ok().body(Map.of("user", user.getEmail(), "status", "Deleted successfully!"));
     }
 
     @Override

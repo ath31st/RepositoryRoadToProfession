@@ -26,7 +26,6 @@ public class User implements UserDetails {
     private String username;
     @NotEmpty
     private String lastname;
-    // @Pattern(regexp = "^([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([a-z]{2,6}(?:\\.[a-z]{2})?)$")
     @Pattern(regexp = "^([\\w-]+(?:\\.[\\w-]+)*)@(acme.com)$")
     @NotBlank
     @NotNull
@@ -127,4 +126,11 @@ public class User implements UserDetails {
         this.password = password;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 }

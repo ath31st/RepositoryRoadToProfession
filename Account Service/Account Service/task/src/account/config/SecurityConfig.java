@@ -26,10 +26,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable().headers().frameOptions().disable() // for Postman, the H2 console
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/acct/**").permitAll()
                 .antMatchers("/api/auth/singup").permitAll()
-                .antMatchers("/api/empl/payment").hasAuthority(Role.ROLE_USER.name())
-                .antMatchers("/api/auth/changepass").hasAuthority(Role.ROLE_USER.name())
+                .antMatchers("/api/auth/changepass").hasAnyAuthority(Role.ROLE_ADMINISTRATOR.name(),Role.ROLE_USER.name(),Role.ROLE_ACCOUNTANT.name())
+                .antMatchers("/api/empl/payment").hasAnyAuthority(Role.ROLE_USER.name(),Role.ROLE_ACCOUNTANT.name())
+                .antMatchers("/api/acct/payments").hasAuthority(Role.ROLE_ACCOUNTANT.name())
+                .antMatchers("/api/admin/**").hasAuthority(Role.ROLE_ADMINISTRATOR.name())
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // no session

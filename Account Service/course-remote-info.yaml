@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/612593/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Thu, 26 May 2022 10:41:18 UTC
+update_date: Sat, 28 May 2022 12:02:33 UTC
 stages:
 - id: 1086
   step: 16601
@@ -84,6 +84,10 @@ topics:
     theory_id: 13334
   - title: '@Bean vs @Component'
     theory_id: 14771
+  - title: Scopes of beans
+    theory_id: 19487
+  - title: Bean lifecycle
+    theory_id: 19550
   - title: Computer programming
     theory_id: 8739
   - title: Paradigms
@@ -291,6 +295,8 @@ topics:
     theory_id: 8762
   - title: Exception handling
     theory_id: 8780
+  - title: Advanced exception handling in Spring Boot
+    theory_id: 19855
   - title: Web security, OWASP
     theory_id: 14755
   - title: Getting started with Spring Security

@@ -33,7 +33,7 @@ public class PaymentService {
         checkCorrectSalary(payment);
         Payment paymentFromDb = paymentRepository
                 .findPaymentByEmployeeIgnoreCaseAndPeriod(payment.getEmployee(), payment.getPeriod())
-                .orElseThrow(EmoloyeeNotFoundException::new);
+                .orElseThrow(EmployeeNotFoundException::new);
         paymentFromDb.setSalary(payment.getSalary());
         paymentRepository.save(paymentFromDb);
         return ResponseEntity.ok().body(Map.of("status", "Updated successfully!"));
@@ -87,7 +87,7 @@ public class PaymentService {
 
     private void checkExistsEmployee(Payment payment) {
         if (userRepository.findUserByEmailIgnoreCase(payment.getEmployee()).isEmpty()) {
-            throw new EmoloyeeNotFoundException();
+            throw new EmployeeNotFoundException();
         }
     }
 
