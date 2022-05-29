@@ -1,5 +1,8 @@
 package account.util;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class EmployeePaymentResponse {
     private String name;
     private String lastname;
@@ -30,5 +33,21 @@ public class EmployeePaymentResponse {
 
     public void setSalary(String salary) {
         this.salary = salary;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getPeriod() {
+        return period;
+    }
+
+    public String getSalary() {
+        return salary;
     }
 }

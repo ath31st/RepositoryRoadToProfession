@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class RoleService {
@@ -43,17 +42,23 @@ public class RoleService {
     }
 
     private void grantOperation(User user, Role roleFromReq) {
-        Set<Role> roles = user.getRoles();
+        List<Role> roles = user.getRoles();
+
         checkCompatibleRoles(roles, roleFromReq);
+        checkExistingRoleUserForGrantOperation(user, roleFromReq);
+
         roles.add(roleFromReq);
+        roles.sort(Comparator.reverseOrder());
         user.setRoles(roles);
     }
 
     private void removeOperation(User user, Role roleFromReq) {
+
         checkAdminRole(roleFromReq);
-        checkExistingRoleUser(user, roleFromReq);
+        checkExistingRoleUserForRemoveOperation(user, roleFromReq);
         checkCountRolesUser(user);
-        Set<Role> roles = user.getRoles();
+
+        List<Role> roles = user.getRoles();
         roles.remove(roleFromReq);
         user.setRoles(roles);
     }
@@ -70,9 +75,15 @@ public class RoleService {
     }
 
 
-    private void checkExistingRoleUser(User user, Role roleFromReq) {
+    private void checkExistingRoleUserForRemoveOperation(User user, Role roleFromReq) {
         if (!user.getRoles().contains(roleFromReq)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The user does not have a role!");
+        }
+    }
+
+    private void checkExistingRoleUserForGrantOperation(User user, Role roleFromReq) {
+        if (user.getRoles().contains(roleFromReq)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The user already have this role!");
         }
     }
 
@@ -88,11 +99,11 @@ public class RoleService {
         }
     }
 
-    private void checkCompatibleRoles(Set<Role> roles, Role roleFromReq) {
+    private void checkCompatibleRoles(List<Role> roles, Role roleFromReq) {
         if ((roles.contains(Role.ROLE_ACCOUNTANT) | roles.contains(Role.ROLE_USER)) & roleFromReq.equals(Role.ROLE_ADMINISTRATOR)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't add new role!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The user cannot combine administrative and business roles!");
         } else if (roles.contains(Role.ROLE_ADMINISTRATOR) & (roleFromReq.equals(Role.ROLE_ACCOUNTANT)) | roleFromReq.equals(Role.ROLE_USER)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't add new role!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The user cannot combine administrative and business roles!");
         }
     }
 }

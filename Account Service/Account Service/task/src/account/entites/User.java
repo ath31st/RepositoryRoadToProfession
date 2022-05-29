@@ -36,7 +36,7 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     @ElementCollection(fetch = FetchType.EAGER)
-    private Set<Role> roles;
+    private List<Role> roles;
     @JsonIgnore
     private boolean accountNonExpired;
     @JsonIgnore
@@ -106,7 +106,7 @@ public class User implements UserDetails {
     }
 
     public void grantAuthority(Role authority) {
-        if (roles == null) roles = new TreeSet<>();
+        if (roles == null) roles = new LinkedList<>();
         roles.add(authority);
     }
     @JsonIgnore
@@ -125,11 +125,11 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 }
