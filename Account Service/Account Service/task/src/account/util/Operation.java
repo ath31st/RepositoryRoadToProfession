@@ -2,5 +2,7 @@ package account.util;
 
 public enum Operation {
     GRANT,
-    REMOVE
+    REMOVE,
+    LOCK,
+    UNLOCK
 }

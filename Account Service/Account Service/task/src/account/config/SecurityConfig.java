@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/empl/payment").hasAnyAuthority(Role.ROLE_USER.name(),Role.ROLE_ACCOUNTANT.name())
                 .antMatchers("/api/acct/payments").hasAuthority(Role.ROLE_ACCOUNTANT.name())
                 .antMatchers("/api/admin/**").hasAuthority(Role.ROLE_ADMINISTRATOR.name())
+                .antMatchers("/api/security/events").hasAuthority(Role.ROLE_AUDITOR.name())
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // no session

@@ -1,11 +1,16 @@
 package account.service;
 
+import account.dto.ChangeUserPasswordResponse;
+import account.dto.DeleteUserResponse;
+import account.dto.UserStatusChangeRequest;
+import account.dto.UserStatusChangeResponse;
 import account.repository.UserRepository;
+import account.util.Operation;
 import account.util.Role;
 import account.entites.User;
-import account.exceptionhandler.BreachedPasswordException;
-import account.exceptionhandler.InvalidLengthPasswordException;
-import account.exceptionhandler.RepetitivePasswordException;
+import account.exceptionhandler.exception.BreachedPasswordException;
+import account.exceptionhandler.exception.InvalidLengthPasswordException;
+import account.exceptionhandler.exception.RepetitivePasswordException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,13 +59,13 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-    public ResponseEntity changePassword(String newPassword, User authUser) {
+    public ResponseEntity<ChangeUserPasswordResponse> changePassword(String newPassword, User authUser) {
         checkValidPassword(newPassword);
         checkDifferencePasswords(newPassword, authUser.getPassword());
         User tmpUser = userRepository.findUserByEmailIgnoreCase(authUser.getEmail()).get();
         tmpUser.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(tmpUser);
-        return ResponseEntity.ok().body(Map.of("email", authUser.getEmail(), "status", "The password has been updated successfully"));
+        return ResponseEntity.ok().body(new ChangeUserPasswordResponse(authUser.getEmail(), "The password has been updated successfully"));
     }
 
     public ResponseEntity<List<User>> getUsersInfo() {
@@ -69,13 +74,31 @@ public class UserService implements UserDetailsService {
         return ResponseEntity.ok().body(users);
     }
 
-    public ResponseEntity<Map<String, String>> deleteUser(String email) {
+    public ResponseEntity<DeleteUserResponse> deleteUser(String email) {
         User user = userRepository.findUserByEmailIgnoreCase(email)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"User not found!"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
         if (user.getRoles().contains(Role.ROLE_ADMINISTRATOR))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't remove ADMINISTRATOR role!");
         userRepository.delete(user);
-        return ResponseEntity.ok().body(Map.of("user", user.getEmail(), "status", "Deleted successfully!"));
+        return ResponseEntity.ok().body(new DeleteUserResponse(user.getEmail(), "Deleted successfully!"));
+    }
+
+    public ResponseEntity<UserStatusChangeResponse> changeUserStatus(UserStatusChangeRequest request) {
+        User user = userRepository.findUserByEmailIgnoreCase(request.getUser())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+        if (user.getRoles().contains(Role.ROLE_ADMINISTRATOR))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't lock the ADMINISTRATOR!");
+        if (request.getOperation().equals(Operation.LOCK.name())) {
+            user.setAccountNonLocked(false);
+            userRepository.save(user);
+            return ResponseEntity.ok().body(new UserStatusChangeResponse("User " + request.getUser() + " locked!"));
+        } else if (request.getOperation().equals(Operation.UNLOCK.name())) {
+            user.setAccountNonLocked(true);
+            userRepository.save(user);
+            return ResponseEntity.ok().body(new UserStatusChangeResponse("User " + request.getUser() + " unlocked!"));
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Operation not found!");
+        }
     }
 
     @Override

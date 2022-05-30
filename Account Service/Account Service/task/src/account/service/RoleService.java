@@ -4,7 +4,7 @@ import account.entites.User;
 import account.repository.UserRepository;
 import account.util.Operation;
 import account.util.Role;
-import account.util.RoleChangeRequest;
+import account.dto.RoleChangeRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -100,9 +100,9 @@ public class RoleService {
     }
 
     private void checkCompatibleRoles(List<Role> roles, Role roleFromReq) {
-        if ((roles.contains(Role.ROLE_ACCOUNTANT) | roles.contains(Role.ROLE_USER)) & roleFromReq.equals(Role.ROLE_ADMINISTRATOR)) {
+        if ((roles.contains(Role.ROLE_AUDITOR) | roles.contains(Role.ROLE_ACCOUNTANT) | roles.contains(Role.ROLE_USER)) & roleFromReq.equals(Role.ROLE_ADMINISTRATOR)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The user cannot combine administrative and business roles!");
-        } else if (roles.contains(Role.ROLE_ADMINISTRATOR) & (roleFromReq.equals(Role.ROLE_ACCOUNTANT)) | roleFromReq.equals(Role.ROLE_USER)) {
+        } else if (roles.contains(Role.ROLE_ADMINISTRATOR) & (roleFromReq.equals(Role.ROLE_ACCOUNTANT) | roleFromReq.equals(Role.ROLE_USER) | roleFromReq.equals(Role.ROLE_AUDITOR))) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The user cannot combine administrative and business roles!");
         }
     }

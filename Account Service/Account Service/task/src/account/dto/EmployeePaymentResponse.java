@@ -1,4 +1,4 @@
-package account.util;
+package account.dto;
 
 import org.springframework.stereotype.Component;
 

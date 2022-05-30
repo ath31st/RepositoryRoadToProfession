@@ -1,12 +1,8 @@
-package account.util;
+package account.dto;
 
-public class RoleChangeRequest {
+public class UserStatusChangeRequest {
     private String user;
-    private String role;
     private String operation;
-
-    public RoleChangeRequest() {
-    }
 
     public String getUser() {
         return user;
@@ -14,14 +10,6 @@ public class RoleChangeRequest {
 
     public void setUser(String user) {
         this.user = user;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getOperation() {

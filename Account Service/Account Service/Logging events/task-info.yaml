@@ -820,18 +820,6 @@ files:
 
     }
   learner_created: false
-- name: src/account/exceptionhandler/EmployeeNotFoundException.java
-  visible: true
-  text: |
-    package account.exceptionhandler;
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.web.bind.annotation.ResponseStatus;
-
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Employee not found!")
-    public class EmployeeNotFoundException extends RuntimeException{
-    }
-  learner_created: true
 - name: src/account/service/PaymentService.java
   visible: true
   text: |
@@ -943,63 +931,6 @@ files:
                 throw new WrongPeriodException();
             }
             return per;
-        }
-    }
-  learner_created: true
-- name: src/account/util/EmployeePaymentResponse.java
-  visible: true
-  text: |
-    package account.util;
-
-    import org.springframework.stereotype.Component;
-
-    @Component
-    public class EmployeePaymentResponse {
-        private String name;
-        private String lastname;
-        private String  period;
-        private String salary;
-
-        public EmployeePaymentResponse() {
-        }
-
-        public EmployeePaymentResponse(String name, String lastname, String period, String salary) {
-            this.name = name;
-            this.lastname = lastname;
-            this.period = period;
-            this.salary = salary;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public void setLastname(String lastname) {
-            this.lastname = lastname;
-        }
-
-        public void setPeriod(String  period) {
-            this.period = period;
-        }
-
-        public void setSalary(String salary) {
-            this.salary = salary;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public String getLastname() {
-            return lastname;
-        }
-
-        public String getPeriod() {
-            return period;
-        }
-
-        public String getSalary() {
-            return salary;
         }
     }
   learner_created: true
@@ -1197,18 +1128,6 @@ files:
         }
     }
   learner_created: true
-- name: src/account/exceptionhandler/WrongPeriodException.java
-  visible: true
-  text: |
-    package account.exceptionhandler;
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.web.bind.annotation.ResponseStatus;
-
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Wrong period!")
-    public class WrongPeriodException extends RuntimeException {
-    }
-  learner_created: true
 - name: src/account/controller/AuthController.java
   visible: true
   text: |
@@ -1327,44 +1246,6 @@ files:
         }
     }
   learner_created: true
-- name: src/account/util/RoleChangeRequest.java
-  visible: true
-  text: |
-    package account.util;
-
-    public class RoleChangeRequest {
-        private String user;
-        private String role;
-        private String operation;
-
-        public RoleChangeRequest() {
-        }
-
-        public String getUser() {
-            return user;
-        }
-
-        public void setUser(String user) {
-            this.user = user;
-        }
-
-        public String getRole() {
-            return role;
-        }
-
-        public void setRole(String role) {
-            this.role = role;
-        }
-
-        public String getOperation() {
-            return operation;
-        }
-
-        public void setOperation(String operation) {
-            this.operation = operation;
-        }
-    }
-  learner_created: true
 - name: src/account/repository/PaymentRepository.java
   visible: true
   text: |
@@ -1394,18 +1275,6 @@ files:
     public enum Operation {
         GRANT,
         REMOVE
-    }
-  learner_created: true
-- name: src/account/exceptionhandler/SalaryException.java
-  visible: true
-  text: |
-    package account.exceptionhandler;
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.web.bind.annotation.ResponseStatus;
-
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST,reason = "Salary must be non negative!")
-    public class SalaryException extends RuntimeException {
     }
   learner_created: true
 - name: src/account/entites/User.java
@@ -1590,30 +1459,6 @@ files:
 
     }
   learner_created: true
-- name: src/account/exceptionhandler/DuplicatePaymentException.java
-  visible: true
-  text: |
-    package account.exceptionhandler;
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.web.bind.annotation.ResponseStatus;
-
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Payment already exists!")
-    public class DuplicatePaymentException extends RuntimeException{
-    }
-  learner_created: true
-- name: src/account/exceptionhandler/InvalidLengthPasswordException.java
-  visible: true
-  text: |
-    package account.exceptionhandler;
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.web.bind.annotation.ResponseStatus;
-
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Password length must be 12 chars minimum!")
-    public class InvalidLengthPasswordException extends RuntimeException{
-    }
-  learner_created: true
 - name: src/account/util/Role.java
   visible: true
   text: |-
@@ -1627,40 +1472,6 @@ files:
         USER,
         ADMINISTRATOR
     }
-  learner_created: true
-- name: src/account/exceptionhandler/PaymentNotFoundException.java
-  visible: true
-  text: |
-    package account.exceptionhandler;
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.web.bind.annotation.ResponseStatus;
-
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST,reason = "Payment by this period not found")
-    public class PaymentNotFoundException extends RuntimeException{
-    }
-  learner_created: true
-- name: src/account/exceptionhandler/RepetitivePasswordException.java
-  visible: true
-  text: |-
-    package account.exceptionhandler;
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.web.bind.annotation.ResponseStatus;
-
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "The passwords must be different!")
-    public class RepetitivePasswordException extends RuntimeException {}
-  learner_created: true
-- name: src/account/exceptionhandler/BreachedPasswordException.java
-  visible: true
-  text: |-
-    package account.exceptionhandler;
-
-    import org.springframework.http.HttpStatus;
-    import org.springframework.web.bind.annotation.ResponseStatus;
-
-    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "The password is in the hacker's database!")
-    public class BreachedPasswordException extends RuntimeException {}
   learner_created: true
 - name: src/account/repository/UserRepository.java
   visible: true
@@ -1951,6 +1762,293 @@ files:
         }
     }
   learner_created: true
+- name: src/account/exceptionhandler/exception/BreachedPasswordException.java
+  visible: true
+  text: |-
+    package account.exceptionhandler;
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.ResponseStatus;
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "The password is in the hacker's database!")
+    public class BreachedPasswordException extends RuntimeException {}
+  learner_created: true
+- name: src/account/exceptionhandler/exception/DuplicatePaymentException.java
+  visible: true
+  text: |
+    package account.exceptionhandler;
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.ResponseStatus;
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Payment already exists!")
+    public class DuplicatePaymentException extends RuntimeException{
+    }
+  learner_created: true
+- name: src/account/exceptionhandler/exception/EmployeeNotFoundException.java
+  visible: true
+  text: |
+    package account.exceptionhandler;
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.ResponseStatus;
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Employee not found!")
+    public class EmployeeNotFoundException extends RuntimeException{
+    }
+  learner_created: true
+- name: src/account/exceptionhandler/exception/InvalidLengthPasswordException.java
+  visible: true
+  text: |
+    package account.exceptionhandler;
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.ResponseStatus;
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Password length must be 12 chars minimum!")
+    public class InvalidLengthPasswordException extends RuntimeException{
+    }
+  learner_created: true
+- name: src/account/exceptionhandler/exception/PaymentNotFoundException.java
+  visible: true
+  text: |
+    package account.exceptionhandler;
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.ResponseStatus;
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST,reason = "Payment by this period not found")
+    public class PaymentNotFoundException extends RuntimeException{
+    }
+  learner_created: true
+- name: src/account/exceptionhandler/exception/RepetitivePasswordException.java
+  visible: true
+  text: |-
+    package account.exceptionhandler;
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.ResponseStatus;
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "The passwords must be different!")
+    public class RepetitivePasswordException extends RuntimeException {}
+  learner_created: true
+- name: src/account/exceptionhandler/exception/SalaryException.java
+  visible: true
+  text: |
+    package account.exceptionhandler;
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.ResponseStatus;
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST,reason = "Salary must be non negative!")
+    public class SalaryException extends RuntimeException {
+    }
+  learner_created: true
+- name: src/account/exceptionhandler/exception/WrongPeriodException.java
+  visible: true
+  text: |
+    package account.exceptionhandler;
+
+    import org.springframework.http.HttpStatus;
+    import org.springframework.web.bind.annotation.ResponseStatus;
+
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST, reason = "Wrong period!")
+    public class WrongPeriodException extends RuntimeException {
+    }
+  learner_created: true
+- name: src/account/dto/EmployeePaymentResponse.java
+  visible: true
+  text: |
+    package account.util;
+
+    import org.springframework.stereotype.Component;
+
+    @Component
+    public class EmployeePaymentResponse {
+        private String name;
+        private String lastname;
+        private String  period;
+        private String salary;
+
+        public EmployeePaymentResponse() {
+        }
+
+        public EmployeePaymentResponse(String name, String lastname, String period, String salary) {
+            this.name = name;
+            this.lastname = lastname;
+            this.period = period;
+            this.salary = salary;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setLastname(String lastname) {
+            this.lastname = lastname;
+        }
+
+        public void setPeriod(String  period) {
+            this.period = period;
+        }
+
+        public void setSalary(String salary) {
+            this.salary = salary;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getLastname() {
+            return lastname;
+        }
+
+        public String getPeriod() {
+            return period;
+        }
+
+        public String getSalary() {
+            return salary;
+        }
+    }
+  learner_created: true
+- name: src/account/dto/RoleChangeRequest.java
+  visible: true
+  text: |
+    package account.util;
+
+    public class RoleChangeRequest {
+        private String user;
+        private String role;
+        private String operation;
+
+        public RoleChangeRequest() {
+        }
+
+        public String getUser() {
+            return user;
+        }
+
+        public void setUser(String user) {
+            this.user = user;
+        }
+
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
+
+        public String getOperation() {
+            return operation;
+        }
+
+        public void setOperation(String operation) {
+            this.operation = operation;
+        }
+    }
+  learner_created: true
+- name: src/account/controller/SecurityController.java
+  visible: true
+  learner_created: true
+- name: src/account/service/SecurityService.java
+  visible: true
+  learner_created: true
+- name: src/account/dto/UserStatusChangeRequest.java
+  visible: true
+  learner_created: true
+- name: src/account/dto/UserStatusChangeResponse.java
+  visible: true
+  learner_created: true
+- name: src/account/dto/DeleteUserResponse.java
+  visible: true
+  learner_created: true
+- name: src/account/dto/ChangeUserPasswordResponse.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/16606#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: "Wrong answer in test #4\n\nGET /api/security/events/ should respond with\
+    \ status code 200, responded: 404\n&#39;CREATE_USER&#39; security event missing\n\
+    Response body:\n{\r\n  &quot;timestamp&quot; : &quot;2022-05-30T12:30:16.040+00:00&quot;,\r\
+    \n  &quot;status&quot; : 404,\r\n  &quot;error&quot; : &quot;Not Found&quot;,\r\
+    \n  &quot;message&quot; : &quot;No message available&quot;,\r\n  &quot;path&quot;\
+    \ : &quot;/api/security/events/&quot;\r\n}\n\nPlease find below the output of\
+    \ your program during this failed test.\n\n---\n\n.   ____          _        \
+    \    __ _ _\n /\\\\ / ___&#39;_ __ _ _(_)_ __  __ _ \\ \\ \\ \\\n( ( )\\___ |\
+    \ &#39;_ | &#39;_| | &#39;_ \\/ _` | \\ \\ \\ \\\n \\\\/  ___)| |_)| | | | | ||\
+    \ (_| |  ) ) ) )\n  &#39;  |____| .__|_| |_|_| |_\\__, | / / / /\n =========|_|==============|___/=/_/_/_/\n\
+    \ :: Spring Boot ::        (v2.3.1.RELEASE)\n\n2022-05-30 15:30:09.792  INFO 17012\
+    \ --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication\
+    \ on Fractal with PID 17012 (started by Fractal in D:\\RepositoryRoadToProfession\\\
+    Account Service\\Account Service\\task)\n2022-05-30 15:30:09.798  INFO 17012 ---\
+    \ [    Test worker] account.AccountServiceApplication        : No active profile\
+    \ set, falling back to default profiles: default\n2022-05-30 15:30:11.024  INFO\
+    \ 17012 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping\
+    \ Spring Data JPA repositories in DEFERRED mode.\n2022-05-30 15:30:11.109  INFO\
+    \ 17012 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished\
+    \ Spring Data repository scanning in 70ms. Found 2 JPA repository interfaces.\n\
+    2022-05-30 15:30:11.858  INFO 17012 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer\
+    \  : Tomcat initialized with port(s): 28852 (http)\n2022-05-30 15:30:11.875  INFO\
+    \ 17012 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting\
+    \ service [Tomcat]\n2022-05-30 15:30:11.876  INFO 17012 --- [    Test worker]\
+    \ org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache\
+    \ Tomcat/9.0.36]\n2022-05-30 15:30:12.041  INFO 17012 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]\
+    \       : Initializing Spring embedded WebApplicationContext\n2022-05-30 15:30:12.042\
+    \  INFO 17012 --- [    Test worker] w.s.c.ServletWebServerApplicationContext :\
+    \ Root WebApplicationContext: initialization completed in 2173 ms\n2022-05-30\
+    \ 15:30:12.198  INFO 17012 --- [    Test worker] com.zaxxer.hikari.HikariDataSource\
+    \       : HikariPool-1 - Starting...\n2022-05-30 15:30:12.452  INFO 17012 ---\
+    \ [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 -\
+    \ Start completed.\n2022-05-30 15:30:12.468  INFO 17012 --- [    Test worker]\
+    \ o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;.\
+    \ Database available at &#39;jdbc:h2:file:../service_db&#39;\n2022-05-30 15:30:12.636\
+    \  INFO 17012 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  :\
+    \ Initializing ExecutorService &#39;applicationTaskExecutor&#39;\n2022-05-30 15:30:12.710\
+    \  INFO 17012 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  :\
+    \ HHH000204: Processing PersistenceUnitInfo [name: default]\n2022-05-30 15:30:12.780\
+    \  WARN 17012 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration :\
+    \ spring.jpa.open-in-view is enabled by default. Therefore, database queries may\
+    \ be performed during view rendering. Explicitly configure spring.jpa.open-in-view\
+    \ to disable this warning\n2022-05-30 15:30:12.812  INFO 17012 --- [         task-1]\
+    \ org.hibernate.Version                    : HHH000412: Hibernate ORM core version\
+    \ 5.4.17.Final\n2022-05-30 15:30:13.048  INFO 17012 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain\
+    \     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@56266bda,\
+    \ org.springframework.security.web.context.SecurityContextPersistenceFilter@5a82bc58,\
+    \ org.springframework.security.web.header.HeaderWriterFilter@58fbcb71, org.springframework.security.web.authentication.logout.LogoutFilter@28ce75ec,\
+    \ org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7d1cb59f,\
+    \ org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6210666c,\
+    \ org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@65af05b2,\
+    \ org.springframework.security.web.authentication.AnonymousAuthenticationFilter@18bb1b88,\
+    \ org.springframework.security.web.session.SessionManagementFilter@5cbe95b1, org.springframework.security.web.access.ExceptionTranslationFilter@6a1d1467,\
+    \ org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1857fe6c]\n\
+    2022-05-30 15:30:13.091  INFO 17012 --- [         task-1] o.hibernate.annotations.common.Version\
+    \   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}\n2022-05-30 15:30:13.289\
+    \  INFO 17012 --- [         task-1] org.hibernate.dialect.Dialect            :\
+    \ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect\n2022-05-30 15:30:14.310\
+    \  INFO 17012 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       :\
+    \ HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]\n\
+    2022-05-30 15:30:14.322  INFO 17012 --- [         task-1] j.LocalContainerEntityManagerFactoryBean\
+    \ : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;\n\
+    2022-05-30 15:30:14.394  INFO 17012 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver\
+    \      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;\n2022-05-30\
+    \ 15:30:14.455  INFO 17012 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer\
+    \  : Tomcat started on port(s): 28852 (http) with context path &#39;&#39;\n2022-05-30\
+    \ 15:30:14.456  INFO 17012 --- [    Test worker] DeferredRepositoryInitializationListener\
+    \ : Triggering deferred initialization of Spring Data repositories…\n2022-05-30\
+    \ 15:30:14.792  INFO 17012 --- [    Test worker] DeferredRepositoryInitializationListener\
+    \ : Spring Data repositories initialized!\n2022-05-30 15:30:14.805  INFO 17012\
+    \ --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication\
+    \ in 5.42 seconds (JVM running for 6.696)\n2022-05-30 15:30:15.170  INFO 17012\
+    \ --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing\
+    \ Spring DispatcherServlet &#39;dispatcherServlet&#39;\n2022-05-30 15:30:15.170\
+    \  INFO 17012 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        :\
+    \ Initializing Servlet &#39;dispatcherServlet&#39;\n2022-05-30 15:30:15.180  INFO\
+    \ 17012 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed\
+    \ initialization in 10 ms"
+  time: Mon, 30 May 2022 12:30:16 UTC
 record: -1
