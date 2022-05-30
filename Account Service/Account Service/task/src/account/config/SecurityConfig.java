@@ -1,6 +1,7 @@
 package account.config;
 
 import account.exceptionhandler.CustomAccessDeniedHandler;
+import account.exceptionhandler.RestAccessDeniedHandler;
 import account.util.Role;
 import account.exceptionhandler.RestAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     DaoAuthenticationProvider authenticationProvider;
     @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+    @Autowired
+    private RestAccessDeniedHandler restAccessDeniedHandler;
 
     public void configure(HttpSecurity http) throws Exception {
         http.httpBasic()
                 .authenticationEntryPoint(restAuthenticationEntryPoint)// Handle auth error
                 .and()
-                .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
+                .exceptionHandling().accessDeniedHandler(restAccessDeniedHandler)
                 .and()
                 .csrf().disable().headers().frameOptions().disable() // for Postman, the H2 console
                 .and()
@@ -46,9 +49,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider);
-    }
-    @Bean
-    public AccessDeniedHandler accessDeniedHandler(){
-        return new CustomAccessDeniedHandler();
     }
 }

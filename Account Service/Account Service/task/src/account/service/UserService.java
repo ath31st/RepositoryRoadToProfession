@@ -23,13 +23,14 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
     @Autowired
     private final UserRepository userRepository;
+    @Autowired
+    private SecurityService securityService;
     @Autowired
     private List<String> breachedPasswords;
     @Autowired
@@ -51,10 +52,12 @@ public class UserService implements UserDetailsService {
             user.grantAuthority(Role.ROLE_ADMINISTRATOR);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepository.save(user);
+            securityService.createNewUserEvent(user);
         } else if (userRepository.findUserByEmailIgnoreCase(user.getEmail()).isEmpty()) {
             user.grantAuthority(Role.ROLE_USER);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepository.save(user);
+            securityService.createNewUserEvent(user);
         } else throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User exist!");
         return user;
     }
@@ -65,6 +68,7 @@ public class UserService implements UserDetailsService {
         User tmpUser = userRepository.findUserByEmailIgnoreCase(authUser.getEmail()).get();
         tmpUser.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(tmpUser);
+        securityService.createChangePasswordEvent(tmpUser);
         return ResponseEntity.ok().body(new ChangeUserPasswordResponse(authUser.getEmail(), "The password has been updated successfully"));
     }
 
@@ -80,6 +84,7 @@ public class UserService implements UserDetailsService {
         if (user.getRoles().contains(Role.ROLE_ADMINISTRATOR))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't remove ADMINISTRATOR role!");
         userRepository.delete(user);
+        securityService.createDeleteUserEvent(user);
         return ResponseEntity.ok().body(new DeleteUserResponse(user.getEmail(), "Deleted successfully!"));
     }
 
@@ -91,10 +96,12 @@ public class UserService implements UserDetailsService {
         if (request.getOperation().equals(Operation.LOCK.name())) {
             user.setAccountNonLocked(false);
             userRepository.save(user);
+            securityService.createManualLockUserEvent(user);
             return ResponseEntity.ok().body(new UserStatusChangeResponse("User " + request.getUser() + " locked!"));
         } else if (request.getOperation().equals(Operation.UNLOCK.name())) {
             user.setAccountNonLocked(true);
             userRepository.save(user);
+            securityService.createUnlockUserEvent(user);
             return ResponseEntity.ok().body(new UserStatusChangeResponse("User " + request.getUser() + " unlocked!"));
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Operation not found!");

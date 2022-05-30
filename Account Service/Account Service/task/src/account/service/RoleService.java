@@ -17,6 +17,8 @@ import java.util.*;
 public class RoleService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    SecurityService securityService;
 
     public ResponseEntity<User> changeUserRole(RoleChangeRequest roleChangeRequest) {
         User user = userRepository.findUserByEmailIgnoreCase(roleChangeRequest.getUser()).orElseThrow(
@@ -50,6 +52,7 @@ public class RoleService {
         roles.add(roleFromReq);
         roles.sort(Comparator.reverseOrder());
         user.setRoles(roles);
+        securityService.createGrantRoleEvent(user);
     }
 
     private void removeOperation(User user, Role roleFromReq) {
@@ -61,6 +64,7 @@ public class RoleService {
         List<Role> roles = user.getRoles();
         roles.remove(roleFromReq);
         user.setRoles(roles);
+        securityService.createRemoveRoleEvent(user);
     }
 
     private void checkExistingRole(String roleFromReq) {
