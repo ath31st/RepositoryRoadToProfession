@@ -22,6 +22,10 @@ import java.util.List;
 public class SecurityService {
     @Autowired
     private EventRepository eventRepository;
+    @Autowired
+    private FailedLoginService failedLoginService;
+    @Autowired
+    private UserService userService;
 
     public ResponseEntity<List<Event>> getEvents() {
         List<Event> events = new ArrayList<>();
@@ -130,13 +134,22 @@ public class SecurityService {
     }
 
     public void createLoginFailedEvent(HttpServletRequest request) {
-        Event event = new Event();
-        event.setDate(LocalDateTime.now());
-        event.setAction(Action.LOGIN_FAILED);
-        event.setSubject(getFailedLogin(request));
-        event.setObject(request.getRequestURI()); // the endpoint where the event occurred
-        event.setPath(request.getRequestURI()); // the endpoint where the event occurred
-        eventRepository.save(event);
+        int count = failedLoginService.getCountFailedLogin(getFailedLogin(request));
+        if (count >= 5) {
+            createBruteForceEvent(request);
+            createLockUserEvent(request);
+            userService.automaticLockUser(getFailedLogin(request));
+        } else {
+            failedLoginService.failedLoginUpdate(getFailedLogin(request));
+
+            Event event = new Event();
+            event.setDate(LocalDateTime.now());
+            event.setAction(Action.LOGIN_FAILED);
+            event.setSubject(getFailedLogin(request));
+            event.setObject(request.getRequestURI()); // the endpoint where the event occurred
+            event.setPath(request.getRequestURI()); // the endpoint where the event occurred
+            eventRepository.save(event);
+        }
     }
 
     private String getFailedLogin(HttpServletRequest request) {

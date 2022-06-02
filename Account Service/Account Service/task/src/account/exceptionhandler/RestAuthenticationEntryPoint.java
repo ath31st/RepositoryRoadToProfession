@@ -1,5 +1,7 @@
 package account.exceptionhandler;
 
+import account.entites.User;
+import account.service.FailedLoginService;
 import account.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;

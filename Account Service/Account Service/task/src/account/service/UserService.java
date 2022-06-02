@@ -108,6 +108,13 @@ public class UserService implements UserDetailsService {
         }
     }
 
+    public void automaticLockUser(String email) {
+        User user = userRepository.findUserByEmailIgnoreCase(email)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+        user.setAccountNonLocked(false);
+        userRepository.save(user);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<User> user = userRepository.findUserByEmailIgnoreCase(email);
