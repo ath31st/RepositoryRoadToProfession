@@ -111,6 +111,8 @@ public class UserService implements UserDetailsService {
     public void automaticLockUser(String email) {
         User user = userRepository.findUserByEmailIgnoreCase(email)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+        if (user.getRoles().contains(Role.ROLE_ADMINISTRATOR))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't lock the ADMINISTRATOR!");
         user.setAccountNonLocked(false);
         userRepository.save(user);
     }

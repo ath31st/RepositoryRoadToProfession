@@ -1,6 +1,6 @@
 package account.exceptionhandler;
 
-import account.entites.User;
+
 import account.service.FailedLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
