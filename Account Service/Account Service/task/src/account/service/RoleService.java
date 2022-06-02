@@ -36,8 +36,10 @@ public class RoleService {
 
         if (operationFromReq.equals(Operation.GRANT)) {
             grantOperation(user, roleFromReq);
+            securityService.createGrantRoleEvent(user, roleChangeRequest.getRole().toUpperCase());
         } else if (operationFromReq.equals(Operation.REMOVE)) {
             removeOperation(user, roleFromReq);
+            securityService.createRemoveRoleEvent(user, roleChangeRequest.getRole().toUpperCase());
         }
         userRepository.save(user);
         return ResponseEntity.ok().body(user);
@@ -52,7 +54,6 @@ public class RoleService {
         roles.add(roleFromReq);
         roles.sort(Comparator.reverseOrder());
         user.setRoles(roles);
-        securityService.createGrantRoleEvent(user);
     }
 
     private void removeOperation(User user, Role roleFromReq) {
@@ -64,7 +65,6 @@ public class RoleService {
         List<Role> roles = user.getRoles();
         roles.remove(roleFromReq);
         user.setRoles(roles);
-        securityService.createRemoveRoleEvent(user);
     }
 
     private void checkExistingRole(String roleFromReq) {

@@ -1205,47 +1205,6 @@ files:
         }
     }
   learner_created: true
-- name: src/account/exceptionhandler/CustomAccessDeniedHandler.java
-  visible: true
-  text: |-
-    package account.exceptionhandler;
-
-    import com.fasterxml.jackson.databind.ObjectMapper;
-    import org.springframework.http.HttpStatus;
-    import org.springframework.security.access.AccessDeniedException;
-    import org.springframework.security.web.access.AccessDeniedHandler;
-
-    import javax.servlet.ServletException;
-    import javax.servlet.http.HttpServletRequest;
-    import javax.servlet.http.HttpServletResponse;
-    import java.io.IOException;
-    import java.time.LocalDateTime;
-    import java.util.HashMap;
-    import java.util.Map;
-
-    public class CustomAccessDeniedHandler implements AccessDeniedHandler {
-
-        private ObjectMapper objectMapper = new ObjectMapper();
-
-        @Override
-        public void handle(
-                HttpServletRequest request,
-                HttpServletResponse response,
-                AccessDeniedException accessDeniedException)
-                throws IOException {
-
-            response.setStatus(HttpStatus.FORBIDDEN.value());
-            Map<String, Object> data = new HashMap<>();
-            data.put("timestamp", LocalDateTime.now().toString());
-            data.put("status", 403);
-            data.put("message", "Access Denied!");
-            data.put("error", "Forbidden");
-            data.put("path", request.getRequestURI());
-            response.getOutputStream()
-                    .println(objectMapper.writeValueAsString(data));
-        }
-    }
-  learner_created: true
 - name: src/account/repository/PaymentRepository.java
   visible: true
   text: |
@@ -1999,61 +1958,221 @@ files:
 feedback_link: https://hyperskill.org/learn/step/16606#comment
 status: Failed
 feedback:
-  message: |-
-    Wrong answer in test #6
-
-    The JSON object at key object is incorrect, found &quot;Grant role ACCOUNTANT to ivanivanov@acme.com&quot;
-
-    Full JSON:
-    {
-      &quot;id&quot;: 6,
-      &quot;date&quot;: &quot;2022-06-02T17:00:47.730572&quot;,
-      &quot;action&quot;: &quot;GRANT_ROLE&quot;,
-      &quot;subject&quot;: &quot;johndoe@acme.com&quot;,
-      &quot;object&quot;: &quot;Grant role ACCOUNTANT to ivanivanov@acme.com&quot;,
-      &quot;path&quot;: &quot;/api/admin/user/role&quot;
-    }
-
-    Please find below the output of your program during this failed test.
-
-    ---
-
-    .   ____          _            __ _ _
-     /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
-    ( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
-     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-      &#39;  |____| .__|_| |_|_| |_\__, | / / / /
-     =========|_|==============|___/=/_/_/_/
-     :: Spring Boot ::        (v2.3.1.RELEASE)
-
-    2022-06-02 17:00:41.582  INFO 1620 --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication on Fractal with PID 1620 (started by Fractal in D:\RepositoryRoadToProfession\Account Service\Account Service\task)
-    2022-06-02 17:00:41.587  INFO 1620 --- [    Test worker] account.AccountServiceApplication        : No active profile set, falling back to default profiles: default
-    2022-06-02 17:00:42.957  INFO 1620 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-    2022-06-02 17:00:43.049  INFO 1620 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80ms. Found 4 JPA repository interfaces.
-    2022-06-02 17:00:43.776  INFO 1620 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
-    2022-06-02 17:00:43.787  INFO 1620 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-    2022-06-02 17:00:43.788  INFO 1620 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
-    2022-06-02 17:00:43.940  INFO 1620 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-    2022-06-02 17:00:43.940  INFO 1620 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2281 ms
-    2022-06-02 17:00:44.103  INFO 1620 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-    2022-06-02 17:00:44.332  INFO 1620 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-    2022-06-02 17:00:44.350  INFO 1620 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../service_db&#39;
-    2022-06-02 17:00:44.510  INFO 1620 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService &#39;applicationTaskExecutor&#39;
-    2022-06-02 17:00:44.579  INFO 1620 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-    2022-06-02 17:00:44.644  WARN 1620 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-    2022-06-02 17:00:44.668  INFO 1620 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
-    2022-06-02 17:00:44.903  INFO 1620 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-    2022-06-02 17:00:44.909  INFO 1620 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@52f43225, org.springframework.security.web.context.SecurityContextPersistenceFilter@604c7e9b, org.springframework.security.web.header.HeaderWriterFilter@5a82bc58, org.springframework.security.web.authentication.logout.LogoutFilter@7d1cb59f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@685e6a68, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6181bc4a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@29f3185c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@55d1f065, org.springframework.security.web.session.SessionManagementFilter@2c2a903f, org.springframework.security.web.access.ExceptionTranslationFilter@5cbe95b1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@53b7bf01]
-    2022-06-02 17:00:45.079  INFO 1620 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-    2022-06-02 17:00:46.122  INFO 1620 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-    2022-06-02 17:00:46.134  INFO 1620 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
-    2022-06-02 17:00:46.216  INFO 1620 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
-    2022-06-02 17:00:46.273  INFO 1620 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path &#39;&#39;
-    2022-06-02 17:00:46.274  INFO 1620 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
-    2022-06-02 17:00:46.610  INFO 1620 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-    2022-06-02 17:00:46.623  INFO 1620 --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication in 5.427 seconds (JVM running for 6.514)
-    2022-06-02 17:00:46.945  INFO 1620 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
-    2022-06-02 17:00:46.946  INFO 1620 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
-    2022-06-02 17:00:46.956  INFO 1620 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
-  time: Thu, 02 Jun 2022 14:00:48 UTC
+  message: "Wrong answer in test #43\n\nGET /api/security/events/ should respond with\
+    \ status code 403, responded: 200\nTrying to access business endpoint with administrative\
+    \ user\nResponse body:\n[ {\r\n  &quot;id&quot; : 2,\r\n  &quot;date&quot; : &quot;2022-06-02T20:49:35.881658&quot;,\r\
+    \n  &quot;action&quot; : &quot;CREATE_USER&quot;,\r\n  &quot;subject&quot; : &quot;Anonymous&quot;,\r\
+    \n  &quot;object&quot; : &quot;johndoe@acme.com&quot;,\r\n  &quot;path&quot; :\
+    \ &quot;/api/auth/signup&quot;\r\n}, {\r\n  &quot;id&quot; : 4,\r\n  &quot;date&quot;\
+    \ : &quot;2022-06-02T20:49:36.051658&quot;,\r\n  &quot;action&quot; : &quot;CREATE_USER&quot;,\r\
+    \n  &quot;subject&quot; : &quot;Anonymous&quot;,\r\n  &quot;object&quot; : &quot;ivanivanov@acme.com&quot;,\r\
+    \n  &quot;path&quot; : &quot;/api/auth/signup&quot;\r\n}, {\r\n  &quot;id&quot;\
+    \ : 6,\r\n  &quot;date&quot; : &quot;2022-06-02T20:49:36.237157&quot;,\r\n  &quot;action&quot;\
+    \ : &quot;GRANT_ROLE&quot;,\r\n  &quot;subject&quot; : &quot;johndoe@acme.com&quot;,\r\
+    \n  &quot;object&quot; : &quot;Grant role AUDITOR to ivanivanov@acme.com&quot;,\r\
+    \n  &quot;path&quot; : &quot;/api/admin/user/role&quot;\r\n}, {\r\n  &quot;id&quot;\
+    \ : 11,\r\n  &quot;date&quot; : &quot;2022-06-02T20:49:36.55116&quot;,\r\n  &quot;action&quot;\
+    \ : &quot;CREATE_USER&quot;,\r\n  &quot;subject&quot; : &quot;Anonymous&quot;,\r\
+    \n  &quot;object&quot; : &quot;maxmustermann@acme.com&quot;,\r\n  &quot;path&quot;\
+    \ : &quot;/api/auth/signup&quot;\r\n}, {\r\n  &quot;id&quot; : 14,\r\n  &quot;date&quot;\
+    \ : &quot;2022-06-02T20:49:36.692158&quot;,\r\n  &quot;action&quot; : &quot;CREATE_USER&quot;,\r\
+    \n  &quot;subject&quot; : &quot;Anonymous&quot;,\r\n  &quot;object&quot; : &quot;petrpetrov@acme.com&quot;,\r\
+    \n  &quot;path&quot; : &quot;/api/auth/signup&quot;\r\n}, {\r\n  &quot;id&quot;\
+    \ : 19,\r\n  &quot;date&quot; : &quot;2022-06-02T20:49:36.989661&quot;,\r\n  &quot;action&quot;\
+    \ : &quot;LOGIN_FAILED&quot;,\r\n  &quot;subject&quot; : &quot;maxmustermann@acme.com&quot;,\r\
+    \n  &quot;object&quot; : &quot;/api/empl/payment&quot;,\r\n  &quot;path&quot;\
+    \ : &quot;/api/empl/payment&quot;\r\n}, {\r\n  &quot;id&quot; : 22,\r\n  &quot;date&quot;\
+    \ : &quot;2022-06-02T20:49:37.15166&quot;,\r\n  &quot;action&quot; : &quot;LOGIN_FAILED&quot;,\r\
+    \n  &quot;subject&quot; : &quot;maxmustermann@google.com&quot;,\r\n  &quot;object&quot;\
+    \ : &quot;/api/empl/payment&quot;,\r\n  &quot;path&quot; : &quot;/api/empl/payment&quot;\r\
+    \n}, {\r\n  &quot;id&quot; : 25,\r\n  &quot;date&quot; : &quot;2022-06-02T20:49:37.297158&quot;,\r\
+    \n  &quot;action&quot; : &quot;LOGIN_FAILED&quot;,\r\n  &quot;subject&quot; :\
+    \ &quot;nautilus@pompilius.com&quot;,\r\n  &quot;object&quot; : &quot;/api/empl/payment&quot;,\r\
+    \n  &quot;path&quot; : &quot;/api/empl/payment&quot;\r\n}, {\r\n  &quot;id&quot;\
+    \ : 29,\r\n  &quot;date&quot; : &quot;2022-06-02T20:49:39.589658&quot;,\r\n  &quot;action&quot;\
+    \ : &quot;GRANT_ROLE&quot;,\r\n  &quot;subject&quot; : &quot;johndoe@acme.com&quot;,\r\
+    \n  &quot;object&quot; : &quot;Grant role ACCOUNTANT to petrpetrov@acme.com&quot;,\r\
+    \n  &quot;path&quot; : &quot;/api/admin/user/role&quot;\r\n}, {\r\n  &quot;id&quot;\
+    \ : 32,\r\n  &quot;date&quot; : &quot;2022-06-02T20:49:39.763659&quot;,\r\n  &quot;action&quot;\
+    \ : &quot;REMOVE_ROLE&quot;,\r\n  &quot;subject&quot; : &quot;johndoe@acme.com&quot;,\r\
+    \n  &quot;object&quot; : &quot;Remove role ACCOUNTANT from petrpetrov@acme.com&quot;,\r\
+    \n  &quot;path&quot; : &quot;/api/admin/user/role&quot;\r\n}, {\r\n  &quot;id&quot;\
+    \ : 35,\r\n  &quot;date&quot; : &quot;2022-06-02T20:49:39.934892&quot;,\r\n  &quot;action&quot;\
+    \ : &quot;DELETE_USER&quot;,\r\n  &quot;subject&quot; : &quot;johndoe@acme.com&quot;,\r\
+    \n  &quot;object&quot; : &quot;petrpetrov@acme.com&quot;,\r\n  &quot;path&quot;\
+    \ : &quot;/api/admin/user&quot;\r\n}, {\r\n  &quot;id&quot; : 38,\r\n  &quot;date&quot;\
+    \ : &quot;2022-06-02T20:49:40.226159&quot;,\r\n  &quot;action&quot; : &quot;CHANGE_PASSWORD&quot;,\r\
+    \n  &quot;subject&quot; : &quot;johndoe@acme.com&quot;,\r\n  &quot;object&quot;\
+    \ : &quot;johndoe@acme.com&quot;,\r\n  &quot;path&quot; : &quot;/api/auth/changepass&quot;\r\
+    \n}, {\r\n  &quot;id&quot; : 41,\r\n  &quot;date&quot; : &quot;2022-06-02T20:49:40.364658&quot;,\r\
+    \n  &quot;action&quot; : &quot;ACCESS_DENIED&quot;,\r\n  &quot;subject&quot; :\
+    \ &quot;ivanivanov@acme.com&quot;,\r\n  &quot;object&quot; : &quot;/api/admin/user/role&quot;,\r\
+    \n  &quot;path&quot; : &quot;/api/admin/user/role&quot;\r\n}, {\r\n  &quot;id&quot;\
+    \ : 44,\r\n  &quot;date&quot; : &quot;2022-06-02T20:49:40.505668&quot;,\r\n  &quot;action&quot;\
+    \ : &quot;ACCESS_DENIED&quot;,\r\n  &quot;subject&quot; : &quot;ivanivanov@acme.com&quot;,\r\
+    \n  &quot;object&quot; : &quot;/api/admin/user/&quot;,\r\n  &quot;path&quot; :\
+    \ &quot;/api/admin/user/&quot;\r\n}, {\r\n  &quot;id&quot; : 47,\r\n  &quot;date&quot;\
+    \ : &quot;2022-06-02T20:49:40.653659&quot;,\r\n  &quot;action&quot; : &quot;ACCESS_DENIED&quot;,\r\
+    \n  &quot;subject&quot; : &quot;ivanivanov@acme.com&quot;,\r\n  &quot;object&quot;\
+    \ : &quot;/api/admin/user/&quot;,\r\n  &quot;path&quot; : &quot;/api/admin/user/&quot;\r\
+    \n}, {\r\n  &quot;id&quot; : 50,\r\n  &quot;date&quot; : &quot;2022-06-02T20:49:40.795658&quot;,\r\
+    \n  &quot;action&quot; : &quot;ACCESS_DENIED&quot;,\r\n  &quot;subject&quot; :\
+    \ &quot;johndoe@acme.com&quot;,\r\n  &quot;object&quot; : &quot;/api/acct/payments&quot;,\r\
+    \n  &quot;path&quot; : &quot;/api/acct/payments&quot;\r\n}, {\r\n  &quot;id&quot;\
+    \ : 52,\r\n  &quot;date&quot; : &quot;2022-06-02T20:49:40.932658&quot;,\r\n  &quot;action&quot;\
+    \ : &quot;ACCESS_DENIED&quot;,\r\n  &quot;subject&quot; : &quot;maxmustermann@acme.com&quot;,\r\
+    \n  &quot;object&quot; : &quot;/api/acct/payments&quot;,\r\n  &quot;path&quot;\
+    \ : &quot;/api/acct/payments&quot;\r\n}, {\r\n  &quot;id&quot; : 55,\r\n  &quot;date&quot;\
+    \ : &quot;2022-06-02T20:49:41.06866&quot;,\r\n  &quot;action&quot; : &quot;ACCESS_DENIED&quot;,\r\
+    \n  &quot;subject&quot; : &quot;johndoe@acme.com&quot;,\r\n  &quot;object&quot;\
+    \ : &quot;/api/empl/payment&quot;,\r\n  &quot;path&quot; : &quot;/api/empl/payment&quot;\r\
+    \n} ]\n\nPlease find below the output of your program during this failed test.\n\
+    \n---\n\n.   ____          _            __ _ _\n /\\\\ / ___&#39;_ __ _ _(_)_\
+    \ __  __ _ \\ \\ \\ \\\n( ( )\\___ | &#39;_ | &#39;_| | &#39;_ \\/ _` | \\ \\\
+    \ \\ \\\n \\\\/  ___)| |_)| | | | | || (_| |  ) ) ) )\n  &#39;  |____| .__|_|\
+    \ |_|_| |_\\__, | / / / /\n =========|_|==============|___/=/_/_/_/\n :: Spring\
+    \ Boot ::        (v2.3.1.RELEASE)\n\n2022-06-02 20:49:30.188  INFO 15192 --- [\
+    \    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication\
+    \ on Fractal with PID 15192 (started by Fractal in D:\\RepositoryRoadToProfession\\\
+    Account Service\\Account Service\\task)\n2022-06-02 20:49:30.194  INFO 15192 ---\
+    \ [    Test worker] account.AccountServiceApplication        : No active profile\
+    \ set, falling back to default profiles: default\n2022-06-02 20:49:31.393  INFO\
+    \ 15192 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping\
+    \ Spring Data JPA repositories in DEFERRED mode.\n2022-06-02 20:49:31.475  INFO\
+    \ 15192 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished\
+    \ Spring Data repository scanning in 74ms. Found 4 JPA repository interfaces.\n\
+    2022-06-02 20:49:32.216  INFO 15192 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer\
+    \  : Tomcat initialized with port(s): 28852 (http)\n2022-06-02 20:49:32.231  INFO\
+    \ 15192 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting\
+    \ service [Tomcat]\n2022-06-02 20:49:32.231  INFO 15192 --- [    Test worker]\
+    \ org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache\
+    \ Tomcat/9.0.36]\n2022-06-02 20:49:32.435  INFO 15192 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]\
+    \       : Initializing Spring embedded WebApplicationContext\n2022-06-02 20:49:32.436\
+    \  INFO 15192 --- [    Test worker] w.s.c.ServletWebServerApplicationContext :\
+    \ Root WebApplicationContext: initialization completed in 2171 ms\n2022-06-02\
+    \ 20:49:32.589  INFO 15192 --- [    Test worker] com.zaxxer.hikari.HikariDataSource\
+    \       : HikariPool-1 - Starting...\n2022-06-02 20:49:32.832  INFO 15192 ---\
+    \ [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 -\
+    \ Start completed.\n2022-06-02 20:49:32.849  INFO 15192 --- [    Test worker]\
+    \ o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;.\
+    \ Database available at &#39;jdbc:h2:file:../service_db&#39;\n2022-06-02 20:49:33.012\
+    \  INFO 15192 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  :\
+    \ Initializing ExecutorService &#39;applicationTaskExecutor&#39;\n2022-06-02 20:49:33.071\
+    \  INFO 15192 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  :\
+    \ HHH000204: Processing PersistenceUnitInfo [name: default]\n2022-06-02 20:49:33.145\
+    \  WARN 15192 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration :\
+    \ spring.jpa.open-in-view is enabled by default. Therefore, database queries may\
+    \ be performed during view rendering. Explicitly configure spring.jpa.open-in-view\
+    \ to disable this warning\n2022-06-02 20:49:33.171  INFO 15192 --- [         task-1]\
+    \ org.hibernate.Version                    : HHH000412: Hibernate ORM core version\
+    \ 5.4.17.Final\n2022-06-02 20:49:33.403  INFO 15192 --- [         task-1] o.hibernate.annotations.common.Version\
+    \   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}\n2022-06-02 20:49:33.413\
+    \  INFO 15192 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     :\
+    \ Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4e2109fe,\
+    \ org.springframework.security.web.context.SecurityContextPersistenceFilter@280ecc33,\
+    \ org.springframework.security.web.header.HeaderWriterFilter@645ba24a, org.springframework.security.web.authentication.logout.LogoutFilter@a0d875d,\
+    \ org.springframework.security.web.authentication.www.BasicAuthenticationFilter@271e851e,\
+    \ org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3c27f72,\
+    \ org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@43d3995f,\
+    \ org.springframework.security.web.authentication.AnonymousAuthenticationFilter@18dac12f,\
+    \ org.springframework.security.web.session.SessionManagementFilter@46524ebe, org.springframework.security.web.access.ExceptionTranslationFilter@3c6bd624,\
+    \ org.springframework.security.web.access.intercept.FilterSecurityInterceptor@277bc3a5]\n\
+    2022-06-02 20:49:33.588  INFO 15192 --- [         task-1] org.hibernate.dialect.Dialect\
+    \            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect\n2022-06-02\
+    \ 20:49:34.646  INFO 15192 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator\
+    \       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]\n\
+    2022-06-02 20:49:34.656  INFO 15192 --- [         task-1] j.LocalContainerEntityManagerFactoryBean\
+    \ : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;\n\
+    2022-06-02 20:49:34.729  INFO 15192 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver\
+    \      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;\n2022-06-02\
+    \ 20:49:34.793  INFO 15192 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer\
+    \  : Tomcat started on port(s): 28852 (http) with context path &#39;&#39;\n2022-06-02\
+    \ 20:49:34.794  INFO 15192 --- [    Test worker] DeferredRepositoryInitializationListener\
+    \ : Triggering deferred initialization of Spring Data repositories…\n2022-06-02\
+    \ 20:49:35.128  INFO 15192 --- [    Test worker] DeferredRepositoryInitializationListener\
+    \ : Spring Data repositories initialized!\n2022-06-02 20:49:35.141  INFO 15192\
+    \ --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication\
+    \ in 5.346 seconds (JVM running for 6.418)\n2022-06-02 20:49:35.472  INFO 15192\
+    \ --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing\
+    \ Spring DispatcherServlet &#39;dispatcherServlet&#39;\n2022-06-02 20:49:35.473\
+    \  INFO 15192 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        :\
+    \ Initializing Servlet &#39;dispatcherServlet&#39;\n2022-06-02 20:49:35.483  INFO\
+    \ 15192 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed\
+    \ initialization in 10 ms\n2022-06-02 20:49:37.923  INFO 15192 --- [     Thread-336]\
+    \ j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory\
+    \ for persistence unit &#39;default&#39;\n2022-06-02 20:49:37.925  INFO 15192\
+    \ --- [     Thread-336] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down\
+    \ ExecutorService &#39;applicationTaskExecutor&#39;\n2022-06-02 20:49:37.926 \
+    \ INFO 15192 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       :\
+    \ HikariPool-1 - Shutdown initiated...\n2022-06-02 20:49:37.951  INFO 15192 ---\
+    \ [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 -\
+    \ Shutdown completed.\n\n  .   ____          _            __ _ _\n /\\\\ / ___&#39;_\
+    \ __ _ _(_)_ __  __ _ \\ \\ \\ \\\n( ( )\\___ | &#39;_ | &#39;_| | &#39;_ \\/\
+    \ _` | \\ \\ \\ \\\n \\\\/  ___)| |_)| | | | | || (_| |  ) ) ) )\n  &#39;  |____|\
+    \ .__|_| |_|_| |_\\__, | / / / /\n =========|_|==============|___/=/_/_/_/\n ::\
+    \ Spring Boot ::        (v2.3.1.RELEASE)\n\n2022-06-02 20:49:38.037  INFO 15192\
+    \ --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication\
+    \ on Fractal with PID 15192 (started by Fractal in D:\\RepositoryRoadToProfession\\\
+    Account Service\\Account Service\\task)\n2022-06-02 20:49:38.038  INFO 15192 ---\
+    \ [    Test worker] account.AccountServiceApplication        : No active profile\
+    \ set, falling back to default profiles: default\n2022-06-02 20:49:38.522  INFO\
+    \ 15192 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping\
+    \ Spring Data JPA repositories in DEFERRED mode.\n2022-06-02 20:49:38.535  INFO\
+    \ 15192 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished\
+    \ Spring Data repository scanning in 13ms. Found 4 JPA repository interfaces.\n\
+    2022-06-02 20:49:38.647  INFO 15192 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer\
+    \  : Tomcat initialized with port(s): 28852 (http)\n2022-06-02 20:49:38.648  INFO\
+    \ 15192 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting\
+    \ service [Tomcat]\n2022-06-02 20:49:38.648  INFO 15192 --- [    Test worker]\
+    \ org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache\
+    \ Tomcat/9.0.36]\n2022-06-02 20:49:38.693  INFO 15192 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]\
+    \       : Initializing Spring embedded WebApplicationContext\n2022-06-02 20:49:38.694\
+    \  INFO 15192 --- [    Test worker] w.s.c.ServletWebServerApplicationContext :\
+    \ Root WebApplicationContext: initialization completed in 653 ms\n2022-06-02 20:49:38.745\
+    \  INFO 15192 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       :\
+    \ HikariPool-2 - Starting...\n2022-06-02 20:49:38.760  INFO 15192 --- [    Test\
+    \ worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.\n\
+    2022-06-02 20:49:38.761  INFO 15192 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration\
+    \    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../service_db&#39;\n\
+    2022-06-02 20:49:38.816  INFO 15192 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor\
+    \  : Initializing ExecutorService &#39;applicationTaskExecutor&#39;\n2022-06-02\
+    \ 20:49:38.822  INFO 15192 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper\
+    \  : HHH000204: Processing PersistenceUnitInfo [name: default]\n2022-06-02 20:49:38.828\
+    \  INFO 15192 --- [         task-1] org.hibernate.dialect.Dialect            :\
+    \ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect\n2022-06-02 20:49:38.857\
+    \  WARN 15192 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration :\
+    \ spring.jpa.open-in-view is enabled by default. Therefore, database queries may\
+    \ be performed during view rendering. Explicitly configure spring.jpa.open-in-view\
+    \ to disable this warning\n2022-06-02 20:49:38.910  INFO 15192 --- [    Test worker]\
+    \ o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request,\
+    \ [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6a7ab205,\
+    \ org.springframework.security.web.context.SecurityContextPersistenceFilter@2059c3ff,\
+    \ org.springframework.security.web.header.HeaderWriterFilter@799206ad, org.springframework.security.web.authentication.logout.LogoutFilter@606f0f70,\
+    \ org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1a53ac0c,\
+    \ org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2f8ab988,\
+    \ org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@46c475ba,\
+    \ org.springframework.security.web.authentication.AnonymousAuthenticationFilter@10cb5047,\
+    \ org.springframework.security.web.session.SessionManagementFilter@60251ddb, org.springframework.security.web.access.ExceptionTranslationFilter@7d4e424e,\
+    \ org.springframework.security.web.access.intercept.FilterSecurityInterceptor@26c2f767]\n\
+    2022-06-02 20:49:38.936  INFO 15192 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator\
+    \       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]\n\
+    2022-06-02 20:49:38.936  INFO 15192 --- [         task-1] j.LocalContainerEntityManagerFactoryBean\
+    \ : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;\n\
+    2022-06-02 20:49:39.129  INFO 15192 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver\
+    \      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;\n2022-06-02\
+    \ 20:49:39.147  INFO 15192 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer\
+    \  : Tomcat started on port(s): 28852 (http) with context path &#39;&#39;\n2022-06-02\
+    \ 20:49:39.148  INFO 15192 --- [    Test worker] DeferredRepositoryInitializationListener\
+    \ : Triggering deferred initialization of Spring Data repositories…\n2022-06-02\
+    \ 20:49:39.207  INFO 15192 --- [    Test worker] DeferredRepositoryInitializationListener\
+    \ : Spring Data repositories initialized!\n2022-06-02 20:49:39.211  INFO 15192\
+    \ --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication\
+    \ in 1.198 seconds (JVM running for 10.487)\n2022-06-02 20:49:39.218  INFO 15192\
+    \ --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing\
+    \ Spring DispatcherServlet &#39;dispatcherServlet&#39;\n2022-06-02 20:49:39.218\
+    \  INFO 15192 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        :\
+    \ Initializing Servlet &#39;dispatcherServlet&#39;\n2022-06-02 20:49:39.223  INFO\
+    \ 15192 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed\
+    \ initialization in 4 ms"
+  time: Thu, 02 Jun 2022 17:49:41 UTC
 record: -1

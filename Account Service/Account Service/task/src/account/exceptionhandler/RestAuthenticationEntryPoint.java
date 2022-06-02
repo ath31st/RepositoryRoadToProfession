@@ -1,7 +1,5 @@
 package account.exceptionhandler;
 
-import account.entites.User;
-import account.service.FailedLoginService;
 import account.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
@@ -23,7 +21,8 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
                          HttpServletResponse response,
                          AuthenticationException authException) throws IOException, ServletException {
 
-        securityService.createLoginFailedEvent(request);
+        if (request.getHeader("Authorization") != null)
+            securityService.createLoginFailedEvent(request);
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
     }
 }

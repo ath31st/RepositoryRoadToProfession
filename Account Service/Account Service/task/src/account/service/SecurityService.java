@@ -63,22 +63,22 @@ public class SecurityService {
         eventRepository.save(event);
     }
 
-    public void createGrantRoleEvent(User user) {
+    public void createGrantRoleEvent(User user, String roleFromReq) {
         Event event = new Event();
         event.setDate(LocalDateTime.now());
         event.setAction(Action.GRANT_ROLE);
         event.setSubject(getCurrentUserName());
-        event.setObject("Grant role ACCOUNTANT to " + user.getEmail());
+        event.setObject(String.format("Grant role %s to %s", roleFromReq, user.getEmail()));
         event.setPath("/api/admin/user/role");
         eventRepository.save(event);
     }
 
-    public void createRemoveRoleEvent(User user) {
+    public void createRemoveRoleEvent(User user, String roleFromReq) {
         Event event = new Event();
         event.setDate(LocalDateTime.now());
         event.setAction(Action.REMOVE_ROLE);
         event.setSubject(getCurrentUserName());
-        event.setObject("Remove role ACCOUNTANT from " + user.getEmail());
+        event.setObject(String.format("Remove role %s from %s", roleFromReq, user.getEmail()));
         event.setPath("/api/admin/user/role");
         eventRepository.save(event);
     }
