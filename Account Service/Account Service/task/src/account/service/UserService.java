@@ -35,6 +35,8 @@ public class UserService implements UserDetailsService {
     private List<String> breachedPasswords;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private FailedLoginService failedLoginService;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -91,18 +93,20 @@ public class UserService implements UserDetailsService {
     public ResponseEntity<UserStatusChangeResponse> changeUserStatus(UserStatusChangeRequest request) {
         User user = userRepository.findUserByEmailIgnoreCase(request.getUser())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+
         if (user.getRoles().contains(Role.ROLE_ADMINISTRATOR))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't lock the ADMINISTRATOR!");
         if (request.getOperation().equals(Operation.LOCK.name())) {
             user.setAccountNonLocked(false);
             userRepository.save(user);
             securityService.createManualLockUserEvent(user);
-            return ResponseEntity.ok().body(new UserStatusChangeResponse("User " + request.getUser() + " locked!"));
+            return ResponseEntity.ok().body(new UserStatusChangeResponse("User " + request.getUser().toLowerCase() + " locked!"));
         } else if (request.getOperation().equals(Operation.UNLOCK.name())) {
             user.setAccountNonLocked(true);
             userRepository.save(user);
+            failedLoginService.resetCounterFailedLogin(user.getEmail());
             securityService.createUnlockUserEvent(user);
-            return ResponseEntity.ok().body(new UserStatusChangeResponse("User " + request.getUser() + " unlocked!"));
+            return ResponseEntity.ok().body(new UserStatusChangeResponse("User " + request.getUser().toLowerCase() + " unlocked!"));
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Operation not found!");
         }

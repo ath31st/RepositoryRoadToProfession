@@ -1,6 +1,7 @@
 package account.exceptionhandler;
 
 
+import account.entites.User;
 import account.service.FailedLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -16,8 +17,8 @@ public class AuthenticationFailureListener implements ApplicationListener<Authen
 
     @Override
     public void onApplicationEvent(AuthenticationFailureBadCredentialsEvent event) {
-//        User user = (User) event.getAuthentication().getPrincipal();
-//        failedLoginService.failedLoginUpdate(user);
+        //   User user = (User) event.getAuthentication().getPrincipal();
+        //   failedLoginService.failedLoginUpdate(user);
     }
 
 }

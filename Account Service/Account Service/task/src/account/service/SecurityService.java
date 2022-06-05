@@ -134,22 +134,13 @@ public class SecurityService {
     }
 
     public void createLoginFailedEvent(HttpServletRequest request) {
-        int count = failedLoginService.getCountFailedLogin(getFailedLogin(request));
-        if (count >= 5) {
-            createBruteForceEvent(request);
-            createLockUserEvent(request);
-            userService.automaticLockUser(getFailedLogin(request));
-        } else {
-            failedLoginService.failedLoginUpdate(getFailedLogin(request));
-
-            Event event = new Event();
-            event.setDate(LocalDateTime.now());
-            event.setAction(Action.LOGIN_FAILED);
-            event.setSubject(getFailedLogin(request));
-            event.setObject(request.getRequestURI()); // the endpoint where the event occurred
-            event.setPath(request.getRequestURI()); // the endpoint where the event occurred
-            eventRepository.save(event);
-        }
+        Event event = new Event();
+        event.setDate(LocalDateTime.now());
+        event.setAction(Action.LOGIN_FAILED);
+        event.setSubject(getFailedLogin(request));
+        event.setObject(request.getRequestURI()); // the endpoint where the event occurred
+        event.setPath(request.getRequestURI()); // the endpoint where the event occurred
+        eventRepository.save(event);
     }
 
     private String getFailedLogin(HttpServletRequest request) {
@@ -167,6 +158,19 @@ public class SecurityService {
             currentUserName = user.getEmail();
         }
         return currentUserName;
+    }
+
+    public void createFailedBrutLockEvent(HttpServletRequest request) {
+        int count = failedLoginService.getCountFailedLogin(getFailedLogin(request));
+        if (count == 5) {
+            createLoginFailedEvent(request);
+            createBruteForceEvent(request);
+            createLockUserEvent(request);
+            userService.automaticLockUser(getFailedLogin(request));
+        } else if(count < 5) {
+            createLoginFailedEvent(request);
+        }
+        failedLoginService.failedLoginUpdate(getFailedLogin(request));
     }
 
 }

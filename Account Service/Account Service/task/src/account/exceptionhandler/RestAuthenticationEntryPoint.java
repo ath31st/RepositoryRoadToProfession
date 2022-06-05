@@ -22,7 +22,7 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
                          AuthenticationException authException) throws IOException, ServletException {
 
         if (request.getHeader("Authorization") != null)
-            securityService.createLoginFailedEvent(request);
+            securityService.createFailedBrutLockEvent(request);
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
     }
 }
