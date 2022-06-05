@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">14.812s</div>
+<div class="counter">6.056s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">start</td>
-<td class="success">14.812s</td>
+<td class="success">6.056s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -98,294 +98,33 @@ Start test 1?[0m
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.3.1.RELEASE)
 
-2022-06-05 17:12:04.892  INFO 17300 --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication on Fractal with PID 17300 (started by Fractal in D:\RepositoryRoadToProfession\Account Service\Account Service\task)
-2022-06-05 17:12:04.896  INFO 17300 --- [    Test worker] account.AccountServiceApplication        : No active profile set, falling back to default profiles: default
-2022-06-05 17:12:06.033  INFO 17300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2022-06-05 17:12:06.117  INFO 17300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74ms. Found 4 JPA repository interfaces.
-2022-06-05 17:12:06.873  INFO 17300 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
-2022-06-05 17:12:06.887  INFO 17300 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-06-05 17:12:06.887  INFO 17300 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
-2022-06-05 17:12:07.050  INFO 17300 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-06-05 17:12:07.050  INFO 17300 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2087 ms
-2022-06-05 17:12:07.197  INFO 17300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-06-05 17:12:07.436  INFO 17300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-06-05 17:12:07.452  INFO 17300 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../service_db'
-2022-06-05 17:12:07.621  INFO 17300 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-06-05 17:12:07.680  INFO 17300 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-06-05 17:12:07.750  WARN 17300 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-06-05 17:12:07.771  INFO 17300 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
-2022-06-05 17:12:07.984  INFO 17300 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2022-06-05 17:12:08.016  INFO 17300 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6c2883b1, org.springframework.security.web.context.SecurityContextPersistenceFilter@1c2096c6, org.springframework.security.web.header.HeaderWriterFilter@4e8d9bb6, org.springframework.security.web.authentication.logout.LogoutFilter@5b7ee56c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@47f0f414, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@17f8db6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c4057f9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@336e3be2, org.springframework.security.web.session.SessionManagementFilter@74bdfa0b, org.springframework.security.web.access.ExceptionTranslationFilter@685e6a68, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@402a69f]
-2022-06-05 17:12:08.163  INFO 17300 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2022-06-05 17:12:09.218  INFO 17300 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-06-05 17:12:09.227  INFO 17300 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-06-05 17:12:09.311  INFO 17300 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-2022-06-05 17:12:09.366  INFO 17300 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
-2022-06-05 17:12:09.367  INFO 17300 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
-2022-06-05 17:12:09.710  INFO 17300 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2022-06-05 17:12:09.721  INFO 17300 --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication in 5.191 seconds (JVM running for 6.219)
-2022-06-05 17:12:10.050  INFO 17300 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-06-05 17:12:10.050  INFO 17300 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-06-05 17:12:10.061  INFO 17300 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
-?[1;31m
-Start test 2?[0m
-?[1;31m
-Start test 3?[0m
-?[1;31m
-Start test 4?[0m
-?[1;31m
-Start test 5?[0m
-?[1;31m
-Start test 6?[0m
-?[1;31m
-Start test 7?[0m
-?[1;31m
-Start test 8?[0m
-?[1;31m
-Start test 9?[0m
-?[1;31m
-Start test 10?[0m
-?[1;31m
-Start test 11?[0m
-?[1;31m
-Start test 12?[0m
-?[1;31m
-Start test 13?[0m
-maxmustermann@acme.com 0
-?[1;31m
-Start test 14?[0m
-?[1;31m
-Start test 15?[0m
-maxmustermann@google.com 0
-?[1;31m
-Start test 16?[0m
-?[1;31m
-Start test 17?[0m
-nautilus@pompilius.com 0
-?[1;31m
-Start test 18?[0m
-?[1;31m
-Start test 19?[0m
-?[1;31m
-Start test 20?[0m
-2022-06-05 17:12:12.485  INFO 17300 --- [     Thread-336] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-06-05 17:12:12.489  INFO 17300 --- [     Thread-336] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-2022-06-05 17:12:12.492  INFO 17300 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-06-05 17:12:12.512  INFO 17300 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::        (v2.3.1.RELEASE)
-
-2022-06-05 17:12:12.581  INFO 17300 --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication on Fractal with PID 17300 (started by Fractal in D:\RepositoryRoadToProfession\Account Service\Account Service\task)
-2022-06-05 17:12:12.582  INFO 17300 --- [    Test worker] account.AccountServiceApplication        : No active profile set, falling back to default profiles: default
-2022-06-05 17:12:12.978  INFO 17300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2022-06-05 17:12:12.990  INFO 17300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12ms. Found 4 JPA repository interfaces.
-2022-06-05 17:12:13.090  INFO 17300 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
-2022-06-05 17:12:13.091  INFO 17300 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-06-05 17:12:13.091  INFO 17300 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
-2022-06-05 17:12:13.133  INFO 17300 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-06-05 17:12:13.133  INFO 17300 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 548 ms
-2022-06-05 17:12:13.180  INFO 17300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2022-06-05 17:12:13.194  INFO 17300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2022-06-05 17:12:13.194  INFO 17300 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../service_db'
-2022-06-05 17:12:13.249  INFO 17300 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2022-06-05 17:12:13.256  INFO 17300 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-06-05 17:12:13.262  INFO 17300 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2022-06-05 17:12:13.298  WARN 17300 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2022-06-05 17:12:13.351  INFO 17300 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6f926d01, org.springframework.security.web.context.SecurityContextPersistenceFilter@5ab3f611, org.springframework.security.web.header.HeaderWriterFilter@6b338591, org.springframework.security.web.authentication.logout.LogoutFilter@53b7f08, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@24536f07, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@33425171, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@44aa5585, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@c67a89, org.springframework.security.web.session.SessionManagementFilter@277474fc, org.springframework.security.web.access.ExceptionTranslationFilter@c3ca482, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1ddb6abb]
-2022-06-05 17:12:13.373  INFO 17300 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-06-05 17:12:13.374  INFO 17300 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-06-05 17:12:13.543  INFO 17300 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-2022-06-05 17:12:13.563  INFO 17300 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
-2022-06-05 17:12:13.564  INFO 17300 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
-2022-06-05 17:12:13.631  INFO 17300 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2022-06-05 17:12:13.635  INFO 17300 --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication in 1.076 seconds (JVM running for 10.133)
-?[1;31m
-Start test 21?[0m
-2022-06-05 17:12:13.641  INFO 17300 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-06-05 17:12:13.642  INFO 17300 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2022-06-05 17:12:13.644  INFO 17300 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-?[1;31m
-Start test 22?[0m
-?[1;31m
-Start test 23?[0m
-?[1;31m
-Start test 24?[0m
-?[1;31m
-Start test 25?[0m
-?[1;31m
-Start test 26?[0m
-?[1;31m
-Start test 27?[0m
-?[1;31m
-Start test 28?[0m
-?[1;31m
-Start test 29?[0m
-?[1;31m
-Start test 30?[0m
-?[1;31m
-Start test 31?[0m
-?[1;31m
-Start test 32?[0m
-?[1;31m
-Start test 33?[0m
-?[1;31m
-Start test 34?[0m
-?[1;31m
-Start test 35?[0m
-?[1;31m
-Start test 36?[0m
-?[1;31m
-Start test 37?[0m
-?[1;31m
-Start test 38?[0m
-?[1;31m
-Start test 39?[0m
-?[1;31m
-Start test 40?[0m
-?[1;31m
-Start test 41?[0m
-?[1;31m
-Start test 42?[0m
-?[1;31m
-Start test 43?[0m
-?[1;31m
-Start test 44?[0m
-?[1;31m
-Start test 45?[0m
-maxmustermann@acme.com 1
-?[1;31m
-Start test 46?[0m
-?[1;31m
-Start test 47?[0m
-maxmustermann@acme.com 2
-?[1;31m
-Start test 48?[0m
-?[1;31m
-Start test 49?[0m
-maxmustermann@acme.com 3
-?[1;31m
-Start test 50?[0m
-?[1;31m
-Start test 51?[0m
-maxmustermann@acme.com 4
-?[1;31m
-Start test 52?[0m
-?[1;31m
-Start test 53?[0m
-maxmustermann@acme.com 5
-?[1;31m
-Start test 54?[0m
-?[1;31m
-Start test 55?[0m
-maxmustermann@acme.com 6
-?[1;31m
-Start test 56?[0m
-?[1;31m
-Start test 57?[0m
-?[1;31m
-Start test 58?[0m
-?[1;31m
-Start test 59?[0m
-?[1;31m
-Start test 60?[0m
-maxmustermann@acme.com 1
-?[1;31m
-Start test 61?[0m
-?[1;31m
-Start test 62?[0m
-maxmustermann@acme.com 2
-?[1;31m
-Start test 63?[0m
-?[1;31m
-Start test 64?[0m
-maxmustermann@acme.com 3
-?[1;31m
-Start test 65?[0m
-?[1;31m
-Start test 66?[0m
-maxmustermann@acme.com 4
-?[1;31m
-Start test 67?[0m
-?[1;31m
-Start test 68?[0m
-?[1;31m
-Start test 69?[0m
-maxmustermann@acme.com 1
-?[1;31m
-Start test 70?[0m
-?[1;31m
-Start test 71?[0m
-?[1;31m
-Start test 72?[0m
-?[1;31m
-Start test 73?[0m
-maxmustermann@acme.com 1
-?[1;31m
-Start test 74?[0m
-?[1;31m
-Start test 75?[0m
-?[1;31m
-Start test 76?[0m
-?[1;31m
-Start test 77?[0m
-petrpetrov@acme.com 0
-?[1;31m
-Start test 78?[0m
-petrpetrov@acme.com 1
-?[1;31m
-Start test 79?[0m
-petrpetrov@acme.com 2
-?[1;31m
-Start test 80?[0m
-petrpetrov@acme.com 3
-?[1;31m
-Start test 81?[0m
-?[1;31m
-Start test 82?[0m
-petrpetrov@acme.com 1
-?[1;31m
-Start test 83?[0m
-?[1;31m
-Start test 84?[0m
-petrpetrov@acme.com 1
-?[1;31m
-Start test 85?[0m
-petrpetrov@acme.com 2
-?[1;31m
-Start test 86?[0m
-petrpetrov@acme.com 3
-?[1;31m
-Start test 87?[0m
-petrpetrov@acme.com 4
-?[1;31m
-Start test 88?[0m
-petrpetrov@acme.com 5
-?[1;31m
-Start test 89?[0m
-petrpetrov@acme.com 6
-?[1;31m
-Start test 90?[0m
-johndoe@acme.com 0
-?[1;31m
-Start test 91?[0m
-johndoe@acme.com 1
-?[1;31m
-Start test 92?[0m
-johndoe@acme.com 2
-?[1;31m
-Start test 93?[0m
-johndoe@acme.com 3
-?[1;31m
-Start test 94?[0m
-johndoe@acme.com 4
-?[1;31m
-Start test 95?[0m
+2022-06-05 17:38:41.033  INFO 13736 --- [    Test worker] account.AccountServiceApplication        : Starting AccountServiceApplication on Fractal with PID 13736 (started by Fractal in D:\RepositoryRoadToProfession\Account Service\Account Service\task)
+2022-06-05 17:38:41.036  INFO 13736 --- [    Test worker] account.AccountServiceApplication        : No active profile set, falling back to default profiles: default
+2022-06-05 17:38:42.260  INFO 13736 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2022-06-05 17:38:42.339  INFO 13736 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69ms. Found 4 JPA repository interfaces.
+2022-06-05 17:38:43.082  INFO 13736 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (https)
+2022-06-05 17:38:43.092  INFO 13736 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-05 17:38:43.093  INFO 13736 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2022-06-05 17:38:43.226  INFO 13736 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-05 17:38:43.226  INFO 13736 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2123 ms
+2022-06-05 17:38:43.375  INFO 13736 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-05 17:38:43.611  INFO 13736 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-05 17:38:43.627  INFO 13736 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../service_db'
+2022-06-05 17:38:43.780  INFO 13736 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-06-05 17:38:43.846  INFO 13736 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-05 17:38:43.908  WARN 13736 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-05 17:38:43.924  INFO 13736 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+2022-06-05 17:38:44.138  INFO 13736 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2022-06-05 17:38:44.163  INFO 13736 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@16c5b50a, org.springframework.security.web.context.SecurityContextPersistenceFilter@7548e1fb, org.springframework.security.web.header.HeaderWriterFilter@6cceb281, org.springframework.security.web.authentication.logout.LogoutFilter@1124910c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4d20616a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@994544, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@12e007be, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f8659d0, org.springframework.security.web.session.SessionManagementFilter@6736f40f, org.springframework.security.web.access.ExceptionTranslationFilter@7f8c48f3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1182d1df]
+2022-06-05 17:38:44.312  INFO 13736 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-06-05 17:38:45.361  INFO 13736 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-05 17:38:45.371  INFO 13736 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-05 17:38:45.462  INFO 13736 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2022-06-05 17:38:45.833  INFO 13736 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (https) with context path ''
+2022-06-05 17:38:45.834  INFO 13736 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2022-06-05 17:38:46.166  INFO 13736 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2022-06-05 17:38:46.178  INFO 13736 --- [    Test worker] account.AccountServiceApplication        : Started AccountServiceApplication in 5.519 seconds (JVM running for 6.369)
+CN=accountant_service, OU=home, O=org, L=moscow, ST=moscow, C=107 SHA256withRSA
 </pre>
 </span>
 </div>
@@ -397,7 +136,7 @@ Start test 95?[0m
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.4</a> at 5 июн. 2022 г., 17:12:19</p>
+<a href="http://www.gradle.org">Gradle 7.4</a> at 5 июн. 2022 г., 17:38:46</p>
 </div>
 </div>
 </body>
