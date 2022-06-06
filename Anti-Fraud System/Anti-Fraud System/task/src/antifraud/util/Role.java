@@ -1,8 +1,9 @@
 package antifraud.util;
 
 public enum Role {
-    ADMIN("ROLE_ADMINISTRATOR"),
-    USER("ROLE_USER");
+    ADMINISTRATOR("ROLE_ADMINISTRATOR"),
+    MERCHANT("ROLE_MERCHANT"),
+    SUPPORT("ROLE_SUPPORT");
 
     private String name;
 

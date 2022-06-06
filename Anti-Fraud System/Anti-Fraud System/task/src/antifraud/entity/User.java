@@ -11,7 +11,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -30,10 +29,8 @@ public class User implements UserDetails {
     @NotBlank
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
-
-    @Enumerated(EnumType.STRING)
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<Role> roles;
+    @Column
+    private Role role;
     @JsonIgnore
     private boolean accountNonExpired;
     @JsonIgnore
@@ -67,15 +64,14 @@ public class User implements UserDetails {
     }
 
     public void grantAuthority(Role authority) {
-        if (roles == null) roles = new LinkedList<>();
-        roles.add(authority);
+        role = authority;
     }
 
     @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        roles.forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getName())));
+        authorities.add(new SimpleGrantedAuthority(role.getName()));
         return authorities;
     }
 
@@ -105,6 +101,14 @@ public class User implements UserDetails {
     @Override
     public boolean isAccountNonLocked() {
         return accountNonLocked;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public Role getRole() {
+        return role;
     }
 
     @Override

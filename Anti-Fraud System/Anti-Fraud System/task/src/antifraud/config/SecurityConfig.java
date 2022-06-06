@@ -28,9 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests() // manage access
                 .antMatchers("/actuator/shutdown").permitAll() // needs to run test
                 .antMatchers(HttpMethod.POST, "/api/auth/user").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/api/auth/user").hasAuthority(Role.USER.getName())
-                .antMatchers(HttpMethod.GET, "/api/auth/list").hasAuthority(Role.USER.getName())
-                .antMatchers(HttpMethod.POST, "/api/antifraud/transaction").hasAuthority(Role.USER.getName())
+                .antMatchers(HttpMethod.DELETE, "/api/auth/user").hasAuthority(Role.ADMINISTRATOR.getName())
+                .antMatchers(HttpMethod.PUT, "/api/auth/access").hasAuthority(Role.ADMINISTRATOR.getName())
+                .antMatchers(HttpMethod.GET, "/api/auth/list").hasAnyAuthority(Role.ADMINISTRATOR.getName(), Role.SUPPORT.getName())
+                .antMatchers(HttpMethod.POST, "/api/antifraud/transaction").hasAuthority(Role.MERCHANT.getName())
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // no session

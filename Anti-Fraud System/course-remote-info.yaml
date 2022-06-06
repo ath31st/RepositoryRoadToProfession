@@ -10,7 +10,7 @@ stages:
   is_completed: true
 - id: 1162
   step: 18068
-  is_completed: false
+  is_completed: true
 - id: 1163
   step: 18069
   is_completed: false
@@ -200,7 +200,7 @@ topics:
   - title: External resources
     theory_id: 6216
   - title: Fixed-size array
-    theory_id: 7255
+    theory_id: 20078
   - title: Dynamic array
     theory_id: 5357
   - title: Libraries
