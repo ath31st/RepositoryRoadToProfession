@@ -1,0 +1,607 @@
+[1;31m
+Start test 1[0m
+
+)  .   ____          _            __ _ _
+* /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
++( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+, \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
++  '  |____| .__|_| |_|_| |_\__, | / / / /
+* =========|_|==============|___/=/_/_/_/
+, :: Spring Boot ::        (v2.3.1.RELEASE)
+
+˙2022-06-06 19:16:13.612  INFO 6120 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on Fractal with PID 6120 (started by Fractal in D:\RepositoryRoadToProfession\Anti-Fraud System\Anti-Fraud System\task)
+•2022-06-06 19:16:13.616  INFO 6120 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
+°2022-06-06 19:16:14.750  INFO 6120 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+π2022-06-06 19:16:14.813  INFO 6120 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54ms. Found 1 JPA repository interfaces.
+í2022-06-06 19:16:15.550  INFO 6120 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
+~2022-06-06 19:16:15.563  INFO 6120 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+î2022-06-06 19:16:15.563  INFO 6120 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+ó2022-06-06 19:16:15.679  INFO 6120 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+§2022-06-06 19:16:15.679  INFO 6120 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2010 ms
+2022-06-06 19:16:15.828  INFO 6120 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+Ñ2022-06-06 19:16:16.062  INFO 6120 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+æ2022-06-06 19:16:16.079  INFO 6120 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../service_db'
+õ2022-06-06 19:16:16.236  INFO 6120 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+û2022-06-06 19:16:16.306  INFO 6120 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+ú2022-06-06 19:16:16.322  WARN 6120 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+ó2022-06-06 19:16:16.395  INFO 6120 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+ù2022-06-06 19:16:16.653  INFO 6120 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+ù2022-06-06 19:16:16.672  INFO 6120 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6e321d9d, org.springframework.security.web.context.SecurityContextPersistenceFilter@49631cfb, org.springframework.security.web.header.HeaderWriterFilter@793cef95, org.springframework.security.web.authentication.logout.LogoutFilter@e972ee1, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@29090809, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6133e20b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2a7ebe07, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@754de353, org.springframework.security.web.session.SessionManagementFilter@77c23d90, org.springframework.security.web.access.ExceptionTranslationFilter@752973de, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@259195fe]
+û2022-06-06 19:16:16.831  INFO 6120 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+ÿ2022-06-06 19:16:17.700  INFO 6120 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+®2022-06-06 19:16:17.712  INFO 6120 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+ö2022-06-06 19:16:17.812  INFO 6120 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+°2022-06-06 19:16:17.866  INFO 6120 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
+¶2022-06-06 19:16:17.868  INFO 6120 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories‚Ä¶
+ä2022-06-06 19:16:18.164  INFO 6120 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+©2022-06-06 19:16:18.175  INFO 6120 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 4.96 seconds (JVM running for 5.801)
+
+Test case
+Testing api: '/api/auth/user'
+request: '{
+   "name": "John Doe 1",
+   "password": "oa3VvqnLxW"
+}'
+hExpectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'
+-----
+û2022-06-06 19:16:18.490  INFO 6120 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+ç2022-06-06 19:16:18.490  INFO 6120 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+Ö2022-06-06 19:16:18.498  INFO 6120 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+ƒ2022-06-06 19:16:18.675  WARN 6120 --- [io-28852-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<antifraud.entity.User> antifraud.controller.AuthController.registerNewUser(antifraud.entity.User): [Field error in object 'user' on field 'username': rejected value [null]; codes [NotBlank.user.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.username,username]; arguments []; default message [username]]; default message [must not be blank]] ]
+[1;31m
+Start test 2[0m
+
+Test case
+Testing api: '/api/auth/user'
+request: '{
+   "name": "John Doe 2",
+   "username": "johndoe1"
+}'
+hExpectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'
+-----
+ƒ2022-06-06 19:16:18.732  WARN 6120 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<antifraud.entity.User> antifraud.controller.AuthController.registerNewUser(antifraud.entity.User): [Field error in object 'user' on field 'password': rejected value [null]; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
+[1;31m
+Start test 3[0m
+
+Test case
+Testing api: '/api/auth/user'
+request: '{
+   "name": "John Doe 1",
+   "username": "johndoe1",
+   "password": "oMoa3VvqnLxW"
+}'
+bExpectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
+-----
+[1;31m
+Start test 4[0m
+
+Test case
+Testing api: '/api/auth/list'
+óExpectations: 'Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.'
+-----
+[1;31m
+Start test 5[0m
+
+Test case
+Testing api: '/api/auth/user'
+request: '{
+   "name": "John Doe 1",
+   "username": "johndoe1",
+   "password": "oMoa3VvqnLxW"
+}'
+bExpectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
+-----
+[1;31m
+Start test 6[0m
+
+Test case
+Testing api: '/api/auth/list'
+óExpectations: 'Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.'
+-----
+[1;31m
+Start test 7[0m
+
+Test case
+Testing api: '/api/auth/list'
+AExpectations: 'A user with incorrect credentials is not allowed'
+-----
+[1;31m
+Start test 8[0m
+
+Test case
+Testing api: '/api/auth/list'
+AExpectations: 'A user with incorrect credentials is not allowed'
+-----
+[1;31m
+Start test 9[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+;Expectations: 'Merchant after registration must be LOCKED'
+-----
+[1;31m
+Start test 10[0m
+
+Test case
+ Testing api: '/api/auth/access'
+1Expectations: 'A user johndoe1 must be UNLOCKED'
+-----
+[1;31m
+Start test 11[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+1Expectations: 'A user johndoe1 must be UNLOCKED'
+-----
+[1;31m
+Start test 12[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = 1'
+CExpectations: 'Result validating of Transaction must be 'ALLOWED''
+-----
+[1;31m
+Start test 13[0m
+§2022-06-06 19:16:20.228  INFO 6120 --- [     Thread-336] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+ú2022-06-06 19:16:20.231  INFO 6120 --- [     Thread-336] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+â2022-06-06 19:16:20.233  INFO 6120 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+á2022-06-06 19:16:20.265  INFO 6120 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+)  .   ____          _            __ _ _
+* /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
++( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+, \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
++  '  |____| .__|_| |_|_| |_\__, | / / / /
+* =========|_|==============|___/=/_/_/_/
+, :: Spring Boot ::        (v2.3.1.RELEASE)
+
+˙2022-06-06 19:16:20.352  INFO 6120 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on Fractal with PID 6120 (started by Fractal in D:\RepositoryRoadToProfession\Anti-Fraud System\Anti-Fraud System\task)
+•2022-06-06 19:16:20.353  INFO 6120 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
+°2022-06-06 19:16:20.725  INFO 6120 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+∏2022-06-06 19:16:20.734  INFO 6120 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 1 JPA repository interfaces.
+í2022-06-06 19:16:20.830  INFO 6120 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
+~2022-06-06 19:16:20.831  INFO 6120 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+î2022-06-06 19:16:20.832  INFO 6120 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+ó2022-06-06 19:16:20.869  INFO 6120 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+£2022-06-06 19:16:20.869  INFO 6120 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 514 ms
+2022-06-06 19:16:20.927  INFO 6120 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+Ñ2022-06-06 19:16:20.939  INFO 6120 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+æ2022-06-06 19:16:20.940  INFO 6120 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../service_db'
+õ2022-06-06 19:16:20.985  INFO 6120 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+û2022-06-06 19:16:20.989  INFO 6120 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+û2022-06-06 19:16:20.994  INFO 6120 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+ú2022-06-06 19:16:21.010  WARN 6120 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+ÿ2022-06-06 19:16:21.050  INFO 6120 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+®2022-06-06 19:16:21.051  INFO 6120 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+ù2022-06-06 19:16:21.060  INFO 6120 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@65698020, org.springframework.security.web.context.SecurityContextPersistenceFilter@2ae88712, org.springframework.security.web.header.HeaderWriterFilter@36857d32, org.springframework.security.web.authentication.logout.LogoutFilter@57ab4b33, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@43b2e7db, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@10508ba6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@da11873, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@57617a75, org.springframework.security.web.session.SessionManagementFilter@24520a51, org.springframework.security.web.access.ExceptionTranslationFilter@52dd1be2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@141234df]
+ö2022-06-06 19:16:21.250  INFO 6120 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+°2022-06-06 19:16:21.266  INFO 6120 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
+¶2022-06-06 19:16:21.267  INFO 6120 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories‚Ä¶
+ä2022-06-06 19:16:21.295  INFO 6120 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+™2022-06-06 19:16:21.299  INFO 6120 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 0.991 seconds (JVM running for 8.925)
+[1;31m
+Start test 14[0m
+
+Test case
+Testing api: '/api/auth/list'
+.Expectations: 'After restart user must exist'
+-----
+û2022-06-06 19:16:21.305  INFO 6120 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+ç2022-06-06 19:16:21.305  INFO 6120 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+Ö2022-06-06 19:16:21.307  INFO 6120 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+[1;31m
+Start test 15[0m
+
+Test case
+Testing api: '/api/auth/user'
+request: '{
+   "name": "John Doe 1",
+   "username": "johndoe1",
+   "password": "oMoa3VvqnLxW"
+}'
+{Expectations: 'In case of an attempt to register an existing user, endpoint must respond with HTTP CONFLICT status (409).'
+-----
+[1;31m
+Start test 16[0m
+
+Test case
+Testing api: '/api/auth/user'
+request: '{
+   "name": "John Doe 2",
+   "username": "johndoe2",
+   "password": "oMoa5VvqnLxW"
+}'
+bExpectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
+-----
+[1;31m
+Start test 17[0m
+
+Test case
+Testing api: '/api/auth/list'
+óExpectations: 'Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.'
+-----
+[1;31m
+Start test 18[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = 199'
+CExpectations: 'Result validating of Transaction must be 'ALLOWED''
+-----
+[1;31m
+Start test 19[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = 200'
+CExpectations: 'Result validating of Transaction must be 'ALLOWED''
+-----
+[1;31m
+Start test 20[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = 201'
+MExpectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
+-----
+[1;31m
+Start test 21[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = 1499'
+MExpectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
+-----
+[1;31m
+Start test 22[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = 1500'
+MExpectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
+-----
+[1;31m
+Start test 23[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = 1501'
+FExpectations: 'Result validating of Transaction must be 'PROHIBITED''
+-----
+[1;31m
+Start test 24[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = 2000'
+FExpectations: 'Result validating of Transaction must be 'PROHIBITED''
+-----
+[1;31m
+Start test 25[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = -1'
+6Expectations: 'Response status must be 'Bad request''
+-----
+[1;31m
+Start test 26[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = 0'
+6Expectations: 'Response status must be 'Bad request''
+-----
+[1;31m
+Start test 27[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = null'
+6Expectations: 'Response status must be 'Bad request''
+-----
+[1;31m
+Start test 28[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = ""'
+6Expectations: 'Response status must be 'Bad request''
+-----
+[1;31m
+Start test 29[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'amount = " "'
+6Expectations: 'Response status must be 'Bad request''
+-----
+[1;31m
+Start test 30[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+request: 'empty body'
+6Expectations: 'Response status must be 'Bad request''
+-----
+[1;31m
+Start test 31[0m
+
+Test case
+Testing api: '/api/auth/user'
+#request: '/api/auth/user/somebody'
+RExpectations: 'If a user is not found, respond with HTTP Not Found status (404).'
+-----
+[1;31m
+Start test 32[0m
+
+Test case
+Testing api: '/api/auth/user'
+#request: '/api/auth/user/johndoe1'
+XExpectations: 'The endpoint must delete the user and respond with HTTP OK status (200)'
+-----
+[1;31m
+Start test 33[0m
+
+Test case
+Testing api: '/api/auth/list'
+/Expectations: 'User 'johndoe1' must be delete'
+-----
+[1;31m
+Start test 34[0m
+
+Test case
+Testing api: '/api/auth/role'
+dExpectations: 'If a user is not found, endpoint must respond with the HTTP Not Found status (404).'
+-----
+[1;31m
+Start test 35[0m
+
+Test case
+Testing api: '/api/auth/role'
+fExpectations: 'If a role is not found, endpoint must respond with the HTTP Bad Request status (400).'
+-----
+[1;31m
+Start test 36[0m
+
+Test case
+Testing api: '/api/auth/role'
+jExpectations: 'If a role is ADMINISTRATOR, endpoint must respond with the HTTP Bad Request status (400).'
+-----
+[1;31m
+Start test 37[0m
+
+Test case
+Testing api: '/api/auth/role'
+VExpectations: 'If a role successfully changed, respond with the HTTP OK status (200)'
+-----
+[1;31m
+Start test 38[0m
+
+Test case
+Testing api: '/api/auth/role'
+qExpectations: 'If a role already assigned to a user, endpoint must respond with the HTTP Conflict status (409).'
+-----
+[1;31m
+Start test 39[0m
+
+Test case
+ Testing api: '/api/auth/access'
+1Expectations: 'A user johndoe2 must be UNLOCKED'
+-----
+[1;31m
+Start test 40[0m
+
+Test case
+Testing api: '/api/auth/list'
+DExpectations: 'Role for user 'johndoe2' must be changed to SUPPORT'
+-----
+[1;31m
+Start test 41[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+BExpectations: 'Role MERCHANT must be removed from user johndoe2!'
+-----
+[1;31m
+Start test 42[0m
+
+Test case
+Testing api: '/api/auth/user'
+request: '{
+   "name": "John Doe 3",
+   "username": "johndoe3",
+   "password": "oMoa6VvqnLxW"
+}'
+bExpectations: 'If user successfully added, endpoint must respond with HTTP CREATED status (201) '
+-----
+[1;31m
+Start test 43[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+@Expectations: 'MERCHANT user after registration must be LOCKED'
+-----
+[1;31m
+Start test 44[0m
+
+Test case
+ Testing api: '/api/auth/access'
+1Expectations: 'A user johndoe3 must be UNLOCKED'
+-----
+[1;31m
+Start test 45[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+1Expectations: 'A user johndoe3 must be UNLOCKED'
+-----
+[1;31m
+Start test 46[0m
+
+Test case
+ Testing api: '/api/auth/access'
+/Expectations: 'A user johndoe3 must be LOCKED'
+-----
+[1;31m
+Start test 47[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+/Expectations: 'A user johndoe3 must be LOCKED'
+-----
+[1;31m
+Start test 48[0m
+
+Test case
+ Testing api: '/api/auth/access'
+1Expectations: 'A user johndoe3 must be UNLOCKED'
+-----
+[1;31m
+Start test 49[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+bExpectations: 'A user with role ADMINISTRATOR must not have access to /api/antifraud/transaction'
+-----
+[1;31m
+Start test 50[0m
+
+Test case
++Testing api: '/api/antifraud/transaction/'
+cExpectations: 'A user with role ADMINISTRATOR must not have access to /api/antifraud/transaction/'
+-----
+[1;31m
+Start test 51[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+\Expectations: 'A user with role SUPPORT must not have access to /api/antifraud/transaction'
+-----
+[1;31m
+Start test 52[0m
+
+Test case
++Testing api: '/api/antifraud/transaction/'
+]Expectations: 'A user with role SUPPORT must not have access to /api/antifraud/transaction/'
+-----
+[1;31m
+Start test 53[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+^Expectations: 'A user with role ANONYMOUS must not have access to /api/antifraud/transaction'
+-----
+[1;31m
+Start test 54[0m
+
+Test case
+Testing api: '/api/auth/user'
+YExpectations: 'A user with role ANONYMOUS must not have access to DELETE /api/auth/user'
+-----
+[1;31m
+Start test 55[0m
+
+Test case
+Testing api: '/api/auth/user'
+WExpectations: 'A user with role SUPPORT must not have access to DELETE /api/auth/user'
+-----
+[1;31m
+Start test 56[0m
+
+Test case
+Testing api: '/api/auth/user'
+XExpectations: 'A user with role MERCHANT must not have access to DELETE /api/auth/user'
+-----
+[1;31m
+Start test 57[0m
+
+Test case
+Testing api: '/api/auth/user'
+XExpectations: 'A user with role MERCHANT must not have access to DELETE /api/auth/user'
+-----
+[1;31m
+Start test 58[0m
+
+Test case
+Testing api: '/api/auth/list'
+RExpectations: 'A user with role ANONYMOUS must not have access to /api/auth/list'
+-----
+[1;31m
+Start test 59[0m
+
+Test case
+Testing api: '/api/auth/list'
+QExpectations: 'A user with role MERCHANT must not have access to /api/auth/list'
+-----
+[1;31m
+Start test 60[0m
+
+Test case
+ Testing api: '/api/auth/access'
+SExpectations: 'A user with role MERCHANT must not have access to /api/auth/access'
+-----
+[1;31m
+Start test 61[0m
+
+Test case
+ Testing api: '/api/auth/access'
+RExpectations: 'A user with role SUPPORT must not have access to /api/auth/access'
+-----
+[1;31m
+Start test 62[0m
+
+Test case
+!Testing api: '/api/auth/access/'
+TExpectations: 'A user with role MERCHANT must not have access to /api/auth/access/'
+-----
+[1;31m
+Start test 63[0m
+
+Test case
+!Testing api: '/api/auth/access/'
+SExpectations: 'A user with role SUPPORT must not have access to /api/auth/access/'
+-----
+[1;31m
+Start test 64[0m
+
+Test case
+ Testing api: '/api/auth/access'
+TExpectations: 'A user with role ANONYMOUS must not have access to /api/auth/access'
+-----
+[1;31m
+Start test 65[0m
+
+Test case
+Testing api: '/api/auth/role'
+PExpectations: 'A user with role SUPPORT must not have access to /api/auth/role'
+-----
+[1;31m
+Start test 66[0m
+
+Test case
+Testing api: '/api/auth/role'
+QExpectations: 'A user with role MERCHANT must not have access to /api/auth/role'
+-----
+[1;31m
+Start test 67[0m
+
+Test case
+Testing api: '/api/auth/role'
+RExpectations: 'A user with role ANONYMOUS must not have access to /api/auth/role'
+-----
+[1;31m
+Start test 68[0m
+
+Test case
+Testing api: '/api/auth/role/'
+QExpectations: 'A user with role SUPPORT must not have access to /api/auth/role/'
+-----
+[1;31m
+Start test 69[0m
+
+Test case
+Testing api: '/api/auth/role/'
+RExpectations: 'A user with role MERCHANT must not have access to /api/auth/role/'
+-----

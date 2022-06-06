@@ -1079,6 +1079,593 @@ files:
         };
     }
   learner_created: false
-feedback_link: https://hyperskill.org/projects/232/stages/1164/implement#comment
+- name: src/antifraud/dto/LockUnlockReq.java
+  visible: true
+  text: |
+    package antifraud.dto;
+
+
+    public class LockUnlockReq {
+        private String username;
+        private String operation;
+
+        public LockUnlockReq() {
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getOperation() {
+            return operation;
+        }
+
+        public void setOperation(String operation) {
+            this.operation = operation;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/controller/TransactionController.java
+  visible: true
+  text: |
+    package antifraud.controller;
+
+    import antifraud.service.TransactionService;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.ResponseEntity;
+    import org.springframework.validation.annotation.Validated;
+    import org.springframework.web.bind.annotation.PostMapping;
+    import org.springframework.web.bind.annotation.RequestBody;
+    import org.springframework.web.bind.annotation.RestController;
+
+    import java.util.Map;
+
+    @RestController
+    @Validated
+    public class TransactionController {
+        @Autowired
+        private TransactionService transactionService;
+
+        @PostMapping("/api/antifraud/transaction")
+        public ResponseEntity transactionReq(@RequestBody Map<String, Long> transaction) {
+            return transactionService.checkValidTransaction(transaction);
+        }
+    }
+  learner_created: true
+- name: src/antifraud/repository/UserRepository.java
+  visible: true
+  text: |
+    package antifraud.repository;
+
+    import antifraud.entity.User;
+    import org.springframework.data.repository.CrudRepository;
+
+    import java.util.Optional;
+
+    public interface UserRepository extends CrudRepository<User, Long> {
+        Optional<User> findUserByUsernameIgnoreCase(String username);
+    }
+  learner_created: true
+- name: src/antifraud/entity/User.java
+  visible: true
+  text: |
+    package antifraud.entity;
+
+    import antifraud.util.Role;
+    import com.fasterxml.jackson.annotation.JsonIgnore;
+    import com.fasterxml.jackson.annotation.JsonProperty;
+    import org.springframework.security.core.GrantedAuthority;
+    import org.springframework.security.core.authority.SimpleGrantedAuthority;
+    import org.springframework.security.core.userdetails.UserDetails;
+
+    import javax.persistence.*;
+    import javax.validation.constraints.NotBlank;
+    import java.util.ArrayList;
+    import java.util.Collection;
+    import java.util.List;
+
+    @Entity
+    public class User implements UserDetails {
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name = "id", nullable = false)
+        private Long id;
+        @Column
+        @NotBlank
+        private String name;
+        @Column
+        @NotBlank
+        private String username;
+        @Column
+        @NotBlank
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+        private String password;
+        @Column
+        private Role role;
+        @JsonIgnore
+        private boolean accountNonExpired;
+        @JsonIgnore
+        private boolean accountNonLocked;
+        @JsonIgnore
+        private boolean credentialsNonExpired;
+        @JsonIgnore
+        private boolean enabled;
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public User() {
+            this.accountNonExpired = true;
+            this.accountNonLocked = true;
+            this.credentialsNonExpired = true;
+            this.enabled = true;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void grantAuthority(Role authority) {
+            role = authority;
+        }
+
+        @JsonIgnore
+        @Override
+        public Collection<? extends GrantedAuthority> getAuthorities() {
+            List<GrantedAuthority> authorities = new ArrayList<>();
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+            return authorities;
+        }
+
+        @Override
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        @Override
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        @Override
+        public boolean isAccountNonExpired() {
+            return accountNonExpired;
+        }
+
+        @Override
+        public boolean isAccountNonLocked() {
+            return accountNonLocked;
+        }
+
+        public void setAccountNonLocked(boolean accountNonLocked) {
+            this.accountNonLocked = accountNonLocked;
+        }
+
+        public Role getRole() {
+            return role;
+        }
+
+        @Override
+        public boolean isCredentialsNonExpired() {
+            return credentialsNonExpired;
+        }
+
+        @Override
+        public boolean isEnabled() {
+            return enabled;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/controller/AuthController.java
+  visible: true
+  text: |
+    package antifraud.controller;
+
+    import antifraud.dto.DeleteUserResponse;
+    import antifraud.dto.LockUnlockReq;
+    import antifraud.dto.LockUnlockResp;
+    import antifraud.dto.UserRoleReq;
+    import antifraud.entity.User;
+    import antifraud.service.UserService;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpStatus;
+    import org.springframework.http.ResponseEntity;
+    import org.springframework.web.bind.annotation.*;
+
+    import javax.validation.Valid;
+    import java.util.List;
+
+    @RestController
+    public class AuthController {
+        @Autowired
+        private UserService userService;
+
+        @PostMapping("/api/auth/user")
+        public ResponseEntity<User> registerNewUser(@RequestBody @Valid User user) {
+            return new ResponseEntity<>(userService.registerNewUser(user), HttpStatus.CREATED);
+        }
+
+        @GetMapping("/api/auth/list")
+        public ResponseEntity<List<User>> getUsersInfo() {
+            return new ResponseEntity<>(userService.getUsersInfo(), HttpStatus.OK);
+        }
+
+        @DeleteMapping("/api/auth/user/{username}")
+        public ResponseEntity<DeleteUserResponse> deleteUser(@PathVariable(value = "username") String username) {
+            return new ResponseEntity<>(userService.deleteUser(username), HttpStatus.OK);
+        }
+
+        @PutMapping("/api/auth/access")
+        public ResponseEntity<LockUnlockResp> setLockUnlockUser(@RequestBody LockUnlockReq request) {
+            return new ResponseEntity<>(userService.setLockUnlockUser(request), HttpStatus.OK);
+        }
+
+        @PutMapping("/api/auth/role")
+        public ResponseEntity<User> setRoleUser(@RequestBody UserRoleReq request) {
+            return new ResponseEntity<>(userService.setUserRole(request), HttpStatus.OK);
+        }
+    }
+  learner_created: true
+- name: src/antifraud/dto/DeleteUserResponse.java
+  visible: true
+  text: |
+    package antifraud.dto;
+
+    public class DeleteUserResponse {
+        private String username;
+        private String status;
+
+        public DeleteUserResponse() {
+        }
+
+        public DeleteUserResponse(String username, String status) {
+            this.username = username;
+            this.status = status;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/util/Role.java
+  visible: true
+  text: |
+    package antifraud.util;
+
+    public enum Role {
+        ADMINISTRATOR("ROLE_ADMINISTRATOR"),
+        MERCHANT("ROLE_MERCHANT"),
+        SUPPORT("ROLE_SUPPORT");
+
+        private String name;
+
+        Role(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/config/SecurityConfig.java
+  visible: true
+  text: |
+    package antifraud.config;
+
+    import antifraud.exceptionhandler.RestAuthenticationEntryPoint;
+    import antifraud.util.Role;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+    import org.springframework.http.HttpMethod;
+    import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+    import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+    import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+    import org.springframework.security.config.http.SessionCreationPolicy;
+    import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+    import org.springframework.security.crypto.password.PasswordEncoder;
+
+    @Configuration
+    @EnableWebSecurity
+    public class SecurityConfig extends WebSecurityConfigurerAdapter {
+        @Autowired
+        private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
+        public void configure(HttpSecurity http) throws Exception {
+            http.httpBasic()
+                    .authenticationEntryPoint(restAuthenticationEntryPoint) // Handles auth error
+                    .and()
+                    .csrf().disable().headers().frameOptions().disable() // for Postman, the H2 console
+                    .and()
+                    .authorizeRequests() // manage access
+                    .antMatchers("/actuator/shutdown").permitAll() // needs to run test
+                    .antMatchers(HttpMethod.POST, "/api/auth/user").permitAll()
+                    .antMatchers(HttpMethod.DELETE, "/api/auth/user/**").hasAuthority(Role.ADMINISTRATOR.getName())
+                    .antMatchers(HttpMethod.PUT, "/api/auth/access/**").hasAuthority(Role.ADMINISTRATOR.getName())
+                    .antMatchers(HttpMethod.PUT, "/api/auth/role/**").hasAuthority(Role.ADMINISTRATOR.getName())
+                    .antMatchers(HttpMethod.GET, "/api/auth/list").hasAnyAuthority(Role.ADMINISTRATOR.getName(), Role.SUPPORT.getName())
+                    .antMatchers(HttpMethod.POST, "/api/antifraud/transaction/**").hasAuthority(Role.MERCHANT.getName())
+                    .and()
+                    .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // no session
+        }
+
+        @Bean
+        public PasswordEncoder getEncoder() {
+            return new BCryptPasswordEncoder();
+        }
+    }
+  learner_created: true
+- name: src/antifraud/dto/UserRoleReq.java
+  visible: true
+  text: |
+    package antifraud.dto;
+
+    public class UserRoleReq {
+        private String username;
+        private String role;
+
+        public UserRoleReq() {
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/service/TransactionService.java
+  visible: true
+  text: |
+    package antifraud.service;
+
+    import org.springframework.http.ResponseEntity;
+    import org.springframework.stereotype.Service;
+
+    import java.util.Map;
+
+    @Service
+    public class TransactionService {
+        public ResponseEntity<Map<String, String>> checkValidTransaction(Map<String, Long> transaction) {
+            if (transaction.get("amount") == null || transaction.get("amount") <= 0) {
+                return ResponseEntity.badRequest().build();
+            } else if (transaction.get("amount") <= 200) {
+                return ResponseEntity.ok().body(Map.of("result", "ALLOWED"));
+            } else if (transaction.get("amount") <= 1500) {
+                return ResponseEntity.ok().body(Map.of("result", "MANUAL_PROCESSING"));
+            } else {
+                return ResponseEntity.ok().body(Map.of("result", "PROHIBITED"));
+            }
+        }
+    }
+  learner_created: true
+- name: src/antifraud/service/UserService.java
+  visible: true
+  text: |
+    package antifraud.service;
+
+    import antifraud.dto.DeleteUserResponse;
+    import antifraud.dto.LockUnlockReq;
+    import antifraud.dto.LockUnlockResp;
+    import antifraud.dto.UserRoleReq;
+    import antifraud.entity.User;
+    import antifraud.repository.UserRepository;
+    import antifraud.util.Operation;
+    import antifraud.util.Role;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpStatus;
+    import org.springframework.security.core.userdetails.UserDetails;
+    import org.springframework.security.core.userdetails.UserDetailsService;
+    import org.springframework.security.core.userdetails.UsernameNotFoundException;
+    import org.springframework.security.crypto.password.PasswordEncoder;
+    import org.springframework.stereotype.Service;
+    import org.springframework.web.server.ResponseStatusException;
+
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.List;
+    import java.util.Optional;
+
+    @Service
+    public class UserService implements UserDetailsService {
+        @Autowired
+        private UserRepository userRepository;
+        @Autowired
+        private PasswordEncoder passwordEncoder;
+
+        public User registerNewUser(User user) {
+            checkExistingUser(user);
+            if (userRepository.count() == 0) {
+                user.grantAuthority(Role.ADMINISTRATOR);
+            } else {
+                user.setAccountNonLocked(false);
+                user.grantAuthority(Role.MERCHANT);
+            }
+    //      user.setUsername(user.getUsername().toLowerCase());
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userRepository.save(user);
+            return user;
+        }
+
+        public List<User> getUsersInfo() {
+            List<User> users = new ArrayList<>();
+            userRepository.findAll().iterator().forEachRemaining(users::add);
+            return users;
+        }
+
+        public DeleteUserResponse deleteUser(String username) {
+            User user = retrieveUserFromDb(username);
+            userRepository.delete(user);
+            return new DeleteUserResponse(user.getUsername(), "Deleted successfully!");
+        }
+
+        public LockUnlockResp setLockUnlockUser(LockUnlockReq request) {
+            User user = retrieveUserFromDb(request.getUsername());
+
+            checkExistingOperation(request.getOperation());
+
+            if (request.getOperation().equals(Operation.LOCK.name())) {
+                user.setAccountNonLocked(false);
+            } else if (request.getOperation().equals(Operation.UNLOCK.name())) {
+                user.setAccountNonLocked(true);
+            }
+            userRepository.save(user);
+            return new LockUnlockResp(String.format("User %s %sed!", user.getUsername(), request.getOperation().toLowerCase()));
+        }
+
+        public User setUserRole(UserRoleReq request) {
+            User user = retrieveUserFromDb(request.getUsername());
+
+            checkExistingRole(request.getRole());
+            checkInterchangeabilityRoles(user.getRole(), request.getRole());
+
+            user.grantAuthority(Role.valueOf(request.getRole()));
+            userRepository.save(user);
+            return user;
+        }
+
+        @Override
+        public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+            Optional<User> user = userRepository.findUserByUsernameIgnoreCase(username);
+
+            if (user.isPresent()) {
+                return user.get();
+            } else {
+                throw new UsernameNotFoundException(String.format("Username[%s] not found", username));
+            }
+        }
+
+        private void checkExistingUser(User user) {
+            if (userRepository.findUserByUsernameIgnoreCase(user.getUsername()).isPresent())
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "User exist!");
+        }
+
+        private void checkExistingOperation(String operation) {
+            if (Arrays.stream(Operation.values()).noneMatch(o -> o.name().equals(operation)))
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Operation not found!");
+        }
+
+        private void checkExistingRole(String role) {
+            if (Arrays.stream(Role.values()).noneMatch(r -> r.name().equals(role)))
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Role not found!");
+        }
+
+        private void checkInterchangeabilityRoles(Role userRole, String grantRole) {
+            if (userRole.name().equals(grantRole)) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "User already has that role!");
+            } else if (grantRole.equals(Role.ADMINISTRATOR.name())) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Only one administrator here!");
+            }
+
+        }
+
+        private User retrieveUserFromDb(String username) {
+            return userRepository.findUserByUsernameIgnoreCase(username)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+        }
+    }
+  learner_created: true
+- name: src/antifraud/dto/LockUnlockResp.java
+  visible: true
+  text: |
+    package antifraud.dto;
+
+    public class LockUnlockResp {
+        private String status;
+
+        public LockUnlockResp(String status) {
+            this.status = status;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/exceptionhandler/RestAuthenticationEntryPoint.java
+  visible: true
+  text: |-
+    package antifraud.exceptionhandler;
+
+    import org.springframework.security.core.AuthenticationException;
+    import org.springframework.security.web.AuthenticationEntryPoint;
+    import org.springframework.stereotype.Component;
+
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+    import java.io.IOException;
+
+    @Component
+    public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
+
+        @Override
+        public void commence(HttpServletRequest request,
+                             HttpServletResponse response,
+                             AuthenticationException authException) throws IOException {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
+        }
+    }
+  learner_created: true
+- name: src/antifraud/util/Operation.java
+  visible: true
+  text: |
+    package antifraud.util;
+
+    public enum Operation {
+        LOCK,
+        UNLOCK;
+    }
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/18070#comment
 status: Unchecked
 record: -1
