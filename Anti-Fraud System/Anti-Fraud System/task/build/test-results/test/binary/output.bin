@@ -9,32 +9,32 @@
 * =========|_|==============|___/=/_/_/_/
 , :: Spring Boot ::        (v2.3.1.RELEASE)
 
-¸2022-06-07 14:35:32.054  INFO 14952 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on Fractal with PID 14952 (started by Fractal in D:\RepositoryRoadToProfession\Anti-Fraud System\Anti-Fraud System\task)
-¶2022-06-07 14:35:32.057  INFO 14952 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
-¢2022-06-07 14:35:33.221  INFO 14952 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-∫2022-06-07 14:35:33.303  INFO 14952 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74ms. Found 3 JPA repository interfaces.
-ì2022-06-07 14:35:34.012  INFO 14952 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
-2022-06-07 14:35:34.030  INFO 14952 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-ï2022-06-07 14:35:34.031  INFO 14952 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
-ò2022-06-07 14:35:34.152  INFO 14952 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-•2022-06-07 14:35:34.152  INFO 14952 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2028 ms
-Ä2022-06-07 14:35:34.307  INFO 14952 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-Ö2022-06-07 14:35:34.527  INFO 14952 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-ø2022-06-07 14:35:34.548  INFO 14952 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../service_db'
-ú2022-06-07 14:35:34.710  INFO 14952 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-ü2022-06-07 14:35:34.769  INFO 14952 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-ù2022-06-07 14:35:34.799  WARN 14952 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-ò2022-06-07 14:35:34.872  INFO 14952 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
-û2022-06-07 14:35:35.091  INFO 14952 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-û2022-06-07 14:35:35.098  INFO 14952 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@12209826, org.springframework.security.web.context.SecurityContextPersistenceFilter@67c21bf, org.springframework.security.web.header.HeaderWriterFilter@300bb303, org.springframework.security.web.authentication.logout.LogoutFilter@14b5752f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@6f0a4e30, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79f1e22e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@77c23d90, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6cd45b6c, org.springframework.security.web.session.SessionManagementFilter@793cef95, org.springframework.security.web.access.ExceptionTranslationFilter@7996d0d4, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@18e6b72b]
-ü2022-06-07 14:35:35.261  INFO 14952 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-Ÿ2022-06-07 14:35:36.137  INFO 14952 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-©2022-06-07 14:35:36.153  INFO 14952 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-õ2022-06-07 14:35:36.244  INFO 14952 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-¢2022-06-07 14:35:36.316  INFO 14952 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
-ß2022-06-07 14:35:36.318  INFO 14952 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories‚Ä¶
-ã2022-06-07 14:35:36.642  INFO 14952 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-™2022-06-07 14:35:36.655  INFO 14952 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 4.966 seconds (JVM running for 5.83)
+¸2022-06-07 16:49:54.791  INFO 13300 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on Fractal with PID 13300 (started by Fractal in D:\RepositoryRoadToProfession\Anti-Fraud System\Anti-Fraud System\task)
+¶2022-06-07 16:49:54.795  INFO 13300 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
+¢2022-06-07 16:49:55.995  INFO 13300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+∫2022-06-07 16:49:56.078  INFO 13300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73ms. Found 3 JPA repository interfaces.
+ì2022-06-07 16:49:56.811  INFO 13300 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
+2022-06-07 16:49:56.825  INFO 13300 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+ï2022-06-07 16:49:56.825  INFO 13300 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+ò2022-06-07 16:49:56.962  INFO 13300 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+•2022-06-07 16:49:56.963  INFO 13300 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2101 ms
+Ä2022-06-07 16:49:57.109  INFO 13300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+Ö2022-06-07 16:49:57.354  INFO 13300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+ø2022-06-07 16:49:57.373  INFO 13300 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../service_db'
+ú2022-06-07 16:49:57.545  INFO 13300 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+ü2022-06-07 16:49:57.600  INFO 13300 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+ù2022-06-07 16:49:57.642  WARN 13300 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+ò2022-06-07 16:49:57.692  INFO 13300 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+û2022-06-07 16:49:57.904  INFO 13300 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+û2022-06-07 16:49:57.937  INFO 13300 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@349312d5, org.springframework.security.web.context.SecurityContextPersistenceFilter@3d033453, org.springframework.security.web.header.HeaderWriterFilter@6903ed0e, org.springframework.security.web.authentication.logout.LogoutFilter@1bb96449, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1b791dca, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@e795a1d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4e7bc939, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5885e231, org.springframework.security.web.session.SessionManagementFilter@30ffb2a6, org.springframework.security.web.access.ExceptionTranslationFilter@67afe909, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2a2b7a35]
+ü2022-06-07 16:49:58.086  INFO 13300 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Ÿ2022-06-07 16:49:58.986  INFO 13300 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+©2022-06-07 16:49:58.997  INFO 13300 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+õ2022-06-07 16:49:59.088  INFO 13300 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+¢2022-06-07 16:49:59.145  INFO 13300 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
+ß2022-06-07 16:49:59.146  INFO 13300 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories‚Ä¶
+ã2022-06-07 16:49:59.457  INFO 13300 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+´2022-06-07 16:49:59.470  INFO 13300 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 5.074 seconds (JVM running for 5.939)
 
 Test case
 Testing api: '/api/auth/user'
@@ -44,10 +44,10 @@ Test case
 }'
 hExpectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'
 -----
-ü2022-06-07 14:35:36.941  INFO 14952 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-é2022-06-07 14:35:36.941  INFO 14952 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-á2022-06-07 14:35:36.951  INFO 14952 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
-≈2022-06-07 14:35:37.146  WARN 14952 --- [io-28852-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<antifraud.entity.User> antifraud.controller.AuthController.registerNewUser(antifraud.entity.User): [Field error in object 'user' on field 'username': rejected value [null]; codes [NotBlank.user.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.username,username]; arguments []; default message [username]]; default message [must not be blank]] ]
+ü2022-06-07 16:49:59.793  INFO 13300 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+é2022-06-07 16:49:59.793  INFO 13300 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+á2022-06-07 16:49:59.803  INFO 13300 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+≈2022-06-07 16:49:59.981  WARN 13300 --- [io-28852-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<antifraud.entity.User> antifraud.controller.AuthController.registerNewUser(antifraud.entity.User): [Field error in object 'user' on field 'username': rejected value [null]; codes [NotBlank.user.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.username,username]; arguments []; default message [username]]; default message [must not be blank]] ]
 [1;31m
 Start test 2[0m
 
@@ -59,7 +59,7 @@ Test case
 }'
 hExpectations: 'In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).'
 -----
-≈2022-06-07 14:35:37.200  WARN 14952 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<antifraud.entity.User> antifraud.controller.AuthController.registerNewUser(antifraud.entity.User): [Field error in object 'user' on field 'password': rejected value [null]; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
+≈2022-06-07 16:50:00.042  WARN 13300 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<antifraud.entity.User> antifraud.controller.AuthController.registerNewUser(antifraud.entity.User): [Field error in object 'user' on field 'password': rejected value [null]; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
 [1;31m
 Start test 3[0m
 
@@ -133,7 +133,6 @@ Test case
 *Testing api: '/api/antifraud/transaction'
 1Expectations: 'A user johndoe1 must be UNLOCKED'
 -----
-1
 [1;31m
 Start test 12[0m
 
@@ -142,13 +141,12 @@ Test case
 request: 'amount = 1'
 CExpectations: 'Result validating of Transaction must be 'ALLOWED''
 -----
-1
 [1;31m
 Start test 13[0m
-•2022-06-07 14:35:38.702  INFO 14952 --- [     Thread-336] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-ù2022-06-07 14:35:38.704  INFO 14952 --- [     Thread-336] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-ä2022-06-07 14:35:38.706  INFO 14952 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-à2022-06-07 14:35:38.727  INFO 14952 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+•2022-06-07 16:50:01.559  INFO 13300 --- [     Thread-336] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+ù2022-06-07 16:50:01.561  INFO 13300 --- [     Thread-336] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+ä2022-06-07 16:50:01.563  INFO 13300 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+à2022-06-07 16:50:01.582  INFO 13300 --- [     Thread-336] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 
 )  .   ____          _            __ _ _
 * /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -158,30 +156,30 @@ Test case
 * =========|_|==============|___/=/_/_/_/
 , :: Spring Boot ::        (v2.3.1.RELEASE)
 
-¸2022-06-07 14:35:38.796  INFO 14952 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on Fractal with PID 14952 (started by Fractal in D:\RepositoryRoadToProfession\Anti-Fraud System\Anti-Fraud System\task)
-¶2022-06-07 14:35:38.796  INFO 14952 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
-¢2022-06-07 14:35:39.193  INFO 14952 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-∫2022-06-07 14:35:39.203  INFO 14952 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10ms. Found 3 JPA repository interfaces.
-ì2022-06-07 14:35:39.313  INFO 14952 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
-2022-06-07 14:35:39.313  INFO 14952 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-ï2022-06-07 14:35:39.314  INFO 14952 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
-ò2022-06-07 14:35:39.352  INFO 14952 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-§2022-06-07 14:35:39.352  INFO 14952 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 554 ms
-Ä2022-06-07 14:35:39.401  INFO 14952 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-Ö2022-06-07 14:35:39.413  INFO 14952 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-ø2022-06-07 14:35:39.414  INFO 14952 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../service_db'
-ú2022-06-07 14:35:39.469  INFO 14952 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-ü2022-06-07 14:35:39.474  INFO 14952 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-ü2022-06-07 14:35:39.480  INFO 14952 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-ù2022-06-07 14:35:39.508  WARN 14952 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-Ÿ2022-06-07 14:35:39.553  INFO 14952 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-©2022-06-07 14:35:39.554  INFO 14952 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-ú2022-06-07 14:35:39.559  INFO 14952 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7872e91f, org.springframework.security.web.context.SecurityContextPersistenceFilter@5ca7619f, org.springframework.security.web.header.HeaderWriterFilter@5da2966, org.springframework.security.web.authentication.logout.LogoutFilter@2911db81, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7fce1069, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b71af0d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@fb42c1c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@10b2c1cf, org.springframework.security.web.session.SessionManagementFilter@52c27d53, org.springframework.security.web.access.ExceptionTranslationFilter@bf18412, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@19de32cb]
-õ2022-06-07 14:35:39.755  INFO 14952 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-¢2022-06-07 14:35:39.773  INFO 14952 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
-ß2022-06-07 14:35:39.774  INFO 14952 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories‚Ä¶
-ã2022-06-07 14:35:39.822  INFO 14952 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-´2022-06-07 14:35:39.828  INFO 14952 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 1.051 seconds (JVM running for 9.003)
+¸2022-06-07 16:50:01.660  INFO 13300 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on Fractal with PID 13300 (started by Fractal in D:\RepositoryRoadToProfession\Anti-Fraud System\Anti-Fraud System\task)
+¶2022-06-07 16:50:01.660  INFO 13300 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
+¢2022-06-07 16:50:02.065  INFO 13300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+∫2022-06-07 16:50:02.076  INFO 13300 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11ms. Found 3 JPA repository interfaces.
+ì2022-06-07 16:50:02.176  INFO 13300 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
+2022-06-07 16:50:02.177  INFO 13300 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+ï2022-06-07 16:50:02.177  INFO 13300 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+ò2022-06-07 16:50:02.212  INFO 13300 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+§2022-06-07 16:50:02.212  INFO 13300 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 549 ms
+Ä2022-06-07 16:50:02.258  INFO 13300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+Ö2022-06-07 16:50:02.269  INFO 13300 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+ø2022-06-07 16:50:02.269  INFO 13300 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:../service_db'
+ú2022-06-07 16:50:02.325  INFO 13300 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+ü2022-06-07 16:50:02.330  INFO 13300 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+ü2022-06-07 16:50:02.337  INFO 13300 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+ù2022-06-07 16:50:02.364  WARN 13300 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+Ÿ2022-06-07 16:50:02.410  INFO 13300 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+©2022-06-07 16:50:02.411  INFO 13300 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+û2022-06-07 16:50:02.419  INFO 13300 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@208185c0, org.springframework.security.web.context.SecurityContextPersistenceFilter@5c1687d1, org.springframework.security.web.header.HeaderWriterFilter@104392ba, org.springframework.security.web.authentication.logout.LogoutFilter@10b2c1cf, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@20a25f66, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1504b493, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@19de32cb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1831447c, org.springframework.security.web.session.SessionManagementFilter@57e6d56a, org.springframework.security.web.access.ExceptionTranslationFilter@5e02fb23, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@af94b0b]
+õ2022-06-07 16:50:02.610  INFO 13300 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+¢2022-06-07 16:50:02.633  INFO 13300 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path ''
+ß2022-06-07 16:50:02.634  INFO 13300 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories‚Ä¶
+ã2022-06-07 16:50:02.685  INFO 13300 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+´2022-06-07 16:50:02.689  INFO 13300 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 1.048 seconds (JVM running for 9.158)
 [1;31m
 Start test 14[0m
 
@@ -189,9 +187,9 @@ Test case
 Testing api: '/api/auth/list'
 .Expectations: 'After restart user must exist'
 -----
-ü2022-06-07 14:35:39.834  INFO 14952 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-é2022-06-07 14:35:39.835  INFO 14952 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-Ü2022-06-07 14:35:39.838  INFO 14952 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+ü2022-06-07 16:50:02.696  INFO 13300 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+é2022-06-07 16:50:02.696  INFO 13300 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+Ü2022-06-07 16:50:02.698  INFO 13300 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
 [1;31m
 Start test 15[0m
 
@@ -231,7 +229,6 @@ Test case
 request: 'amount = 199'
 CExpectations: 'Result validating of Transaction must be 'ALLOWED''
 -----
-199
 [1;31m
 Start test 19[0m
 
@@ -240,7 +237,6 @@ Test case
 request: 'amount = 200'
 CExpectations: 'Result validating of Transaction must be 'ALLOWED''
 -----
-200
 [1;31m
 Start test 20[0m
 
@@ -249,7 +245,6 @@ Test case
 request: 'amount = 201'
 MExpectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
 -----
-201
 [1;31m
 Start test 21[0m
 
@@ -258,7 +253,6 @@ Test case
 request: 'amount = 1499'
 MExpectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
 -----
-1499
 [1;31m
 Start test 22[0m
 
@@ -267,7 +261,6 @@ Test case
 request: 'amount = 1500'
 MExpectations: 'Result validating of Transaction must be 'MANUAL_PROCESSING''
 -----
-1500
 [1;31m
 Start test 23[0m
 
@@ -276,7 +269,6 @@ Test case
 request: 'amount = 1501'
 FExpectations: 'Result validating of Transaction must be 'PROHIBITED''
 -----
-1501
 [1;31m
 Start test 24[0m
 
@@ -285,7 +277,6 @@ Test case
 request: 'amount = 2000'
 FExpectations: 'Result validating of Transaction must be 'PROHIBITED''
 -----
-2000
 [1;31m
 Start test 25[0m
 
@@ -446,7 +437,6 @@ Test case
 *Testing api: '/api/antifraud/transaction'
 1Expectations: 'A user johndoe3 must be UNLOCKED'
 -----
-1
 [1;31m
 Start test 46[0m
 
@@ -769,4 +759,24 @@ Test case
 *Testing api: '/api/antifraud/transaction'
 MExpectations: 'Transaction must be PROHIBITED due to - suspicious ip reason'
 -----
-1000
+[1;31m
+Start test 92[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+KExpectations: 'Transaction must be PROHIBITED due to - stolen card reason'
+-----
+[1;31m
+Start test 93[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+[Expectations: 'Transaction must be PROHIBITED due to - stolen card, suspicious ip reasons'
+-----
+[1;31m
+Start test 94[0m
+
+Test case
+*Testing api: '/api/antifraud/transaction'
+cExpectations: 'Transaction must be PROHIBITED due to - amount, stolen card, suspicious ip reasons'
+-----

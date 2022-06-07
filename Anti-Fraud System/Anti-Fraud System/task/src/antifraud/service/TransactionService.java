@@ -9,8 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class TransactionService {
@@ -21,19 +20,8 @@ public class TransactionService {
 
     public TransactionResp checkValidTransaction(TransactionReq request) {
         checkNotNullAmount(request.getAmount());
-        List<String> reasons = new ArrayList<>();
+        Set<String> reasons = new HashSet<>();
         String result = "";
-        System.out.println(request.getAmount());
-
-        if (request.getAmount() <= 200) {
-            result = "ALLOWED";
-        } else if (request.getAmount() <= 1500) {
-            result = "MANUAL_PROCESSING";
-            reasons.add("amount");
-        } else if (request.getAmount() > 1500) {
-            result = "PROHIBITED";
-            reasons.add("amount");
-        }
 
         if (isStolenCard(request.getNumber())) {
             result = "PROHIBITED";
@@ -42,6 +30,21 @@ public class TransactionService {
         if (isSuspiciousIp(request.getIp())) {
             result = "PROHIBITED";
             reasons.add("ip");
+        }
+        if (request.getAmount() > 1500){
+            reasons.add("amount");
+        }
+
+        if(result.isBlank()){
+            if (request.getAmount() <= 200) {
+                result = "ALLOWED";
+            } else if (request.getAmount() <= 1500) {
+                result = "MANUAL_PROCESSING";
+                reasons.add("amount");
+            } else if (request.getAmount() > 1500) {
+                result = "PROHIBITED";
+                reasons.add("amount");
+            }
         }
 
         return new TransactionResp(result, getInfo(reasons));
@@ -61,15 +64,12 @@ public class TransactionService {
         return suspiciousIpRepository.findSuspiciousIpByIp(ip).isPresent();
     }
 
-    private String getInfo(List<String> reasons) {
-        StringBuilder info = new StringBuilder();
-        if (reasons.isEmpty()) {
-            info = new StringBuilder("none");
-        } else {
-            for (String r : reasons) {
-                info.append(r).append(" ");
-            }
+    private String getInfo(Set<String> reasons) {
+        if (reasons.isEmpty()) reasons.add("none");
+        StringJoiner joiner = new StringJoiner(", ");
+        for (String r : reasons) {
+            joiner.add(r);
         }
-        return info.toString().trim();
+        return joiner.toString();
     }
 }
