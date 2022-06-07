@@ -1,9 +1,9 @@
 package antifraud.dto;
 
-public class LockUnlockResp {
+public class StatusResp {
     private String status;
 
-    public LockUnlockResp(String status) {
+    public StatusResp(String status) {
         this.status = status;
     }
 

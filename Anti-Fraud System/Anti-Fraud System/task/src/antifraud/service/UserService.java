@@ -2,7 +2,7 @@ package antifraud.service;
 
 import antifraud.dto.DeleteUserResponse;
 import antifraud.dto.LockUnlockReq;
-import antifraud.dto.LockUnlockResp;
+import antifraud.dto.StatusResp;
 import antifraud.dto.UserRoleReq;
 import antifraud.entity.User;
 import antifraud.repository.UserRepository;
@@ -55,7 +55,7 @@ public class UserService implements UserDetailsService {
         return new DeleteUserResponse(user.getUsername(), "Deleted successfully!");
     }
 
-    public LockUnlockResp setLockUnlockUser(LockUnlockReq request) {
+    public StatusResp setLockUnlockUser(LockUnlockReq request) {
         User user = retrieveUserFromDb(request.getUsername());
 
         checkExistingOperation(request.getOperation());
@@ -66,7 +66,7 @@ public class UserService implements UserDetailsService {
             user.setAccountNonLocked(true);
         }
         userRepository.save(user);
-        return new LockUnlockResp(String.format("User %s %sed!", user.getUsername(), request.getOperation().toLowerCase()));
+        return new StatusResp(String.format("User %s %sed!", user.getUsername(), request.getOperation().toLowerCase()));
     }
 
     public User setUserRole(UserRoleReq request) {

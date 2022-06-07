@@ -32,6 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PUT, "/api/auth/access/**").hasAuthority(Role.ADMINISTRATOR.getName())
                 .antMatchers(HttpMethod.PUT, "/api/auth/role/**").hasAuthority(Role.ADMINISTRATOR.getName())
                 .antMatchers(HttpMethod.GET, "/api/auth/list").hasAnyAuthority(Role.ADMINISTRATOR.getName(), Role.SUPPORT.getName())
+                .antMatchers("/api/antifraud/suspicious-ip/**").hasAuthority( Role.SUPPORT.getName())
+                .antMatchers("/api/antifraud/stolencard").hasAuthority( Role.SUPPORT.getName())
                 .antMatchers(HttpMethod.POST, "/api/antifraud/transaction/**").hasAuthority(Role.MERCHANT.getName())
                 .and()
                 .sessionManagement()

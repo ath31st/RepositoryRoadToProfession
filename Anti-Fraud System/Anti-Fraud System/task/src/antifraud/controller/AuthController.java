@@ -2,7 +2,7 @@ package antifraud.controller;
 
 import antifraud.dto.DeleteUserResponse;
 import antifraud.dto.LockUnlockReq;
-import antifraud.dto.LockUnlockResp;
+import antifraud.dto.StatusResp;
 import antifraud.dto.UserRoleReq;
 import antifraud.entity.User;
 import antifraud.service.UserService;
@@ -35,7 +35,7 @@ public class AuthController {
     }
 
     @PutMapping("/api/auth/access")
-    public ResponseEntity<LockUnlockResp> setLockUnlockUser(@RequestBody LockUnlockReq request) {
+    public ResponseEntity<StatusResp> setLockUnlockUser(@RequestBody LockUnlockReq request) {
         return new ResponseEntity<>(userService.setLockUnlockUser(request), HttpStatus.OK);
     }
 
