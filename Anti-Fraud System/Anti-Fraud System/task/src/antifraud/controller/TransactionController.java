@@ -1,5 +1,6 @@
 package antifraud.controller;
 
+import antifraud.dto.ManualProcessingReq;
 import antifraud.dto.StatusResp;
 import antifraud.dto.TransactionReq;
 import antifraud.dto.TransactionResp;
@@ -31,6 +32,21 @@ public class TransactionController {
     @PostMapping("/transaction")
     public ResponseEntity<TransactionResp> transactionReq(@RequestBody Transaction request) {
         return new ResponseEntity<>(transactionService.checkAndSaveTransactionInDb(request), HttpStatus.OK);
+    }
+
+        @PutMapping("/transaction")
+    public ResponseEntity<Transaction> transactionFeedback(@RequestBody ManualProcessingReq request) {
+
+    }
+
+    @GetMapping("/history")
+    public ResponseEntity<List<Transaction>> getTransactionsHistory() {
+        return new ResponseEntity<>(transactionService.getTransactionsHistory(), HttpStatus.OK);
+    }
+
+    @GetMapping("/history/{number}")
+    public ResponseEntity<List<Transaction>> getTransactionsHistory(@PathVariable String number) {
+        return new ResponseEntity<>(transactionService.getTransactionsHistoryByNumber(number), HttpStatus.OK);
     }
 
     @PostMapping("/suspicious-ip")

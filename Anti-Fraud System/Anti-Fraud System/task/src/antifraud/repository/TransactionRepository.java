@@ -11,5 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface TransactionRepository extends CrudRepository<Transaction, Long> {
+    Optional<List<Transaction>> findByNumberEquals(String number);
+
     Optional<List<Transaction>> findByNumberAndDateBetween(String number, LocalDateTime dateStart, LocalDateTime dateEnd, Sort sort);
 }

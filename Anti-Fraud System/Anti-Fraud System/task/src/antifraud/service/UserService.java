@@ -37,7 +37,6 @@ public class UserService implements UserDetailsService {
             user.setAccountNonLocked(false);
             user.grantAuthority(Role.MERCHANT);
         }
-//      user.setUsername(user.getUsername().toLowerCase());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return user;

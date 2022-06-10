@@ -14,6 +14,8 @@ public class Transaction {
     private String number;
     private String region;
     private LocalDateTime date;
+    private String result;
+    private String feedback;
 
     public Transaction() {
     }
@@ -65,6 +67,22 @@ public class Transaction {
     public void setDate(LocalDateTime date) {
 
         this.date = date;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 
     @Override

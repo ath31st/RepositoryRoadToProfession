@@ -88,10 +88,24 @@ public class TransactionService {
                 reasons.add("amount");
             }
         }
-        System.out.println(transaction);
-
 
         return new TransactionResp(result, getInfo(reasons));
+    }
+
+    public List<Transaction> getTransactionsHistoryByNumber(String number) {
+        StolenCardService.checkValidStolenCardNumber(number);
+
+        if (transactionRepository.findByNumberEquals(number).isPresent()) {
+            return transactionRepository.findByNumberEquals(number).get();
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Card number are not found!");
+        }
+    }
+
+    public List<Transaction> getTransactionsHistory() {
+        List<Transaction> transactions = new ArrayList<>();
+        transactionRepository.findAll().iterator().forEachRemaining(transactions::add);
+        return transactions;
     }
 
     private void checkNotNullAmount(Long amount) {

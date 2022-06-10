@@ -37,7 +37,7 @@ public class StolenCardService {
         return stolenCards;
     }
 
-    private void checkValidStolenCardNumber(String number) {
+    public static void checkValidStolenCardNumber(String number) {
         if (!checkCC(number)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Card number has the wrong format!");
         }
