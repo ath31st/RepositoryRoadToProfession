@@ -1987,6 +1987,1307 @@ files:
         };
     }
   learner_created: false
+- name: src/antifraud/service/SuspiciousIpService.java
+  visible: true
+  text: |
+    package antifraud.service;
+
+    import antifraud.dto.StatusResp;
+    import antifraud.entity.SuspiciousIp;
+    import antifraud.repository.SuspiciousIpRepository;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpStatus;
+    import org.springframework.stereotype.Service;
+    import org.springframework.web.server.ResponseStatusException;
+
+    import java.util.ArrayList;
+    import java.util.List;
+    import java.util.regex.Pattern;
+
+    @Service
+    public class SuspiciousIpService {
+        @Autowired
+        private SuspiciousIpRepository suspiciousIpRepository;
+        private static final Pattern PATTERN = Pattern.compile(
+                "^(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
+
+        public SuspiciousIp saveSuspiciousIpInDb(SuspiciousIp ip) {
+            checkValidIpFormat(ip.getIp());
+            checkExistingIpInDb(ip.getIp());
+            suspiciousIpRepository.save(ip);
+            return ip;
+        }
+        public StatusResp deleteSuspiciousIpFromDb(String ip){
+            checkValidIpFormat(ip);
+            SuspiciousIp tmpIp = retrieveIpFromDb(ip);
+            suspiciousIpRepository.delete(tmpIp);
+            return new StatusResp(String.format("IP %s successfully removed!",tmpIp.getIp()));
+        }
+
+        public List<SuspiciousIp> getIpListFromDb() {
+            List<SuspiciousIp> suspiciousIps = new ArrayList<>();
+            suspiciousIpRepository.findAll().iterator().forEachRemaining(suspiciousIps::add);
+            return suspiciousIps;
+        }
+
+        private void checkValidIpFormat(String ip) {
+            if (!PATTERN.matcher(ip).matches())
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "IP address has the wrong format!");
+        }
+
+        private void checkExistingIpInDb(String ip) {
+            if (suspiciousIpRepository.findSuspiciousIpByIp(ip).isPresent())
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "IP is already in the database!");
+        }
+        private SuspiciousIp retrieveIpFromDb(String ip) {
+            return suspiciousIpRepository.findSuspiciousIpByIp(ip)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "IP not found!"));
+        }
+    }
+  learner_created: true
+- name: src/antifraud/repository/UserRepository.java
+  visible: true
+  text: |
+    package antifraud.repository;
+
+    import antifraud.entity.User;
+    import org.springframework.data.repository.CrudRepository;
+
+    import java.util.Optional;
+
+    public interface UserRepository extends CrudRepository<User, Long> {
+        Optional<User> findUserByUsernameIgnoreCase(String username);
+    }
+  learner_created: true
+- name: src/antifraud/entity/Transaction.java
+  visible: true
+  text: |
+    package antifraud.entity;
+
+    import javax.persistence.*;
+    import java.time.LocalDateTime;
+
+    @Entity
+    public class Transaction {
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name = "id", nullable = false)
+        private Long id;
+        private Long amount;
+        private String ip;
+        private String number;
+        private String region;
+        private LocalDateTime date;
+
+        public Transaction() {
+        }
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public Long getAmount() {
+            return amount;
+        }
+
+        public void setAmount(Long amount) {
+            this.amount = amount;
+        }
+
+        public String getIp() {
+            return ip;
+        }
+
+        public void setIp(String ip) {
+            this.ip = ip;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+
+        public void setNumber(String number) {
+            this.number = number;
+        }
+
+        public String getRegion() {
+            return region;
+        }
+
+        public void setRegion(String region) {
+            this.region = region;
+        }
+
+        public LocalDateTime getDate() {
+            return date;
+        }
+
+        public void setDate(LocalDateTime date) {
+
+            this.date = date;
+        }
+
+        @Override
+        public String toString() {
+            return "Transaction{" +
+                    "id=" + id +
+                    ", amount=" + amount +
+                    ", ip='" + ip + '\'' +
+                    ", number='" + number + '\'' +
+                    ", region='" + region + '\'' +
+                    ", date=" + date +
+                    '}';
+        }
+    }
+  learner_created: true
+- name: src/antifraud/dto/TransactionResp.java
+  visible: true
+  text: |
+    package antifraud.dto;
+
+    public class TransactionResp {
+        private String result;
+        private String info;
+
+        public TransactionResp() {
+        }
+
+        public TransactionResp(String result, String info) {
+            this.result = result;
+            this.info = info;
+        }
+
+        public String getResult() {
+            return result;
+        }
+
+        public void setResult(String result) {
+            this.result = result;
+        }
+
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/entity/SuspiciousIp.java
+  visible: true
+  text: |
+    package antifraud.entity;
+
+    import javax.persistence.*;
+
+    @Entity
+    public class SuspiciousIp {
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name = "id", nullable = false)
+        private Long id;
+        private String ip;
+
+        public SuspiciousIp() {
+        }
+
+        public String getIp() {
+            return ip;
+        }
+
+        public void setIp(String ip) {
+            this.ip = ip;
+        }
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/entity/StolenCard.java
+  visible: true
+  text: |
+    package antifraud.entity;
+
+    import javax.persistence.*;
+
+    @Entity
+    public class StolenCard {
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name = "id", nullable = false)
+        private Long id;
+        private String number;
+
+        public StolenCard() {
+        }
+
+        public String getNumber() {
+            return number;
+        }
+
+        public void setNumber(String number) {
+            this.number = number;
+        }
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/util/Role.java
+  visible: true
+  text: |
+    package antifraud.util;
+
+    public enum Role {
+        ADMINISTRATOR("ROLE_ADMINISTRATOR"),
+        MERCHANT("ROLE_MERCHANT"),
+        SUPPORT("ROLE_SUPPORT");
+
+        private String name;
+
+        Role(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/repository/StolenCardRepository.java
+  visible: true
+  text: |
+    package antifraud.repository;
+
+    import antifraud.entity.StolenCard;
+    import org.springframework.data.repository.CrudRepository;
+    import org.springframework.stereotype.Repository;
+
+    import java.util.Optional;
+
+    @Repository
+    public interface StolenCardRepository extends CrudRepository<StolenCard, Long> {
+        Optional<StolenCard> findStolenCardByNumber(String number);
+    }
+  learner_created: true
+- name: src/antifraud/config/SecurityConfig.java
+  visible: true
+  text: |
+    package antifraud.config;
+
+    import antifraud.exceptionhandler.RestAuthenticationEntryPoint;
+    import antifraud.util.Role;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+    import org.springframework.http.HttpMethod;
+    import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+    import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+    import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+    import org.springframework.security.config.http.SessionCreationPolicy;
+    import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+    import org.springframework.security.crypto.password.PasswordEncoder;
+
+    @Configuration
+    @EnableWebSecurity
+    public class SecurityConfig extends WebSecurityConfigurerAdapter {
+        @Autowired
+        private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
+        public void configure(HttpSecurity http) throws Exception {
+            http.httpBasic()
+                    .authenticationEntryPoint(restAuthenticationEntryPoint) // Handles auth error
+                    .and()
+                    .csrf().disable().headers().frameOptions().disable() // for Postman, the H2 console
+                    .and()
+                    .authorizeRequests() // manage access
+                    .antMatchers("/actuator/shutdown").permitAll() // needs to run test
+                    .antMatchers(HttpMethod.POST, "/api/auth/user").permitAll()
+                    .antMatchers(HttpMethod.DELETE, "/api/auth/user/**").hasAuthority(Role.ADMINISTRATOR.getName())
+                    .antMatchers(HttpMethod.PUT, "/api/auth/access/**").hasAuthority(Role.ADMINISTRATOR.getName())
+                    .antMatchers(HttpMethod.PUT, "/api/auth/role/**").hasAuthority(Role.ADMINISTRATOR.getName())
+                    .antMatchers(HttpMethod.GET, "/api/auth/list").hasAnyAuthority(Role.ADMINISTRATOR.getName(), Role.SUPPORT.getName())
+                    .antMatchers("/api/antifraud/suspicious-ip/**").hasAuthority( Role.SUPPORT.getName())
+                    .antMatchers("/api/antifraud/stolencard").hasAuthority( Role.SUPPORT.getName())
+                    .antMatchers(HttpMethod.POST, "/api/antifraud/transaction/**").hasAuthority(Role.MERCHANT.getName())
+                    .and()
+                    .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // no session
+        }
+
+        @Bean
+        public PasswordEncoder getEncoder() {
+            return new BCryptPasswordEncoder();
+        }
+    }
+  learner_created: true
+- name: src/antifraud/dto/UserRoleReq.java
+  visible: true
+  text: |
+    package antifraud.dto;
+
+    public class UserRoleReq {
+        private String username;
+        private String role;
+
+        public UserRoleReq() {
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/service/UserService.java
+  visible: true
+  text: |
+    package antifraud.service;
+
+    import antifraud.dto.DeleteUserResponse;
+    import antifraud.dto.LockUnlockReq;
+    import antifraud.dto.StatusResp;
+    import antifraud.dto.UserRoleReq;
+    import antifraud.entity.User;
+    import antifraud.repository.UserRepository;
+    import antifraud.util.Operation;
+    import antifraud.util.Role;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpStatus;
+    import org.springframework.security.core.userdetails.UserDetails;
+    import org.springframework.security.core.userdetails.UserDetailsService;
+    import org.springframework.security.core.userdetails.UsernameNotFoundException;
+    import org.springframework.security.crypto.password.PasswordEncoder;
+    import org.springframework.stereotype.Service;
+    import org.springframework.web.server.ResponseStatusException;
+
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.List;
+    import java.util.Optional;
+
+    @Service
+    public class UserService implements UserDetailsService {
+        @Autowired
+        private UserRepository userRepository;
+        @Autowired
+        private PasswordEncoder passwordEncoder;
+
+        public User registerNewUser(User user) {
+            checkExistingUser(user);
+            if (userRepository.count() == 0) {
+                user.grantAuthority(Role.ADMINISTRATOR);
+            } else {
+                user.setAccountNonLocked(false);
+                user.grantAuthority(Role.MERCHANT);
+            }
+    //      user.setUsername(user.getUsername().toLowerCase());
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            userRepository.save(user);
+            return user;
+        }
+
+        public List<User> getUsersInfo() {
+            List<User> users = new ArrayList<>();
+            userRepository.findAll().iterator().forEachRemaining(users::add);
+            return users;
+        }
+
+        public DeleteUserResponse deleteUser(String username) {
+            User user = retrieveUserFromDb(username);
+            userRepository.delete(user);
+            return new DeleteUserResponse(user.getUsername(), "Deleted successfully!");
+        }
+
+        public StatusResp setLockUnlockUser(LockUnlockReq request) {
+            User user = retrieveUserFromDb(request.getUsername());
+
+            checkExistingOperation(request.getOperation());
+
+            if (request.getOperation().equals(Operation.LOCK.name())) {
+                user.setAccountNonLocked(false);
+            } else if (request.getOperation().equals(Operation.UNLOCK.name())) {
+                user.setAccountNonLocked(true);
+            }
+            userRepository.save(user);
+            return new StatusResp(String.format("User %s %sed!", user.getUsername(), request.getOperation().toLowerCase()));
+        }
+
+        public User setUserRole(UserRoleReq request) {
+            User user = retrieveUserFromDb(request.getUsername());
+
+            checkExistingRole(request.getRole());
+            checkInterchangeabilityRoles(user.getRole(), request.getRole());
+
+            user.grantAuthority(Role.valueOf(request.getRole()));
+            userRepository.save(user);
+            return user;
+        }
+
+        @Override
+        public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+            Optional<User> user = userRepository.findUserByUsernameIgnoreCase(username);
+
+            if (user.isPresent()) {
+                return user.get();
+            } else {
+                throw new UsernameNotFoundException(String.format("Username[%s] not found", username));
+            }
+        }
+
+        private void checkExistingUser(User user) {
+            if (userRepository.findUserByUsernameIgnoreCase(user.getUsername()).isPresent())
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "User exist!");
+        }
+
+        private void checkExistingOperation(String operation) {
+            if (Arrays.stream(Operation.values()).noneMatch(o -> o.name().equals(operation)))
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Operation not found!");
+        }
+
+        private void checkExistingRole(String role) {
+            if (Arrays.stream(Role.values()).noneMatch(r -> r.name().equals(role)))
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Role not found!");
+        }
+
+        private void checkInterchangeabilityRoles(Role userRole, String grantRole) {
+            if (userRole.name().equals(grantRole)) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "User already has that role!");
+            } else if (grantRole.equals(Role.ADMINISTRATOR.name())) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Only one administrator here!");
+            }
+
+        }
+
+        private User retrieveUserFromDb(String username) {
+            return userRepository.findUserByUsernameIgnoreCase(username)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found!"));
+        }
+    }
+  learner_created: true
+- name: src/antifraud/service/StolenCardService.java
+  visible: true
+  text: |
+    package antifraud.service;
+
+    import antifraud.dto.StatusResp;
+    import antifraud.entity.StolenCard;
+    import antifraud.entity.SuspiciousIp;
+    import antifraud.repository.StolenCardRepository;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpStatus;
+    import org.springframework.stereotype.Service;
+    import org.springframework.web.server.ResponseStatusException;
+
+    import java.util.ArrayList;
+    import java.util.List;
+
+    @Service
+    public class StolenCardService {
+        @Autowired
+        private StolenCardRepository stolenCardRepository;
+
+        public StolenCard saveStolenCardInDb(StolenCard card) {
+            checkValidStolenCardNumber(card.getNumber());
+            checkExistingStolenCard(card.getNumber());
+            stolenCardRepository.save(card);
+            return card;
+        }
+
+        public StatusResp deleteStolenCardFromDb(String number) {
+            checkValidStolenCardNumber(number);
+            StolenCard card = retrieveCardFromDb(number);
+            stolenCardRepository.delete(card);
+            return new StatusResp(String.format("Card %s successfully removed!", card.getNumber()));
+        }
+
+        public List<StolenCard> getStolenCardListFromDb() {
+            List<StolenCard> stolenCards = new ArrayList<>();
+            stolenCardRepository.findAll().iterator().forEachRemaining(stolenCards::add);
+            return stolenCards;
+        }
+
+        private void checkValidStolenCardNumber(String number) {
+            if (!checkCC(number)) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Card number has the wrong format!");
+            }
+        }
+
+        private void checkExistingStolenCard(String number) {
+            if (stolenCardRepository.findStolenCardByNumber(number).isPresent())
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "Card is already in the database!");
+        }
+
+        private StolenCard retrieveCardFromDb(String number) {
+            return stolenCardRepository.findStolenCardByNumber(number)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Card not found!"));
+        }
+
+        private static boolean checkCC(String input) {
+            String purportedCC = input.replaceAll(" ", "");
+            int sum = 0;
+
+            for (int i = 0; i < purportedCC.length(); i++) {
+                int cardNum = Integer.parseInt(
+                        Character.toString(purportedCC.charAt(i)));
+
+                if ((purportedCC.length() - i) % 2 == 0) {
+                    cardNum = cardNum * 2;
+
+                    if (cardNum > 9) {
+                        cardNum = cardNum - 9;
+                    }
+                }
+
+                sum += cardNum;
+            }
+            return sum % 10 == 0;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/exceptionhandler/RestAuthenticationEntryPoint.java
+  visible: true
+  text: |-
+    package antifraud.exceptionhandler;
+
+    import org.springframework.security.core.AuthenticationException;
+    import org.springframework.security.web.AuthenticationEntryPoint;
+    import org.springframework.stereotype.Component;
+
+    import javax.servlet.http.HttpServletRequest;
+    import javax.servlet.http.HttpServletResponse;
+    import java.io.IOException;
+
+    @Component
+    public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
+
+        @Override
+        public void commence(HttpServletRequest request,
+                             HttpServletResponse response,
+                             AuthenticationException authException) throws IOException {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage());
+        }
+    }
+  learner_created: true
+- name: src/antifraud/util/Operation.java
+  visible: true
+  text: |
+    package antifraud.util;
+
+    public enum Operation {
+        LOCK,
+        UNLOCK;
+    }
+  learner_created: true
+- name: src/antifraud/dto/LockUnlockReq.java
+  visible: true
+  text: |
+    package antifraud.dto;
+
+
+    public class LockUnlockReq {
+        private String username;
+        private String operation;
+
+        public LockUnlockReq() {
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getOperation() {
+            return operation;
+        }
+
+        public void setOperation(String operation) {
+            this.operation = operation;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/controller/TransactionController.java
+  visible: true
+  text: |
+    package antifraud.controller;
+
+    import antifraud.dto.StatusResp;
+    import antifraud.dto.TransactionReq;
+    import antifraud.dto.TransactionResp;
+    import antifraud.entity.StolenCard;
+    import antifraud.entity.SuspiciousIp;
+    import antifraud.entity.Transaction;
+    import antifraud.service.StolenCardService;
+    import antifraud.service.SuspiciousIpService;
+    import antifraud.service.TransactionService;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpStatus;
+    import org.springframework.http.ResponseEntity;
+    import org.springframework.validation.annotation.Validated;
+    import org.springframework.web.bind.annotation.*;
+
+    import java.util.List;
+
+    @RestController
+    @Validated
+    @RequestMapping("/api/antifraud")
+    public class TransactionController {
+        @Autowired
+        private TransactionService transactionService;
+        @Autowired
+        private SuspiciousIpService suspiciousIpService;
+        @Autowired
+        private StolenCardService stolenCardService;
+
+        @PostMapping("/transaction")
+        public ResponseEntity<TransactionResp> transactionReq(@RequestBody Transaction request) {
+            return new ResponseEntity<>(transactionService.checkAndSaveTransactionInDb(request), HttpStatus.OK);
+        }
+
+        @PostMapping("/suspicious-ip")
+        public ResponseEntity<SuspiciousIp> saveSuspIpInDb(@RequestBody SuspiciousIp ip) {
+            return new ResponseEntity<>(suspiciousIpService.saveSuspiciousIpInDb(ip), HttpStatus.OK);
+        }
+
+        @DeleteMapping("/suspicious-ip/{ip}")
+        public ResponseEntity<StatusResp> deleteIpFromDb(@PathVariable String ip) {
+            return new ResponseEntity<>(suspiciousIpService.deleteSuspiciousIpFromDb(ip), HttpStatus.OK);
+        }
+
+        @GetMapping("/suspicious-ip")
+        public ResponseEntity<List<SuspiciousIp>> getIpListFromDb() {
+            return new ResponseEntity<>(suspiciousIpService.getIpListFromDb(), HttpStatus.OK);
+        }
+
+        @PostMapping("/stolencard")
+        public ResponseEntity<StolenCard> saveStolenCardInDb(@RequestBody StolenCard card) {
+            return new ResponseEntity<>(stolenCardService.saveStolenCardInDb(card), HttpStatus.OK);
+        }
+
+        @DeleteMapping("/stolencard/{number}")
+        public ResponseEntity<StatusResp> deleteStolenCardFromDb(@PathVariable String number) {
+            return new ResponseEntity<>(stolenCardService.deleteStolenCardFromDb(number), HttpStatus.OK);
+        }
+
+        @GetMapping("/stolencard")
+        public ResponseEntity<List<StolenCard>> getStolenCardListFromDb() {
+            return new ResponseEntity<>(stolenCardService.getStolenCardListFromDb(), HttpStatus.OK);
+        }
+    }
+  learner_created: true
+- name: src/antifraud/repository/SuspiciousIpRepository.java
+  visible: true
+  text: |
+    package antifraud.repository;
+
+    import antifraud.entity.SuspiciousIp;
+    import org.springframework.data.repository.CrudRepository;
+    import org.springframework.stereotype.Repository;
+
+    import java.util.Optional;
+
+    @Repository
+    public interface SuspiciousIpRepository extends CrudRepository<SuspiciousIp, Long> {
+        Optional<SuspiciousIp> findSuspiciousIpByIp(String ip);
+    }
+  learner_created: true
+- name: src/antifraud/dto/StatusResp.java
+  visible: true
+  text: |
+    package antifraud.dto;
+
+    public class StatusResp {
+        private String status;
+
+        public StatusResp(String status) {
+            this.status = status;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/entity/User.java
+  visible: true
+  text: |
+    package antifraud.entity;
+
+    import antifraud.util.Role;
+    import com.fasterxml.jackson.annotation.JsonIgnore;
+    import com.fasterxml.jackson.annotation.JsonProperty;
+    import org.springframework.security.core.GrantedAuthority;
+    import org.springframework.security.core.authority.SimpleGrantedAuthority;
+    import org.springframework.security.core.userdetails.UserDetails;
+
+    import javax.persistence.*;
+    import javax.validation.constraints.NotBlank;
+    import java.util.ArrayList;
+    import java.util.Collection;
+    import java.util.List;
+
+    @Entity
+    public class User implements UserDetails {
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name = "id", nullable = false)
+        private Long id;
+        @Column
+        @NotBlank
+        private String name;
+        @Column
+        @NotBlank
+        private String username;
+        @Column
+        @NotBlank
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+        private String password;
+        @Column
+        private Role role;
+        @JsonIgnore
+        private boolean accountNonExpired;
+        @JsonIgnore
+        private boolean accountNonLocked;
+        @JsonIgnore
+        private boolean credentialsNonExpired;
+        @JsonIgnore
+        private boolean enabled;
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public User() {
+            this.accountNonExpired = true;
+            this.accountNonLocked = true;
+            this.credentialsNonExpired = true;
+            this.enabled = true;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void grantAuthority(Role authority) {
+            role = authority;
+        }
+
+        @JsonIgnore
+        @Override
+        public Collection<? extends GrantedAuthority> getAuthorities() {
+            List<GrantedAuthority> authorities = new ArrayList<>();
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+            return authorities;
+        }
+
+        @Override
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        @Override
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        @Override
+        public boolean isAccountNonExpired() {
+            return accountNonExpired;
+        }
+
+        @Override
+        public boolean isAccountNonLocked() {
+            return accountNonLocked;
+        }
+
+        public void setAccountNonLocked(boolean accountNonLocked) {
+            this.accountNonLocked = accountNonLocked;
+        }
+
+        public Role getRole() {
+            return role;
+        }
+
+        @Override
+        public boolean isCredentialsNonExpired() {
+            return credentialsNonExpired;
+        }
+
+        @Override
+        public boolean isEnabled() {
+            return enabled;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/controller/AuthController.java
+  visible: true
+  text: |
+    package antifraud.controller;
+
+    import antifraud.dto.DeleteUserResponse;
+    import antifraud.dto.LockUnlockReq;
+    import antifraud.dto.StatusResp;
+    import antifraud.dto.UserRoleReq;
+    import antifraud.entity.User;
+    import antifraud.service.UserService;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.http.HttpStatus;
+    import org.springframework.http.ResponseEntity;
+    import org.springframework.web.bind.annotation.*;
+
+    import javax.validation.Valid;
+    import java.util.List;
+
+    @RestController
+    public class AuthController {
+        @Autowired
+        private UserService userService;
+
+        @PostMapping("/api/auth/user")
+        public ResponseEntity<User> registerNewUser(@RequestBody @Valid User user) {
+            return new ResponseEntity<>(userService.registerNewUser(user), HttpStatus.CREATED);
+        }
+
+        @GetMapping("/api/auth/list")
+        public ResponseEntity<List<User>> getUsersInfo() {
+            return new ResponseEntity<>(userService.getUsersInfo(), HttpStatus.OK);
+        }
+
+        @DeleteMapping("/api/auth/user/{username}")
+        public ResponseEntity<DeleteUserResponse> deleteUser(@PathVariable(value = "username") String username) {
+            return new ResponseEntity<>(userService.deleteUser(username), HttpStatus.OK);
+        }
+
+        @PutMapping("/api/auth/access")
+        public ResponseEntity<StatusResp> setLockUnlockUser(@RequestBody LockUnlockReq request) {
+            return new ResponseEntity<>(userService.setLockUnlockUser(request), HttpStatus.OK);
+        }
+
+        @PutMapping("/api/auth/role")
+        public ResponseEntity<User> setRoleUser(@RequestBody UserRoleReq request) {
+            return new ResponseEntity<>(userService.setUserRole(request), HttpStatus.OK);
+        }
+    }
+  learner_created: true
+- name: src/antifraud/dto/DeleteUserResponse.java
+  visible: true
+  text: |
+    package antifraud.dto;
+
+    public class DeleteUserResponse {
+        private String username;
+        private String status;
+
+        public DeleteUserResponse() {
+        }
+
+        public DeleteUserResponse(String username, String status) {
+            this.username = username;
+            this.status = status;
+        }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/repository/TransactionRepository.java
+  visible: true
+  text: |
+    package antifraud.repository;
+
+    import antifraud.entity.Transaction;
+    import org.springframework.data.domain.Sort;
+    import org.springframework.data.repository.CrudRepository;
+    import org.springframework.stereotype.Repository;
+
+    import java.time.LocalDateTime;
+    import java.util.List;
+    import java.util.Optional;
+
+    @Repository
+    public interface TransactionRepository extends CrudRepository<Transaction, Long> {
+        Optional<List<Transaction>> findByNumberAndDateBetween(String number, LocalDateTime dateStart, LocalDateTime dateEnd, Sort sort);
+    }
+  learner_created: true
+- name: src/antifraud/dto/TransactionReq.java
+  visible: true
+  text: |
+    package antifraud.dto;
+
+    public class TransactionReq {
+        private Long amount;
+        private String ip;
+        private String number;
+
+        public TransactionReq() {
+        }
+
+        public Long getAmount() {
+            return amount;
+        }
+
+        public void setAmount(Long amount) {
+            this.amount = amount;
+        }
+
+        public String getIp() {
+            return ip;
+        }
+
+        public void setIp(String ip) {
+            this.ip = ip;
+        }
+
+        public String getNumber() {
+            return number;
+        }
+
+        public void setNumber(String number) {
+            this.number = number;
+        }
+    }
+  learner_created: true
+- name: src/antifraud/service/TransactionService.java
+  visible: true
+  text: |
+    package antifraud.service;
+
+    import antifraud.dto.TransactionResp;
+    import antifraud.entity.Transaction;
+    import antifraud.repository.StolenCardRepository;
+    import antifraud.repository.SuspiciousIpRepository;
+    import antifraud.repository.TransactionRepository;
+    import antifraud.util.Region;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.data.domain.Sort;
+    import org.springframework.http.HttpStatus;
+    import org.springframework.stereotype.Service;
+    import org.springframework.web.server.ResponseStatusException;
+
+    import java.util.*;
+    import java.util.stream.Collectors;
+
+    @Service
+    public class TransactionService {
+        @Autowired
+        private StolenCardRepository stolenCardRepository;
+        @Autowired
+        private SuspiciousIpRepository suspiciousIpRepository;
+        @Autowired
+        private TransactionRepository transactionRepository;
+
+        public TransactionResp checkAndSaveTransactionInDb(Transaction transaction) {
+            checkNotNullAmount(transaction.getAmount());
+            checkRegionExisting(transaction.getRegion());
+
+            Set<String> reasons = new HashSet<>();
+            String result = "";
+
+            transactionRepository.save(transaction);
+
+            if (isStolenCard(transaction.getNumber())) {
+                result = "PROHIBITED";
+                reasons.add("card-number");
+            }
+            if (isSuspiciousIp(transaction.getIp())) {
+                result = "PROHIBITED";
+                reasons.add("ip");
+            }
+
+            Optional<List<Transaction>> transactions = transactionRepository
+                    .findByNumberAndDateBetween(transaction.getNumber()
+                            , transaction.getDate().minusHours(1)
+                            , transaction.getDate()
+                            , Sort.by("date"));
+
+            if (transactions.isPresent()) {
+                int regionCount = transactions.get()
+                        .stream()
+                        .collect(Collectors.groupingBy(Transaction::getRegion, Collectors.counting())).size();
+                int ipCount = transactions.get()
+                        .stream()
+                        .collect(Collectors.groupingBy(Transaction::getIp, Collectors.counting())).size();
+
+
+                if (regionCount == 3) {
+                    result = "MANUAL_PROCESSING";
+                    reasons.add("region-correlation");
+                } else if (regionCount > 3) {
+                    result = "PROHIBITED";
+                    reasons.add("region-correlation");
+                }
+                if (ipCount == 3) {
+                    result = "MANUAL_PROCESSING";
+                    reasons.add("ip-correlation");
+                } else if (ipCount > 3) {
+                    result = "PROHIBITED";
+                    reasons.add("ip-correlation");
+                }
+            }
+
+            if (transaction.getAmount() > 1500) {
+                reasons.add("amount");
+            }
+
+            if (result.isBlank()) {
+                if (transaction.getAmount() <= 200) {
+                    result = "ALLOWED";
+                } else if (transaction.getAmount() <= 1500) {
+                    result = "MANUAL_PROCESSING";
+                    reasons.add("amount");
+                } else if (transaction.getAmount() > 1500) {
+                    result = "PROHIBITED";
+                    reasons.add("amount");
+                }
+            }
+            System.out.println(transaction);
+
+
+            return new TransactionResp(result, getInfo(reasons));
+        }
+
+        private void checkNotNullAmount(Long amount) {
+            if (amount == null || amount <= 0) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong amount!");
+            }
+        }
+
+        private void checkRegionExisting(String region) {
+            if (Arrays.stream(Region.values()).noneMatch(r -> r.name().equals(region.toUpperCase()))) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong region!");
+            }
+        }
+
+        private boolean isStolenCard(String number) {
+            return stolenCardRepository.findStolenCardByNumber(number).isPresent();
+        }
+
+        private boolean isSuspiciousIp(String ip) {
+            return suspiciousIpRepository.findSuspiciousIpByIp(ip).isPresent();
+        }
+
+
+        private String getInfo(Set<String> reasons) {
+            if (reasons.isEmpty()) reasons.add("none");
+            StringJoiner joiner = new StringJoiner(", ");
+            for (String r : reasons) {
+                joiner.add(r);
+            }
+            return joiner.toString();
+        }
+    }
+  learner_created: true
+- name: src/antifraud/util/Region.java
+  visible: true
+  text: |
+    package antifraud.util;
+
+    public enum Region {
+        EAP("East Asia and Pacific"),
+        ECA("Europe and Central Asia"),
+        HIC("High-Income countries"),
+        LAC("Latin America and the Caribbean"),
+        MENA("The Middle East and North Africa"),
+        SA("South Asia"),
+        SSA("Sub-Saharan Africa");
+
+        private final String description;
+
+        Region(String description) {
+            this.description = description;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/18072#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #12
+
+    GET /api/antifraud/history should respond with status code 200, responded: 404
+    Response body:
+    {
+      &quot;timestamp&quot; : &quot;2022-06-10T07:51:38.352+00:00&quot;,
+      &quot;status&quot; : 404,
+      &quot;error&quot; : &quot;Not Found&quot;,
+      &quot;message&quot; : &quot;No message available&quot;,
+      &quot;path&quot; : &quot;/api/antifraud/history&quot;
+    }
+
+    Please find below the output of your program during this failed test.
+
+    ---
+
+    .   ____          _            __ _ _
+     /\\ / ___&#39;_ __ _ _(_)_ __  __ _ \ \ \ \
+    ( ( )\___ | &#39;_ | &#39;_| | &#39;_ \/ _` | \ \ \ \
+     \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+      &#39;  |____| .__|_| |_|_| |_\__, | / / / /
+     =========|_|==============|___/=/_/_/_/
+     :: Spring Boot ::        (v2.3.1.RELEASE)
+
+    2022-06-10 10:51:32.022  INFO 5364 --- [    Test worker] antifraud.AntiFraudApplication           : Starting AntiFraudApplication on Fractal with PID 5364 (started by Fractal in D:\RepositoryRoadToProfession\Anti-Fraud System\Anti-Fraud System\task)
+    2022-06-10 10:51:32.026  INFO 5364 --- [    Test worker] antifraud.AntiFraudApplication           : No active profile set, falling back to default profiles: default
+    2022-06-10 10:51:33.204  INFO 5364 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+    2022-06-10 10:51:33.296  INFO 5364 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84ms. Found 4 JPA repository interfaces.
+    2022-06-10 10:51:34.038  INFO 5364 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 28852 (http)
+    2022-06-10 10:51:34.047  INFO 5364 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+    2022-06-10 10:51:34.048  INFO 5364 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+    2022-06-10 10:51:34.175  INFO 5364 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+    2022-06-10 10:51:34.176  INFO 5364 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2082 ms
+    2022-06-10 10:51:34.334  INFO 5364 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+    2022-06-10 10:51:34.561  INFO 5364 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+    2022-06-10 10:51:34.583  INFO 5364 --- [    Test worker] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at &#39;/h2-console&#39;. Database available at &#39;jdbc:h2:file:../service_db&#39;
+    2022-06-10 10:51:34.746  INFO 5364 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService &#39;applicationTaskExecutor&#39;
+    2022-06-10 10:51:34.818  INFO 5364 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+    2022-06-10 10:51:34.846  WARN 5364 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+    2022-06-10 10:51:34.905  INFO 5364 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+    2022-06-10 10:51:35.126  INFO 5364 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+    2022-06-10 10:51:35.155  INFO 5364 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@31f31b20, org.springframework.security.web.context.SecurityContextPersistenceFilter@7f8c48f3, org.springframework.security.web.header.HeaderWriterFilter@4fad51a3, org.springframework.security.web.authentication.logout.LogoutFilter@5a899811, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7fd751de, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6cceb281, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1b791dca, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4c5f7b4f, org.springframework.security.web.session.SessionManagementFilter@d28c214, org.springframework.security.web.access.ExceptionTranslationFilter@5ab7ac02, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1d3d76b4]
+    2022-06-10 10:51:35.333  INFO 5364 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+    2022-06-10 10:51:36.243  INFO 5364 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+    2022-06-10 10:51:36.254  INFO 5364 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit &#39;default&#39;
+    2022-06-10 10:51:36.368  INFO 5364 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path &#39;/actuator&#39;
+    2022-06-10 10:51:36.438  INFO 5364 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 28852 (http) with context path &#39;&#39;
+    2022-06-10 10:51:36.439  INFO 5364 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+    2022-06-10 10:51:36.767  INFO 5364 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+    2022-06-10 10:51:36.779  INFO 5364 --- [    Test worker] antifraud.AntiFraudApplication           : Started AntiFraudApplication in 5.167 seconds (JVM running for 6.031)
+    Test case
+    Testing api: &#39;/api/auth/user&#39;
+    request: &#39;{
+       &quot;name&quot;: &quot;John Doe 1&quot;,
+       &quot;password&quot;: &quot;oa3VvqnLxW&quot;
+    }&#39;
+    Expectations: &#39;In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).&#39;
+    -----
+    2022-06-10 10:51:37.075  INFO 5364 --- [io-28852-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet &#39;dispatcherServlet&#39;
+    2022-06-10 10:51:37.076  INFO 5364 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet &#39;dispatcherServlet&#39;
+    2022-06-10 10:51:37.089  INFO 5364 --- [io-28852-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+    2022-06-10 10:51:37.286  WARN 5364 --- [io-28852-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;antifraud.entity.User&gt; antifraud.controller.AuthController.registerNewUser(antifraud.entity.User): [Field error in object &#39;user&#39; on field &#39;username&#39;: rejected value [null]; codes [NotBlank.user.username,NotBlank.username,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.username,username]; arguments []; default message [username]]; default message [must not be blank]] ]
+    Test case
+    Testing api: &#39;/api/auth/user&#39;
+    request: &#39;{
+       &quot;name&quot;: &quot;John Doe 2&quot;,
+       &quot;username&quot;: &quot;johndoe1&quot;
+    }&#39;
+    Expectations: &#39;In case of wrong data in request, endpoint must respond with BAD REQUEST  status (400).&#39;
+    -----
+    2022-06-10 10:51:37.340  WARN 5364 --- [io-28852-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity&lt;antifraud.entity.User&gt; antifraud.controller.AuthController.registerNewUser(antifraud.entity.User): [Field error in object &#39;user&#39; on field &#39;password&#39;: rejected value [null]; codes [NotBlank.user.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [user.password,password]; arguments []; default message [password]]; default message [must not be blank]] ]
+    Test case
+    Testing api: &#39;/api/auth/user&#39;
+    request: &#39;{
+       &quot;name&quot;: &quot;John Doe 1&quot;,
+       &quot;username&quot;: &quot;johndoe1&quot;,
+       &quot;password&quot;: &quot;oMoa3VvqnLxW&quot;
+    }&#39;
+    Expectations: &#39;If user successfully added, endpoint must respond with HTTP CREATED status (201) &#39;
+    -----
+    Test case
+    Testing api: &#39;/api/auth/list&#39;
+    Expectations: &#39;Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.&#39;
+    -----
+    Test case
+    Testing api: &#39;/api/auth/user&#39;
+    request: &#39;{
+       &quot;name&quot;: &quot;John Doe 1&quot;,
+       &quot;username&quot;: &quot;johndoe1&quot;,
+       &quot;password&quot;: &quot;oMoa3VvqnLxW&quot;
+    }&#39;
+    Expectations: &#39;If user successfully added, endpoint must respond with HTTP CREATED status (201) &#39;
+    -----
+    Test case
+    Testing api: &#39;/api/auth/list&#39;
+    Expectations: &#39;Endpoint must respond with HTTP OK status (200) and body with array of objects representing the users sorted by ID in ascending order.&#39;
+    -----
+    Test case
+    Testing api: &#39;/api/auth/list&#39;
+    Expectations: &#39;A user with incorrect credentials is not allowed&#39;
+    -----
+    Test case
+    Testing api: &#39;/api/auth/list&#39;
+    Expectations: &#39;A user with incorrect credentials is not allowed&#39;
+    -----
+    Test case
+    Testing api: &#39;/api/antifraud/transaction&#39;
+    Expectations: &#39;Merchant after registration must be LOCKED&#39;
+    -----
+    Test case
+    Testing api: &#39;/api/auth/access&#39;
+    Expectations: &#39;A user johndoe1 must be UNLOCKED&#39;
+    -----
+    Test case
+    Testing api: &#39;/api/auth/role&#39;
+    Expectations: &#39;If a role successfully changed, respond with the HTTP OK status (200)&#39;
+    -----
+    Test case
+    Testing api: &#39;/api/antifraud/history&#39;
+    Expectations: &#39;User johndoe1 must be unlocked.Endpoint must respond with the HTTP OK status (200) and empty array in case if history is empty.&#39;
+    -----
+  time: Fri, 10 Jun 2022 07:51:38 UTC
 record: -1

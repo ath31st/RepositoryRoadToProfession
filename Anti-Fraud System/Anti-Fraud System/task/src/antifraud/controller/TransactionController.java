@@ -5,6 +5,7 @@ import antifraud.dto.TransactionReq;
 import antifraud.dto.TransactionResp;
 import antifraud.entity.StolenCard;
 import antifraud.entity.SuspiciousIp;
+import antifraud.entity.Transaction;
 import antifraud.service.StolenCardService;
 import antifraud.service.SuspiciousIpService;
 import antifraud.service.TransactionService;
@@ -15,7 +16,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @Validated
@@ -29,8 +29,8 @@ public class TransactionController {
     private StolenCardService stolenCardService;
 
     @PostMapping("/transaction")
-    public ResponseEntity<TransactionResp> transactionReq(@RequestBody TransactionReq request) {
-        return new ResponseEntity<>(transactionService.checkValidTransaction(request), HttpStatus.OK);
+    public ResponseEntity<TransactionResp> transactionReq(@RequestBody Transaction request) {
+        return new ResponseEntity<>(transactionService.checkAndSaveTransactionInDb(request), HttpStatus.OK);
     }
 
     @PostMapping("/suspicious-ip")

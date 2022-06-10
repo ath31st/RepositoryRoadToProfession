@@ -2290,6 +2290,18 @@ files:
         }
     }
   learner_created: true
+- name: src/antifraud/util/Region.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/entity/Transaction.java
+  visible: true
+  learner_created: true
+- name: src/antifraud/repository/TransactionRepository.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/18071#comment
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Fri, 10 Jun 2022 07:50:04 UTC
+record: 5

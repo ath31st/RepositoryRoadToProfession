@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://stepik.org/media/attachments/lesson/657120/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: Tue, 07 Jun 2022 11:30:53 UTC
+update_date: Fri, 10 Jun 2022 06:04:39 UTC
 stages:
 - id: 1161
   step: 18067
@@ -19,7 +19,7 @@ stages:
   is_completed: true
 - id: 1165
   step: 18071
-  is_completed: false
+  is_completed: true
 - id: 1166
   step: 18072
   is_completed: false
@@ -145,14 +145,14 @@ topics:
     theory_id: 3489
   - title: Functional decomposition
     theory_id: 10570
+  - title: Overloading
+    theory_id: 3525
   - title: Primitive and reference types
     theory_id: 5035
   - title: Array
     theory_id: 3511
   - title: Arrays as parameters
     theory_id: 3594
-  - title: Overloading
-    theory_id: 3525
   - title: Iterating over arrays
     theory_id: 3602
   - title: Characters
@@ -263,10 +263,10 @@ topics:
     theory_id: 17081
   - title: Defining classes
     theory_id: 3618
-  - title: Instance methods
-    theory_id: 3495
   - title: Constructor
     theory_id: 3535
+  - title: Instance methods
+    theory_id: 3495
   - title: Access modifiers
     theory_id: 3589
   - title: Getters and setters
@@ -279,14 +279,12 @@ topics:
     theory_id: 3585
   - title: The Object class
     theory_id: 3596
-  - title: Objects
-    theory_id: 4727
-  - title: Interface
-    theory_id: 3615
   - title: Multiple constructors
     theory_id: 3538
   - title: The keyword super
     theory_id: 3588
+  - title: Objects
+    theory_id: 4727
   - title: Static members
     theory_id: 3534
   - title: Annotations basics
@@ -295,6 +293,8 @@ topics:
     theory_id: 3572
   - title: Polymorphism
     theory_id: 3587
+  - title: Interface
+    theory_id: 3615
   - title: Abstract class
     theory_id: 3597
   - title: Boxing and unboxing
