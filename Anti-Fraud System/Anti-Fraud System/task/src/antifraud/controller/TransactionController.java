@@ -34,9 +34,9 @@ public class TransactionController {
         return new ResponseEntity<>(transactionService.checkAndSaveTransactionInDb(request), HttpStatus.OK);
     }
 
-        @PutMapping("/transaction")
+    @PutMapping("/transaction")
     public ResponseEntity<Transaction> transactionFeedback(@RequestBody ManualProcessingReq request) {
-
+        return new ResponseEntity<>(transactionService.manualProcessingTransaction(request), HttpStatus.OK);
     }
 
     @GetMapping("/history")

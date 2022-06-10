@@ -1,5 +1,7 @@
 package antifraud.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -15,11 +17,12 @@ public class Transaction {
     private String region;
     private LocalDateTime date;
     private String result;
-    private String feedback;
+    private String feedback = "";
 
     public Transaction() {
     }
 
+    @JsonProperty("transactionId")
     public Long getId() {
         return id;
     }
@@ -94,6 +97,8 @@ public class Transaction {
                 ", number='" + number + '\'' +
                 ", region='" + region + '\'' +
                 ", date=" + date +
+                ", result='" + result + '\'' +
+                ", feedback='" + feedback + '\'' +
                 '}';
     }
 }

@@ -1,11 +1,13 @@
 package antifraud.service;
 
+import antifraud.dto.ManualProcessingReq;
 import antifraud.dto.TransactionResp;
 import antifraud.entity.Transaction;
 import antifraud.repository.StolenCardRepository;
 import antifraud.repository.SuspiciousIpRepository;
 import antifraud.repository.TransactionRepository;
 import antifraud.util.Region;
+import antifraud.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -31,8 +33,6 @@ public class TransactionService {
         Set<String> reasons = new HashSet<>();
         String result = "";
 
-        transactionRepository.save(transaction);
-
         if (isStolenCard(transaction.getNumber())) {
             result = "PROHIBITED";
             reasons.add("card-number");
@@ -49,6 +49,8 @@ public class TransactionService {
                         , Sort.by("date"));
 
         if (transactions.isPresent()) {
+            transactions.get().add(transaction);
+
             int regionCount = transactions.get()
                     .stream()
                     .collect(Collectors.groupingBy(Transaction::getRegion, Collectors.counting())).size();
@@ -89,7 +91,26 @@ public class TransactionService {
             }
         }
 
+        transaction.setResult(result);
+        transactionRepository.save(transaction);
         return new TransactionResp(result, getInfo(reasons));
+    }
+
+    public Transaction manualProcessingTransaction(ManualProcessingReq request) {
+        checkResultExisting(request.getFeedback());
+
+        Transaction transaction = getTransactionsHistory()
+                .stream()
+                .filter(t -> t.getId().equals(request.getTransactionId()))
+                .findFirst().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Transaction not found"));
+
+        checkFeedbackException(transaction.getResult(), request.getFeedback());
+        checkTransactionAlreadyHaveFeedback(transaction.getFeedback());
+
+        transaction.setResult(Result.MANUAL_PROCESSING.name());
+        transaction.setFeedback(request.getFeedback());
+        transactionRepository.save(transaction);
+        return transaction;
     }
 
     public List<Transaction> getTransactionsHistoryByNumber(String number) {
@@ -117,6 +138,24 @@ public class TransactionService {
     private void checkRegionExisting(String region) {
         if (Arrays.stream(Region.values()).noneMatch(r -> r.name().equals(region.toUpperCase()))) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong region!");
+        }
+    }
+
+    private void checkResultExisting(String result) {
+        if (Arrays.stream(Result.values()).noneMatch(r -> r.name().equals(result.toUpperCase()))) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong result!");
+        }
+    }
+
+    private void checkFeedbackException(String transactionFeedback, String requestFeedback) {
+        if (transactionFeedback.equals(requestFeedback)) {
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Feedback throws an Exception!");
+        }
+    }
+
+    private void checkTransactionAlreadyHaveFeedback(String feedback) {
+        if (!feedback.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Transaction already have feedback!");
         }
     }
 
