@@ -2,7 +2,9 @@ package antifraud.service;
 
 import antifraud.dto.ManualProcessingReq;
 import antifraud.dto.TransactionResp;
+import antifraud.entity.Card;
 import antifraud.entity.Transaction;
+import antifraud.repository.CardRepository;
 import antifraud.repository.StolenCardRepository;
 import antifraud.repository.SuspiciousIpRepository;
 import antifraud.repository.TransactionRepository;
@@ -17,6 +19,10 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static antifraud.util.Reason.*;
+import static antifraud.util.Result.*;
+
+
 @Service
 public class TransactionService {
     @Autowired
@@ -25,8 +31,11 @@ public class TransactionService {
     private SuspiciousIpRepository suspiciousIpRepository;
     @Autowired
     private TransactionRepository transactionRepository;
+    @Autowired
+    private CardRepository cardRepository;
 
     public TransactionResp checkAndSaveTransactionInDb(Transaction transaction) {
+
         checkNotNullAmount(transaction.getAmount());
         checkRegionExisting(transaction.getRegion());
 
@@ -34,13 +43,20 @@ public class TransactionService {
         String result = "";
 
         if (isStolenCard(transaction.getNumber())) {
-            result = "PROHIBITED";
-            reasons.add("card-number");
+            result = PROHIBITED.name();
+            reasons.add(CARD_NUMBER.getReason());
         }
         if (isSuspiciousIp(transaction.getIp())) {
-            result = "PROHIBITED";
-            reasons.add("ip");
+            result = PROHIBITED.name();
+            reasons.add(IP.getReason());
         }
+
+        long defaultAllowedAmountLimit = 200;
+        long defaultManualAmountLimit = 1500;
+
+        Card card = cardRepository
+                .findByNumber(transaction.getNumber())
+                .orElse(new Card(transaction.getNumber(), defaultAllowedAmountLimit, defaultManualAmountLimit));
 
         Optional<List<Transaction>> transactions = transactionRepository
                 .findByNumberAndDateBetween(transaction.getNumber()
@@ -60,39 +76,40 @@ public class TransactionService {
 
 
             if (regionCount == 3) {
-                result = "MANUAL_PROCESSING";
-                reasons.add("region-correlation");
+                result = MANUAL_PROCESSING.name();
+                reasons.add(REGION_CORRELATION.getReason());
             } else if (regionCount > 3) {
-                result = "PROHIBITED";
-                reasons.add("region-correlation");
+                result = PROHIBITED.name();
+                reasons.add(REGION_CORRELATION.getReason());
             }
             if (ipCount == 3) {
-                result = "MANUAL_PROCESSING";
-                reasons.add("ip-correlation");
+                result = MANUAL_PROCESSING.name();
+                reasons.add(IP_CORRELATION.getReason());
             } else if (ipCount > 3) {
-                result = "PROHIBITED";
-                reasons.add("ip-correlation");
+                result = PROHIBITED.name();
+                reasons.add(IP_CORRELATION.getReason());
             }
         }
 
-        if (transaction.getAmount() > 1500) {
-            reasons.add("amount");
+        if (transaction.getAmount() > card.getManualAmountLimit()) {
+            reasons.add(AMOUNT.getReason());
         }
 
         if (result.isBlank()) {
-            if (transaction.getAmount() <= 200) {
-                result = "ALLOWED";
-            } else if (transaction.getAmount() <= 1500) {
-                result = "MANUAL_PROCESSING";
-                reasons.add("amount");
-            } else if (transaction.getAmount() > 1500) {
-                result = "PROHIBITED";
-                reasons.add("amount");
+            if (transaction.getAmount() <= card.getAllowedAmountLimit()) {
+                result = ALLOWED.name();
+            } else if (transaction.getAmount() <= card.getManualAmountLimit()) {
+                result = MANUAL_PROCESSING.name();
+                reasons.add(AMOUNT.getReason());
+            } else if (transaction.getAmount() > card.getManualAmountLimit()) {
+                result = PROHIBITED.name();
+                reasons.add(AMOUNT.getReason());
             }
         }
 
         transaction.setResult(result);
         transactionRepository.save(transaction);
+        cardRepository.save(card);
         return new TransactionResp(result, getInfo(reasons));
     }
 
@@ -107,9 +124,15 @@ public class TransactionService {
         checkFeedbackException(transaction.getResult(), request.getFeedback());
         checkTransactionAlreadyHaveFeedback(transaction.getFeedback());
 
-        transaction.setResult(Result.MANUAL_PROCESSING.name());
+        Card card = cardRepository.findByNumber(transaction.getNumber()).get();
+
+        transaction.setResult(getResultFromAmount(transaction.getAmount(), card));
         transaction.setFeedback(request.getFeedback());
         transactionRepository.save(transaction);
+
+        changeLimit(transaction, card);
+        cardRepository.save(card);
+
         return transaction;
     }
 
@@ -175,5 +198,49 @@ public class TransactionService {
             joiner.add(r);
         }
         return joiner.toString();
+    }
+
+    private void changeLimit(Transaction transaction, Card card) {
+        if (transaction.getFeedback().equals(ALLOWED.name())) {
+            if (transaction.getResult().equals(MANUAL_PROCESSING.name())) {
+                card.setAllowedAmountLimit(upperLimit(card.getAllowedAmountLimit(), transaction.getAmount()));
+            } else if (transaction.getResult().equals(PROHIBITED.name())) {
+                card.setAllowedAmountLimit(upperLimit(card.getAllowedAmountLimit(), transaction.getAmount()));
+                card.setManualAmountLimit(upperLimit(card.getManualAmountLimit(), transaction.getAmount()));
+            }
+        } else if (transaction.getFeedback().equals(MANUAL_PROCESSING.name())) {
+            if (transaction.getResult().equals(ALLOWED.name())) {
+                card.setAllowedAmountLimit(lowerLimit(card.getAllowedAmountLimit(), transaction.getAmount()));
+            } else if (transaction.getResult().equals(PROHIBITED.name())) {
+                card.setManualAmountLimit(upperLimit(card.getManualAmountLimit(), transaction.getAmount()));
+            }
+        } else if (transaction.getFeedback().equals(PROHIBITED.name())) {
+            if (transaction.getResult().equals(ALLOWED.name())) {
+                card.setAllowedAmountLimit(lowerLimit(card.getAllowedAmountLimit(), transaction.getAmount()));
+                card.setManualAmountLimit(lowerLimit(card.getManualAmountLimit(), transaction.getAmount()));
+            } else if (transaction.getResult().equals(MANUAL_PROCESSING.name())) {
+                card.setManualAmountLimit(lowerLimit(card.getManualAmountLimit(), transaction.getAmount()));
+            }
+        }
+    }
+
+    private long upperLimit(long currentLimit, long amountFromTransaction) {
+        return (long) Math.ceil(0.8 * currentLimit + 0.2 * amountFromTransaction);
+    }
+
+    private long lowerLimit(long currentLimit, long amountFromTransaction) {
+        return (long) Math.ceil(0.8 * currentLimit - 0.2 * amountFromTransaction);
+    }
+
+    private String getResultFromAmount(long amount, Card card) {
+        String result;
+        if (amount <= card.getAllowedAmountLimit()) {
+            result = ALLOWED.name();
+        } else if (amount <= card.getManualAmountLimit()) {
+            result = MANUAL_PROCESSING.name();
+        } else {
+            result = PROHIBITED.name();
+        }
+        return result;
     }
 }

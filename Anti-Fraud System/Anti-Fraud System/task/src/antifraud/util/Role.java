@@ -5,7 +5,7 @@ public enum Role {
     MERCHANT("ROLE_MERCHANT"),
     SUPPORT("ROLE_SUPPORT");
 
-    private String name;
+    private final String name;
 
     Role(String name) {
         this.name = name;
