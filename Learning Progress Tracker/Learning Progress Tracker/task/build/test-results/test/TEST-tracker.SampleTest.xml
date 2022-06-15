@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tracker.SampleTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-03-22T16:08:16" hostname="FRACTAL" time="0.012">
-  <properties/>
-  <testcase name="test()" classname="tracker.SampleTest" time="0.012"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
