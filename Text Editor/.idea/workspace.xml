@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8c9bd86c-37b7-4fcb-be8f-9eb7dc85c50b" name="Changes" comment="Delete files v.2">
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/externalDependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/frameworkLessonHistory/storage.storageData" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/frameworkLessonHistory/storage.storageRecordIndex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__com_github_hyperskill_hs_test_release_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__commons_codec_commons_codec_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__org_assertj_assertj_core_3_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__org_assertj_assertj_swing_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__org_assertj_assertj_swing_junit_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__org_easytesting_fest_reflect_1_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__org_easytesting_fest_util_1_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/Blockchain.Blockchain-task.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/Blockchain.Blockchain-task.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/Blockchain.Blockchain-task.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/classes/java/Blockchain.Blockchain-task-build-classes-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/classes/java/Blockchain.Blockchain-task-build-classes-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/classes/java/Blockchain.Blockchain-task-build-classes-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/generated/sources/annotationProcessor/java/Blockchain.Blockchain-task-build-generated-sources-annotationProcessor-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/generated/sources/annotationProcessor/java/Blockchain.Blockchain-task-build-generated-sources-annotationProcessor-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/generated/sources/annotationProcessor/java/Blockchain.Blockchain-task-build-generated-sources-annotationProcessor-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/generated/sources/headers/java/Blockchain.Blockchain-task-build-generated-sources-headers-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/generated/sources/headers/java/Blockchain.Blockchain-task-build-generated-sources-headers-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/generated/sources/headers/java/Blockchain.Blockchain-task-build-generated-sources-headers-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/reports/tests/Blockchain.Blockchain-task-build-reports-tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/reports/tests/Blockchain.Blockchain-task-build-reports-tests.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/reports/tests/Blockchain.Blockchain-task-build-reports-tests.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/test-results/Blockchain.Blockchain-task-build-test-results.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/test-results/Blockchain.Blockchain-task-build-test-results.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/test-results/Blockchain.Blockchain-task-build-test-results.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/tmp/Blockchain.Blockchain-task-build-tmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/tmp/Blockchain.Blockchain-task-build-tmp.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/Blockchain/task/build/tmp/Blockchain.Blockchain-task-build-tmp.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/util/Blockchain.util.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/util/Blockchain.util.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/modules/util/Blockchain.util.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Blockchain/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/externalDependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/frameworkLessonHistory/storage.storageData" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/frameworkLessonHistory/storage.storageRecordIndex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__antlr_antlr_2_7_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__ch_qos_logback_logback_classic_1_2_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__ch_qos_logback_logback_core_1_2_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_fasterxml_classmate_1_5_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_core_2_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_databind_2_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_fasterxml_jackson_module_jackson_module_parameter_names_2_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_github_hyperskill_hs_test_release_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_h2database_h2_1_4_200.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_sun_activation_jakarta_activation_1_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_sun_istack_istack_commons_runtime_3_0_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__com_zaxxer_HikariCP_4_0_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__commons_codec_commons_codec_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__commons_codec_commons_codec_1_15.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__io_micrometer_micrometer_core_1_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__jakarta_persistence_jakarta_persistence_api_2_2_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__jakarta_transaction_jakarta_transaction_api_1_3_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__jakarta_validation_jakarta_validation_api_2_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__jakarta_xml_bind_jakarta_xml_bind_api_2_3_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__junit_junit_4_13_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_1_10_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_14.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_apache_logging_log4j_log4j_api_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_apache_logging_log4j_log4j_to_slf4j_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_core_9_0_54.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_el_9_0_54.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_54.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_aspectj_aspectjweaver_1_9_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_assertj_assertj_core_3_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_assertj_assertj_core_3_19_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_assertj_assertj_swing_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_assertj_assertj_swing_junit_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_attoparser_attoparser_2_0_5_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_dom4j_dom4j_2_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_easytesting_fest_reflect_1_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_easytesting_fest_util_1_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_glassfish_jaxb_jaxb_runtime_2_3_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_glassfish_jaxb_txw2_2_3_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_hamcrest_hamcrest_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_hdrhistogram_HdrHistogram_2_1_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_hibernate_common_hibernate_commons_annotations_5_1_2_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_hibernate_hibernate_core_5_4_32_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_hibernate_validator_hibernate_validator_6_2_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_javassist_javassist_3_27_0_GA.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_jboss_jandex_2_2_3_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_jboss_logging_jboss_logging_3_4_2_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_jsoup_jsoup_1_13_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_latencyutils_LatencyUtils_2_0_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_slf4j_jul_to_slf4j_1_7_32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_slf4j_slf4j_api_1_7_32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_actuator_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_actuator_autoconfigure_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_autoconfigure_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_actuator_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_aop_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_data_jpa_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_jdbc_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_json_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_logging_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_thymeleaf_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_tomcat_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_validation_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_web_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_data_spring_data_commons_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_data_spring_data_jpa_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_spring_aop_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_spring_aspects_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_spring_beans_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_spring_context_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_spring_core_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_spring_expression_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_spring_jcl_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_spring_jdbc_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_spring_orm_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_spring_tx_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_spring_web_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_springframework_spring_webmvc_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_thymeleaf_extras_thymeleaf_extras_java8time_3_0_4_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_thymeleaf_thymeleaf_3_0_12_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_thymeleaf_thymeleaf_spring5_3_0_12_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_unbescape_unbescape_1_1_6_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/libraries/Gradle__org_yaml_snakeyaml_1_28.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/Code_Sharing_Platform.Code_Sharing_Platform-task.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/Code_Sharing_Platform.Code_Sharing_Platform-task.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/Code_Sharing_Platform.Code_Sharing_Platform-task.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/classes/java/Code_Sharing_Platform.Code_Sharing_Platform-task-build-classes-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/classes/java/Code_Sharing_Platform.Code_Sharing_Platform-task-build-classes-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/classes/java/Code_Sharing_Platform.Code_Sharing_Platform-task-build-classes-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/generated/sources/annotationProcessor/java/Code_Sharing_Platform.Code_Sharing_Platform-task-build-generated-sources-annotationProcessor-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/generated/sources/annotationProcessor/java/Code_Sharing_Platform.Code_Sharing_Platform-task-build-generated-sources-annotationProcessor-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/generated/sources/annotationProcessor/java/Code_Sharing_Platform.Code_Sharing_Platform-task-build-generated-sources-annotationProcessor-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/generated/sources/headers/java/Code_Sharing_Platform.Code_Sharing_Platform-task-build-generated-sources-headers-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/generated/sources/headers/java/Code_Sharing_Platform.Code_Sharing_Platform-task-build-generated-sources-headers-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/generated/sources/headers/java/Code_Sharing_Platform.Code_Sharing_Platform-task-build-generated-sources-headers-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/reports/tests/Code_Sharing_Platform.Code_Sharing_Platform-task-build-reports-tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/reports/tests/Code_Sharing_Platform.Code_Sharing_Platform-task-build-reports-tests.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/reports/tests/Code_Sharing_Platform.Code_Sharing_Platform-task-build-reports-tests.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/test-results/Code_Sharing_Platform.Code_Sharing_Platform-task-build-test-results.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/test-results/Code_Sharing_Platform.Code_Sharing_Platform-task-build-test-results.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/test-results/Code_Sharing_Platform.Code_Sharing_Platform-task-build-test-results.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/tmp/Code_Sharing_Platform.Code_Sharing_Platform-task-build-tmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/tmp/Code_Sharing_Platform.Code_Sharing_Platform-task-build-tmp.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code Sharing Platform/task/build/tmp/Code_Sharing_Platform.Code_Sharing_Platform-task-build-tmp.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/Code_Sharing_Platform.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/util/Code_Sharing_Platform.util.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/util/Code_Sharing_Platform.util.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/modules/util/Code_Sharing_Platform.util.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/POST updates/task-info.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/POST updates/task-remote-info.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/POST updates/task.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/Show the code/task-info.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/Show the code/task-remote-info.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/Show the code/task.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/Snippets feed/task-info.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/Snippets feed/task-remote-info.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/Snippets feed/task.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/Super secret snippets/task-info.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/Super secret snippets/task-remote-info.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/Super secret snippets/task.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/Work with the database/task-info.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/Work with the database/task-remote-info.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/Work with the database/task.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/lesson-info.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/snippets.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/snippets.mv.db-real" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/snippets.trace.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/snippetsdb.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/classes/java/main/platform/CodeSharingPlatform.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/classes/java/main/platform/businesslayer/entities/Snippet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/classes/java/main/platform/businesslayer/services/SnippetService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/classes/java/main/platform/dataaccesslayer/SnippetsRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/classes/java/main/platform/presentation/ApiController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/classes/java/test/CodeSharingPlatformTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/reports/tests/test/classes/CodeSharingPlatformTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/reports/tests/test/css/base-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/reports/tests/test/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/reports/tests/test/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/reports/tests/test/js/report.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/reports/tests/test/packages/default-package.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/resources/main/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/resources/main/static/css/mystyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/resources/main/templates/CodeNew.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/resources/main/templates/LatestSnippets.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/resources/main/templates/Snippet.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/test-results/test/TEST-CodeSharingPlatformTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/test-results/test/binary/output.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/test-results/test/binary/output.bin.idx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/test-results/test/binary/results.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_10003879663006852708_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_10071794870850437628_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_10245563315534156739_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1033855133048097708_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_105260555362279378_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_10578970799955756334_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_10598041954521256875_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_10643246130639280880_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_10758535184978322789_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_10939072729733467214_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_11023388734423463520_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_11087177319964840332_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_11091815948836529260_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1113738561350044741_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_11316733590438225560_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1173733913903462516_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_11789240103249928591_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_11889653091171154007_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_11895545197804078327_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1198084533419346289_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_12083470839049670561_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_12086036595656990976_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_12088187414923267689_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1212386205402953086_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_12131008059531963834_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_12155076066525604820_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1233341659254757679_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1238869394486415948_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_12404726743718177483_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_12543628059332131391_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_12603298317802696861_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_12744264351548277292_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_12807381323104620329_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_12820823926983038675_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_12883734763673692689_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13099828588332755690_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13293118879626498871_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13293634237688446168_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13311012173588391532_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13582714121228391848_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13584994915526103370_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13595374795156678702_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13600179059935521074_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13719917383840585625_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13725529869662737792_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13769381154642911796_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13776412952903546433_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13795548708493693320_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13851348060445740062_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13923642797275537378_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13966383789825932417_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_13976354029968986726_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14018662139286763601_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14079877707406242447_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14242484697803488523_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14376216536695603007_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14385436698917645952_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14445205587247296628_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14460592709692429616_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14501670868435702160_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14503282339614813890_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14592736060245050093_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14633454332439129184_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14733476109957382061_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14751729963960940167_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14799515475134428676_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_14818731420352641052_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1484936695641725533_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15113908175167333954_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15179588776739230252_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15185355823066571104_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15211754742869664444_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15385982103934872754_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15400780485443920697_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15511092129863505467_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15552565816585094161_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1559240222305709055_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15618914864389231838_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15624521815280202974_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15652820818594809879_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15675750512239388753_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15727065725072417816_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15755861978152018737_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15898878974763439458_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15940752918281433327_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_15975415689445345370_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16087205499582372914_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16194551482579331714_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16211932789149212012_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16243838590465789226_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16419437232795659164_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16442680976800515670_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16481974232686213938_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16625330722618110775_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16629226279844733963_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16651131288924078510_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16704330655837679799_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1674575358554068283_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16766745095453622744_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16784965425550556543_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16811725125865258060_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1685681727582106335_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16881160492170501108_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_16963181860958764075_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_17115686012301948450_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_17116329670681980736_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_17243563024236065421_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_17297917259454423960_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1729919825296896571_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_17299452345661249516_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_17324278140049384274_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_17417802176393219314_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_17533886226879314908_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_17730173429724061718_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_17756904695073754797_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_18099944345749386445_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_18149644375731328764_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_18202393790998418568_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_18290840516858573337_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_18311089229575901257_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_18405723668136392569_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_18433322530860103422_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_1887424877433874641_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_2022071529779441193_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_2230706959940220890_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_2305548107563871205_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_2329268301186829277_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_2348796114732608428_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_2635979272942123297_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_26553150898810551_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_2742091431938833076_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_2753585484887385232_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_2769873687108655058_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_291080473050381374_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_291593568543157075_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_2934231584961010501_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_2998321639067379195_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_3132343735690981406_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_3160172359196548459_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_3180444684219315999_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_3261481278495228153_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_3280712842111391833_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_3372912762459017215_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_3637649674117571196_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_3703747542253004433_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_374777826979063518_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_3886830290822111073_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_42538445739413777_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_4379400773652404590_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_4446478250413069240_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_4576287126281343502_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_4586778393731110661_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_4663340374385087009_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_4715383929628851350_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_4715932144991533109_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_4845334929376361348_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_4848976964376598312_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_4872679302647152152_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_4889524498857054509_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_491760951150209246_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_4994561306944500989_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5011962993660706046_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5033076514851584235_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5060938485322330597_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5312958547365011027_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5360113366879160849_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5439326674658851932_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5459835532014433408_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5492942701383458388_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5500599406207786607_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5678571141667237854_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5699576072598805493_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5720305909510642640_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5743933891666975315_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5809458021346640440_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5880112564163532133_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_5922080275458983058_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6001194634826886199_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6012454412442658967_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_606611195153984797_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_607254018833392751_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6191826943826291271_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6259391391914222858_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6282534562000238274_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6342755730677912242_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6434559426620211812_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6452490061533206203_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6657277475551650563_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6684273274413380721_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6787165574840385465_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6791240510583152033_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6793476188526959598_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6807666414303296716_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6807713551976499905_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6839486326978565046_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_685272830522071381_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_6884740078479585196_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7125230119399625335_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7130493305863847854_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7155584508051658726_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7268131804947284_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7311434831117005369_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7548242096229233313_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7612222928327801432_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7682227163500210890_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7704404248450747706_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7794388421773481867_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7820997826716701025_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7839806783947924491_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_7993850251422342112_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8091282942961918734_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8224799229906207150_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8330659457829249529_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8516825891177542349_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8650197481233679461_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8672085834711215995_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8781142253301807394_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8821796669850045383_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8838134569732603165_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8918012360308483387_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8934514158214999279_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8965697596395702872_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_8978876022849674621_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_9104011037429781435_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_9167604023095640859_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_924247879937447661_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_92803048343650208_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_9293566548150327243_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_9363319303271305705_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_9405425875951797900_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_9524771365462330245_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_9579208520566897779_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_9645424059389797924_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_9707811921298447905_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_9918459722137083277_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/build/tmp/test/jar_extract_9924173898338802766_tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/out/production/classes/platform/CodeSharingPlatform.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/out/production/classes/platform/businesslayer/entities/Snippet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/out/production/classes/platform/businesslayer/services/SnippetService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/out/production/classes/platform/dataaccesslayer/SnippetsRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/out/production/classes/platform/presentation/ApiController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/out/production/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/out/production/resources/static/css/mystyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/out/production/resources/templates/CodeNew.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/out/production/resources/templates/LatestSnippets.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/out/production/resources/templates/Snippet.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/src/platform/CodeSharingPlatform.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/src/platform/businesslayer/entities/Snippet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/src/platform/businesslayer/services/SnippetService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/src/platform/dataaccesslayer/SnippetsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/src/platform/presentation/ApiController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/src/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/src/resources/static/css/mystyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/src/resources/templates/CodeNew.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/src/resources/templates/LatestSnippets.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/src/resources/templates/Snippet.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Code Sharing Platform/Code Sharing Platform/task/test/CodeSharingPlatformTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/externalDependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/frameworkLessonHistory/storage.storageData" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/frameworkLessonHistory/storage.storageRecordIndex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__com_github_hyperskill_hs_test_release_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__commons_codec_commons_codec_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__org_assertj_assertj_core_3_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__org_assertj_assertj_swing_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__org_assertj_assertj_swing_junit_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__org_easytesting_fest_reflect_1_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__org_easytesting_fest_util_1_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/File_Type_Analyzer.File_Type_Analyzer-task.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/File_Type_Analyzer.File_Type_Analyzer-task.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/File_Type_Analyzer.File_Type_Analyzer-task.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/classes/java/File_Type_Analyzer.File_Type_Analyzer-task-build-classes-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/classes/java/File_Type_Analyzer.File_Type_Analyzer-task-build-classes-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/classes/java/File_Type_Analyzer.File_Type_Analyzer-task-build-classes-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/generated/sources/annotationProcessor/java/File_Type_Analyzer.File_Type_Analyzer-task-build-generated-sources-annotationProcessor-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/generated/sources/annotationProcessor/java/File_Type_Analyzer.File_Type_Analyzer-task-build-generated-sources-annotationProcessor-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/generated/sources/annotationProcessor/java/File_Type_Analyzer.File_Type_Analyzer-task-build-generated-sources-annotationProcessor-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/generated/sources/headers/java/File_Type_Analyzer.File_Type_Analyzer-task-build-generated-sources-headers-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/generated/sources/headers/java/File_Type_Analyzer.File_Type_Analyzer-task-build-generated-sources-headers-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/generated/sources/headers/java/File_Type_Analyzer.File_Type_Analyzer-task-build-generated-sources-headers-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/reports/tests/File_Type_Analyzer.File_Type_Analyzer-task-build-reports-tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/reports/tests/File_Type_Analyzer.File_Type_Analyzer-task-build-reports-tests.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/reports/tests/File_Type_Analyzer.File_Type_Analyzer-task-build-reports-tests.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/test-results/File_Type_Analyzer.File_Type_Analyzer-task-build-test-results.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/test-results/File_Type_Analyzer.File_Type_Analyzer-task-build-test-results.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/test-results/File_Type_Analyzer.File_Type_Analyzer-task-build-test-results.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/tmp/File_Type_Analyzer.File_Type_Analyzer-task-build-tmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/tmp/File_Type_Analyzer.File_Type_Analyzer-task-build-tmp.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File Type Analyzer/task/build/tmp/File_Type_Analyzer.File_Type_Analyzer-task-build-tmp.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/File_Type_Analyzer.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/util/File_Type_Analyzer.util.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/util/File_Type_Analyzer.util.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/modules/util/File_Type_Analyzer.util.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../File Type Analyzer/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/externalDependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/frameworkLessonHistory/storage.storageData" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/frameworkLessonHistory/storage.storageRecordIndex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__com_beust_jcommander_1_78.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__com_github_hyperskill_hs_test_release_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__commons_codec_commons_codec_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__org_assertj_assertj_core_3_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__org_assertj_assertj_swing_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__org_assertj_assertj_swing_junit_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__org_easytesting_fest_reflect_1_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__org_easytesting_fest_util_1_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/JSON_Database.JSON_Database-task.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/JSON_Database.JSON_Database-task.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/JSON_Database.JSON_Database-task.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/classes/java/JSON_Database.JSON_Database-task-build-classes-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/classes/java/JSON_Database.JSON_Database-task-build-classes-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/classes/java/JSON_Database.JSON_Database-task-build-classes-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/generated/sources/annotationProcessor/java/JSON_Database.JSON_Database-task-build-generated-sources-annotationProcessor-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/generated/sources/annotationProcessor/java/JSON_Database.JSON_Database-task-build-generated-sources-annotationProcessor-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/generated/sources/annotationProcessor/java/JSON_Database.JSON_Database-task-build-generated-sources-annotationProcessor-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/generated/sources/headers/java/JSON_Database.JSON_Database-task-build-generated-sources-headers-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/generated/sources/headers/java/JSON_Database.JSON_Database-task-build-generated-sources-headers-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/generated/sources/headers/java/JSON_Database.JSON_Database-task-build-generated-sources-headers-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/reports/tests/JSON_Database.JSON_Database-task-build-reports-tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/reports/tests/JSON_Database.JSON_Database-task-build-reports-tests.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/reports/tests/JSON_Database.JSON_Database-task-build-reports-tests.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/test-results/JSON_Database.JSON_Database-task-build-test-results.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/test-results/JSON_Database.JSON_Database-task-build-test-results.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/test-results/JSON_Database.JSON_Database-task-build-test-results.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/tmp/JSON_Database.JSON_Database-task-build-tmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/tmp/JSON_Database.JSON_Database-task-build-tmp.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON Database/task/build/tmp/JSON_Database.JSON_Database-task-build-tmp.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/JSON_Database.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/util/JSON_Database.util.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/util/JSON_Database.util.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/modules/util/JSON_Database.util.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JSON Database/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/externalDependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/frameworkLessonHistory/storage.storageData" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/frameworkLessonHistory/storage.storageRecordIndex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__com_github_hyperskill_hs_test_release_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__commons_codec_commons_codec_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__junit_junit_4_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_apiguardian_apiguardian_api_1_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_assertj_assertj_core_3_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_assertj_assertj_swing_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_assertj_assertj_swing_junit_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_easytesting_fest_reflect_1_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_easytesting_fest_util_1_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_5_7_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_api_5_7_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_engine_5_7_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_params_5_7_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_junit_platform_junit_platform_commons_1_7_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_junit_platform_junit_platform_engine_1_7_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_junit_vintage_junit_vintage_engine_5_7_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/libraries/Gradle__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/Learning_Progress_Tracker.Learning_Progress_Tracker-task.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/Learning_Progress_Tracker.Learning_Progress_Tracker-task.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/Learning_Progress_Tracker.Learning_Progress_Tracker-task.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/classes/java/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-classes-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/classes/java/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-classes-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/classes/java/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-classes-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/generated/sources/annotationProcessor/java/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-generated-sources-annotationProcessor-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/generated/sources/headers/java/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-generated-sources-headers-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/generated/sources/headers/java/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-generated-sources-headers-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/generated/sources/headers/java/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-generated-sources-headers-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/reports/tests/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-reports-tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/reports/tests/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-reports-tests.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/reports/tests/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-reports-tests.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/test-results/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-test-results.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/test-results/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-test-results.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/test-results/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-test-results.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/tmp/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-tmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/tmp/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-tmp.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning Progress Tracker/task/build/tmp/Learning_Progress_Tracker.Learning_Progress_Tracker-task-build-tmp.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/Learning_Progress_Tracker.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/util/Learning_Progress_Tracker.util.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/util/Learning_Progress_Tracker.util.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/modules/util/Learning_Progress_Tracker.util.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Learning Progress Tracker/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/externalDependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/frameworkLessonHistory/storage.storageData" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/frameworkLessonHistory/storage.storageRecordIndex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__com_github_hyperskill_hs_test_release_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__commons_codec_commons_codec_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__org_assertj_assertj_core_3_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__org_assertj_assertj_swing_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__org_assertj_assertj_swing_junit_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__org_easytesting_fest_reflect_1_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__org_easytesting_fest_util_1_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/Maze_Runner.Maze_Runner-task.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/Maze_Runner.Maze_Runner-task.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/Maze_Runner.Maze_Runner-task.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/classes/java/Maze_Runner.Maze_Runner-task-build-classes-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/classes/java/Maze_Runner.Maze_Runner-task-build-classes-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/classes/java/Maze_Runner.Maze_Runner-task-build-classes-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/generated/sources/annotationProcessor/java/Maze_Runner.Maze_Runner-task-build-generated-sources-annotationProcessor-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/generated/sources/annotationProcessor/java/Maze_Runner.Maze_Runner-task-build-generated-sources-annotationProcessor-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/generated/sources/annotationProcessor/java/Maze_Runner.Maze_Runner-task-build-generated-sources-annotationProcessor-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/generated/sources/headers/java/Maze_Runner.Maze_Runner-task-build-generated-sources-headers-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/generated/sources/headers/java/Maze_Runner.Maze_Runner-task-build-generated-sources-headers-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/generated/sources/headers/java/Maze_Runner.Maze_Runner-task-build-generated-sources-headers-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/reports/tests/Maze_Runner.Maze_Runner-task-build-reports-tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/reports/tests/Maze_Runner.Maze_Runner-task-build-reports-tests.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/reports/tests/Maze_Runner.Maze_Runner-task-build-reports-tests.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/test-results/Maze_Runner.Maze_Runner-task-build-test-results.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/test-results/Maze_Runner.Maze_Runner-task-build-test-results.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/test-results/Maze_Runner.Maze_Runner-task-build-test-results.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/tmp/Maze_Runner.Maze_Runner-task-build-tmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/tmp/Maze_Runner.Maze_Runner-task-build-tmp.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/build/tmp/Maze_Runner.Maze_Runner-task-build-tmp.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/out/Maze_Runner.Maze_Runner-task-out.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/out/Maze_Runner.Maze_Runner-task-out.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze Runner/task/out/Maze_Runner.Maze_Runner-task-out.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/Maze_Runner.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/util/Maze_Runner.util.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/util/Maze_Runner.util.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/modules/util/Maze_Runner.util.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Maze Runner/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/externalDependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/frameworkLessonHistory/storage.storageData" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/frameworkLessonHistory/storage.storageRecordIndex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__com_github_hyperskill_hs_test_release_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__commons_codec_commons_codec_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__org_assertj_assertj_core_3_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__org_assertj_assertj_swing_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__org_assertj_assertj_swing_junit_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__org_easytesting_fest_reflect_1_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__org_easytesting_fest_util_1_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/Phone_Book.Phone_Book-task.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/Phone_Book.Phone_Book-task.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/Phone_Book.Phone_Book-task.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/classes/java/Phone_Book.Phone_Book-task-build-classes-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/classes/java/Phone_Book.Phone_Book-task-build-classes-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/classes/java/Phone_Book.Phone_Book-task-build-classes-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/generated/sources/annotationProcessor/java/Phone_Book.Phone_Book-task-build-generated-sources-annotationProcessor-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/generated/sources/annotationProcessor/java/Phone_Book.Phone_Book-task-build-generated-sources-annotationProcessor-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/generated/sources/annotationProcessor/java/Phone_Book.Phone_Book-task-build-generated-sources-annotationProcessor-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/generated/sources/headers/java/Phone_Book.Phone_Book-task-build-generated-sources-headers-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/generated/sources/headers/java/Phone_Book.Phone_Book-task-build-generated-sources-headers-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/generated/sources/headers/java/Phone_Book.Phone_Book-task-build-generated-sources-headers-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/reports/tests/Phone_Book.Phone_Book-task-build-reports-tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/reports/tests/Phone_Book.Phone_Book-task-build-reports-tests.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/reports/tests/Phone_Book.Phone_Book-task-build-reports-tests.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/test-results/Phone_Book.Phone_Book-task-build-test-results.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/test-results/Phone_Book.Phone_Book-task-build-test-results.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/test-results/Phone_Book.Phone_Book-task-build-test-results.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/tmp/Phone_Book.Phone_Book-task-build-tmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/tmp/Phone_Book.Phone_Book-task-build-tmp.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone Book/task/build/tmp/Phone_Book.Phone_Book-task-build-tmp.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/Phone_Book.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/util/Phone_Book.util.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/util/Phone_Book.util.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/modules/util/Phone_Book.util.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Phone Book/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/externalDependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/frameworkLessonHistory/storage.storageData" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/frameworkLessonHistory/storage.storageRecordIndex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/jpa-buddy.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__antlr_antlr_2_7_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__ch_qos_logback_logback_classic_1_2_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__ch_qos_logback_logback_core_1_2_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_fasterxml_classmate_1_5_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_core_2_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_databind_2_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_fasterxml_jackson_module_jackson_module_parameter_names_2_12_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_github_hyperskill_hs_test_release_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_h2database_h2_1_4_200.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_sun_activation_jakarta_activation_1_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_sun_istack_istack_commons_runtime_3_0_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__com_zaxxer_HikariCP_4_0_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__commons_codec_commons_codec_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__commons_codec_commons_codec_1_15.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__io_micrometer_micrometer_core_1_7_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__jakarta_annotation_jakarta_annotation_api_1_3_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__jakarta_persistence_jakarta_persistence_api_2_2_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__jakarta_transaction_jakarta_transaction_api_1_3_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__jakarta_validation_jakarta_validation_api_2_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__jakarta_xml_bind_jakarta_xml_bind_api_2_3_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__junit_junit_4_13_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_1_10_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_14.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_apache_logging_log4j_log4j_api_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_apache_logging_log4j_log4j_to_slf4j_2_14_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_core_9_0_54.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_el_9_0_54.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_54.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_aspectj_aspectjweaver_1_9_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_assertj_assertj_core_3_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_assertj_assertj_core_3_19_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_assertj_assertj_swing_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_assertj_assertj_swing_junit_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_dom4j_dom4j_2_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_easytesting_fest_reflect_1_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_easytesting_fest_util_1_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_glassfish_jaxb_jaxb_runtime_2_3_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_glassfish_jaxb_txw2_2_3_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_hamcrest_hamcrest_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_hdrhistogram_HdrHistogram_2_1_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_hibernate_common_hibernate_commons_annotations_5_1_2_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_hibernate_hibernate_core_5_4_32_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_hibernate_validator_hibernate_validator_6_2_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_javassist_javassist_3_27_0_GA.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_jboss_jandex_2_2_3_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_jboss_logging_jboss_logging_3_4_2_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_latencyutils_LatencyUtils_2_0_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_projectlombok_lombok_1_18_22.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_slf4j_jul_to_slf4j_1_7_32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_slf4j_slf4j_api_1_7_32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_actuator_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_actuator_autoconfigure_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_autoconfigure_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_actuator_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_aop_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_data_jpa_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_jdbc_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_json_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_logging_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_security_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_tomcat_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_validation_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_web_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_data_spring_data_commons_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_data_spring_data_jpa_2_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_security_spring_security_config_5_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_security_spring_security_core_5_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_security_spring_security_crypto_5_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_security_spring_security_web_5_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_spring_aop_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_spring_aspects_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_spring_beans_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_spring_context_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_spring_core_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_spring_expression_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_spring_jcl_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_spring_jdbc_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_spring_orm_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_spring_tx_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_spring_web_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_springframework_spring_webmvc_5_3_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/libraries/Gradle__org_yaml_snakeyaml_1_28.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/Recipes.Recipes-task.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/Recipes.Recipes-task.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/Recipes.Recipes-task.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/classes/java/Recipes.Recipes-task-build-classes-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/classes/java/Recipes.Recipes-task-build-classes-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/classes/java/Recipes.Recipes-task-build-classes-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/generated/sources/annotationProcessor/java/Recipes.Recipes-task-build-generated-sources-annotationProcessor-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/generated/sources/annotationProcessor/java/Recipes.Recipes-task-build-generated-sources-annotationProcessor-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/generated/sources/annotationProcessor/java/Recipes.Recipes-task-build-generated-sources-annotationProcessor-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/generated/sources/headers/java/Recipes.Recipes-task-build-generated-sources-headers-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/generated/sources/headers/java/Recipes.Recipes-task-build-generated-sources-headers-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/generated/sources/headers/java/Recipes.Recipes-task-build-generated-sources-headers-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/reports/tests/Recipes.Recipes-task-build-reports-tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/reports/tests/Recipes.Recipes-task-build-reports-tests.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/reports/tests/Recipes.Recipes-task-build-reports-tests.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/test-results/Recipes.Recipes-task-build-test-results.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/test-results/Recipes.Recipes-task-build-test-results.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/test-results/Recipes.Recipes-task-build-test-results.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/tmp/Recipes.Recipes-task-build-tmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/tmp/Recipes.Recipes-task-build-tmp.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/Recipes/task/build/tmp/Recipes.Recipes-task-build-tmp.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/util/Recipes.util.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/util/Recipes.util.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/modules/util/Recipes.util.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Recipes/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/externalDependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/frameworkLessonHistory/storage.storageData" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/frameworkLessonHistory/storage.storageRecordIndex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__com_github_hyperskill_hs_test_release_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__commons_codec_commons_codec_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__org_assertj_assertj_core_3_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__org_assertj_assertj_swing_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__org_assertj_assertj_swing_junit_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__org_easytesting_fest_reflect_1_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__org_easytesting_fest_util_1_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/Smart_Calculator.Smart_Calculator-task.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/Smart_Calculator.Smart_Calculator-task.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/Smart_Calculator.Smart_Calculator-task.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/classes/java/Smart_Calculator.Smart_Calculator-task-build-classes-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/classes/java/Smart_Calculator.Smart_Calculator-task-build-classes-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/classes/java/Smart_Calculator.Smart_Calculator-task-build-classes-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/generated/sources/annotationProcessor/java/Smart_Calculator.Smart_Calculator-task-build-generated-sources-annotationProcessor-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/generated/sources/annotationProcessor/java/Smart_Calculator.Smart_Calculator-task-build-generated-sources-annotationProcessor-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/generated/sources/annotationProcessor/java/Smart_Calculator.Smart_Calculator-task-build-generated-sources-annotationProcessor-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/generated/sources/headers/java/Smart_Calculator.Smart_Calculator-task-build-generated-sources-headers-java.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/generated/sources/headers/java/Smart_Calculator.Smart_Calculator-task-build-generated-sources-headers-java.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/generated/sources/headers/java/Smart_Calculator.Smart_Calculator-task-build-generated-sources-headers-java.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/reports/tests/Smart_Calculator.Smart_Calculator-task-build-reports-tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/reports/tests/Smart_Calculator.Smart_Calculator-task-build-reports-tests.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/reports/tests/Smart_Calculator.Smart_Calculator-task-build-reports-tests.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/test-results/Smart_Calculator.Smart_Calculator-task-build-test-results.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/test-results/Smart_Calculator.Smart_Calculator-task-build-test-results.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/test-results/Smart_Calculator.Smart_Calculator-task-build-test-results.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/tmp/Smart_Calculator.Smart_Calculator-task-build-tmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/tmp/Smart_Calculator.Smart_Calculator-task-build-tmp.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart Calculator/task/build/tmp/Smart_Calculator.Smart_Calculator-task-build-tmp.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/Smart_Calculator.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/util/Smart_Calculator.util.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/util/Smart_Calculator.util.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/modules/util/Smart_Calculator.util.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Smart Calculator/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/externalDependencies.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/frameworkLessonHistory/storage.storageData" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/frameworkLessonHistory/storage.storageRecordIndex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__com_github_hyperskill_hs_test_release_SNAPSHOT.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__commons_codec_commons_codec_1_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__junit_junit_4_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_assertj_assertj_core_3_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_assertj_assertj_swing_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_assertj_assertj_swing_junit_3_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_easytesting_fest_reflect_1_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_easytesting_fest_util_1_2_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_jetbrains_annotations_13_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_6_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_6_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_6_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk8_1_6_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/Sorting_Tool.Sorting_Tool-task.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/Sorting_Tool.Sorting_Tool-task.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/Sorting_Tool.Sorting_Tool-task.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/build/classes/kotlin/Sorting_Tool.Sorting_Tool-task-build-classes-kotlin.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/build/classes/kotlin/Sorting_Tool.Sorting_Tool-task-build-classes-kotlin.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/build/classes/kotlin/Sorting_Tool.Sorting_Tool-task-build-classes-kotlin.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/build/reports/tests/Sorting_Tool.Sorting_Tool-task-build-reports-tests.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/build/reports/tests/Sorting_Tool.Sorting_Tool-task-build-reports-tests.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/build/reports/tests/Sorting_Tool.Sorting_Tool-task-build-reports-tests.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/build/test-results/Sorting_Tool.Sorting_Tool-task-build-test-results.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/build/test-results/Sorting_Tool.Sorting_Tool-task-build-test-results.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/build/test-results/Sorting_Tool.Sorting_Tool-task-build-test-results.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/build/tmp/Sorting_Tool.Sorting_Tool-task-build-tmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/build/tmp/Sorting_Tool.Sorting_Tool-task-build-tmp.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting Tool/task/build/tmp/Sorting_Tool.Sorting_Tool-task-build-tmp.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/Sorting_Tool.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/util/Sorting_Tool.util.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/util/Sorting_Tool.util.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/modules/util/Sorting_Tool.util.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sorting Tool/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quizdb.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../quizdb.trace.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recipes_db.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../recipes_db.trace.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../service_db.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../service_db.trace.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snippets.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../snippets.trace.db" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2AbSWb6oLYS5MXlpmJg3pB9RrCq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8c9bd86c-37b7-4fcb-be8f-9eb7dc85c50b" name="Changes" comment="" />
+      <created>1655276823579</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655276823579</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Delete files v.1">
+      <created>1655276872576</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655276872576</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Delete files v.2">
+      <created>1655276894317</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655276894317</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Delete files v.1" />
+    <MESSAGE value="Delete files v.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete files v.2" />
+  </component>
+</project>
