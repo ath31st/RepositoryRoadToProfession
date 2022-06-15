@@ -1,4 +1,0 @@
-2022-04-20 11:49:44 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "SELECT * FROM RECIPE WHERE CATEGORY = ?,[*] ORDER BY DATE DESC"
-Syntax error in SQL statement "SELECT * FROM RECIPE WHERE CATEGORY = ?,[*] ORDER BY DATE DESC"; SQL statement:
-SELECT * FROM RECIPE WHERE CATEGORY = ?, ORDER BY DATE DESC [42000-200]
